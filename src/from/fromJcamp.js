@@ -1,21 +1,23 @@
 import { convert } from 'jcampconverter';
 
-import { Spectrum } from '../Spectrum';
+import { Analysis } from '../Analysis';
 
 /**
- * Creates a new Chromatogram element based in a JCAMP string
+ * Creates a new Analysis from a JCAMP string
  * @param {string} jcamp - String containing the JCAMP data
  * @param {object} [options={}]
  * @param {object} [options.id=Math.random()]
- * @return {Spectrum} - New class element with the given data
+ * @param {object} [options.defaultFlavor='']
+ * @return {Analysis} - New class element with the given data
  */
 export function fromJcamp(jcamp, options = {}) {
-  let spectrum = new Spectrum(options);
-  addJcamp(spectrum, jcamp);
-  return spectrum;
+  let analysis = new Analysis(options);
+  addJcamp(analysis, jcamp, options);
+  return analysis;
 }
 
-function addJcamp(spectrum, jcamp) {
+function addJcamp(analysis, jcamp, options = {}) {
+  const { defaultFlavor } = options;
   let converted = convert(jcamp, {
     keepRecordsRegExp: /.*/,
     canonicDataLabels: false,
@@ -27,13 +29,21 @@ function addJcamp(spectrum, jcamp) {
     let xLabel = currentSpectrum.xUnit;
     let yLabel = currentSpectrum.yUnit;
 
-    let flavor = entry.info.$cheminfoFlavor || '';
+    let flavor = entry.info.$cheminfoFlavor || defaultFlavor;
 
-    spectrum.set(currentSpectrum.data, {
+    let meta = {};
+    for (let key in entry.info) {
+      if (key.startsWith('$') && key !== '$cheminfoFlavor') {
+        meta[key.substring(1)] = entry.info[key];
+      }
+    }
+
+    analysis.set(currentSpectrum.data, {
       flavor,
       xLabel,
       yLabel,
-      title: currentSpectrum.title,
+      title: entry.title,
+      meta,
     });
   }
 }

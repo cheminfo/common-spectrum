@@ -1,10 +1,10 @@
 import { fromJSON } from 'convert-to-jcamp';
 
-export function toJcamp(spectrum, options = {}) {
+export function toJcamp(analysis, options = {}) {
   const { dataType = '' } = options;
   let jcamps = [];
-  for (let flavorName in spectrum.flavors) {
-    let data = spectrum.get(flavorName);
+  for (let flavorName in analysis.spectra) {
+    let data = analysis.get(flavorName);
     jcamps.push(
       getJcamp(data, {
         dataType,

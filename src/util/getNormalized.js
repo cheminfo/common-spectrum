@@ -13,10 +13,11 @@ import Stat from 'ml-stat/array';
  * @param {number} [options.from=spectrum.x[0]]
  * @param {number} [options.to=spectrum.x[spectrum.x.length-1]]
  * @param {number} [options.numberOfPoints]
- * @param {Array} [options.filters=[]]
+ * @param {Array} [options.filters=[]] Array of object containing 'name' (centerMean, divideSD, normalize, rescale) and 'options'
  * @param {Array} [options.exclusions=[]]
+ * @returns {DataXY}
  */
-export default function getNormalized(spectrum, options = {}) {
+export function getNormalized(spectrum, options = {}) {
   let {
     from = spectrum.x[0],
     to = spectrum.x[spectrum.x.length - 1],
@@ -60,7 +61,7 @@ export default function getNormalized(spectrum, options = {}) {
         y = xSubtract(mean);
         break;
       }
-      case 'scaleSD': {
+      case 'divideSD': {
         let std = Stat.standardDeviation(y);
         y = xDivide(std);
         break;
