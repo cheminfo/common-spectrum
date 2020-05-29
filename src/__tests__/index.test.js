@@ -3,7 +3,6 @@ import { CommonSpectrum } from '..';
 test('index', () => {
   const {
     Analysis,
-    AnalysesManager,
     fromJcamp,
     toJcamp,
     getNormalized,
