@@ -18,6 +18,7 @@ import { AnalysesManager } from './AnalysesManager';
 import { Analysis } from './Analysis';
 import { fromJcamp } from './from/fromJcamp';
 import { getJSGraph } from './jsgraph/getJSGraph';
+import { getNormalizationAnnotations } from './jsgraph/getNormalizationAnnotations';
 import { toJcamp } from './to/toJcamp';
 import { getNormalized } from './util/getNormalized';
 
@@ -34,11 +35,13 @@ export function CommonSpectrum(options = {}) {
   return {
     Analysis: CustomAnalysis,
     AnalysesManager,
+
     getNormalized,
     fromJcamp: (jcamp, fromOptions) =>
-      fromJcamp(jcamp, { defaultFlavor, ...fromOptions }),
+      fromJcamp(jcamp, { flavor: defaultFlavor, ...fromOptions }),
     toJcamp: (spectrum) => toJcamp(spectrum, { dataType }),
     getJSGraph: (analyses, jsGraphOptions) =>
-      getJSGraph(analyses, { defaultFlavor, ...jsGraphOptions }),
+      getJSGraph(analyses, { flavor: defaultFlavor, ...jsGraphOptions }),
+    getNormalizationAnnotations,
   };
 }

@@ -55,15 +55,15 @@ export function getNormalized(spectrum, options = {}) {
 
   for (let filter of filters) {
     let filterOptions = filter.options || {};
-    switch (filter.name) {
-      case 'centerMean': {
+    switch (filter.name.toLowerCase()) {
+      case 'centermean': {
         let mean = Stat.mean(y);
-        y = xSubtract(mean);
+        y = xSubtract(y, mean);
         break;
       }
-      case 'divideSD': {
+      case 'dividebysd': {
         let std = Stat.standardDeviation(y);
-        y = xDivide(std);
+        y = xDivide(y, std);
         break;
       }
       case 'normalize': {

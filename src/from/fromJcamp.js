@@ -7,7 +7,7 @@ import { Analysis } from '../Analysis';
  * @param {string} jcamp - String containing the JCAMP data
  * @param {object} [options={}]
  * @param {object} [options.id=Math.random()]
- * @param {object} [options.defaultFlavor='']
+ * @param {object} [options.flavor='']
  * @return {Analysis} - New class element with the given data
  */
 export function fromJcamp(jcamp, options = {}) {

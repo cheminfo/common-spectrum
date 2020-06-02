@@ -27,7 +27,7 @@ export class AnalysesManager {
    * Remove the analysis from the AnalysesManager for the specified id
    * @param {string} id
    */
-  removeSpectrum(id) {
+  removeAnalysis(id) {
     let index = this.getAnalysisIndex(id);
     if (index === undefined) return undefined;
     return this.analyses.splice(index, 1);

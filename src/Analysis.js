@@ -43,6 +43,7 @@ export class Analysis {
    */
   get(flavor = this.defaultFlavor) {
     flavor = flavor.toLowerCase();
+
     if (!this.spectra[flavor]) {
       return undefined;
     }
