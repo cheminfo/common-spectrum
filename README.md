@@ -26,9 +26,7 @@ This package allow to load / save an Analysis as a JCAMP-DX text file.
 ## Usage
 
 ```js
-import { CommonSpectrum } from 'common-spectrum';
-
-const { Analysis, fromJcamp, toJcamp, getJSGraph } = CommonSpectrum();
+import { Analysis, fromJcamp, toJcamp, getJSGraph } from '..';
 
 let analysis = new Analysis();
 expect(analysis.id).toHaveLength(8);

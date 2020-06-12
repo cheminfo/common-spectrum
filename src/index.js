@@ -22,20 +22,12 @@ import { getNormalizationAnnotations } from './jsgraph/getNormalizationAnnotatio
 import { toJcamp } from './to/toJcamp';
 import { getNormalizedData } from './util/getNormalizedData';
 
-export function CommonSpectrum(options = {}) {
-  class CustomAnalysis extends Analysis {
-    constructor() {
-      super();
-    }
-  }
-
-  return {
-    Analysis: CustomAnalysis,
-    AnalysesManager,
-    getNormalizedData,
-    fromJcamp,
-    toJcamp,
-    getJSGraph,
-    getNormalizationAnnotations,
-  };
-}
+export {
+  Analysis,
+  AnalysesManager,
+  getNormalizedData,
+  fromJcamp,
+  toJcamp,
+  getJSGraph,
+  getNormalizationAnnotations,
+};

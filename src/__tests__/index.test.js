@@ -1,10 +1,6 @@
-import { CommonSpectrum } from '..';
+import { Analysis, fromJcamp, toJcamp, getJSGraph } from '..';
 
 test('index', () => {
-  const { Analysis, fromJcamp, toJcamp, getJSGraph } = CommonSpectrum({
-    dataType: 'MY DATA TYPE',
-  });
-
   let analysis = new Analysis();
   expect(analysis.id).toHaveLength(8);
 

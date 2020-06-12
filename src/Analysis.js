@@ -74,7 +74,6 @@ export class Analysis {
   getNormalizedData(options = {}) {
     const { normalization, selector } = options;
     const spectrum = this.getSpectrum(selector);
-    console.log({ spectrum });
     if (!spectrum) return undefined;
     return getNormalizedData(spectrum, normalization);
   }
@@ -128,6 +127,6 @@ function standardizeData(data, options = {}) {
     title,
     dataType,
     meta,
-    flavor: yUnits + ' vs ' + xUnits,
+    flavor: `${yUnits} vs ${xUnits}`,
   };
 }
