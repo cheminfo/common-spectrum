@@ -20,28 +20,22 @@ import { fromJcamp } from './from/fromJcamp';
 import { getJSGraph } from './jsgraph/getJSGraph';
 import { getNormalizationAnnotations } from './jsgraph/getNormalizationAnnotations';
 import { toJcamp } from './to/toJcamp';
-import { getNormalized } from './util/getNormalized';
+import { getNormalizedData } from './util/getNormalizedData';
 
 export function CommonSpectrum(options = {}) {
-  const { dataType = '', defaultFlavor = '' } = options;
-
   class CustomAnalysis extends Analysis {
-    constructor(analysisOptions) {
-      super(analysisOptions);
-      this.defaultFlavor = defaultFlavor;
+    constructor() {
+      super();
     }
   }
 
   return {
     Analysis: CustomAnalysis,
     AnalysesManager,
-
-    getNormalized,
-    fromJcamp: (jcamp, fromOptions) =>
-      fromJcamp(jcamp, { flavor: defaultFlavor, ...fromOptions }),
-    toJcamp: (spectrum) => toJcamp(spectrum, { dataType }),
-    getJSGraph: (analyses, jsGraphOptions) =>
-      getJSGraph(analyses, { flavor: defaultFlavor, ...jsGraphOptions }),
+    getNormalizedData,
+    fromJcamp,
+    toJcamp,
+    getJSGraph,
     getNormalizationAnnotations,
   };
 }

@@ -9,8 +9,8 @@
 ##LASTX=662.535
 ##FIRSTY=6.70697
 ##LASTY=17.2068
+##$meta=Meta information
 ##NPOINTS=2251
-##$cheminfoFlavor=weightversustemperature
 ##PEAK TABLE=(XY..XY)
 41.028 17.2039
 41.025 17.2038
@@ -2276,7 +2276,6 @@
 ##FIRSTY=2.304
 ##LASTY=12.8038
 ##NPOINTS=2251
-##$cheminfoFlavor=weightversustime
 ##PEAK TABLE=(XY..XY)
 0 12.8009
 1 12.8008

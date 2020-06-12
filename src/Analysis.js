@@ -1,4 +1,4 @@
-import { getNormalized } from './util/getNormalized';
+import { getNormalizedData } from './util/getNormalizedData';
 
 /**
  * Class allowing to store and manipulate an analysis.
@@ -8,66 +8,83 @@ import { getNormalized } from './util/getNormalized';
  * @param {object} [options={}]
  * @param {string} [options.id=randomString] unique identifier
  * @param {string} [options.label=options.id] human redeable label
- * @param {string} [options.defaultFlavor=''] human redeable label
  */
 export class Analysis {
   constructor(options = {}) {
     this.id = options.id || Math.random().toString(36).substring(2, 10);
     this.label = options.label || this.id;
-    this.spectra = {};
-    this.defaultFlavor =
-      options.defaultFlavor === undefined ? '' : options.defaultFlavor;
+    this.spectra = [];
   }
 
   /**
    * Set a spectrum for a specific flavor
    * @param {DataXY} data
    * @param {object} [options={}]
-   * @param {string} [options.defaultFlavor=this.defaultFlavor]
-   * @param {string} [options.xLabel='']
-   * @param {string} [options.yLabel='']
+   * @param {string} [options.xLabel='x']
+   * @param {string} [options.yLabel='y']
+   * @param {string} [options.xUnits='x']
+   * @param {string} [options.yUnits='y']
+   * @param {string} [options.dataType='']
    * @param {string} [options.title='']
-   * @param {object} [options.meta={}]
+   * @param {object} [options.flavor={}]
    *
    */
-  set(data, options = {}) {
-    const { flavor = this.defaultFlavor } = options;
-    this.spectra[flavor.toLowerCase()] = standardizeData(data, options);
+  pushSpectrum(data, options = {}) {
+    this.spectra.push(standardizeData(data, options));
   }
 
   /**
    * Retrieve a Spectrum based on a flavor
-   * @param {object} [options={}]
-   * @param {string} [options.defaultFlavor=this.defaultFlavor]
+   * @param {object} [selector={}]
+   * @param {string} [selector.index]
+   * @param {string} [selector.flavor]
    * @returns {Spectrum}
    */
-  get(flavor = this.defaultFlavor) {
-    flavor = flavor.toLowerCase();
+  getSpectrum(selector = {}) {
+    let spectra = this.getSpectra(selector);
+    return spectra ? spectra[0] : undefined;
+  }
 
-    if (!this.spectra[flavor]) {
-      return undefined;
+  /**
+   * Retrieve a Spectrum based on a flavor
+   * @param {object} [selector={}]
+   * @param {string} [selector.index]
+   * @param {string} [selector.flavor]
+   * @returns {Spectrum}
+   */
+  getSpectra(selector = {}) {
+    const { index, flavor } = selector;
+    if (index !== undefined) {
+      return this.spectra[index] ? [this.spectra[index]] : undefined;
     }
-    return this.spectra[flavor];
+    if (flavor === undefined) return this.spectra;
+    return this.spectra.filter((spectrum) => spectrum.flavor === flavor);
   }
 
   /**
    * Return the data object for a specific flavor with possibly some
    * normalization options
    * @param {object} [options={}]
+   * @param {object} [options.selector]
+   * @param {string} [options.selector.index]
+   * @param {string} [options.selector.flavor]
+   * @param {object} [options.normalization]
+   *
    */
-  getData(options = {}) {
-    const { flavor, normalization } = options;
-    let data = this.get(flavor);
-    if (!data) return undefined;
-    return getNormalized(data, normalization);
+  getNormalizedData(options = {}) {
+    const { normalization, selector } = options;
+    const spectrum = this.getSpectrum(selector);
+    console.log({ spectrum });
+    if (!spectrum) return undefined;
+    return getNormalizedData(spectrum, normalization);
   }
 
-  getXLabel(flavor) {
-    return this.get(flavor).xLabel;
+  getXLabel(selector) {
+    return this.getSpectrum(selector).xLabel;
   }
 
-  getYLabel(flavor) {
-    return this.get(flavor).yLabel;
+  getYLabel(selector) {
+    return this.getSpectrum(selector).yLabel;
   }
 }
 
@@ -78,7 +95,19 @@ export class Analysis {
  * @return {Spectrum}
  */
 function standardizeData(data, options = {}) {
-  const { meta = {}, xLabel = '', yLabel = '', title = '' } = options;
+  let {
+    meta = {},
+    xLabel = 'x',
+    yLabel = 'y',
+    xUnits = '',
+    yUnits = '',
+    dataType = '',
+    title = '',
+  } = options;
+
+  xUnits = xUnits || xLabel.replace(/^.*[([](.*)[)\]].*$/, '$1');
+  yUnits = yUnits || yLabel.replace(/^.*[([](.*)[)\]].*$/, '$1');
+
   let { x, y } = data;
   if (x && x.length > 1 && x[0] > x[x.length - 1]) {
     x = x.reverse();
@@ -94,7 +123,11 @@ function standardizeData(data, options = {}) {
     y: data.y,
     xLabel,
     yLabel,
+    xUnits,
+    yUnits,
     title,
+    dataType,
     meta,
+    flavor: yUnits + ' vs ' + xUnits,
   };
 }

@@ -1,28 +1,32 @@
 import { fromJSON } from 'convert-to-jcamp';
 
 export function toJcamp(analysis, options = {}) {
-  const { dataType = '' } = options;
   let jcamps = [];
-  for (let flavorName in analysis.spectra) {
-    let data = analysis.get(flavorName);
-    jcamps.push(
-      getJcamp(data, {
-        dataType,
-        flavorName,
-      }),
-    );
+  for (let spectrum of analysis.spectra) {
+    jcamps.push(getJcamp(spectrum, options));
   }
-
   return jcamps.join('\n');
 }
 
-function getJcamp(flavor, options) {
+function getJcamp(spectrum, options) {
+  const { info = {}, meta = {} } = options;
   let jcampOptions = {
-    xUnit: flavor.xLabel,
-    yUnit: flavor.yLabel,
-    title: flavor.title,
-    type: options.dataType,
-    info: { ...flavor.meta, cheminfoFlavor: options.flavorName },
+    info: {
+      xUnits:
+        spectrum.xLabel === spectrum.xUnits
+          ? spectrum.xLabel
+          : spectrum.xLabel + ' [' + spectrum.xUnits + ']',
+      yUnits:
+        spectrum.yLabel === spectrum.yUnits
+          ? spectrum.yLabel
+          : spectrum.yLabel + ' [' + spectrum.yUnits + ']',
+      title: spectrum.title,
+      dataType: spectrum.dataType,
+      ...info,
+    },
+
+    meta: { ...spectrum.meta, ...meta },
   };
-  return fromJSON({ x: flavor.x, y: flavor.y }, jcampOptions);
+
+  return fromJSON({ x: spectrum.x, y: spectrum.y }, jcampOptions);
 }

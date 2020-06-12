@@ -17,7 +17,7 @@ import Stat from 'ml-stat/array';
  * @param {Array} [options.exclusions=[]]
  * @returns {DataXY}
  */
-export function getNormalized(spectrum, options = {}) {
+export function getNormalizedData(spectrum, options = {}) {
   let {
     from = spectrum.x[0],
     to = spectrum.x[spectrum.x.length - 1],

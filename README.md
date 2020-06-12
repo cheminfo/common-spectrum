@@ -13,6 +13,7 @@ By default the flavor is an empty string and if your analysis only generates
 one spectrum you may forget this level of complexity.
 
 In the case of Thermogravitaional Analysis (TGA) we may have 2 flavor for the data:
+
 - Weight versus Temperature
 - Weight versus Time
 
@@ -27,57 +28,45 @@ This package allow to load / save an Analysis as a JCAMP-DX text file.
 ```js
 import { CommonSpectrum } from 'common-spectrum';
 
-const {
-  Analysis,
-  fromJcamp,
-  toJcamp,
-  getNormalized,
-  getJSGraph,
-} = new CommonSpectrum({
-  dataType: 'TGA', // type of analysis like TGA for 'Thermal Gravitational Analysis'
-  defaultFlavor: 'myFlavor', // default flavor when adding a spectrum
-});
+const { Analysis, fromJcamp, toJcamp, getJSGraph } = CommonSpectrum();
 
-// we create an analysis that has no spectrum
 let analysis = new Analysis();
+expect(analysis.id).toHaveLength(8);
 
-// we add a spectrum with the default flavor
-analysis.set(
+analysis.pushSpectrum(
   { x: [1, 2], y: [3, 4] },
   {
+    xUnits: 'xUnits',
+    yUnits: 'yUnits',
     xLabel: 'X axis',
     yLabel: 'Y axis',
     title: 'My spectrum',
+    dataType: 'TGA',
     meta: {
-      // unlimited number of meta information is allowed
       meta1: 'Meta 1',
       meta2: 'Meta 2',
     },
   },
 );
 
-// if we want to retrive the default flavor spectrum, no
-// parameter is needed
-let defaultFlavorSpectrum = analysis.get();
+let firstSpectrum = analysis.getSpectrum();
 
-// the data of a spectrum can be normalized using various options
-let data = getNormalized(defaultFlavorSpectrum, {
-  filters: [{ name: 'normalize' }],
+let normalized = analysis.getNormalizedData({
+  normalization: {
+    filters: [{ name: 'normalize' }],
+  },
 });
-console.log(data);
 
-// In order to plot the data we can use JsGraph and this method generates
-// the json format required by this library
-// It allows to superimpose an unlimited number of spectra.
 let jsgraph = getJSGraph([analysis]);
-console.log(jsgraph);
 
-// It is possible to save the analysis as a JCAMP-DX
-let jcamp = toJcamp(analysis);
+let jcamp = toJcamp(analysis, {
+  info: {
+    owner: 'cheminfo',
+    origin: 'Common Spectrum',
+  },
+});
 
-// The analysis object can be recreated from a JCAMP-DX text file as well.
-let analysisFromJcamp = fromJcamp(jcamp);
-console.log(analysisFromJcamp);
+let analysis2 = fromJcamp(jcamp);
 ```
 
 ## [API Documentation](https://cheminfo.github.io/common-spectrum/)

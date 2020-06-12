@@ -7,7 +7,7 @@ import { Analysis } from '../Analysis';
  * @param {string} jcamp - String containing the JCAMP data
  * @param {object} [options={}]
  * @param {object} [options.id=Math.random()]
- * @param {object} [options.flavor='']
+ * @param {string} [options.label=options.id] human redeable label
  * @return {Analysis} - New class element with the given data
  */
 export function fromJcamp(jcamp, options = {}) {
@@ -16,34 +16,22 @@ export function fromJcamp(jcamp, options = {}) {
   return analysis;
 }
 
-function addJcamp(analysis, jcamp, options = {}) {
-  const { defaultFlavor } = options;
+function addJcamp(analysis, jcamp) {
   let converted = convert(jcamp, {
     keepRecordsRegExp: /.*/,
-    canonicDataLabels: false,
-    dynamicTyping: true,
   });
 
   for (let entry of converted.flatten) {
     let currentSpectrum = entry.spectra[0];
-    let xLabel = currentSpectrum.xUnit;
-    let yLabel = currentSpectrum.yUnit;
+    let xLabel = currentSpectrum.xUnits || 'x';
+    let yLabel = currentSpectrum.yUnits || 'y';
 
-    let flavor = entry.info.$cheminfoFlavor || defaultFlavor;
-
-    let meta = {};
-    for (let key in entry.info) {
-      if (key.startsWith('$') && key !== '$cheminfoFlavor') {
-        meta[key.substring(1)] = entry.info[key];
-      }
-    }
-
-    analysis.set(currentSpectrum.data, {
-      flavor,
+    analysis.pushSpectrum(currentSpectrum.data, {
       xLabel,
       yLabel,
+      dataType: entry.dataType,
       title: entry.title,
-      meta,
+      meta: entry.meta,
     });
   }
 }

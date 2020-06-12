@@ -6,11 +6,11 @@ import { COLORS } from './colors';
  * @param {object} [options={}]
  * @param {Array} [options.ids] List of spectra ids, by all
  * @param {Array} [options.colors] List of colors
- * @param {Array} [options.flavor]
+ * @param {object} [options.selector={}]
  * @param {object} [options.normalization]
  */
 export function getJSGraph(analyses, options = {}) {
-  const { colors = COLORS, flavor, normalization } = options;
+  const { colors = COLORS, selector, normalization } = options;
   let series = [];
 
   let xLabel = '';
@@ -19,10 +19,13 @@ export function getJSGraph(analyses, options = {}) {
   for (let i = 0; i < analyses.length; i++) {
     const analysis = analyses[i];
     let serie = {};
-    let currentData = analysis.getData({ flavor, normalization });
+    let currentData = analysis.getNormalizedData({
+      selector,
+      normalization,
+    });
     if (!currentData) continue;
-    if (!xLabel) xLabel = analysis.getXLabel(flavor);
-    if (!yLabel) yLabel = analysis.getYLabel(flavor);
+    if (!xLabel) xLabel = analysis.getXLabel(selector);
+    if (!yLabel) yLabel = analysis.getYLabel(selector);
     addStyle(serie, analysis, { color: colors[i] });
     serie.data = currentData;
     series.push(serie);
