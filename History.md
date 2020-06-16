@@ -1,3 +1,12 @@
+## [0.1.1](https://github.com/cheminfo/common-spectrum/compare/v0.1.0...v0.1.1) (2020-06-16)
+
+
+### Bug Fixes
+
+* unmit duplication in jcamp ([c535ea8](https://github.com/cheminfo/common-spectrum/commit/c535ea86929d2a32b37583c2506503f3323fe4cd))
+
+
+
 # [0.1.0](https://github.com/cheminfo/common-spectrum/compare/v0.0.2...v0.1.0) (2020-06-12)
 
 
