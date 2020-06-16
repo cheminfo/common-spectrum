@@ -1,3 +1,12 @@
+## [0.1.2](https://github.com/cheminfo/common-spectrum/compare/v0.1.1...v0.1.2) (2020-06-16)
+
+
+### Bug Fixes
+
+* returns all spectra if flavor is empty string ([2c70c70](https://github.com/cheminfo/common-spectrum/commit/2c70c709dd7ce5de293728c8618fae4a11fc8ced))
+
+
+
 ## [0.1.1](https://github.com/cheminfo/common-spectrum/compare/v0.1.0...v0.1.1) (2020-06-16)
 
 
