@@ -57,7 +57,7 @@ export class Analysis {
     if (index !== undefined) {
       return this.spectra[index] ? [this.spectra[index]] : undefined;
     }
-    if (flavor === undefined) return this.spectra;
+    if (flavor === undefined || flavor === '') return this.spectra;
     return this.spectra.filter((spectrum) => spectrum.flavor === flavor);
   }
 
