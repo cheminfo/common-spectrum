@@ -9,8 +9,8 @@ test('index', () => {
     {
       xUnits: 'xUnits',
       yUnits: 'yUnits',
-      xLabel: 'X axis',
-      yLabel: 'Y axis',
+      xLabel: 'X axis [xUnits]',
+      yLabel: 'Y axis [yUnits]',
       title: 'My spectrum',
       dataType: 'TGA',
       meta: {

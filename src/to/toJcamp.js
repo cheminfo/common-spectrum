@@ -12,14 +12,12 @@ function getJcamp(spectrum, options) {
   const { info = {}, meta = {} } = options;
   let jcampOptions = {
     info: {
-      xUnits:
-        spectrum.xLabel === spectrum.xUnits
-          ? spectrum.xLabel
-          : `${spectrum.xLabel} [${spectrum.xUnits}]`,
-      yUnits:
-        spectrum.yLabel === spectrum.yUnits
-          ? spectrum.yLabel
-          : `${spectrum.yLabel} [${spectrum.yUnits}]`,
+      xUnits: spectrum.xLabel.includes(spectrum.xUnits)
+        ? spectrum.xLabel
+        : `${spectrum.xLabel} [${spectrum.xUnits}]`,
+      yUnits: spectrum.yLabel.includes(spectrum.yUnits)
+        ? spectrum.yLabel
+        : `${spectrum.yLabel} [${spectrum.yUnits}]`,
       title: spectrum.title,
       dataType: spectrum.dataType,
       ...info,
