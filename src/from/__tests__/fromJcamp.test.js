@@ -40,7 +40,9 @@ describe('fromJcamp', () => {
     let result = fromJcamp(jcamp).spectra[0];
     expect(result.x).toHaveLength(408);
     expect(result.y).toHaveLength(408);
-    expect(result.xUnits).toBe('µm');
-    expect(result.yUnits).toBe('µg');
+    expect(result.xUnits).toBe('µg');
+    expect(result.yUnits).toBe('°C');
+    expect(result.xLabel).toBe('Weight [µg]');
+    expect(result.yLabel).toBe('Temperature [°C]');
   });
 });
