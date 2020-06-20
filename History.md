@@ -1,3 +1,12 @@
+# [0.2.0](https://github.com/cheminfo/common-spectrum/compare/v0.1.2...v0.2.0) (2020-06-20)
+
+
+### Features
+
+* deal correctly with ntuples (takes first spectrum) ([b5110f5](https://github.com/cheminfo/common-spectrum/commit/b5110f5441b3e0aa28dc73a0f94e0181b50bb7f8))
+
+
+
 ## [0.1.2](https://github.com/cheminfo/common-spectrum/compare/v0.1.1...v0.1.2) (2020-06-16)
 
 
