@@ -28,5 +28,7 @@ test('getJSGraph', () => {
   );
 
   const jsgraph = getJSGraph([analysis]);
+  delete jsgraph.series[0].name;
+
   expect(jsgraph).toMatchSnapshot();
 });
