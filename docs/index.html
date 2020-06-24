@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset='utf-8'>
-  <title>common-spectrum 0.2.0 | Documentation</title>
+  <title>common-spectrum 0.3.0 | Documentation</title>
   <meta name='description' content='Common package to deal with spectra'>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href='assets/bass.css' rel='stylesheet'>
@@ -15,7 +15,7 @@
       <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
         <div class='py1 px2'>
           <h3 class='mb0 no-anchor'>common-spectrum</h3>
-          <div class='mb1'><code>0.2.0</code></div>
+          <div class='mb1'><code>0.3.0</code></div>
           <input
             placeholder='Filter'
             id='filter-input'
@@ -173,7 +173,7 @@
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/cheminfo/common-spectrum/blob/27c453e351f772f39e07997a9158a3b7b8d3ce05/src/Analysis.js#L12-L88'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/cheminfo/common-spectrum/blob/71c1fef2e5a368f95b09b67b660dc7022fd8126e/src/Analysis.js#L13-L93'>
       <span>src/Analysis.js</span>
       </a>
     
@@ -279,7 +279,7 @@ by a 'flavor'</p>
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/cheminfo/common-spectrum/blob/27c453e351f772f39e07997a9158a3b7b8d3ce05/src/Analysis.js#L74-L79'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/cheminfo/common-spectrum/blob/71c1fef2e5a368f95b09b67b660dc7022fd8126e/src/Analysis.js#L79-L84'>
       <span>src/Analysis.js</span>
       </a>
     
@@ -402,7 +402,7 @@ normalization options</p>
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/cheminfo/common-spectrum/blob/27c453e351f772f39e07997a9158a3b7b8d3ce05/src/Analysis.js#L55-L62'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/cheminfo/common-spectrum/blob/71c1fef2e5a368f95b09b67b660dc7022fd8126e/src/Analysis.js#L60-L67'>
       <span>src/Analysis.js</span>
       </a>
     
@@ -514,7 +514,7 @@ normalization options</p>
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/cheminfo/common-spectrum/blob/27c453e351f772f39e07997a9158a3b7b8d3ce05/src/Analysis.js#L43-L46'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/cheminfo/common-spectrum/blob/71c1fef2e5a368f95b09b67b660dc7022fd8126e/src/Analysis.js#L48-L51'>
       <span>src/Analysis.js</span>
       </a>
     
@@ -616,7 +616,7 @@ normalization options</p>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>pushSpectrum(data, options)</span>
+            <span class='code strong strong truncate'>pushSpectrum(variables?, options)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -626,7 +626,7 @@ normalization options</p>
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/cheminfo/common-spectrum/blob/27c453e351f772f39e07997a9158a3b7b8d3ce05/src/Analysis.js#L32-L34'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/cheminfo/common-spectrum/blob/71c1fef2e5a368f95b09b67b660dc7022fd8126e/src/Analysis.js#L37-L39'>
       <span>src/Analysis.js</span>
       </a>
     
@@ -635,7 +635,7 @@ normalization options</p>
 
   <p>Set a spectrum for a specific flavor</p>
 
-    <div class='pre p1 fill-light mt0'>pushSpectrum(data: <a href="#dataxy">DataXY</a>, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</div>
+    <div class='pre p1 fill-light mt0'>pushSpectrum(variables: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>?, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</div>
   
   
 
@@ -652,9 +652,101 @@ normalization options</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>data</span> <code class='quiet'>(<a href="#dataxy">DataXY</a>)</code>
+            <span class='code bold'>variables</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>?)</code>
 	    
           </div>
+          
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>variables.x</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>?</code>
+  </td>
+  <td class='break-word'><span></span></td>
+</tr>
+
+  
+    <tr>
+  <td class='break-word'><span class='code bold'>variables.x.data</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>?</code>
+  </td>
+  <td class='break-word'><span></span></td>
+</tr>
+
+
+  
+    <tr>
+  <td class='break-word'><span class='code bold'>variables.x.units</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a></code>
+  
+    (default <code>&#39;x&#39;</code>)
+  </td>
+  <td class='break-word'><span></span></td>
+</tr>
+
+
+  
+    <tr>
+  <td class='break-word'><span class='code bold'>variables.x.label</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a></code>
+  
+    (default <code>&#39;x&#39;</code>)
+  </td>
+  <td class='break-word'><span></span></td>
+</tr>
+
+
+  
+
+
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>variables.y</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>?</code>
+  </td>
+  <td class='break-word'><span></span></td>
+</tr>
+
+  
+    <tr>
+  <td class='break-word'><span class='code bold'>variables.y.data</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a>?</code>
+  </td>
+  <td class='break-word'><span></span></td>
+</tr>
+
+
+  
+    <tr>
+  <td class='break-word'><span class='code bold'>variables.y.units</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a></code>
+  
+    (default <code>&#39;y&#39;</code>)
+  </td>
+  <td class='break-word'><span></span></td>
+</tr>
+
+
+  
+    <tr>
+  <td class='break-word'><span class='code bold'>variables.y.label</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a></code>
+  
+    (default <code>&#39;y&#39;</code>)
+  </td>
+  <td class='break-word'><span></span></td>
+</tr>
+
+
+  
+
+
+              
+            </tbody>
+          </table>
           
         </div>
       
@@ -677,46 +769,6 @@ normalization options</p>
               </tr>
             </thead>
             <tbody class='mt1'>
-              
-                <tr>
-  <td class='break-word'><span class='code bold'>options.xLabel</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></code>
-  
-    (default <code>&#39;x&#39;</code>)
-  </td>
-  <td class='break-word'><span></span></td>
-</tr>
-
-
-              
-                <tr>
-  <td class='break-word'><span class='code bold'>options.yLabel</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></code>
-  
-    (default <code>&#39;y&#39;</code>)
-  </td>
-  <td class='break-word'><span></span></td>
-</tr>
-
-
-              
-                <tr>
-  <td class='break-word'><span class='code bold'>options.xUnits</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></code>
-  
-    (default <code>&#39;x&#39;</code>)
-  </td>
-  <td class='break-word'><span></span></td>
-</tr>
-
-
-              
-                <tr>
-  <td class='break-word'><span class='code bold'>options.yUnits</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></code>
-  
-    (default <code>&#39;y&#39;</code>)
-  </td>
-  <td class='break-word'><span></span></td>
-</tr>
-
-
               
                 <tr>
   <td class='break-word'><span class='code bold'>options.dataType</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></code>
@@ -800,7 +852,7 @@ normalization options</p>
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/cheminfo/common-spectrum/blob/27c453e351f772f39e07997a9158a3b7b8d3ce05/src/index.js#L1-L5'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/cheminfo/common-spectrum/blob/71c1fef2e5a368f95b09b67b660dc7022fd8126e/src/index.js#L1-L5'>
       <span>src/index.js</span>
       </a>
     
@@ -877,7 +929,7 @@ normalization options</p>
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/cheminfo/common-spectrum/blob/27c453e351f772f39e07997a9158a3b7b8d3ce05/src/from/fromJcamp.js#L13-L17'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/cheminfo/common-spectrum/blob/71c1fef2e5a368f95b09b67b660dc7022fd8126e/src/from/fromJcamp.js#L13-L17'>
       <span>src/from/fromJcamp.js</span>
       </a>
     
@@ -999,7 +1051,7 @@ normalization options</p>
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/cheminfo/common-spectrum/blob/27c453e351f772f39e07997a9158a3b7b8d3ce05/src/AnalysesManager.js#L41-L48'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/cheminfo/common-spectrum/blob/71c1fef2e5a368f95b09b67b660dc7022fd8126e/src/AnalysesManager.js#L41-L48'>
       <span>src/AnalysesManager.js</span>
       </a>
     
@@ -1074,7 +1126,7 @@ normalization options</p>
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/cheminfo/common-spectrum/blob/27c453e351f772f39e07997a9158a3b7b8d3ce05/src/AnalysesManager.js#L54-L56'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/cheminfo/common-spectrum/blob/71c1fef2e5a368f95b09b67b660dc7022fd8126e/src/AnalysesManager.js#L54-L56'>
       <span>src/AnalysesManager.js</span>
       </a>
     
@@ -1141,7 +1193,7 @@ normalization options</p>
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/cheminfo/common-spectrum/blob/27c453e351f772f39e07997a9158a3b7b8d3ce05/src/AnalysesManager.js#L30-L34'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/cheminfo/common-spectrum/blob/71c1fef2e5a368f95b09b67b660dc7022fd8126e/src/AnalysesManager.js#L30-L34'>
       <span>src/AnalysesManager.js</span>
       </a>
     
@@ -1208,7 +1260,7 @@ normalization options</p>
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/cheminfo/common-spectrum/blob/27c453e351f772f39e07997a9158a3b7b8d3ce05/src/jsgraph/getJSGraph.js#L12-L54'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/cheminfo/common-spectrum/blob/71c1fef2e5a368f95b09b67b660dc7022fd8126e/src/jsgraph/getJSGraph.js#L12-L54'>
       <span>src/jsgraph/getJSGraph.js</span>
       </a>
     
@@ -1336,7 +1388,7 @@ normalization options</p>
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/cheminfo/common-spectrum/blob/27c453e351f772f39e07997a9158a3b7b8d3ce05/src/index.js#L7-L15'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/cheminfo/common-spectrum/blob/71c1fef2e5a368f95b09b67b660dc7022fd8126e/src/index.js#L7-L15'>
       <span>src/index.js</span>
       </a>
     
@@ -1437,7 +1489,7 @@ normalization options</p>
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/cheminfo/common-spectrum/blob/27c453e351f772f39e07997a9158a3b7b8d3ce05/src/Analysis.js#L96-L132'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/cheminfo/common-spectrum/blob/71c1fef2e5a368f95b09b67b660dc7022fd8126e/src/Analysis.js#L101-L131'>
       <span>src/Analysis.js</span>
       </a>
     
@@ -1446,7 +1498,7 @@ normalization options</p>
 
   <p>Internal function that ensure the order of x / y array</p>
 
-    <div class='pre p1 fill-light mt0'>standardizeData(data: <a href="#dataxy">DataXY</a>?, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>): <a href="#spectrum">Spectrum</a></div>
+    <div class='pre p1 fill-light mt0'>standardizeData(variables: <a href="#dataxy">DataXY</a>?, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>): <a href="#spectrum">Spectrum</a></div>
   
   
 
@@ -1463,7 +1515,7 @@ normalization options</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>data</span> <code class='quiet'>(<a href="#dataxy">DataXY</a>?)</code>
+            <span class='code bold'>variables</span> <code class='quiet'>(<a href="#dataxy">DataXY</a>?)</code>
 	    
           </div>
           
