@@ -1,6 +1,6 @@
 import { Analysis, fromJcamp, toJcamp, getJSGraph } from '..';
 
-test('test case for ntuples', () => {
+test('case for ntuples', () => {
   let analysis = new Analysis();
   expect(analysis.id).toHaveLength(8);
 
