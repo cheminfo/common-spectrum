@@ -1,3 +1,12 @@
+# [0.3.0](https://github.com/cheminfo/common-spectrum/compare/v0.2.0...v0.3.0) (2020-06-24)
+
+
+### Features
+
+* update dependencies to allow multivariate ([95150d6](https://github.com/cheminfo/common-spectrum/commit/95150d6de43cc11259f53ac51ecd8c1efe0e4412))
+
+
+
 # [0.2.0](https://github.com/cheminfo/common-spectrum/compare/v0.1.2...v0.2.0) (2020-06-20)
 
 
