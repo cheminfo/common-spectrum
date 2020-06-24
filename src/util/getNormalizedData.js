@@ -18,16 +18,21 @@ import Stat from 'ml-stat/array';
  * @returns {DataXY}
  */
 export function getNormalizedData(spectrum, options = {}) {
+  let data = {
+    x: spectrum.variables.x.data,
+    y: spectrum.variables.y.data,
+  };
+
   let {
-    from = spectrum.x[0],
-    to = spectrum.x[spectrum.x.length - 1],
+    from = data.x[0],
+    to = data.x[data.x.length - 1],
     numberOfPoints,
     filters = [],
     exclusions = [],
     processing = '',
   } = options;
 
-  let { x, y } = filterX(spectrum, { from, to });
+  let { x, y } = filterX(data, { from, to });
 
   switch (processing) {
     case 'firstDerivative':

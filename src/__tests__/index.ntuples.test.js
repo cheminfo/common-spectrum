@@ -1,6 +1,6 @@
 import { Analysis, fromJcamp, toJcamp, getJSGraph } from '..';
 
-test('index', () => {
+test('test case for ntuples', () => {
   let analysis = new Analysis();
   expect(analysis.id).toHaveLength(8);
 
@@ -15,6 +15,11 @@ test('index', () => {
         data: [3, 4],
         units: 'yUnits',
         label: 'Y axis [yUnits]',
+      },
+      t: {
+        data: [5, 6],
+        units: 'tUnits',
+        label: 'T axis [tUnits]',
       },
     },
     {
@@ -31,6 +36,7 @@ test('index', () => {
 
   expect(firstSpectrum.variables.x.data).toStrictEqual([1, 2]);
   expect(firstSpectrum.variables.y.data).toStrictEqual([3, 4]);
+  expect(firstSpectrum.variables.t.data).toStrictEqual([5, 6]);
 
   let normalized = analysis.getNormalizedData({
     normalization: {
@@ -61,16 +67,31 @@ test('index', () => {
   expect(analysis2.spectra[0]).toStrictEqual({
     variables: {
       x: {
-        data: [1, 2],
+        name: 'x',
+        symbol: 'x',
+        type: 'INDEPENDENT',
+        dim: 2,
         units: 'xUnits',
-        label: 'X axis [xUnits]',
-        symbol: 'X',
+        data: [1, 2],
+        label: 'x [xUnits]',
       },
       y: {
-        data: [3, 4],
+        name: 'y',
+        symbol: 'y',
+        type: 'DEPENDENT',
+        dim: 2,
         units: 'yUnits',
-        label: 'Y axis [yUnits]',
-        symbol: 'Y',
+        data: [3, 4],
+        label: 'y [yUnits]',
+      },
+      t: {
+        name: 't',
+        symbol: 't',
+        type: 'DEPENDENT',
+        dim: 2,
+        units: 'tUnits',
+        data: [5, 6],
+        label: 't [tUnits]',
       },
     },
     title: 'My spectrum',

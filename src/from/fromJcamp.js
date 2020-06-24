@@ -23,12 +23,33 @@ function addJcamp(analysis, jcamp) {
 
   for (let entry of converted.flatten) {
     let currentSpectrum = entry.spectra[0];
-    let xLabel = currentSpectrum.xUnits || 'x';
-    let yLabel = currentSpectrum.yUnits || 'y';
 
-    analysis.pushSpectrum(currentSpectrum.data, {
-      xLabel,
-      yLabel,
+    // we ensure variables
+    if (!currentSpectrum.variables) {
+      const variables = {};
+      currentSpectrum.variables = variables;
+      variables.x = {
+        label: currentSpectrum.xUnits,
+        symbol: 'X',
+        data: currentSpectrum.data.x || currentSpectrum.data.X,
+      };
+      variables.y = {
+        label: currentSpectrum.yUnits,
+        symbol: 'Y',
+        data: currentSpectrum.data.y || currentSpectrum.data.Y,
+      };
+    } else {
+      for (let key in currentSpectrum.variables) {
+        const variable = currentSpectrum.variables[key];
+        if (variable.label) continue;
+        variable.label = variable.name || variable.symbol || key;
+        if (variable.units && !variable.label.includes(variable.units)) {
+          variable.label += ` [${variable.units}]`;
+        }
+      }
+    }
+
+    analysis.pushSpectrum(currentSpectrum.variables, {
       dataType: entry.dataType,
       title: entry.title,
       meta: entry.meta,

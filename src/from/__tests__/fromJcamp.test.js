@@ -16,18 +16,18 @@ describe('fromJcamp', () => {
 
     let first = result.spectra[0];
 
-    expect(first.x).toHaveLength(2251);
-    expect(first.y).toHaveLength(2251);
-    expect(first.xLabel).toStrictEqual('Ts [°C]');
-    expect(first.yLabel).toStrictEqual('Value [mg]');
+    expect(first.variables.x.data).toHaveLength(2251);
+    expect(first.variables.y.data).toHaveLength(2251);
+    expect(first.variables.x.label).toStrictEqual('Ts [°C]');
+    expect(first.variables.y.label).toStrictEqual('Value [mg]');
     expect(first.flavor).toStrictEqual('mg vs °C');
 
     let second = result.spectra[1];
 
-    expect(second.x).toHaveLength(2251);
-    expect(second.y).toHaveLength(2251);
-    expect(second.xLabel).toStrictEqual('t [s]');
-    expect(second.yLabel).toStrictEqual('Value [mg]');
+    expect(second.variables.x.data).toHaveLength(2251);
+    expect(second.variables.y.data).toHaveLength(2251);
+    expect(second.variables.x.label).toStrictEqual('t [s]');
+    expect(second.variables.y.label).toStrictEqual('Value [mg]');
     expect(second.flavor).toStrictEqual('mg vs s');
   });
 
@@ -38,11 +38,12 @@ describe('fromJcamp', () => {
     );
 
     let result = fromJcamp(jcamp).spectra[0];
-    expect(result.x).toHaveLength(408);
-    expect(result.y).toHaveLength(408);
-    expect(result.xUnits).toBe('µg');
-    expect(result.yUnits).toBe('°C');
-    expect(result.xLabel).toBe('Weight [µg]');
-    expect(result.yLabel).toBe('Temperature [°C]');
+
+    expect(result.variables.x.data).toHaveLength(408);
+    expect(result.variables.y.data).toHaveLength(408);
+    expect(result.variables.x.units).toBe('µg');
+    expect(result.variables.y.units).toBe('°C');
+    expect(result.variables.x.label).toBe('Weight [µg]');
+    expect(result.variables.y.label).toBe('Temperature [°C]');
   });
 });

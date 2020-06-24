@@ -1,5 +1,6 @@
-import { getNormalizedData } from './util/getNormalizedData';
+import isAnyArray from 'is-any-array';
 
+import { getNormalizedData } from './util/getNormalizedData';
 /**
  * Class allowing to store and manipulate an analysis.
  * An analysis may contain one or more spectra that are identified
@@ -18,19 +19,23 @@ export class Analysis {
 
   /**
    * Set a spectrum for a specific flavor
-   * @param {DataXY} data
+   * @param {object} [variables]
+   * @param {object} [variables.x]
+   * @param {array} [variables.x.data]
+   * @param {array} [variables.x.units='x']
+   * @param {array} [variables.x.label='x']
+   * @param {object} [variables.y]
+   * @param {array} [variables.y.data]
+   * @param {array} [variables.y.units='y']
+   * @param {array} [variables.y.label='y']
    * @param {object} [options={}]
-   * @param {string} [options.xLabel='x']
-   * @param {string} [options.yLabel='y']
-   * @param {string} [options.xUnits='x']
-   * @param {string} [options.yUnits='y']
    * @param {string} [options.dataType='']
    * @param {string} [options.title='']
    * @param {object} [options.flavor={}]
    *
    */
-  pushSpectrum(data, options = {}) {
-    this.spectra.push(standardizeData(data, options));
+  pushSpectrum(variables, options = {}) {
+    this.spectra.push(standardizeData(variables, options));
   }
 
   /**
@@ -79,54 +84,48 @@ export class Analysis {
   }
 
   getXLabel(selector) {
-    return this.getSpectrum(selector).xLabel;
+    return this.getSpectrum(selector).variables.x.label;
   }
 
   getYLabel(selector) {
-    return this.getSpectrum(selector).yLabel;
+    return this.getSpectrum(selector).variables.y.label;
   }
 }
 
 /**
  * Internal function that ensure the order of x / y array
- * @param {DataXY} [data]
+ * @param {DataXY} [variables]
  * @param {object} [options={}]
  * @return {Spectrum}
  */
-function standardizeData(data, options = {}) {
-  let {
-    meta = {},
-    xLabel = 'x',
-    yLabel = 'y',
-    xUnits = '',
-    yUnits = '',
-    dataType = '',
-    title = '',
-  } = options;
+function standardizeData(variables, options = {}) {
+  let { meta = {}, dataType = '', title = '' } = options;
 
-  xUnits = xUnits || xLabel.replace(/^.*[([](.*)[)\]].*$/, '$1');
-  yUnits = yUnits || yLabel.replace(/^.*[([](.*)[)\]].*$/, '$1');
-
-  let { x, y } = data;
-  if (x && x.length > 1 && x[0] > x[x.length - 1]) {
-    x = x.reverse();
-    y = y.reverse();
-  } else {
-    x = x || [];
-    y = y || [];
+  let xVariable = variables.x;
+  let yVariable = variables.y;
+  if (!xVariable || !yVariable) {
+    throw Error('A spectrum must contain at least x and y variables');
   }
-  data = { x, y };
+  if (!isAnyArray(xVariable.data) || !isAnyArray(yVariable.data)) {
+    throw Error('x and y variables must contain an array data');
+  }
+
+  let x = xVariable.data;
+  let reverse = x && x.length > 1 && x[0] > x[x.length - 1];
+
+  for (let key in variables) {
+    let variable = variables[key];
+    if (reverse) variable.data = variable.data.reverse();
+    variable.label = variable.label || key;
+    variable.units =
+      variable.units || variable.label.replace(/^.*[([](.*)[)\]].*$/, '$1');
+  }
 
   return {
-    x: data.x,
-    y: data.y,
-    xLabel,
-    yLabel,
-    xUnits,
-    yUnits,
+    variables,
     title,
     dataType,
     meta,
-    flavor: `${yUnits} vs ${xUnits}`,
+    flavor: `${yVariable.units} vs ${xVariable.units}`,
   };
 }
