@@ -3,7 +3,7 @@ import rescale from 'ml-array-rescale';
 import equallySpaced from 'ml-array-xy-equally-spaced';
 import filterX from 'ml-array-xy-filter-x';
 import savitzkyGolay from 'ml-savitzky-golay';
-import { xDivide, xSubtract } from 'ml-spectra-processing';
+import { xDivide, xSubtract, xMultiply, xAdd } from 'ml-spectra-processing';
 import Stat from 'ml-stat/array';
 /**
  *
@@ -81,9 +81,22 @@ export function getNormalizedData(spectrum, options = {}) {
       }
       case 'rescale': {
         y = rescale(y, {
-          min: filterOptions.min ? Number(filter.options.min) : 0,
-          max: filterOptions.max ? Number(filter.options.max) : 1,
+          min: filterOptions.min ? Number(filterOptions.min) : 0,
+          max: filterOptions.max ? Number(filterOptions.max) : 1,
         });
+        break;
+      }
+      case 'dividebymax': {
+        let max = max(y);
+        y = xDivide(y, max);
+        break;
+      }
+      case 'multiply': {
+        y = xMultiply(y, filterOptions.value ? Number(filterOptions.value) : 1);
+        break;
+      }
+      case 'add': {
+        y = xAdd(y, filterOptions.value ? Number(filterOptions.value) : 0);
         break;
       }
       case '':
