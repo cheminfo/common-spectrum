@@ -1,3 +1,4 @@
+import max from 'ml-array-max';
 import normed from 'ml-array-normed';
 import rescale from 'ml-array-rescale';
 import equallySpaced from 'ml-array-xy-equally-spaced';
@@ -72,7 +73,6 @@ export function getNormalizedData(spectrum, options = {}) {
         break;
       }
       case 'normalize': {
-        // should be an integration in fact
         y = normed(y, {
           sumValue: filterOptions.value ? Number(filterOptions.value) : 1,
           algorithm: 'absolute',
@@ -87,8 +87,8 @@ export function getNormalizedData(spectrum, options = {}) {
         break;
       }
       case 'dividebymax': {
-        let max = max(y);
-        y = xDivide(y, max);
+        let maxValue = max(y);
+        y = xDivide(y, maxValue);
         break;
       }
       case 'multiply': {
