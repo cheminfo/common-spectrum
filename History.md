@@ -1,3 +1,12 @@
+## [0.4.1](https://github.com/cheminfo/common-spectrum/compare/v0.4.0...v0.4.1) (2020-07-01)
+
+
+### Bug Fixes
+
+* add missing dependency ([c12bad3](https://github.com/cheminfo/common-spectrum/commit/c12bad3020e4270537c9b1b69f5d5c9d8fdb6b43))
+
+
+
 # [0.4.0](https://github.com/cheminfo/common-spectrum/compare/v0.3.1...v0.4.0) (2020-07-01)
 
 
