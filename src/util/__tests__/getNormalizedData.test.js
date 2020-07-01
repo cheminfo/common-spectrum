@@ -1,6 +1,8 @@
 import { toBeDeepCloseTo, toMatchCloseTo } from 'jest-matcher-deep-close-to';
-expect.extend({ toBeDeepCloseTo, toMatchCloseTo });
+
 import { getNormalizedData } from '../getNormalizedData';
+
+expect.extend({ toBeDeepCloseTo, toMatchCloseTo });
 
 const spectrum = {
   variables: {
