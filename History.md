@@ -1,3 +1,12 @@
+# [0.4.0](https://github.com/cheminfo/common-spectrum/compare/v0.3.1...v0.4.0) (2020-07-01)
+
+
+### Features
+
+* add filters dividebymax, multiply, add ([5afe57e](https://github.com/cheminfo/common-spectrum/commit/5afe57e40ad67f8a3502bc7737d0c5ba6df54f3b))
+
+
+
 ## [0.3.1](https://github.com/cheminfo/common-spectrum/compare/v0.3.0...v0.3.1) (2020-06-24)
 
 
