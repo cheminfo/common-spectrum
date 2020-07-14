@@ -25,8 +25,8 @@ export function getNormalizedData(spectrum, options = {}) {
   };
 
   let {
-    from = data.x[0],
-    to = data.x[data.x.length - 1],
+    from = data.x.min,
+    to = data.x.max,
     numberOfPoints,
     filters = [],
     exclusions = [],
