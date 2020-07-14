@@ -8,11 +8,16 @@ test('index', () => {
     {
       x: {
         data: [1, 2],
+        isMonotone: true,
+        min: 1,
+        max: 2,
         units: 'xUnits',
         label: 'X axis [xUnits]',
       },
       y: {
         data: [3, 4],
+        min: 3,
+        max: 4,
         units: 'yUnits',
         label: 'Y axis [yUnits]',
       },
@@ -62,12 +67,17 @@ test('index', () => {
     variables: {
       x: {
         data: [1, 2],
+        isMonotone: true,
+        min: 1,
+        max: 2,
         units: 'xUnits',
         label: 'X axis [xUnits]',
         symbol: 'X',
       },
       y: {
         data: [3, 4],
+        min: 3,
+        max: 4,
         units: 'yUnits',
         label: 'Y axis [yUnits]',
         symbol: 'Y',
