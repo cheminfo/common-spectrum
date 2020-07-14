@@ -60,7 +60,7 @@
     "ml-array-xy-equally-spaced": "^1.1.1",
     "ml-array-xy-filter-x": "^1.0.1",
     "ml-savitzky-golay": "^4.1.1",
-    "ml-spectra-processing": "^4.1.0",
+    "ml-spectra-processing": "^4.2.0",
     "ml-stat": "^1.3.3"
   }
 }
