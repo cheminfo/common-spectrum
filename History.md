@@ -1,3 +1,18 @@
+# [0.5.0](https://github.com/cheminfo/common-spectrum/compare/v0.4.1...v0.5.0) (2020-07-15)
+
+
+### Bug Fixes
+
+* set correct default value for min / max ([816d9ad](https://github.com/cheminfo/common-spectrum/commit/816d9ada3feacf5d7b2884d51e58ef551abdf953))
+
+
+### Features
+
+* add min, max for variables and isMonotone for x variable ([a019543](https://github.com/cheminfo/common-spectrum/commit/a019543ca8f03eb46c99a8c9308c8e76d086ce33))
+* use real min / max to evaluate from / to when normalizing data ([58c8341](https://github.com/cheminfo/common-spectrum/commit/58c8341d0342ea2eecfe472bf35f904844077278))
+
+
+
 ## [0.4.1](https://github.com/cheminfo/common-spectrum/compare/v0.4.0...v0.4.1) (2020-07-01)
 
 
