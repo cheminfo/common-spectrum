@@ -23,16 +23,14 @@ export function getNormalizedData(spectrum, options = {}) {
     x: spectrum.variables.x.data,
     y: spectrum.variables.y.data,
   };
-
   let {
-    from = data.x.min,
-    to = data.x.max,
+    from = spectrum.variables.x.min,
+    to = spectrum.variables.x.max,
     numberOfPoints,
     filters = [],
     exclusions = [],
     processing = '',
   } = options;
-
   let { x, y } = filterX(data, { from, to });
 
   switch (processing) {
