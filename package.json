@@ -39,19 +39,19 @@
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.10.4",
-    "@types/jest": "^26.0.4",
-    "eslint": "^7.4.0",
-    "eslint-config-cheminfo": "^4.0.0",
+    "@types/jest": "^26.0.7",
+    "eslint": "^7.5.0",
+    "eslint-config-cheminfo": "^5.0.0",
     "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jest": "^23.18.0",
+    "eslint-plugin-jest": "^23.19.0",
     "eslint-plugin-prettier": "^3.1.4",
     "jest": "^26.1.0",
     "jest-matcher-deep-close-to": "^2.0.1",
     "prettier": "^2.0.5",
-    "rollup": "^2.21.0"
+    "rollup": "^2.23.0"
   },
   "dependencies": {
-    "convert-to-jcamp": "^4.1.1",
+    "convert-to-jcamp": "^4.2.0",
     "is-any-array": "^0.1.0",
     "jcampconverter": "^7.3.1",
     "ml-array-max": "^1.1.2",
