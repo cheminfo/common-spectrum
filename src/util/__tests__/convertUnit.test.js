@@ -12,5 +12,6 @@ test('getConversionFactor', () => {
   expect(convertUnit(1, 'kg', 'ug')).toBeCloseTo(1e9, 6);
   expect(convertUnit(1, 'kg', 'ml')).toBeUndefined();
   expect(convertUnit(100, 'tempC', 'tempK')).toBeCloseTo(373.15, 6);
+  expect(convertUnit(100, '°C', 'K')).toBeCloseTo(373.15, 6);
   expect(convertUnit(100, 'tempC', 'tempF')).toBeCloseTo(212, 6);
 });
