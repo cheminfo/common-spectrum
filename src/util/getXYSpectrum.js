@@ -6,6 +6,7 @@ import { getConvertedVariable } from './getConvertedVariable';
  * if necessary
  * @param {Array} [spectra] Array of spectra
  * @param {object} [selector={}]
+ * @param {string} [selector.units] Units separated by vs like for example "g vs °C"
  * @param {string} [selector.xUnits]
  * @param {string} [selector.yUnits]
  * @returns {Spectrum}
@@ -14,7 +15,8 @@ import { getConvertedVariable } from './getConvertedVariable';
 export function getXYSpectrum(spectra = [], selector = {}) {
   if (spectra.length < 1) return;
   for (let spectrum of spectra) {
-    let { xUnits, yUnits } = selector;
+    let { xUnits, yUnits, units } = selector;
+    if (units && !xUnits && !yUnits) [yUnits, xUnits] = units.split(/\s+vs\s+/);
     let x;
     let y;
     let variableNames = Object.keys(spectrum.variables);

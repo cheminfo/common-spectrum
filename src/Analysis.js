@@ -47,8 +47,9 @@ export class Analysis {
   /**
    * Retrieve a Spectrum based on x/y units
    * @param {object} [selector={}]
-   * @param {string} [selector.xUnits] // if undefined takes the first variable
-   * @param {string} [selector.yUnits] // if undefined takes the second variable
+   * @param {string} [selector.units] Units separated by vs like for example "g vs °C"
+   * @param {string} [selector.xUnits] if undefined takes the first variable
+   * @param {string} [selector.yUnits] if undefined takes the second variable
    * @returns {Spectrum}
    */
   getXYSpectrum(selector = {}) {
@@ -76,10 +77,24 @@ export class Analysis {
     return getNormalizedData(spectrum, normalization);
   }
 
+  /**
+   * Returns the xLabel
+   * @param {object} [selector]
+   * @param {string} [selector.xUnits] // if undefined takes the first variable
+   * @param {string} [selector.yUnits] // if undefined takes the second variable
+   * @returns {string}
+   */
   getXLabel(selector) {
     return this.getXYSpectrum(selector).variables.x.label;
   }
 
+  /**
+   * Returns the yLabel
+   * @param {object} [selector]
+   * @param {string} [selector.xUnits] // if undefined takes the first variable
+   * @param {string} [selector.yUnits] // if undefined takes the second variable
+   * @returns {string}
+   */
   getYLabel(selector) {
     return this.getXYSpectrum(selector).variables.y.label;
   }

@@ -124,4 +124,27 @@ describe('getXYSpectrum', () => {
       },
     });
   });
+
+  it('Spectrum by units s vs g as units', () => {
+    let xy = getXYSpectrum(spectra, { units: 'g vs s' }).variables;
+    xy.x.data = Array.from(xy.x.data);
+    expect(xy).toEqual({
+      x: {
+        units: 's',
+        label: 'Time [s]',
+        data: [7, 8],
+        min: 7,
+        max: 8,
+        isMonotone: true,
+      },
+      y: {
+        units: 'g',
+        label: 'Weight [g]',
+        data: [0.001, 0.002],
+        min: 0.001,
+        max: 0.002,
+        isMonotone: true,
+      },
+    });
+  });
 });
