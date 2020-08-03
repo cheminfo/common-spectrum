@@ -11,8 +11,8 @@ import Stat from 'ml-stat/array';
  * @private
  * @param {object} spectrum
  * @param {object} [options={}]
- * @param {number} [options.from=spectrum.x[0]]
- * @param {number} [options.to=spectrum.x[spectrum.x.length-1]]
+ * @param {number} [options.from=x.min]
+ * @param {number} [options.to=x.max]
  * @param {number} [options.numberOfPoints]
  * @param {Array} [options.filters=[]] Array of object containing 'name' (centerMean, divideSD, normalize, rescale) and 'options'
  * @param {Array} [options.exclusions=[]]
