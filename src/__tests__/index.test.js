@@ -76,6 +76,7 @@ test('index', () => {
       },
       y: {
         data: [3, 4],
+        isMonotone: true,
         min: 3,
         max: 4,
         units: 'yUnits',
