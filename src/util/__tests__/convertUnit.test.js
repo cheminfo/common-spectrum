@@ -15,4 +15,5 @@ test('getConversionFactor', () => {
   expect(convertUnit(100, 'tempC', 'tempK')).toBeCloseTo(373.15, 6);
   expect(convertUnit(100, '°C', 'K')).toBeCloseTo(373.15, 6);
   expect(convertUnit(100, 'tempC', 'tempF')).toBeCloseTo(212, 6);
+  expect(convertUnit(100, 'min', 's')).toBeCloseTo(6000, 6);
 });
