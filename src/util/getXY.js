@@ -2,7 +2,7 @@ import { convertUnit } from './convertUnit';
 import { getConvertedVariable } from './getConvertedVariable';
 
 /**
- * Retrieve X/Y based on xUnits / yUnits and convert units
+ * Retrieve a spectrum with only X/Y data based on xUnits / yUnits and convert units
  * if necessary
  * @param {Array} [spectra] Array of spectra
  * @param {object} [selector={}]
@@ -43,7 +43,12 @@ export function getXY(spectra = [], selector = {}) {
       }
     }
     if (x && y) {
-      return { x, y };
+      return {
+        title: spectrum.title,
+        dataType: spectrum.dataType,
+        meta: spectrum.meta,
+        variables: { x, y },
+      };
     }
   }
   return;

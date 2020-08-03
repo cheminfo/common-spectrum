@@ -42,11 +42,17 @@ describe('getXY', () => {
           label: 'Temperature [°C]',
         },
       },
+      title: 'My spectrum',
+      dataType: 'TGA',
+      meta: {
+        meta1: 'Meta 1',
+        meta2: 'Meta 2',
+      },
     },
   ];
 
   it('Spectrum by units s vs g', () => {
-    let xy = getXY(spectra, { xUnits: 's', yUnits: 'g' });
+    let xy = getXY(spectra, { xUnits: 's', yUnits: 'g' }).variables;
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toEqual({
       x: {
@@ -69,7 +75,7 @@ describe('getXY', () => {
   });
 
   it('Spectrum by units s vs g', () => {
-    let xy = getXY(spectra, { xUnits: '°C', yUnits: 'g' });
+    let xy = getXY(spectra, { xUnits: '°C', yUnits: 'g' }).variables;
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toEqual({
       x: {
@@ -94,21 +100,26 @@ describe('getXY', () => {
   it('Spectrum by units L vs °F', () => {
     let xy = getXY(spectra, { xUnits: 'L', yUnits: '°F' });
     expect(xy).toBeDeepCloseTo({
-      x: {
-        units: 'L',
-        label: 'Volume [L]',
-        data: [0.001, 0.002],
-        min: 0.001,
-        max: 0.002,
-        isMonotone: true,
-      },
-      y: {
-        units: '°F',
-        label: 'Temperature [°F]',
-        data: [37.4, 39.2],
-        min: 37.4,
-        max: 39.2,
-        isMonotone: true,
+      title: 'My spectrum',
+      dataType: 'TGA',
+      meta: { meta1: 'Meta 1', meta2: 'Meta 2' },
+      variables: {
+        x: {
+          units: 'L',
+          label: 'Volume [L]',
+          data: [0.001, 0.002],
+          min: 0.001,
+          max: 0.002,
+          isMonotone: true,
+        },
+        y: {
+          units: '°F',
+          label: 'Temperature [°F]',
+          data: [37.4, 39.2],
+          min: 37.4,
+          max: 39.2,
+          isMonotone: true,
+        },
       },
     });
   });
