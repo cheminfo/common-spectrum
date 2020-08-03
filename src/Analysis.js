@@ -4,7 +4,7 @@ import min from 'ml-array-min';
 import { xIsMonotone } from 'ml-spectra-processing';
 
 import { getNormalizedData } from './util/getNormalizedData';
-import { getSpectra } from './util/getSpectra';
+
 /**
  * Class allowing to store and manipulate an analysis.
  * An analysis may contain one or more spectra that are identified
@@ -62,7 +62,12 @@ export class Analysis {
    * @returns {Spectrum}
    */
   getSpectra(selector = {}) {
-    return getSpectra(this.spectra, selector);
+    const { index, flavor } = selector;
+    if (index !== undefined) {
+      return this.spectra[index] ? [this.spectra[index]] : undefined;
+    }
+    if (flavor === undefined || flavor === '') return this.spectra;
+    return this.spectra.filter((spectrum) => spectrum.flavor === flavor);
   }
 
   /**

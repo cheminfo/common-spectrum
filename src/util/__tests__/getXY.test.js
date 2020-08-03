@@ -91,9 +91,8 @@ describe('getXY', () => {
     });
   });
 
-  it.only('Spectrum by units L vs °F', () => {
+  it('Spectrum by units L vs °F', () => {
     let xy = getXY(spectra, { xUnits: 'L', yUnits: '°F' });
-    console.log(xy);
     expect(xy).toBeDeepCloseTo({
       x: {
         units: 'L',
