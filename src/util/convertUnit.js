@@ -3,6 +3,9 @@ import Qty from 'js-quantities';
 export function convertUnit(array, fromUnit, toUnit) {
   fromUnit = normalize(fromUnit);
   toUnit = normalize(toUnit);
+
+  if (fromUnit === toUnit) return array;
+
   try {
     const convert = Qty.swiftConverter(fromUnit, toUnit); // Configures converter
     return convert(array);

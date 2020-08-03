@@ -20,7 +20,6 @@ describe('fromJcamp', () => {
     expect(first.variables.y.data).toHaveLength(2251);
     expect(first.variables.x.label).toStrictEqual('Ts [°C]');
     expect(first.variables.y.label).toStrictEqual('Value [mg]');
-    expect(first.flavor).toStrictEqual('mg vs °C');
 
     let second = result.spectra[1];
 
@@ -28,7 +27,6 @@ describe('fromJcamp', () => {
     expect(second.variables.y.data).toHaveLength(2251);
     expect(second.variables.x.label).toStrictEqual('t [s]');
     expect(second.variables.y.label).toStrictEqual('Value [mg]');
-    expect(second.flavor).toStrictEqual('mg vs s');
   });
 
   it('ntuples', () => {

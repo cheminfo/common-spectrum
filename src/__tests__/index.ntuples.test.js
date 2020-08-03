@@ -42,11 +42,10 @@ describe('case for ntuples', () => {
   });
 
   it('First spectrum', () => {
-    let firstSpectrum = analysis.getSpectrum();
+    let firstSpectrum = analysis.getXYSpectrum();
 
     expect(firstSpectrum.variables.x.data).toStrictEqual([1, 2]);
     expect(firstSpectrum.variables.y.data).toStrictEqual([3, 4]);
-    expect(firstSpectrum.variables.t.data).toStrictEqual([5, 6]);
 
     let normalized = analysis.getNormalizedData({
       normalization: {
@@ -56,18 +55,17 @@ describe('case for ntuples', () => {
     expect(normalized.y[0] + normalized.y[1]).toBeCloseTo(1, 10);
   });
 
-  it('Spectrum by index', () => {
-    let undefinedSpectrum = analysis.getSpectrum({ index: 2 });
-    expect(undefinedSpectrum).toBeUndefined();
-  });
-
   it('Spectrum by flavor', () => {
-    let myFlavor = analysis.getSpectrum({ flavor: 'yUnits vs xUnits' });
-    expect(myFlavor.variables.x.data).toStrictEqual([1, 2]);
-    expect(myFlavor.variables.y.data).toStrictEqual([3, 4]);
+    const selector = {
+      xUnits: 'tUnits',
+      yUnits: 'xUnits',
+    };
+    let spectrum = analysis.getXYSpectrum(selector);
+    expect(spectrum.variables.x.data).toStrictEqual([5, 6]);
+    expect(spectrum.variables.y.data).toStrictEqual([1, 2]);
 
-    let jsgraph = getJSGraph([analysis]);
-    expect(jsgraph.series[0].data).toStrictEqual({ x: [1, 2], y: [3, 4] });
+    let jsgraph = getJSGraph([analysis], { selector });
+    expect(jsgraph.series[0].data).toStrictEqual({ x: [5, 6], y: [1, 2] });
 
     let jcamp = toJcamp(analysis, {
       info: {
@@ -120,7 +118,6 @@ describe('case for ntuples', () => {
       title: 'My spectrum',
       dataType: 'TGA',
       meta: { meta1: 'Meta 1', meta2: 'Meta 2' },
-      flavor: 'yUnits vs xUnits',
     });
   });
 });

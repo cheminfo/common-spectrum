@@ -32,7 +32,7 @@ test('index', () => {
     },
   );
 
-  let firstSpectrum = analysis.getSpectrum();
+  let firstSpectrum = analysis.getXYSpectrum();
 
   expect(firstSpectrum.variables.x.data).toStrictEqual([1, 2]);
   expect(firstSpectrum.variables.y.data).toStrictEqual([3, 4]);
@@ -44,12 +44,12 @@ test('index', () => {
   });
   expect(normalized.y[0] + normalized.y[1]).toBeCloseTo(1, 10);
 
-  let undefinedSpectrum = analysis.getSpectrum({ index: 2 });
+  let undefinedSpectrum = analysis.getXYSpectrum({ xUnits: 'J' });
   expect(undefinedSpectrum).toBeUndefined();
 
-  let myFlavor = analysis.getSpectrum('myFlavor');
-  expect(myFlavor.variables.x.data).toStrictEqual([1, 2]);
-  expect(myFlavor.variables.y.data).toStrictEqual([3, 4]);
+  let inverted = analysis.getXYSpectrum({ xUnits: 'yUnits', yUnits: 'xUnits' });
+  expect(inverted.variables.x.data).toStrictEqual([3, 4]);
+  expect(inverted.variables.y.data).toStrictEqual([1, 2]);
 
   let jsgraph = getJSGraph([analysis]);
   expect(jsgraph.series[0].data).toStrictEqual({ x: [1, 2], y: [3, 4] });
@@ -87,6 +87,5 @@ test('index', () => {
     title: 'My spectrum',
     dataType: 'TGA',
     meta: { meta1: 'Meta 1', meta2: 'Meta 2' },
-    flavor: 'yUnits vs xUnits',
   });
 });

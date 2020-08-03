@@ -1,7 +1,8 @@
-import { convertUnit } from './convertUnit';
-import min from 'ml-array-min';
 import max from 'ml-array-max';
+import min from 'ml-array-min';
 import { xIsMonotone } from 'ml-spectra-processing';
+
+import { convertUnit } from './convertUnit';
 
 export function getConvertedVariable(variable, newUnits) {
   const data =
@@ -10,10 +11,7 @@ export function getConvertedVariable(variable, newUnits) {
       : variable.data;
   return {
     units: newUnits,
-    label: variable.label.replace(
-      '[' + variable.units + ']',
-      '[' + newUnits + ']',
-    ),
+    label: variable.label.replace(`[${variable.units}]`, `[${newUnits}]`),
     data,
     min: min(data),
     max: max(data),

@@ -1,9 +1,10 @@
-import { getXY } from '../getXY';
-
 import { toBeDeepCloseTo, toMatchCloseTo } from 'jest-matcher-deep-close-to';
+
+import { getXYSpectrum } from '../getXYSpectrum';
+
 expect.extend({ toBeDeepCloseTo, toMatchCloseTo });
 
-describe('getXY', () => {
+describe('getXYSpectrum', () => {
   const spectra = [
     {
       variables: {
@@ -52,7 +53,7 @@ describe('getXY', () => {
   ];
 
   it('Spectrum by units s vs g', () => {
-    let xy = getXY(spectra, { xUnits: 's', yUnits: 'g' }).variables;
+    let xy = getXYSpectrum(spectra, { xUnits: 's', yUnits: 'g' }).variables;
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toEqual({
       x: {
@@ -74,8 +75,8 @@ describe('getXY', () => {
     });
   });
 
-  it('Spectrum by units s vs g', () => {
-    let xy = getXY(spectra, { xUnits: '°C', yUnits: 'g' }).variables;
+  it('Spectrum by units °C vs g', () => {
+    let xy = getXYSpectrum(spectra, { xUnits: '°C', yUnits: 'g' }).variables;
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toEqual({
       x: {
@@ -98,7 +99,7 @@ describe('getXY', () => {
   });
 
   it('Spectrum by units L vs °F', () => {
-    let xy = getXY(spectra, { xUnits: 'L', yUnits: '°F' });
+    let xy = getXYSpectrum(spectra, { xUnits: 'L', yUnits: '°F' });
     expect(xy).toBeDeepCloseTo({
       title: 'My spectrum',
       dataType: 'TGA',

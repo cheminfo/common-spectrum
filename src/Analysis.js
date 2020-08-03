@@ -4,11 +4,12 @@ import min from 'ml-array-min';
 import { xIsMonotone } from 'ml-spectra-processing';
 
 import { getNormalizedData } from './util/getNormalizedData';
+import { getXYSpectrum } from './util/getXYSpectrum';
 
 /**
  * Class allowing to store and manipulate an analysis.
- * An analysis may contain one or more spectra that are identified
- * by a 'flavor'
+ * An analysis may contain one or more spectra that can be selected
+ * based on their units
  * @class Analysis
  * @param {object} [options={}]
  * @param {string} [options.id=randomString] unique identifier
@@ -19,10 +20,11 @@ export class Analysis {
     this.id = options.id || Math.random().toString(36).substring(2, 10);
     this.label = options.label || this.id;
     this.spectra = [];
+    this.cache = {};
   }
 
   /**
-   * Set a spectrum for a specific flavor
+   * Add a spectrum in the internal spectra variable
    * @param {object} [variables]
    * @param {object} [variables.x]
    * @param {array} [variables.x.data]
@@ -35,64 +37,51 @@ export class Analysis {
    * @param {object} [options={}]
    * @param {string} [options.dataType='']
    * @param {string} [options.title='']
-   * @param {object} [options.flavor={}]
    *
    */
   pushSpectrum(variables, options = {}) {
     this.spectra.push(standardizeData(variables, options));
+    this.cache = {};
   }
 
   /**
-   * Retrieve a Spectrum based on a flavor
+   * Retrieve a Spectrum based on x/y units
    * @param {object} [selector={}]
-   * @param {string} [selector.index]
-   * @param {string} [selector.flavor]
+   * @param {string} [selector.xUnits] // if undefined takes the first variable
+   * @param {string} [selector.yUnits] // if undefined takes the second variable
    * @returns {Spectrum}
    */
-  getSpectrum(selector = {}) {
-    let spectra = this.getSpectra(selector);
-    return spectra ? spectra[0] : undefined;
-  }
-
-  /**
-   * Retrieve a Spectrum based on a flavor
-   * @param {object} [selector={}]
-   * @param {string} [selector.index]
-   * @param {string} [selector.flavor]
-   * @returns {Spectrum}
-   */
-  getSpectra(selector = {}) {
-    const { index, flavor } = selector;
-    if (index !== undefined) {
-      return this.spectra[index] ? [this.spectra[index]] : undefined;
+  getXYSpectrum(selector = {}) {
+    let id = JSON.stringify(selector);
+    if (!this.cache[id]) {
+      this.cache[id] = getXYSpectrum(this.spectra, selector);
     }
-    if (flavor === undefined || flavor === '') return this.spectra;
-    return this.spectra.filter((spectrum) => spectrum.flavor === flavor);
+    return this.cache[id];
   }
 
   /**
-   * Return the data object for a specific flavor with possibly some
+   * Return the data object for specific x/y units with possibly some
    * normalization options
    * @param {object} [options={}]
    * @param {object} [options.selector]
-   * @param {string} [options.selector.index]
-   * @param {string} [options.selector.flavor]
+   * @param {string} [options.selector.xUnits] // if undefined takes the first variable
+   * @param {string} [options.selector.yUnits] // if undefined takes the second variable
    * @param {object} [options.normalization]
    *
    */
   getNormalizedData(options = {}) {
     const { normalization, selector } = options;
-    const spectrum = this.getSpectrum(selector);
+    const spectrum = this.getXYSpectrum(selector);
     if (!spectrum) return undefined;
     return getNormalizedData(spectrum, normalization);
   }
 
   getXLabel(selector) {
-    return this.getSpectrum(selector).variables.x.label;
+    return this.getXYSpectrum(selector).variables.x.label;
   }
 
   getYLabel(selector) {
-    return this.getSpectrum(selector).variables.y.label;
+    return this.getXYSpectrum(selector).variables.y.label;
   }
 }
 
@@ -133,6 +122,5 @@ function standardizeData(variables, options = {}) {
     title,
     dataType,
     meta,
-    flavor: `${yVariable.units} vs ${xVariable.units}`,
   };
 }

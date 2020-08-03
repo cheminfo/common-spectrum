@@ -11,17 +11,17 @@ import { getConvertedVariable } from './getConvertedVariable';
  * @returns {Spectrum}
  */
 
-export function getXY(spectra = [], selector = {}) {
+export function getXYSpectrum(spectra = [], selector = {}) {
   if (spectra.length < 1) return;
   for (let spectrum of spectra) {
     let { xUnits, yUnits } = selector;
-    let x = undefined;
-    let y = undefined;
-    let variablesNames = Object.keys(spectrum.variables);
-    if (!variablesNames.length > 1) continue;
+    let x;
+    let y;
+    let variableNames = Object.keys(spectrum.variables);
+    if (!variableNames.length > 1) continue;
 
     if (xUnits === undefined) {
-      x = spectrum.variables[variablesNames[0]];
+      x = spectrum.variables[variableNames[0]];
     } else {
       for (let key in spectrum.variables) {
         let converted = convertUnit(1, spectrum.variables[key].units, xUnits);
@@ -32,7 +32,7 @@ export function getXY(spectra = [], selector = {}) {
       }
     }
     if (yUnits === undefined) {
-      x = spectrum.variables[variablesNames[1]];
+      y = spectrum.variables[variableNames[1]];
     } else {
       for (let key in spectrum.variables) {
         let converted = convertUnit(1, spectrum.variables[key].units, yUnits);
