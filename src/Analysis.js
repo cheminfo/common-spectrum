@@ -1,7 +1,8 @@
 import isAnyArray from 'is-any-array';
-import min from 'ml-array-min';
 import max from 'ml-array-max';
+import min from 'ml-array-min';
 import { xIsMonotone } from 'ml-spectra-processing';
+
 import { getNormalizedData } from './util/getNormalizedData';
 /**
  * Class allowing to store and manipulate an analysis.
@@ -123,9 +124,7 @@ function standardizeData(variables, options = {}) {
       variable.units || variable.label.replace(/^.*[([](.*)[)\]].*$/, '$1');
     variable.min = min(variable.data);
     variable.max = max(variable.data);
-    if (key === 'x') {
-      variable.isMonotone = xIsMonotone(variable.data);
-    }
+    variable.isMonotone = xIsMonotone(variable.data);
   }
 
   return {
