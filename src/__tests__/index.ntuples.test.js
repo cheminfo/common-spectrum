@@ -7,7 +7,6 @@ describe('case for ntuples', () => {
     {
       x: {
         data: [1, 2],
-        isMonotone: true,
         min: 1,
         max: 2,
         units: 'xUnits',
@@ -63,7 +62,7 @@ describe('case for ntuples', () => {
   });
 
   it('Spectrum by flavor', () => {
-    let myFlavor = analysis.getSpectrum('myFlavor');
+    let myFlavor = analysis.getSpectrum({ flavor: 'yUnits vs xUnits' });
     expect(myFlavor.variables.x.data).toStrictEqual([1, 2]);
     expect(myFlavor.variables.y.data).toStrictEqual([3, 4]);
 
