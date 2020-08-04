@@ -1,3 +1,12 @@
+# [0.8.0](https://github.com/cheminfo/common-spectrum/compare/v0.7.0...v0.8.0) (2020-08-04)
+
+
+### Features
+
+* getNormalizedSpectrum ([5ebaeaf](https://github.com/cheminfo/common-spectrum/commit/5ebaeaf58719d18e6042a7f1fb8dc15cd34daf17))
+
+
+
 # [0.7.0](https://github.com/cheminfo/common-spectrum/compare/v0.6.0...v0.7.0) (2020-08-04)
 
 
