@@ -1,3 +1,17 @@
+# [0.7.0](https://github.com/cheminfo/common-spectrum/compare/v0.6.0...v0.7.0) (2020-08-04)
+
+
+### Features
+
+* add getXY to get the data for a specific unit ([14eaf05](https://github.com/cheminfo/common-spectrum/commit/14eaf055688bfccb4766680ea5266ce2fb5a01c1))
+* add isMonotone to all variables ([177c676](https://github.com/cheminfo/common-spectrum/commit/177c6760b18feda7cac092cb3db3c16469acc611))
+* allow °C to be converted to K ([e7e2088](https://github.com/cheminfo/common-spectrum/commit/e7e208858991783156abc785fbc029a3d82690fa))
+* allows to use 'units' as selector ([c3aa20a](https://github.com/cheminfo/common-spectrum/commit/c3aa20ade25f494abcaf6e755ef57e0ece20d37c))
+* refactor and add getXYSpectrum ([8f90667](https://github.com/cheminfo/common-spectrum/commit/8f9066703c6ac8b62b54b2cfd0dad876b08fcd39))
+* return full spectrum with getXY ([181f824](https://github.com/cheminfo/common-spectrum/commit/181f8242fcfdd2e80c64054a25127236ade4ac84))
+
+
+
 # [0.6.0](https://github.com/cheminfo/common-spectrum/compare/v0.5.0...v0.6.0) (2020-07-29)
 
 
