@@ -65,8 +65,10 @@ export function getNormalizedSpectrum(spectrum, options = {}) {
         newSpectrum.variables.y.units = '';
         newSpectrum.variables.y.label =
           newSpectrum.variables.y.label &&
-          '1° derivative of' +
-            newSpectrum.variables.y.label.replace(/\s*\[.*\]/, '');
+          `1° derivative of${newSpectrum.variables.y.label.replace(
+            /\s*\[.*\]/,
+            '',
+          )}`;
         y = savitzkyGolay(y, 1, {
           derivative: 1,
           polynomial: 2,
@@ -80,8 +82,10 @@ export function getNormalizedSpectrum(spectrum, options = {}) {
         newSpectrum.variables.y.units = '';
         newSpectrum.variables.y.label =
           newSpectrum.variables.y.label &&
-          '2° derivative of' +
-            newSpectrum.variables.y.label.replace(/\s*\[.*\]/, '');
+          `2° derivative of${newSpectrum.variables.y.label.replace(
+            /\s*\[.*\]/,
+            '',
+          )}`;
         y = savitzkyGolay(y, 1, {
           derivative: 2,
           polynomial: 2,
