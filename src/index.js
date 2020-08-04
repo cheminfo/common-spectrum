@@ -20,12 +20,12 @@ import { fromJcamp } from './from/fromJcamp';
 import { getJSGraph } from './jsgraph/getJSGraph';
 import { getNormalizationAnnotations } from './jsgraph/getNormalizationAnnotations';
 import { toJcamp } from './to/toJcamp';
-import { getNormalizedData } from './util/getNormalizedData';
+import { getNormalizedSpectrum } from './util/getNormalizedSpectrum';
 
 export {
   Analysis,
   AnalysesManager,
-  getNormalizedData,
+  getNormalizedSpectrum,
   fromJcamp,
   toJcamp,
   getJSGraph,

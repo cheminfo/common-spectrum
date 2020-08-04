@@ -19,15 +19,18 @@ export function getJSGraph(analyses, options = {}) {
   for (let i = 0; i < analyses.length; i++) {
     const analysis = analyses[i];
     let serie = {};
-    let currentData = analysis.getNormalizedData({
+    let currentData = analysis.getNormalizedSpectrum({
       selector,
       normalization,
     });
     if (!currentData) continue;
-    if (!xLabel) xLabel = analysis.getXLabel(selector);
-    if (!yLabel) yLabel = analysis.getYLabel(selector);
+    if (!xLabel) xLabel = currentData.variables.x.label;
+    if (!yLabel) yLabel = currentData.variables.y.label;
     addStyle(serie, analysis, { color: colors[i] });
-    serie.data = currentData;
+    serie.data = {
+      x: currentData.variables.x.data,
+      y: currentData.variables.y.data,
+    };
     series.push(serie);
   }
   return {

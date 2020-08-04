@@ -14,7 +14,7 @@ Object {
     "y": Object {
       "display": true,
       "flipped": false,
-      "label": "Y axis [yUnits]",
+      "label": "Y axis",
       "unit": "",
       "unitWrapperAfter": "",
       "unitWrapperBefore": "",
@@ -27,9 +27,9 @@ Object {
           1,
           2,
         ],
-        "y": Array [
-          3,
-          4,
+        "y": Float64Array [
+          300,
+          400,
         ],
       },
       "style": Array [

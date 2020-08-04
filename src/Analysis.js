@@ -3,7 +3,7 @@ import max from 'ml-array-max';
 import min from 'ml-array-min';
 import { xIsMonotone } from 'ml-spectra-processing';
 
-import { getNormalizedData } from './util/getNormalizedData';
+import { getNormalizedSpectrum } from './util/getNormalizedSpectrum';
 import { getXYSpectrum } from './util/getXYSpectrum';
 
 /**
@@ -70,11 +70,11 @@ export class Analysis {
    * @param {object} [options.normalization]
    *
    */
-  getNormalizedData(options = {}) {
+  getNormalizedSpectrum(options = {}) {
     const { normalization, selector } = options;
     const spectrum = this.getXYSpectrum(selector);
     if (!spectrum) return undefined;
-    return getNormalizedData(spectrum, normalization);
+    return getNormalizedSpectrum(spectrum, normalization);
   }
 
   /**

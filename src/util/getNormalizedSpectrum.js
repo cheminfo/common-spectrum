@@ -1,10 +1,17 @@
 import max from 'ml-array-max';
+import min from 'ml-array-min';
 import normed from 'ml-array-normed';
 import rescale from 'ml-array-rescale';
 import equallySpaced from 'ml-array-xy-equally-spaced';
 import filterX from 'ml-array-xy-filter-x';
 import savitzkyGolay from 'ml-savitzky-golay';
-import { xDivide, xSubtract, xMultiply, xAdd } from 'ml-spectra-processing';
+import {
+  xDivide,
+  xSubtract,
+  xMultiply,
+  xAdd,
+  xIsMonotone,
+} from 'ml-spectra-processing';
 import Stat from 'ml-stat/array';
 /**
  *
@@ -19,11 +26,29 @@ import Stat from 'ml-stat/array';
  * @param {Array} [options.exclusions=[]]
  * @returns {DataXY}
  */
-export function getNormalizedData(spectrum, options = {}) {
+export function getNormalizedSpectrum(spectrum, options = {}) {
   let data = {
     x: spectrum.variables.x.data,
     y: spectrum.variables.y.data,
   };
+  let newSpectrum = {
+    variables: {
+      x: {
+        data: spectrum.variables.x.data,
+        units: spectrum.variables.x.units,
+        label: spectrum.variables.x.label,
+      },
+      y: {
+        data: spectrum.variables.y.data,
+        units: spectrum.variables.y.units,
+        label: spectrum.variables.y.label,
+      },
+    },
+  };
+  if (spectrum.title) newSpectrum.title = spectrum.title;
+  if (spectrum.dataType) newSpectrum.dataType = spectrum.dataType;
+  if (spectrum.meta) newSpectrum.meta = spectrum.meta;
+
   let {
     from = spectrum.variables.x.min,
     to = spectrum.variables.x.max,
@@ -37,6 +62,11 @@ export function getNormalizedData(spectrum, options = {}) {
   switch (processing) {
     case 'firstDerivative':
       if (options.processing) {
+        newSpectrum.variables.y.units = '';
+        newSpectrum.variables.y.label =
+          newSpectrum.variables.y.label &&
+          '1° derivative of' +
+            newSpectrum.variables.y.label.replace(/\s*\[.*\]/, '');
         y = savitzkyGolay(y, 1, {
           derivative: 1,
           polynomial: 2,
@@ -47,6 +77,11 @@ export function getNormalizedData(spectrum, options = {}) {
       break;
     case 'secondDerivative':
       if (options.processing) {
+        newSpectrum.variables.y.units = '';
+        newSpectrum.variables.y.label =
+          newSpectrum.variables.y.label &&
+          '2° derivative of' +
+            newSpectrum.variables.y.label.replace(/\s*\[.*\]/, '');
         y = savitzkyGolay(y, 1, {
           derivative: 2,
           polynomial: 2,
@@ -56,6 +91,14 @@ export function getNormalizedData(spectrum, options = {}) {
       }
       break;
     default:
+  }
+
+  if (filters.length) {
+    // filters change the y axis, we get rid of the units
+    newSpectrum.variables.y.units = '';
+    newSpectrum.variables.y.label =
+      newSpectrum.variables.y.label &&
+      newSpectrum.variables.y.label.replace(/\s*\[.*\]/, '');
   }
 
   for (let filter of filters) {
@@ -107,8 +150,19 @@ export function getNormalizedData(spectrum, options = {}) {
   }
 
   if (!numberOfPoints) {
-    return filterX({ x, y }, { from, to, exclusions });
+    data = filterX({ x, y }, { from, to, exclusions });
+  } else {
+    data = equallySpaced({ x, y }, { from, to, numberOfPoints, exclusions });
   }
 
-  return equallySpaced({ x, y }, { from, to, numberOfPoints, exclusions });
+  newSpectrum.variables.x.data = x;
+  newSpectrum.variables.x.min = min(x);
+  newSpectrum.variables.x.max = max(x);
+  newSpectrum.variables.x.isMonotone = xIsMonotone(x);
+  newSpectrum.variables.y.data = y;
+  newSpectrum.variables.y.min = min(y);
+  newSpectrum.variables.y.max = max(y);
+  newSpectrum.variables.y.isMonotone = xIsMonotone(y);
+
+  return newSpectrum;
 }

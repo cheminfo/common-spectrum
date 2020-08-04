@@ -47,15 +47,15 @@ describe('case for ntuples', () => {
     expect(firstSpectrum.variables.x.data).toStrictEqual([1, 2]);
     expect(firstSpectrum.variables.y.data).toStrictEqual([3, 4]);
 
-    let normalized = analysis.getNormalizedData({
+    let normalized = analysis.getNormalizedSpectrum({
       normalization: {
         filters: [{ name: 'normalize' }],
       },
-    });
-    expect(normalized.y[0] + normalized.y[1]).toBeCloseTo(1, 10);
+    }).variables;
+    expect(normalized.y.data[0] + normalized.y.data[1]).toBeCloseTo(1, 10);
   });
 
-  it('Spectrum by flavor', () => {
+  it('Spectrum by units', () => {
     const selector = {
       xUnits: 'tUnits',
       yUnits: 'xUnits',
