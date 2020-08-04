@@ -55,7 +55,7 @@ describe('getXYSpectrum', () => {
   it('Spectrum by units s vs g', () => {
     let xy = getXYSpectrum(spectra, { xUnits: 's', yUnits: 'g' }).variables;
     xy.x.data = Array.from(xy.x.data);
-    expect(xy).toEqual({
+    expect(xy).toStrictEqual({
       x: {
         units: 's',
         label: 'Time [s]',
@@ -78,7 +78,7 @@ describe('getXYSpectrum', () => {
   it('Spectrum by units °C vs g', () => {
     let xy = getXYSpectrum(spectra, { xUnits: '°C', yUnits: 'g' }).variables;
     xy.x.data = Array.from(xy.x.data);
-    expect(xy).toEqual({
+    expect(xy).toStrictEqual({
       x: {
         units: '°C',
         label: 'Temperature [°C]',
@@ -128,7 +128,7 @@ describe('getXYSpectrum', () => {
   it('Spectrum by units s vs g as units', () => {
     let xy = getXYSpectrum(spectra, { units: 'g vs s' }).variables;
     xy.x.data = Array.from(xy.x.data);
-    expect(xy).toEqual({
+    expect(xy).toStrictEqual({
       x: {
         units: 's',
         label: 'Time [s]',
