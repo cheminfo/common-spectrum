@@ -65,7 +65,7 @@ export function getNormalizedSpectrum(spectrum, options = {}) {
         newSpectrum.variables.y.units = '';
         newSpectrum.variables.y.label =
           newSpectrum.variables.y.label &&
-          `1° derivative of${newSpectrum.variables.y.label.replace(
+          `1° derivative of ${newSpectrum.variables.y.label.replace(
             /\s*\[.*\]/,
             '',
           )}`;
@@ -82,7 +82,7 @@ export function getNormalizedSpectrum(spectrum, options = {}) {
         newSpectrum.variables.y.units = '';
         newSpectrum.variables.y.label =
           newSpectrum.variables.y.label &&
-          `2° derivative of${newSpectrum.variables.y.label.replace(
+          `2° derivative of ${newSpectrum.variables.y.label.replace(
             /\s*\[.*\]/,
             '',
           )}`;
