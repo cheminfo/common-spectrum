@@ -14,6 +14,7 @@ import Stat from 'ml-stat/array';
  * @param {number} [options.from=x.min]
  * @param {number} [options.to=x.max]
  * @param {number} [options.numberOfPoints]
+ * @param {String} [options.processing] Allows to calculate derivatives
  * @param {Array} [options.filters=[]] Array of object containing 'name' (centerMean, divideSD, normalize, rescale) and 'options'
  * @param {Array} [options.exclusions=[]]
  * @returns {DataXY}
