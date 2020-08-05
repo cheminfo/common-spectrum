@@ -23,6 +23,10 @@ export class AnalysesManager {
     return analyses;
   }
 
+  removeAllAnalyses() {
+    this.analyses.splice(0);
+  }
+
   /**
    * Remove the analysis from the AnalysesManager for the specified id
    * @param {string} id

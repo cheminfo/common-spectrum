@@ -17,5 +17,9 @@ describe('spectraManager', () => {
     spectraManager.removeAnalysis('abc');
     expect(spectraManager.analyses).toHaveLength(1);
     expect(spectraManager.getAnalysisIndex('def')).toBe(0);
+    spectraManager.addAnalysis(analysis);
+    expect(spectraManager.analyses).toHaveLength(2);
+    spectraManager.removeAllAnalyses();
+    expect(spectraManager.analyses).toHaveLength(0);
   });
 });
