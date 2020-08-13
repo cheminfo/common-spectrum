@@ -6,11 +6,19 @@ import { COLORS } from './colors';
  * @param {object} [options={}]
  * @param {Array} [options.ids] List of spectra ids, by all
  * @param {Array} [options.colors] List of colors
+ * @param {Array} [options.opacities=[1]] List of opacities
+ * @param {Array} [options.linesWidth=[1]] List of linesWidth
  * @param {object} [options.selector={}]
  * @param {object} [options.normalization]
  */
 export function getJSGraph(analyses, options = {}) {
-  const { colors = COLORS, selector, normalization } = options;
+  const {
+    colors = COLORS,
+    opacities = [1],
+    linesWidth = [1],
+    selector,
+    normalization,
+  } = options;
   let series = [];
 
   let xLabel = '';
@@ -26,7 +34,11 @@ export function getJSGraph(analyses, options = {}) {
     if (!currentData) continue;
     if (!xLabel) xLabel = currentData.variables.x.label;
     if (!yLabel) yLabel = currentData.variables.y.label;
-    addStyle(serie, analysis, { color: colors[i] });
+    addStyle(serie, analysis, {
+      color: colors[i % colors.length],
+      opacity: opacities[i % opacities.length],
+      lineWidth: linesWidth[i % linesWidth.length],
+    });
     serie.data = {
       x: currentData.variables.x.data,
       y: currentData.variables.y.data,

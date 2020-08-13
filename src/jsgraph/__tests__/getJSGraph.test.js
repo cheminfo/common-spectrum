@@ -30,6 +30,7 @@ test('getJSGraph', () => {
   const jsgraph = getJSGraph([analysis], {
     normalization: { filters: [{ name: 'multiply', options: { value: 100 } }] },
   });
+
   delete jsgraph.series[0].name;
 
   expect(jsgraph).toMatchSnapshot();

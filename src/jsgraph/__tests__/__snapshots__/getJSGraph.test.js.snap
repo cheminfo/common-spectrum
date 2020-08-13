@@ -37,7 +37,7 @@ Object {
           "name": "unselected",
           "style": Object {
             "line": Object {
-              "color": "#FFB300",
+              "color": "#FFB300FF",
               "dash": 1,
               "width": 1,
             },
@@ -47,7 +47,7 @@ Object {
           "name": "selected",
           "style": Object {
             "line": Object {
-              "color": "#FFB300",
+              "color": "#FFB300FF",
               "dash": 1,
               "width": 3,
             },
