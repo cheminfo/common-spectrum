@@ -3,7 +3,7 @@ export function addStyle(serie, spectrum, options = {}) {
   if (color.match(/#[0-9A-F]{6}$/i)) {
     color = (color + ((opacity * 255) >> 0).toString(16)).toUpperCase();
   } else {
-    color = color.replace(/rgb ?\((.*)\)/, 'rgba($1,' + opacity + ')');
+    color = color.replace(/rgb ?\((.*)\)/, `rgba($1,${opacity})`);
   }
   serie.style = [
     {
