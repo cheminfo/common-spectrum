@@ -39,16 +39,16 @@
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.10.4",
-    "@types/jest": "^26.0.8",
+    "@types/jest": "^26.0.9",
     "eslint": "^7.6.0",
     "eslint-config-cheminfo": "^5.0.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jest": "^23.20.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "jest": "^26.2.2",
+    "jest": "^26.4.0",
     "jest-matcher-deep-close-to": "^2.0.1",
     "prettier": "^2.0.5",
-    "rollup": "^2.23.0"
+    "rollup": "^2.23.1"
   },
   "dependencies": {
     "convert-to-jcamp": "^4.2.0",
