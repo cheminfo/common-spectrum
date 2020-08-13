@@ -1,3 +1,19 @@
+# [0.9.0](https://github.com/cheminfo/common-spectrum/compare/v0.8.0...v0.9.0) (2020-08-13)
+
+
+### Bug Fixes
+
+* eslint ([a34700d](https://github.com/cheminfo/common-spectrum/commit/a34700ddc55ab69cc967ae8d8cceea42b9b9952d))
+* space in first / second derivative label ([0a78537](https://github.com/cheminfo/common-spectrum/commit/0a7853790257ef62a9d1d213ecff9816323fb022))
+
+
+### Features
+
+* add AnalysesManager.removeAllAnalyses ([94e79ab](https://github.com/cheminfo/common-spectrum/commit/94e79ab8a6fcd7abd56804c4f8d5eca2c9e9958b))
+* add opacities and linesWidth as style options of getJSGraph ([4477f7e](https://github.com/cheminfo/common-spectrum/commit/4477f7e3aa07d01a1023cf397b2d9b7a23e5b0c0))
+
+
+
 # [0.8.0](https://github.com/cheminfo/common-spectrum/compare/v0.7.0...v0.8.0) (2020-08-04)
 
 
