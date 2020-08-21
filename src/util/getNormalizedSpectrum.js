@@ -5,6 +5,7 @@ import rescale from 'ml-array-rescale';
 import equallySpaced from 'ml-array-xy-equally-spaced';
 import filterX from 'ml-array-xy-filter-x';
 import savitzkyGolay from 'ml-savitzky-golay';
+import baselineCorrection from 'ml-baseline-correction-regression';
 import {
   xDivide,
   xSubtract,
@@ -143,6 +144,11 @@ export function getNormalizedSpectrum(spectrum, options = {}) {
       }
       case 'add': {
         y = xAdd(y, filterOptions.value ? Number(filterOptions.value) : 0);
+        break;
+      }
+      case 'baselinecorreciton': {
+        let result = baselineCorrection(x, y, filterOptions);
+        y = result.corrected;
         break;
       }
       case '':
