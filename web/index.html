@@ -1,0 +1,55 @@
+<!-- showing graph using jsGraph -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script language="javascript" src="./jsgraph.js"></script>
+  </head>
+
+  <body>
+    <div width="800" height="300" id="chart"></div>
+
+    <script>
+      const options = {
+        plugins: {
+          zoom: {
+            zoomMode: 'xy',
+          },
+        },
+        mouseActions: [
+          {
+            plugin: 'zoom',
+            shift: false,
+            ctrl: false,
+          },
+          {
+            plugin: 'zoom',
+            type: 'mousewheel',
+            options: {
+              direction: 'y',
+            },
+          },
+          {
+            plugin: 'zoom',
+            type: 'dblclick',
+            options: {
+              mode: 'total',
+            },
+          },
+        ],
+      };
+      createGraph('chart');
+
+      async function createGraph(id) {
+        let response = await fetch('./data.json');
+        let jsonChart = await response.json();
+        if (!jsonChart.options) {
+          jsonChart.options = options;
+        }
+        console.log(jsonChart);
+        const graph = Graph.fromJSON(jsonChart, document.getElementById(id));
+        graph.resize(800, 400);
+        graph.draw(); // Draw
+      }
+    </script>
+  </body>
+</html>
