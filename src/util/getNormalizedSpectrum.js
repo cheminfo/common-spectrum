@@ -5,6 +5,9 @@ import rescale from 'ml-array-rescale';
 import equallySpaced from 'ml-array-xy-equally-spaced';
 import filterX from 'ml-array-xy-filter-x';
 import savitzkyGolay from 'ml-savitzky-golay';
+import ExponentialRegression from 'ml-regression-exponential';
+import RobustPolynomialRegression from 'ml-regression-robust-polynomial';
+import PowerRegression from 'ml-regression-power';
 import baselineCorrection from 'ml-baseline-correction-regression';
 import {
   xDivide,
@@ -147,8 +150,13 @@ export function getNormalizedSpectrum(spectrum, options = {}) {
         break;
       }
       case 'baselinecorreciton': {
+        // filterOptions.Regression = ExponentialRegression;
+        // filterOptions.Regression = PowerRegression;
+        // filterOptions.Regression = RobustPolynomialRegression;
+        filterOptions.regressionOptions = 6;
         let result = baselineCorrection(x, y, filterOptions);
         y = result.corrected;
+        y = result.baseline;
         break;
       }
       case '':
