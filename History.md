@@ -1,3 +1,13 @@
+# [0.10.0](https://github.com/cheminfo/common-spectrum/compare/v0.9.0...v0.10.0) (2020-09-22)
+
+
+### Features
+
+* add baseline correction filter ([f95c98b](https://github.com/cheminfo/common-spectrum/commit/f95c98b5b79ed7f2bb5cc369c84194f12ec82174))
+* add toJcamps ([2e32ac2](https://github.com/cheminfo/common-spectrum/commit/2e32ac2237e15b1d87569621576bbe6f8e9536ff))
+
+
+
 # [0.9.0](https://github.com/cheminfo/common-spectrum/compare/v0.8.0...v0.9.0) (2020-08-13)
 
 
