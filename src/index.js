@@ -20,6 +20,7 @@ import { fromJcamp } from './from/fromJcamp';
 import { getJSGraph } from './jsgraph/getJSGraph';
 import { getNormalizationAnnotations } from './jsgraph/getNormalizationAnnotations';
 import { toJcamp } from './to/toJcamp';
+import { toJcamps } from './to/toJcamps';
 import { getNormalizedSpectrum } from './util/getNormalizedSpectrum';
 
 export {
@@ -28,6 +29,7 @@ export {
   getNormalizedSpectrum,
   fromJcamp,
   toJcamp,
+  toJcamps,
   getJSGraph,
   getNormalizationAnnotations,
 };

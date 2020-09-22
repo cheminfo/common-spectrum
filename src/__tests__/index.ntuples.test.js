@@ -1,4 +1,4 @@
-import { Analysis, fromJcamp, toJcamp, getJSGraph } from '..';
+import { Analysis, fromJcamp, toJcamp, toJcamps, getJSGraph } from '..';
 
 describe('case for ntuples', () => {
   let analysis = new Analysis();
@@ -66,6 +66,15 @@ describe('case for ntuples', () => {
 
     let jsgraph = getJSGraph([analysis], { selector });
     expect(jsgraph.series[0].data).toStrictEqual({ x: [5, 6], y: [1, 2] });
+
+    let jcamps = toJcamps(analysis, {
+      info: {
+        owner: 'cheminfo',
+        origin: 'Common Spectrum',
+      },
+    });
+
+    expect(jcamps).toHaveLength(1);
 
     let jcamp = toJcamp(analysis, {
       info: {
