@@ -12,6 +12,11 @@ export class AnalysesManager {
     }
   }
 
+  /**
+   * Returns an array of Analysis, by default all
+   * @param {object} [options={}]
+   * @param {array} [options.ids] Array of ids of spectra to select
+   */
   getAnalyses(options = {}) {
     const { ids } = options;
     let analyses = [];
@@ -23,8 +28,23 @@ export class AnalysesManager {
     return analyses;
   }
 
+  /**
+   * Returns the analysis with specified id or the first analysis if unspecified
+   * @param {object} [options={}]
+   * @param {string} [options.id] id of the analysis to select
+   */
+  getAnalysis(options = {}) {
+    const { id } = options;
+    if (id) {
+      let index = this.getAnalysisIndex(id);
+      if (index === undefined) return undefined;
+      return this.analyses[index];
+    }
+    return this.analyses[0];
+  }
+
   removeAllAnalyses() {
-    this.analyses.splice(0);
+    this.analyses.length = 0;
   }
 
   /**
