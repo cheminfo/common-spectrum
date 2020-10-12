@@ -15,6 +15,11 @@ export class AnalysesManager {
     }
   }
 
+  /**
+   * Returns an array of Analysis, by default all
+   * @param {object} [options={}]
+   * @param {array} [options.ids] Array of ids of spectra to select
+   */
   getAnalyses(options = {}) {
     const { ids } = options;
     let analyses = [];
@@ -108,7 +113,7 @@ export class AnalysesManager {
   }
 
   removeAllAnalyses() {
-    this.analyses.splice(0);
+    this.analyses.length = 0;
   }
 
   /**
