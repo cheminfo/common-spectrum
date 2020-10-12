@@ -5,6 +5,7 @@ import { xIsMonotone } from 'ml-spectra-processing';
 
 import { getNormalizedSpectrum } from './util/getNormalizedSpectrum';
 import { getXYSpectrum } from './util/getXYSpectrum';
+import { peakPicking } from './util/peakPicking';
 
 /**
  * Class allowing to store and manipulate an analysis.
@@ -58,6 +59,39 @@ export class Analysis {
       this.cache[id] = getXYSpectrum(this.spectra, selector);
     }
     return this.cache[id];
+  }
+
+  /**
+   * Retrieve a xy object
+   * @param {object} [selector={}]
+   * @param {string} [selector.units] Units separated by vs like for example "g vs °C"
+   * @param {string} [selector.xUnits] if undefined takes the first variable
+   * @param {string} [selector.yUnits] if undefined takes the second variable
+   * @returns {Spectrum}
+   */
+  getXY(selector = {}) {
+    let spectrum = this.getXYSpectrum(selector);
+    if (!spectrum) return undefined;
+    return {
+      x: spectrum.variables.x.data,
+      y: spectrum.variables.y.data,
+    };
+  }
+
+  /**
+   *
+   * @param {object} [options={}]
+   * @param {object} [options.gsd={}]
+   * @param {object} [options.selector={}]
+   * @param {string} [options.selector.units] Units separated by vs like for example "g vs °C"
+   * @param {string} [options.selector.xUnits] if undefined takes the first variable
+   * @param {string} [options.selector.yUnits] if undefined takes the second variable
+   * @returns {Spectrum}
+   */
+  peakPicking(options = {}) {
+    const { selector, gsd } = options;
+    let spectrum = this.getXYSpectrum(selector);
+    return peakPicking(spectrum, gsd);
   }
 
   /**
