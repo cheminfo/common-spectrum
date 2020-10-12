@@ -1,5 +1,16 @@
-export function getNormalizationAnnotations(filter = {}, boundary) {
+/**
+ * Returns a JSGraph annotation that represents the normalization
+ * @param {object} [filter={}]
+ * @param {object} [filter.exclusions=[]] Array of exclusions zones
+ * @param {object} [boundary={y: {min:'0px', max:'2000px'}}] Height of the annotation
+ */
+
+export function getNormalizationAnnotations(
+  filter = {},
+  boundary = { y: { min: '0px', max: '2000px' } },
+) {
   let { exclusions = [] } = filter;
+
   let annotations = [];
   exclusions = exclusions.filter((exclusion) => !exclusion.ignore);
   annotations = exclusions.map((exclusion) => {

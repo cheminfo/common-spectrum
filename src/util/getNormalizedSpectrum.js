@@ -4,8 +4,8 @@ import normed from 'ml-array-normed';
 import rescale from 'ml-array-rescale';
 import equallySpaced from 'ml-array-xy-equally-spaced';
 import filterX from 'ml-array-xy-filter-x';
-import savitzkyGolay from 'ml-savitzky-golay';
 import baselineCorrection from 'ml-baseline-correction-regression';
+import savitzkyGolay from 'ml-savitzky-golay';
 import {
   xDivide,
   xSubtract,
