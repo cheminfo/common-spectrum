@@ -1,0 +1,117 @@
+##TITLE=20.02.03_UiO-66-NH2_Prisma
+##JCAMP-DX=6.00
+##DATA TYPE=Adsorption Isotherm
+##ORIGIN=
+##OWNER=
+##$fileName=20.02.03_UiO-66-NH2_Prisma.DVd.DAT
+##$date=43864
+##$time=0.3259722222222222
+##$comment1=20.02.03_UiO-66-NH2_Prisma
+##$comment2=TP
+##$comment3=190 C 12h
+##$comment4=undefined
+##$serialNumber=883
+##$version=undefined
+##$sampleWeight=0.033
+##$sampleWeightUnit=g
+##$standardVolume=9.786
+##$standardVolumeUnit=cm3
+##$deadVolume=16.683
+##$deadVolumeUnit=cm3
+##$equilibriumTime=0
+##$equilibriumTimeUnit=sec
+##$adsorptive=N2
+##$apparatusT=0
+##$apparatusTUnit=C
+##$adsorptionT=77
+##$adsorptionTUnit=K
+##$saturatedVaporPressure=83.744
+##$saturatedVaporPressureUnit=kPa
+##$adsorptionCrossSectionArea=0.162
+##$adsorptionCrossSectionAreaUnit=nm2
+##$adsorptionPoints=21
+##$desorptionPoints=11
+##NTUPLES= Adsorption Isotherm
+##VAR_NAME=  relative pressure,Pressure,Excess adsorption
+##SYMBOL=    x,p,y
+##VAR_TYPE=  INDEPENDENT,INDEPENDENT,DEPENDENT
+##VAR_DIM=   21,21,21
+##UNITS=     relative pressure,kPa,mmol/g
+##PAGE= N=1
+##DATA TABLE= (xpy..xpy), PEAKS
+0.0001009 0.0084497       1191.1321618592535
+0.00014129        0.011832        2292.00811113924
+0.00015732        0.013175        3399.7101605302637
+0.00019292        0.016156        4519.056733640115
+0.00030254        0.025336        5609.448150069817
+0.0011355 0.095092        6740.8853972325505
+0.01059   0.8869  7898.645514104512
+0.0583    4.8823  8806.561443905839
+0.1129    9.455   9073.805494004608
+0.166     13.899  9230.404261257809
+0.2191    18.347  9342.834145439594
+0.3637    30.459  9532.448037412845
+0.4102    34.349  9576.61692048426
+0.4607    38.578  9614.985849212966
+0.51      42.709  9645.770222262741
+0.6132    51.351  9690.38525566821
+0.6608    55.336  9710.462020700674
+0.71      59.459  9728.754184396916
+0.8143    68.194  9762.21545945102
+0.913     76.461  9798.35363650945
+0.9601    80.399  9822.445754548404
+##END
+
+##TITLE=20.02.03_UiO-66-NH2_Prisma
+##JCAMP-DX=6.00
+##DATA TYPE=Desorption Isotherm
+##ORIGIN=
+##OWNER=
+##$fileName=20.02.03_UiO-66-NH2_Prisma.DVd.DAT
+##$date=43864
+##$time=0.3259722222222222
+##$comment1=20.02.03_UiO-66-NH2_Prisma
+##$comment2=TP
+##$comment3=190 C 12h
+##$comment4=undefined
+##$serialNumber=883
+##$version=undefined
+##$sampleWeight=0.033
+##$sampleWeightUnit=g
+##$standardVolume=9.786
+##$standardVolumeUnit=cm3
+##$deadVolume=16.683
+##$deadVolumeUnit=cm3
+##$equilibriumTime=0
+##$equilibriumTimeUnit=sec
+##$adsorptive=N2
+##$apparatusT=0
+##$apparatusTUnit=C
+##$adsorptionT=77
+##$adsorptionTUnit=K
+##$saturatedVaporPressure=83.744
+##$saturatedVaporPressureUnit=kPa
+##$adsorptionCrossSectionArea=0.162
+##$adsorptionCrossSectionAreaUnit=nm2
+##$adsorptionPoints=21
+##$desorptionPoints=11
+##NTUPLES= Desorption Isotherm
+##VAR_NAME=  relative pressure,Pressure,Excess adsorption
+##SYMBOL=    x,p,y
+##VAR_TYPE=  INDEPENDENT,INDEPENDENT,DEPENDENT
+##VAR_DIM=   11,11,11
+##UNITS=     relative pressure,kPa,mmol/g
+##PAGE= N=1
+##DATA TABLE= (xpy..xpy), PEAKS
+0.050531  4.2317  8838.238117623723
+0.097575  8.1713  9086.743853692193
+0.1931    16.173  9344.618746775814
+0.291     24.371  9497.202161022524
+0.3899    32.649  9595.801384848613
+0.4888    40.935  9664.062385958983
+0.5885    49.285  9703.323615355797
+0.6886    57.665  9734.554138739628
+0.7885    66.031  9765.784662123455
+0.8918    74.68   9798.799786843505
+0.9436    79.021  9817.091950539747
+##END
