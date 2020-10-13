@@ -15,7 +15,7 @@ import { getConvertedVariable } from './getConvertedVariable';
  * @param {string} [selector.yLabel] will be converted to case insensitive regexp
  * @param {string} [selector.dataType] will be converted to case insensitive regexp
  * @param {string} [selector.title] will be converted to case insensitive regexp
- * @param {string} [selector.meta] object of key/value to filter meta information. Each value will be converted to case insensitive regexp
+ * @param {object} [selector.meta] object of key/value to filter meta information. Each value will be converted to case insensitive regexp
  * @returns {Spectrum}
  */
 
