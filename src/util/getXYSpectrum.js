@@ -2,7 +2,9 @@ import { convertUnit } from './convertUnit';
 import { ensureRegexp } from './ensureRegexp';
 import { getConvertedVariable } from './getConvertedVariable';
 /**
- * Retrieve the first spectrum with only X/Y data that match all the selectors
+ * Retrieve the spectrum with only X/Y data that match all the selectors
+ * If more than one variable match the selector the 'x' or 'y' variable will be
+ * taken
  * @param {Array} [spectra] Array of spectra
  * @param {object} [selector={}]
  * @param {string} [selector.units] Units separated by "vs", e.g., "g vs °C"
@@ -29,55 +31,24 @@ export function getXYSpectrum(spectra = [], selector = {}) {
       if (!spectrum.dataType || !spectrum.dataType.match(dataType)) continue;
     }
 
-
-    let x;
-    let y;
-
-    if (units && !xUnits && !yUnits) [yUnits, xUnits] = units.split(/\s+vs\s+/);
+    if (units && !xUnits && !yUnits) [yUnits, xUnits] = units.split(/\s*vs\s*/);
     if (labels && !xLabel && !yLabel) {
-      [xLabel, yLabel] = labels.split(/\s+vs\s+/);
+      [xLabel, yLabel] = labels.split(/\s*vs\s*/);
     }
 
     if (xLabel) xLabel = ensureRegexp(xLabel);
     if (yLabel) yLabel = ensureRegexp(yLabel);
 
-    if (xUnits !== undefined) {
-      for (let key in spectrum.variables) {
-        let converted = convertUnit(1, spectrum.variables[key].units, xUnits);
-        if (converted) {
-          x = getConvertedVariable(spectrum.variables[key], xUnits);
-          break;
-        }
-      }
-    } else if (xLabel !== undefined) {
-      for (let key in spectrum.variables) {
-        if (spectrum.variables[key].label.match(xLabel)) {
-          x = spectrum.variables[key];
-          break;
-        }
-      }
-    } else {
-      x = spectrum.variables[variableNames[0]];
-    }
-
-    if (yUnits !== undefined) {
-      for (let key in spectrum.variables) {
-        let converted = convertUnit(1, spectrum.variables[key].units, yUnits);
-        if (converted) {
-          y = getConvertedVariable(spectrum.variables[key], yUnits);
-          break;
-        }
-      }
-    } else if (yLabel !== undefined) {
-      for (let key in spectrum.variables) {
-        if (spectrum.variables[key].label.match(yLabel)) {
-          y = spectrum.variables[key];
-          break;
-        }
-      }
-    } else {
-      y = spectrum.variables[variableNames[1]];
-    }
+    let x = getPossibleVariable(spectrum.variables, {
+      units: xUnits,
+      label: xLabel,
+      variableName: 'x',
+    });
+    let y = getPossibleVariable(spectrum.variables, {
+      units: yUnits,
+      label: yLabel,
+      variableName: 'y',
+    });
 
     if (x && y) {
       return {
@@ -89,4 +60,35 @@ export function getXYSpectrum(spectra = [], selector = {}) {
     }
   }
   return;
+}
+
+function getPossibleVariable(variables, selector = {}) {
+  const { units, label, variableName } = selector;
+  let possible = { ...variables };
+  if (units !== undefined) {
+    for (let key in possible) {
+      let converted = convertUnit(1, variables[key].units, units);
+      if (converted) {
+        possible[key] = getConvertedVariable(variables[key], units);
+      } else {
+        delete possible[key];
+      }
+    }
+  }
+
+  if (label !== undefined) {
+    for (let key in possible) {
+      if (!variables[key].label.match(label)) {
+        delete possible[key];
+      }
+    }
+  }
+
+  if (possible[variableName]) return possible[variableName];
+  if (possible[variableName.toUpperCase()]) {
+    return possible[variableName.toUpperCase()];
+  }
+  if (Object.keys(possible).length > 0) {
+    return possible[Object.keys(possible)[0]];
+  }
 }

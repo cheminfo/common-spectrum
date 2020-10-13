@@ -50,6 +50,20 @@ describe('getXYSpectrum', () => {
         meta2: 'Meta 2',
       },
     },
+    {
+      variables: {
+        x: {
+          data: [10, 20],
+          units: '',
+          label: 'Weight',
+        },
+        y: {
+          data: [30, 40],
+          units: '°C',
+          label: 'Temperature',
+        },
+      },
+    },
   ];
 
   it('Spectrum by labels', () => {
@@ -115,6 +129,29 @@ describe('getXYSpectrum', () => {
     });
   });
 
+  it('Spectrum by units "" vs °C', () => {
+    let xy = getXYSpectrum(spectra, { units: 'vs °C' }).variables;
+    xy.x.data = Array.from(xy.x.data);
+    expect(xy).toStrictEqual({
+      x: {
+        units: '°C',
+        label: 'Temperature',
+        data: [30, 40],
+        min: 30,
+        max: 40,
+        isMonotone: true,
+      },
+      y: {
+        units: '',
+        label: 'Weight',
+        data: [10, 20],
+        min: 10,
+        max: 20,
+        isMonotone: true,
+      },
+    });
+  });
+
   it('Spectrum by units °C vs g', () => {
     let xy = getXYSpectrum(spectra, { xUnits: '°C', yUnits: 'g' }).variables;
     xy.x.data = Array.from(xy.x.data);
@@ -138,11 +175,9 @@ describe('getXYSpectrum', () => {
     });
   });
 
-
   it('Spectrum by dataType TGA', () => {
-    let xy = getXYSpectrum(spectra, { dataType:'TGA' }).variables;
+    let xy = getXYSpectrum(spectra, { dataType: 'TGA' }).variables;
     xy.x.data = Array.from(xy.x.data);
-
     expect(xy).toStrictEqual({
       x: {
         data: [1, 2],
