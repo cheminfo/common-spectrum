@@ -1,3 +1,6 @@
+import { appendDistinctParameter } from './util/appendDistinctParameter';
+import { appendDistinctValue } from './util/appendDistinctValue';
+
 export class AnalysesManager {
   constructor() {
     this.analyses = [];
@@ -21,6 +24,51 @@ export class AnalysesManager {
       }
     }
     return analyses;
+  }
+
+  getSpectra() {
+    const spectra = [];
+    for (const analysis of this.analyses) {
+      spectra.push(...analysis.spectra);
+    }
+    return spectra;
+  }
+
+  /**
+   * Get an array of objects (key + count) of all the titles
+   */
+  getDistinctTitles() {
+    let values = {};
+    for (let spectrum of this.getSpectra()) {
+      appendDistinctValue(values, spectrum.title);
+    }
+    return Object.keys(values).map((key) => values[key]);
+  }
+
+  /**
+   * Get an array of objects (key + count) of all the dataTypes
+   */
+  getDistinctDataTypes() {
+    let values = {};
+    for (let spectrum of this.getSpectra()) {
+      appendDistinctValue(values, spectrum.dataType);
+    }
+    return Object.keys(values).map((key) => values[key]);
+  }
+
+  /**
+   * Get an array of objects (key + count) of all the meta
+   */
+  getDistinctMeta() {
+    let values = {};
+    for (let spectrum of this.getSpectra()) {
+      if (spectrum.meta) {
+        for (let key in spectrum.meta) {
+          appendDistinctParameter(values, key, spectrum.meta[key]);
+        }
+      }
+    }
+    return Object.keys(values).map((key) => values[key]);
   }
 
   removeAllAnalyses() {

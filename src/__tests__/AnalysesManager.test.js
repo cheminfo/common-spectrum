@@ -1,7 +1,7 @@
 import { AnalysesManager } from '../AnalysesManager';
 import { Analysis } from '../Analysis';
 
-describe('spectraManager', () => {
+describe('AnalysisManager', () => {
   const spectraManager = new AnalysesManager();
   it('check add / remove', () => {
     let analysis = new Analysis({ id: 'abc' });
