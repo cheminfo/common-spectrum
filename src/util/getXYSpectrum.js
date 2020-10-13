@@ -1,9 +1,8 @@
 import { convertUnit } from './convertUnit';
+import { ensureRegexp } from './ensureRegexp';
 import { getConvertedVariable } from './getConvertedVariable';
-
 /**
- * Retrieve a spectrum with only X/Y data based on xUnits / yUnits and convert units
- * if necessary
+ * Retrieve the first spectrum with only X/Y data that match all the selectors
  * @param {Array} [spectra] Array of spectra
  * @param {object} [selector={}]
  * @param {string} [selector.units] Units separated by "vs", e.g., "g vs °C"
@@ -12,22 +11,30 @@ import { getConvertedVariable } from './getConvertedVariable';
  * @param {string} [selector.labels] Labels separated by "vs", e.g., "relative pressure vs excess adsorption"
  * @param {string} [selector.xLabel]
  * @param {string} [selector.yLabel]
+ * @param {string} [selector.dataType]
  * @returns {Spectrum}
  */
 
 export function getXYSpectrum(spectra = [], selector = {}) {
   if (spectra.length < 1) return;
+
   for (let spectrum of spectra) {
-    let x;
-    let y;
     let variableNames = Object.keys(spectrum.variables);
     if (!variableNames.length > 1) continue;
+    let {  xUnits, yUnits, units, labels, xLabel, yLabel } = selector;
 
-    let { xUnits, yUnits, units, labels, xLabel, yLabel } = selector;
+
+    let x;
+    let y;
+
     if (units && !xUnits && !yUnits) [yUnits, xUnits] = units.split(/\s+vs\s+/);
     if (labels && !xLabel && !yLabel) {
       [xLabel, yLabel] = labels.split(/\s+vs\s+/);
     }
+
+    if (xLabel) xLabel = ensureRegexp(xLabel);
+    if (yLabel) yLabel = ensureRegexp(yLabel);
+
     if (xUnits !== undefined) {
       for (let key in spectrum.variables) {
         let converted = convertUnit(1, spectrum.variables[key].units, xUnits);
@@ -36,8 +43,13 @@ export function getXYSpectrum(spectra = [], selector = {}) {
           break;
         }
       }
-    } else if (xLabel in spectrum.variables) {
-      x = spectrum.variables[xLabel];
+    } else if (xLabel !== undefined) {
+      for (let key in spectrum.variables) {
+        if (spectrum.variables[key].label.match(xLabel)) {
+          x = spectrum.variables[key];
+          break;
+        }
+      }
     } else {
       x = spectrum.variables[variableNames[0]];
     }
@@ -50,8 +62,13 @@ export function getXYSpectrum(spectra = [], selector = {}) {
           break;
         }
       }
-    } else if (yLabel in spectrum.variables) {
-      y = spectrum.variables[yLabel];
+    } else if (yLabel !== undefined) {
+      for (let key in spectrum.variables) {
+        if (spectrum.variables[key].label.match(yLabel)) {
+          y = spectrum.variables[key];
+          break;
+        }
+      }
     } else {
       y = spectrum.variables[variableNames[1]];
     }

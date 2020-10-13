@@ -72,6 +72,26 @@ describe('getXYSpectrum', () => {
     });
   });
 
+  it('Spectrum by partial labels', () => {
+    let xy = getXYSpectrum(spectra, {
+      xLabel: 'weight',
+      yLabel: 'temp',
+    }).variables;
+    xy.x.data = Array.from(xy.x.data);
+    expect(xy).toStrictEqual({
+      x: {
+        units: 'mg',
+        label: 'Weight [mg]',
+        data: [1, 2],
+      },
+      y: {
+        units: '°C',
+        label: 'Temperature [°C]',
+        data: [3, 4],
+      },
+    });
+  });
+
   it('Spectrum by units s vs g', () => {
     let xy = getXYSpectrum(spectra, { xUnits: 's', yUnits: 'g' }).variables;
     xy.x.data = Array.from(xy.x.data);
