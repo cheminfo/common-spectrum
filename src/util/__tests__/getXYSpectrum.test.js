@@ -192,6 +192,25 @@ describe('getXYSpectrum', () => {
     });
   });
 
+
+  it('Spectrum by title My', () => {
+    let xy = getXYSpectrum(spectra, { title: 'My' }).variables;
+    xy.x.data = Array.from(xy.x.data);
+    expect(xy).toStrictEqual({
+      x: {
+        data: [1, 2],
+        units: 'mL',
+        label: 'Volume [mL]',
+      },
+      y: {
+        data: [3, 4],
+        units: '°C',
+        label: 'Temperature [°C]',
+      },
+    });
+  });
+
+
   it('Spectrum by units L vs °F', () => {
     let xy = getXYSpectrum(spectra, { xUnits: 'L', yUnits: '°F' });
     expect(xy).toBeDeepCloseTo({

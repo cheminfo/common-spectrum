@@ -14,6 +14,7 @@ import { getConvertedVariable } from './getConvertedVariable';
  * @param {string} [selector.xLabel] will be converted to case insensitive regexp
  * @param {string} [selector.yLabel] will be converted to case insensitive regexp
  * @param {string} [selector.dataType] will be converted to case insensitive regexp
+ * @param {string} [selector.title] will be converted to case insensitive regexp
  * @returns {Spectrum}
  */
 
@@ -23,12 +24,26 @@ export function getXYSpectrum(spectra = [], selector = {}) {
   for (let spectrum of spectra) {
     let variableNames = Object.keys(spectrum.variables);
     if (!variableNames.length > 1) continue;
-    let { dataType, xUnits, yUnits, units, labels, xLabel, yLabel } = selector;
+    let {
+      dataType,
+      title,
+      xUnits,
+      yUnits,
+      units,
+      labels,
+      xLabel,
+      yLabel,
+    } = selector;
 
     // we filter on generatl spectrum information
     if (dataType) {
       dataType = ensureRegexp(dataType);
       if (!spectrum.dataType || !spectrum.dataType.match(dataType)) continue;
+    }
+
+    if (title) {
+      title = ensureRegexp(title);
+      if (!spectrum.title || !spectrum.title.match(title)) continue;
     }
 
     if (units && !xUnits && !yUnits) [yUnits, xUnits] = units.split(/\s*vs\s*/);
