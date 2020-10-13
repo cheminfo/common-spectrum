@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.12.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.11.0...v0.12.0) (2020-10-13)
+
+
+### Features
+
+* add documentation ([53dcd86](https://www.github.com/cheminfo/common-spectrum/commit/53dcd863f3193928f49c2fef5f1f1c6b99b609d9))
+
 ## [0.11.0](https://github.com/cheminfo/common-spectrum/compare/v0.10.0...v0.11.0) (2020-10-13)
 
 
@@ -160,6 +167,3 @@ Flavor is generated automatically from xUnits and yUnits
 
 
 ## 0.0.1 (2020-05-29)
-
-
-
