@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.12.0...v0.13.0) (2020-10-13)
+
+
+### Features
+
+* add getDistinctDataTypes, getDistinctTitles, getDistinctMeta ([6266b68](https://www.github.com/cheminfo/common-spectrum/commit/6266b68b5a9aa2347d0af6491865293e0a7bc697))
+
 ## [0.12.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.11.0...v0.12.0) (2020-10-13)
 
 
