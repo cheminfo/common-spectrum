@@ -15,6 +15,7 @@ import { getConvertedVariable } from './getConvertedVariable';
  * @param {string} [selector.yLabel] will be converted to case insensitive regexp
  * @param {string} [selector.dataType] will be converted to case insensitive regexp
  * @param {string} [selector.title] will be converted to case insensitive regexp
+ * @param {string} [selector.meta] object of key/value to filter meta information. Each value will be converted to case insensitive regexp
  * @returns {Spectrum}
  */
 
@@ -33,6 +34,7 @@ export function getXYSpectrum(spectra = [], selector = {}) {
       labels,
       xLabel,
       yLabel,
+      meta,
     } = selector;
 
     // we filter on generatl spectrum information
@@ -44,6 +46,15 @@ export function getXYSpectrum(spectra = [], selector = {}) {
     if (title) {
       title = ensureRegexp(title);
       if (!spectrum.title || !spectrum.title.match(title)) continue;
+    }
+
+    if (meta && typeof meta === 'object') {
+      if (!spectrum.meta) continue;
+      for (let key in spectrum.meta) {
+        if (!spectrum.meta[key]) continue;
+        let value = ensureRegexp(spectrum.meta[key]);
+        if (!spectrum.meta[key].match(value)) continue;
+      }
     }
 
     if (units && !xUnits && !yUnits) [yUnits, xUnits] = units.split(/\s*vs\s*/);
