@@ -1,3 +1,15 @@
+## [0.11.0](https://github.com/cheminfo/common-spectrum/compare/v0.10.0...v0.11.0) (2020-10-13)
+
+
+### Features
+
+* **getXYSpectrum:** add dataType selector ([8bf6daa](https://github.com/cheminfo/common-spectrum/commit/8bf6daad8fb19bd7ac72ecbe8959801c104c0180))
+* **getXYSpectrum:** allow empty units and multiple selector ([#6](https://github.com/cheminfo/common-spectrum/issues/6)) ([55a5c11](https://github.com/cheminfo/common-spectrum/commit/55a5c11ee24fdaeeb43594c599a69e124036126f))
+* **getXYSpectrum:** filter by meta ([c648cc1](https://github.com/cheminfo/common-spectrum/commit/c648cc1f423497d4fb4f86ea21ef10595bac3d0e))
+* **getXYSpectrum:** filter by title ([4accebf](https://github.com/cheminfo/common-spectrum/commit/4accebfb78cbb267ce6601030af0ab983a85708e))
+* getXYSpectrum use regexp for xLabel and yLabel ([84ccf93](https://github.com/cheminfo/common-spectrum/commit/84ccf931211c5ed92003859ec989233bd8e79fb8))
+* label filter and updated dependencies (QUESTION)  ([#3](https://github.com/cheminfo/common-spectrum/issues/3)) ([2af52e2](https://github.com/cheminfo/common-spectrum/commit/2af52e29f59c7a0941c6a3c039a6192d0d7ebb5f)), closes [#2](https://github.com/cheminfo/common-spectrum/issues/2)
+
 # [0.10.0](https://github.com/cheminfo/common-spectrum/compare/v0.9.0...v0.10.0) (2020-09-22)
 
 
