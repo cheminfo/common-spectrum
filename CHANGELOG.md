@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.15.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.14.0...v0.15.0) (2020-10-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* getDistinct does not lowercase values
+
+### Features
+
+* getDistinct does not lowercase values ([94f162c](https://www.github.com/cheminfo/common-spectrum/commit/94f162cc6a04d1ef4ed2b090c90d44b2c9a2b131))
+
 ## [0.14.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.13.0...v0.14.0) (2020-10-14)
 
 
