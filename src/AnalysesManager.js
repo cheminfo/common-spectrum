@@ -46,6 +46,42 @@ export class AnalysesManager {
   }
 
   /**
+   * Get an array of objects (key + count) of all the units
+   */
+  getDistinctUnits() {
+    let values = {};
+    for (let spectrum of this.getSpectra()) {
+      if (spectrum.variables) {
+        for (let key in spectrum.variables) {
+          appendDistinctValue(
+            values,
+            spectrum.variables[key].units.replace(/\s+\[.*/, ''),
+          );
+        }
+      }
+    }
+    return Object.keys(values).map((key) => values[key]);
+  }
+
+  /**
+   * Get an array of objects (key + count) of all the labels
+   */
+  getDistinctLabels() {
+    let values = {};
+    for (let spectrum of this.getSpectra()) {
+      if (spectrum.variables) {
+        for (let key in spectrum.variables) {
+          appendDistinctValue(
+            values,
+            spectrum.variables[key].label.replace(/\s+\[.*/, ''),
+          );
+        }
+      }
+    }
+    return Object.keys(values).map((key) => values[key]);
+  }
+
+  /**
    * Get an array of objects (key + count) of all the dataTypes
    */
   getDistinctDataTypes() {

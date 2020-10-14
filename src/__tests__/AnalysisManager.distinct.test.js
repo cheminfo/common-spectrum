@@ -118,4 +118,14 @@ describe('AnalysesManager test', () => {
     let meta = analysesManager.getDistinctMeta();
     expect(meta).toHaveLength(3);
   });
+
+  it('getDistinctUnits', () => {
+    let units = analysesManager.getDistinctUnits();
+    expect(units).toHaveLength(5);
+  });
+
+  it('getDistinctLabels', () => {
+    let labels = analysesManager.getDistinctLabels();
+    expect(labels).toHaveLength(4);
+  });
 });
