@@ -1,5 +1,4 @@
 export function appendDistinctParameter(values, key, value) {
-  key = key && key.toLowerCase();
   if (!values[key]) {
     values[key] = {
       key,
