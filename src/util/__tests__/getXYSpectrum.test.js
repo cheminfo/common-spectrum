@@ -4,68 +4,68 @@ import { getXYSpectrum } from '../getXYSpectrum';
 
 expect.extend({ toBeDeepCloseTo, toMatchCloseTo });
 
-describe('getXYSpectrum', () => {
-  const spectra = [
-    {
-      variables: {
-        x: {
-          data: Float64Array.from([1, 2]),
-          units: 'mg',
-          label: 'Weight [mg]',
-        },
-        y: {
-          data: [3, 4],
-          units: '°C',
-          label: 'Temperature [°C]',
-        },
-        z: {
-          data: [5, 6],
-          units: '°C',
-          label: 'Expected temperature [°C]',
-        },
-        t: {
-          data: Float64Array.from([7, 8]),
-          units: 's',
-          label: 'Time [s]',
-        },
+const spectra = [
+  {
+    variables: {
+      x: {
+        data: Float64Array.from([1, 2]),
+        units: 'mg',
+        label: 'Weight [mg]',
+      },
+      y: {
+        data: [3, 4],
+        units: '°C',
+        label: 'Temperature [°C]',
+      },
+      z: {
+        data: [5, 6],
+        units: '°C',
+        label: 'Expected temperature [°C]',
+      },
+      t: {
+        data: Float64Array.from([7, 8]),
+        units: 's',
+        label: 'Time [s]',
       },
     },
-    {
-      variables: {
-        x: {
-          data: [1, 2],
-          units: 'mL',
-          label: 'Volume [mL]',
-        },
-        y: {
-          data: [3, 4],
-          units: '°C',
-          label: 'Temperature [°C]',
-        },
+  },
+  {
+    variables: {
+      x: {
+        data: [1, 2],
+        units: 'mL',
+        label: 'Volume [mL]',
       },
-      title: 'My spectrum',
-      dataType: 'TGA',
-      meta: {
-        meta1: 'Meta 1',
-        meta2: 'Meta 2',
+      y: {
+        data: [3, 4],
+        units: '°C',
+        label: 'Temperature [°C]',
       },
     },
-    {
-      variables: {
-        x: {
-          data: [10, 20],
-          units: '',
-          label: 'Weight',
-        },
-        y: {
-          data: [30, 40],
-          units: '°C',
-          label: 'Temperature',
-        },
+    title: 'My spectrum',
+    dataType: 'TGA',
+    meta: {
+      meta1: 'Meta 1',
+      meta2: 'Meta 2',
+    },
+  },
+  {
+    variables: {
+      x: {
+        data: [10, 20],
+        units: '',
+        label: 'Weight',
+      },
+      y: {
+        data: [30, 40],
+        units: '°C',
+        label: 'Temperature',
       },
     },
-  ];
+  },
+];
 
+describe('getXYSpectrum', () => {
   it('Spectrum by labels', () => {
     let xy = getXYSpectrum(spectra, {
       xLabel: 'Weight [mg]',
