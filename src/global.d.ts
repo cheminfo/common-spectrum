@@ -11,6 +11,17 @@ declare module 'common-spectrum' {
     meta?: Record<string, unknown>;
   }
 
+  interface MultipleType {
+    series: Array<{
+      x: number[];
+      y: number[];
+      label: string;
+    }>;
+    axis: {
+      x: { label: string };
+      y: { label: string };
+    };
+  }
 
   export class Analysis {
     public pushSpectrum(data: json, meta: json): void;
@@ -19,6 +30,10 @@ declare module 'common-spectrum' {
   }
   export function fromJcamp(text: string): Analysis;
   export function toJcamp(analysis: Analysis): string;
+  export function getMultiple(
+    analyses: Analysis[],
+    selector: json,
+  ): MultipleType;
   export type AnalysesManager = unknown;
   export type getJSGraph = unknown;
   export type getNormalizationAnnotations = unknown;
