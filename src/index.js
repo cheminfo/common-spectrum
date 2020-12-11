@@ -19,9 +19,9 @@ import { Analysis } from './Analysis';
 import { fromJcamp } from './from/fromJcamp';
 import { getJSGraph } from './jsgraph/getJSGraph';
 import { getNormalizationAnnotations } from './jsgraph/getNormalizationAnnotations';
+import { getMultiple } from './reactPlot/getMultiple';
 import { toJcamp } from './to/toJcamp';
 import { toJcamps } from './to/toJcamps';
-import { getMultiple } from './util/getMultiple';
 import { getNormalizedSpectrum } from './util/getNormalizedSpectrum';
 
 export {
