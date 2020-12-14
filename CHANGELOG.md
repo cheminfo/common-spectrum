@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.15.0...v0.16.0) (2020-12-14)
+
+
+### Features
+
+* add function for multiple spectra retrieval ([0a9a56b](https://www.github.com/cheminfo/common-spectrum/commit/0a9a56b3ba156fa7093362f5fdaf20a47ce6067a))
+
 ## [0.15.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.14.0...v0.15.0) (2020-10-14)
 
 
