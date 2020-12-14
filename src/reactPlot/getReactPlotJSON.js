@@ -3,7 +3,7 @@
  * @param {Array<Analysis>} analyses
  * @param {object} selector
  */
-export function getMultiple(analyses, selector) {
+export function getReactPlotJSON(analyses, selector) {
   let series = [];
 
   let xLabel = '';

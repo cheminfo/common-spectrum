@@ -1,5 +1,5 @@
 import { Analysis } from '../..';
-import { getMultiple } from '../getMultiple';
+import { getReactPlotJSON } from '../getReactPlotJSON';
 
 const spectra = {
   variables: {
@@ -37,7 +37,7 @@ test('simple test case', () => {
   // ignored value
   analyses.push(new Analysis());
 
-  const result = getMultiple(analyses, {
+  const result = getReactPlotJSON(analyses, {
     xLabel: 'Voltage',
     xUnits: 'V',
     yLabel: 'Current',
