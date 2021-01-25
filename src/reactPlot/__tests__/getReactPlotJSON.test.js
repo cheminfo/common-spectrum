@@ -44,8 +44,8 @@ test('simple test case', () => {
     yUnits: 'A',
   });
   expect(result.series).toHaveLength(len);
-  expect(result.axes).toStrictEqual({
-    x: { label: 'Voltage [V]' },
-    y: { label: 'Current [A]' },
-  });
+  expect(result.axes).toStrictEqual([
+    { label: 'Voltage', position: 'bottom' },
+    { label: 'Current', position: 'left' },
+  ]);
 });
