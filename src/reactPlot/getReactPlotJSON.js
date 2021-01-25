@@ -1,3 +1,8 @@
+/**
+ * Parses from {x[], y[]} to [{x,y}]
+ * @param {Array<number>} x
+ * @param {Array<number>} y
+ */
 function getData(x, y) {
   let data = new Array(x.length);
   for (let i = 0; i <= x.length; i++) {
