@@ -1,3 +1,11 @@
+function getData(x, y) {
+  let data = new Array(x.length);
+  for (let i = 0; i <= x.length; i++) {
+    data[i] = { x: x[i], y: y[i] };
+  }
+  return data;
+}
+
 /**
  * Generate a jsgraph chart format from an array of Analysis
  * @param {Array<Analysis>} analyses
@@ -5,33 +13,30 @@
  */
 export function getReactPlotJSON(analyses, selector) {
   let series = [];
-
-  let xLabel = '';
-  let yLabel = '';
-  let xUnits = '';
-  let yUnits = '';
+  let xAxis;
+  let yAxis;
 
   for (let i = 0; i < analyses.length; i++) {
     const analysis = analyses[i];
     const spectra = analysis.getXYSpectrum(selector);
     if (!spectra) continue;
-    if (!xLabel) xLabel = spectra.variables.x.label;
-    if (!yLabel) yLabel = spectra.variables.y.label;
-    if (!xUnits) xUnits = spectra.variables.x.units;
-    if (!yUnits) yUnits = spectra.variables.y.units;
 
+    xAxis = { position: 'bottom', label: spectra.variables.x.label };
+    yAxis = { position: 'left', label: spectra.variables.y.label };
+
+    const data = getData(spectra.variables.x.data, spectra.variables.y.data);
     const serie = {
-      x: spectra.variables.x.data,
-      y: spectra.variables.y.data,
+      type: 'line',
+      displayMarker: true,
       label: spectra.title,
+      data,
     };
     series.push(serie);
   }
+
   return {
-    axes: {
-      x: { label: `${xLabel} [${xUnits}]` },
-      y: { label: `${yLabel} [${yUnits}]` },
-    },
     series,
+    axes: [xAxis, yAxis],
+    dimentions: { width: 550, height: 500 },
   };
 }
