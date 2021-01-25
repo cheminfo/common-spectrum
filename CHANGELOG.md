@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.16.1](https://www.github.com/cheminfo/common-spectrum/compare/v0.16.0...v0.16.1) (2021-01-25)
+
+
+### Bug Fixes
+
+* deployment of getReactPlot ([f3a2caf](https://www.github.com/cheminfo/common-spectrum/commit/f3a2caf0dcb1d4d0dd8d0ea8daa1ef2490150ff6))
+
 ## [0.16.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.15.0...v0.16.0) (2020-12-14)
 
 
