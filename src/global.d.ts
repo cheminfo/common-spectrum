@@ -22,12 +22,27 @@ declare module 'common-spectrum' {
       y: { label: string };
     };
   }
+  interface PlotObject {
+    series: Array<{
+      type: 'line';
+      displayMarker: boolean;
+      label: string;
+      data: Array<{ x: number; y: number }>;
+    }>;
+    axes: Array<{ position: 'bottom' | 'left'; label: string }>;
+    dimentions: { width: number; heigth: number };
+    meta: json[];
+  }
 
   export class Analysis {
     public pushSpectrum(data: json, meta: json): void;
     public getXYSpectrum(query: json): SpectrumType;
     public spectra: SpectrumType[];
   }
+  export function getReactPlotJSON(
+    analyses: Analysis[],
+    selector: json,
+  ): PlotObject;
   export function fromJcamp(text: string): Analysis;
   export function toJcamp(analysis: Analysis): string;
   export function getMultiple(

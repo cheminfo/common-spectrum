@@ -18,6 +18,7 @@ function getData(x, y) {
  */
 export function getReactPlotJSON(analyses, selector) {
   let series = [];
+  let meta = [];
   let xAxis;
   let yAxis;
 
@@ -25,6 +26,8 @@ export function getReactPlotJSON(analyses, selector) {
     const analysis = analyses[i];
     const spectra = analysis.getXYSpectrum(selector);
     if (!spectra) continue;
+
+    meta.push(spectra.meta);
 
     xAxis = { position: 'bottom', label: spectra.variables.x.label };
     yAxis = { position: 'left', label: spectra.variables.y.label };
@@ -43,5 +46,6 @@ export function getReactPlotJSON(analyses, selector) {
     series,
     axes: [xAxis, yAxis],
     dimentions: { width: 550, height: 500 },
+    meta,
   };
 }
