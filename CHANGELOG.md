@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.17.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.16.1...v0.17.0) (2021-01-26)
+
+
+### Features
+
+* export metadata to reactplot ([12549df](https://www.github.com/cheminfo/common-spectrum/commit/12549dffd20139da269c4a33db37f212b6145e72))
+
 ### [0.16.1](https://www.github.com/cheminfo/common-spectrum/compare/v0.16.0...v0.16.1) (2021-01-25)
 
 
