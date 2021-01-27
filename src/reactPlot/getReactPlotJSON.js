@@ -15,13 +15,13 @@ function getData(x, y) {
  * Generate a jsgraph chart format from an array of Analysis
  * @param {Array<Analysis>} analyses
  * @param {object} query
- * @param {[object]} options
- * @param {[object]} options.xAxis
- * @param {[object]} options.yAxis
- * @param {[object]} options.series
- * @param {[object]} options.dimentions
+ * @param {object} [options]
+ * @param {object} [options.xAxis]
+ * @param {object} [options.yAxis]
+ * @param {object} [options.series]
+ * @param {object} [options.dimentions]
  */
-export function getReactPlotJSON(analyses, query, options) {
+export function getReactPlotJSON(analyses, query, options = {}) {
   const {
     xAxis: xAxisOptions = {},
     yAxis: yAxisOptions = { labelSpace: 40 },
