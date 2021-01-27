@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.18.1](https://www.github.com/cheminfo/common-spectrum/compare/v0.18.0...v0.18.1) (2021-01-27)
+
+
+### Bug Fixes
+
+* wrong iteration over reactPlot data ([fbab146](https://www.github.com/cheminfo/common-spectrum/commit/fbab1465cf943964007fb6174d7179c2187c5379))
+
 ## [0.18.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.17.0...v0.18.0) (2021-01-27)
 
 
