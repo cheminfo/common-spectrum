@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.18.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.17.0...v0.18.0) (2021-01-27)
+
+
+### Features
+
+* add configuration options for each component ([ad949e7](https://www.github.com/cheminfo/common-spectrum/commit/ad949e74fccb7743f87050cc05966717e453365e))
+
+
+### Bug Fixes
+
+* add default option for getReactPlot ([9bf160f](https://www.github.com/cheminfo/common-spectrum/commit/9bf160fa24a0983466a7915b010575deecd594e7))
+
 ## [0.17.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.16.1...v0.17.0) (2021-01-26)
 
 
