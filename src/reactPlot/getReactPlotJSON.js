@@ -5,7 +5,7 @@
  */
 function getData(x, y) {
   let data = new Array(x.length);
-  for (let i = 0; i <= x.length; i++) {
+  for (let i = 0; i < x.length; i++) {
     data[i] = { x: x[i], y: y[i] };
   }
   return data;
