@@ -42,6 +42,10 @@ declare module 'common-spectrum' {
   export function getReactPlotJSON(
     analyses: Analysis[],
     selector: json,
+    options?: Record<
+      'xAxis' | 'yAxis' | 'series' | 'dimentions',
+      json | undefined
+    >,
   ): PlotObject;
   export function fromJcamp(text: string): Analysis;
   export function toJcamp(analysis: Analysis): string;
