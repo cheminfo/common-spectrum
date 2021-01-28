@@ -45,7 +45,7 @@ test('simple test case', () => {
   });
   expect(result.series).toHaveLength(len);
   expect(result.axes).toStrictEqual([
-    { label: 'Voltage', position: 'bottom' },
-    { label: 'Current', position: 'left', labelSpace: 40 },
+    { id: 'x', label: 'Voltage', position: 'bottom' },
+    { id: 'y', label: 'Current', position: 'left', labelSpace: 40 },
   ]);
 });

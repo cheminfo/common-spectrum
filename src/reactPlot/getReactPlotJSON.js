@@ -41,11 +41,13 @@ export function getReactPlotJSON(analyses, query, options = {}) {
     meta.push(spectra.meta);
 
     xAxis = {
+      id: 'x',
       label: spectra.variables.x.label,
       ...xAxisOptions,
       position: 'bottom',
     };
     yAxis = {
+      id: 'y',
       label: spectra.variables.y.label,
       ...yAxisOptions,
       position: 'left',
