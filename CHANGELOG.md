@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.18.2](https://www.github.com/cheminfo/common-spectrum/compare/v0.18.1...v0.18.2) (2021-01-28)
+
+
+### Bug Fixes
+
+* add id to axis for reactPlot ([0219bc0](https://www.github.com/cheminfo/common-spectrum/commit/0219bc0e99a7062c39bebab0b9ccdc3846d9c04b))
+
 ### [0.18.1](https://www.github.com/cheminfo/common-spectrum/compare/v0.18.0...v0.18.1) (2021-01-27)
 
 
