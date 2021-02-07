@@ -37,7 +37,8 @@ export class Analysis {
    * @param {object} [options={}]
    * @param {string} [options.dataType='']
    * @param {string} [options.title='']
-   *
+   * @param {string} [options.meta={}]
+   * @param {string} [options.tmp={}] Any temporary data
    */
   pushSpectrum(variables, options = {}) {
     this.spectra.push(standardizeData(variables, options));
@@ -104,10 +105,14 @@ export class Analysis {
  * Internal function that ensure the order of x / y array
  * @param {DataXY} [variables]
  * @param {object} [options={}]
+ * @param {string} [options.dataType='']
+ * @param {string} [options.title='']
+ * @param {string} [options.meta={}]
+ * @param {string} [options.tmp={}] Any temporary data
  * @return {Spectrum}
  */
 function standardizeData(variables, options = {}) {
-  let { meta = {}, dataType = '', title = '' } = options;
+  let { meta = {}, tmp = {}, dataType = '', title = '' } = options;
 
   let xVariable = variables.x;
   let yVariable = variables.y;
@@ -137,5 +142,6 @@ function standardizeData(variables, options = {}) {
     title,
     dataType,
     meta,
+    tmp,
   };
 }
