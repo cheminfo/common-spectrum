@@ -50,16 +50,12 @@ export function getJSGraph(analyses, options = {}) {
       x: {
         label: xLabel,
         unit: '',
-        unitWrapperBefore: '',
-        unitWrapperAfter: '',
         flipped: false,
         display: true,
       },
       y: {
         label: yLabel,
         unit: '',
-        unitWrapperBefore: '',
-        unitWrapperAfter: '',
         flipped: false,
         display: true,
       },
