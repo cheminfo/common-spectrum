@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.19.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.18.2...v0.19.0) (2021-02-09)
+
+
+### Features
+
+* Add JSGraph object ([1b0a3f4](https://www.github.com/cheminfo/common-spectrum/commit/1b0a3f4570cb9a6109eaa7728934f603c07001ca))
+* allow to store `tmp` information in spectra ([794a1fd](https://www.github.com/cheminfo/common-spectrum/commit/794a1fd667a9b9d2a468f793479b654f92c0d96f))
+
+
+### Bug Fixes
+
+* missing export ([f5daa33](https://www.github.com/cheminfo/common-spectrum/commit/f5daa33691e917f550b62312d0b0993d5c27423f))
+
 ### [0.18.2](https://www.github.com/cheminfo/common-spectrum/compare/v0.18.1...v0.18.2) (2021-01-28)
 
 
