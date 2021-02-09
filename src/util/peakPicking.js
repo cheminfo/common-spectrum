@@ -13,6 +13,6 @@ import { gsd } from 'ml-gsd';
  */
 
 export function peakPicking(data, options = {}) {
-  let peaks = gsd(data.x, data.y, options);
+  let peaks = gsd(data, options);
   return peaks;
 }

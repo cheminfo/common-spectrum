@@ -82,17 +82,16 @@ export class Analysis {
   /**
    *
    * @param {object} [options={}]
-   * @param {object} [options.gsd={}]
+   * @param {object} [options.gsd={}] options for global spectra deconvolution
    * @param {object} [options.selector={}]
    * @param {string} [options.selector.units] Units separated by vs like for example "g vs °C"
    * @param {string} [options.selector.xUnits] if undefined takes the first variable
    * @param {string} [options.selector.yUnits] if undefined takes the second variable
    * @returns {Spectrum}
    */
-  peakPicking(options = {}) {
+  getPeaks(options = {}) {
     const { selector, gsd } = options;
-    let spectrum = this.getXYSpectrum(selector);
-    return peakPicking(spectrum, gsd);
+    return peakPicking(this.getXY(selector), gsd);
   }
 
   /**
