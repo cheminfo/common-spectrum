@@ -44,7 +44,7 @@ test('index', () => {
   });
   expect(
     normalizedSpectrum.variables.y.data[0] +
-    normalizedSpectrum.variables.y.data[1],
+      normalizedSpectrum.variables.y.data[1],
   ).toBeCloseTo(1, 10);
 
   let undefinedSpectrum = analysis.getXYSpectrum({ xUnits: 'J' });
