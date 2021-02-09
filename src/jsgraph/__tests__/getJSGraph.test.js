@@ -1,4 +1,4 @@
-import { Analysis, getJSGraph } from '../..';
+import { Analysis, JSGraph } from '../..';
 
 test('getJSGraph', () => {
   let analysis = new Analysis();
@@ -27,7 +27,7 @@ test('getJSGraph', () => {
     },
   );
 
-  const jsgraph = getJSGraph([analysis], {
+  const jsgraph = JSGraph.getJSGraph([analysis], {
     normalization: { filters: [{ name: 'multiply', options: { value: 100 } }] },
   });
 

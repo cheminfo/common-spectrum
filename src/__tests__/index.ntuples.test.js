@@ -1,4 +1,4 @@
-import { Analysis, fromJcamp, toJcamp, toJcamps, getJSGraph } from '..';
+import { Analysis, fromJcamp, toJcamp, toJcamps, JSGraph } from '..';
 
 describe('case for ntuples', () => {
   let analysis = new Analysis();
@@ -64,7 +64,7 @@ describe('case for ntuples', () => {
     expect(spectrum.variables.x.data).toStrictEqual([5, 6]);
     expect(spectrum.variables.y.data).toStrictEqual([1, 2]);
 
-    let jsgraph = getJSGraph([analysis], { selector });
+    let jsgraph = JSGraph.getJSGraph([analysis], { selector });
     expect(jsgraph.series[0].data).toStrictEqual({ x: [5, 6], y: [1, 2] });
 
     let jcamps = toJcamps(analysis, {
@@ -125,6 +125,7 @@ describe('case for ntuples', () => {
         },
       },
       title: 'My spectrum',
+      tmp: {},
       dataType: 'TGA',
       meta: { meta1: 'Meta 1', meta2: 'Meta 2' },
     });

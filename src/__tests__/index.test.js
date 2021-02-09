@@ -1,4 +1,4 @@
-import { Analysis, fromJcamp, toJcamp, getJSGraph } from '..';
+import { Analysis, fromJcamp, toJcamp, JSGraph } from '..';
 
 test('index', () => {
   let analysis = new Analysis();
@@ -44,7 +44,7 @@ test('index', () => {
   });
   expect(
     normalizedSpectrum.variables.y.data[0] +
-      normalizedSpectrum.variables.y.data[1],
+    normalizedSpectrum.variables.y.data[1],
   ).toBeCloseTo(1, 10);
 
   let undefinedSpectrum = analysis.getXYSpectrum({ xUnits: 'J' });
@@ -54,7 +54,7 @@ test('index', () => {
   expect(inverted.variables.x.data).toStrictEqual([3, 4]);
   expect(inverted.variables.y.data).toStrictEqual([1, 2]);
 
-  let jsgraph = getJSGraph([analysis]);
+  let jsgraph = JSGraph.getJSGraph([analysis]);
   expect(jsgraph.series[0].data).toStrictEqual({ x: [1, 2], y: [3, 4] });
 
   let jcamp = toJcamp(analysis, {
@@ -88,6 +88,7 @@ test('index', () => {
       },
     },
     title: 'My spectrum',
+    tmp: {},
     dataType: 'TGA',
     meta: { meta1: 'Meta 1', meta2: 'Meta 2' },
   });
