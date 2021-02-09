@@ -100,7 +100,7 @@ export function getNormalizedSpectrum(spectrum, options = {}) {
         newSpectrum.variables.y.units = '';
         newSpectrum.variables.y.label =
           newSpectrum.variables.y.label &&
-          `3rdF derivative of ${newSpectrum.variables.y.label.replace(
+          `3rd derivative of ${newSpectrum.variables.y.label.replace(
             /\s*\[.*\]/,
             '',
           )}`;
