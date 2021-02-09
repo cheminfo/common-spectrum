@@ -80,9 +80,25 @@ export class Analysis {
   }
 
   /**
-   *
+   * Pick the peaks in a spectrum
    * @param {object} [options={}]
    * @param {object} [options.gsd={}] options for global spectra deconvolution
+   * @param {object} [options.gsd.shape={}] - Object that specified the kind of shape to calculate the FWHM instead of width between inflection points. see https://mljs.github.io/peak-shape-generator/#inflectionpointswidthtofwhm
+   * @param {object} [options.gsd,shape.kind='gaussian']
+   * @param {object} [options.gsd.shape.options={}]
+   * @param {object} [options.gsd.sgOptions] - Options object for Savitzky-Golay filter. See https://github.com/mljs/savitzky-golay-generalized#options
+   * @param {number} [options.gsd.sgOptions.windowSize = 9] - points to use in the approximations
+   * @param {number} [options.gsd.sgOptions.polynomial = 3] - degree of the polynomial to use in the approximations
+   * @param {number} [options.gsd.minMaxRatio = 0.00025] - Threshold to determine if a given peak should be considered as a noise
+   * @param {number} [options.gsd.broadRatio = 0.00] - If `broadRatio` is higher than 0, then all the peaks which second derivative
+   * smaller than `broadRatio * maxAbsSecondDerivative` will be marked with the soft mask equal to true.
+   * @param {number} [options.gsd.noiseLevel = 0] - Noise threshold in spectrum units
+   * @param {boolean} [options.gsd.maxCriteria = true] - Peaks are local maximum(true) or minimum(false)
+   * @param {boolean} [options.gsd.smoothY = true] - Select the peak intensities from a smoothed version of the independent variables
+   * @param {boolean} [options.gas.realTopDetection = false] - Use a quadratic optimizations with the peak and its 3 closest neighbors
+   * to determine the true x,y values of the peak?
+   * @param {number} [options.gsd.heightFactor = 0] - Factor to multiply the calculated height (usually 2)
+   * @param {number} [options.gsd.derivativeThreshold = -1] - Filters based on the amplitude of the first derivative
    * @param {object} [options.selector={}]
    * @param {string} [options.selector.units] Units separated by vs like for example "g vs °C"
    * @param {string} [options.selector.xUnits] if undefined takes the first variable
