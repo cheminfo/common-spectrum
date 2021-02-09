@@ -14,24 +14,21 @@
  * @property {object} meta
  */
 
-import { AnalysesManager } from './AnalysesManager';
-import { Analysis } from './Analysis';
-import { fromJcamp } from './from/fromJcamp';
 import { getJSGraph } from './jsgraph/getJSGraph';
 import { getNormalizationAnnotations } from './jsgraph/getNormalizationAnnotations';
+import { getTrackAnnotations } from './jsgraph/getTrackAnnotations';
 import { getReactPlotJSON } from './reactPlot/getReactPlotJSON';
-import { toJcamp } from './to/toJcamp';
-import { toJcamps } from './to/toJcamps';
-import { getNormalizedSpectrum } from './util/getNormalizedSpectrum';
 
-export {
-  Analysis,
-  AnalysesManager,
-  getNormalizedSpectrum,
-  fromJcamp,
-  toJcamp,
-  toJcamps,
+export * from './AnalysesManager';
+export * from './Analysis';
+export * from './from/fromJcamp';
+export * from './to/toJcamp';
+export * from './to/toJcamps';
+export * from './util/getNormalizedSpectrum';
+
+export const JSGraph = {
   getJSGraph,
   getReactPlotJSON,
   getNormalizationAnnotations,
+  getTrackAnnotations,
 };
