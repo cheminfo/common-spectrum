@@ -16,7 +16,6 @@
 
 import { getJSGraph } from './jsgraph/getJSGraph';
 import { getNormalizationAnnotations } from './jsgraph/getNormalizationAnnotations';
-import { getTrackAnnotations } from './jsgraph/getTrackAnnotations';
 import { getReactPlotJSON } from './reactPlot/getReactPlotJSON';
 
 export * from './AnalysesManager';
@@ -30,5 +29,4 @@ export const JSGraph = {
   getJSGraph,
   getReactPlotJSON,
   getNormalizationAnnotations,
-  getTrackAnnotations,
 };
