@@ -39,25 +39,25 @@
     "trailingComma": "all"
   },
   "devDependencies": {
-    "@babel/plugin-transform-modules-commonjs": "^7.10.4",
-    "@types/jest": "^26.0.14",
+    "@babel/plugin-transform-modules-commonjs": "^7.12.13",
+    "@types/jest": "^26.0.20",
     "cheminfo-build": "^1.1.9",
-    "eslint": "^7.11.0",
+    "eslint": "^7.19.0",
     "eslint-config-cheminfo": "^5.2.2",
     "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jest": "^24.1.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-jest": "^24.1.3",
+    "eslint-plugin-prettier": "^3.3.1",
     "esm": "^3.2.25",
-    "jest": "^26.5.3",
+    "jest": "^26.6.3",
     "jest-matcher-deep-close-to": "^2.0.1",
-    "prettier": "^2.1.2",
-    "rollup": "^2.29.0"
+    "prettier": "^2.2.1",
+    "rollup": "^2.38.5"
   },
   "dependencies": {
     "convert-to-jcamp": "^4.2.0",
     "is-any-array": "^0.1.0",
-    "jcampconverter": "^7.3.1",
-    "js-quantities": "^1.7.5",
+    "jcampconverter": "^7.6.6",
+    "js-quantities": "^1.7.6",
     "ml-array-max": "^1.2.0",
     "ml-array-min": "^1.2.0",
     "ml-array-normed": "^1.3.2",
@@ -66,7 +66,7 @@
     "ml-array-xy-filter-x": "^1.0.1",
     "ml-baseline-correction-regression": "^0.3.0",
     "ml-savitzky-golay": "^4.1.1",
-    "ml-spectra-processing": "^4.5.1",
+    "ml-spectra-processing": "^5.1.0",
     "ml-stat": "^1.3.3"
   }
 }
