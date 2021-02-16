@@ -54,6 +54,7 @@
     "rollup": "^2.38.5"
   },
   "dependencies": {
+    "baselines": "^0.1.2",
     "convert-to-jcamp": "^4.2.0",
     "is-any-array": "^0.1.0",
     "jcampconverter": "^7.6.6",
