@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.20.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.19.0...v0.20.0) (2021-02-17)
+
+
+### Features
+
+* add Analysys.getXY ([230a374](https://www.github.com/cheminfo/common-spectrum/commit/230a3745210622fa868718a5ce4d7171afe127ae))
+* add baseline filters ([7c39f87](https://www.github.com/cheminfo/common-spectrum/commit/7c39f87f7602dcb15653c666e800496d84aeb63c))
+* added third derivative ([#23](https://www.github.com/cheminfo/common-spectrum/issues/23)) ([6c101b9](https://www.github.com/cheminfo/common-spectrum/commit/6c101b9e1f15aa50d10721c10a39f37479890023))
+
 ## [0.19.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.18.2...v0.19.0) (2021-02-09)
 
 
