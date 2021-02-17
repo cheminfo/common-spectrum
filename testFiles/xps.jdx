@@ -1,0 +1,203 @@
+##TITLE=20200210_TaO2_AC_test.experiment
+##JCAMP-DX=6.00
+##DATA TYPE=XPS
+##ORIGIN=
+##OWNER=
+##$format identifier=VAMAS Surface Chemical Analysis Standard Data Transfer Format 1988 May 4
+##$institution identifier=Not specified
+##$instrument model identifier=MI-600-BE9240AA
+##$operator identifier=DESKTOP-MI6NA2R\kratos
+##$experiment identifier=20200210_TaO2_AC_test.experiment
+##$number of lines in comment=0
+##$comment line=
+##$experiment mode=NORM
+##$scan mode=REGULAR
+##$number of spectral regions=1
+##$number of experimental variables=4
+##$experimentVariables=[object Object],[object Object],[object Object],[object Object]
+##$number of entries in parameter inclusion or exclusion list=0
+##$number of manually entered items in block=0
+##$number of future upgrade experiment entries=0
+##$futureUpgradeExperimentEntries=
+##$number of future upgrade block entries=0
+##$number of blocks=3
+##$block identifier=2: O 1s
+##$sample identifier=Ta
+##$year in full=2020
+##$month=2
+##$day of month=10
+##$hours=10
+##$minutes=42
+##$seconds=32
+##$number of hours in advance of Greenwich Mean Time=1
+##$number of lines in block comment=36
+##$blockComment=Creation
+Created by : DESKTOP-MI6NA2R\kratos
+Date created : 10/02/2020 10:42
+Computer : DESKTOP-MI6NA2R
+Location
+Location ID : Ta
+Sample : Ta
+Description : (55.796,2.896,-0.800)mm
+Tilt : 0.00
+Charge Neutraliser : Off
+Settings
+Excitation
+Mode : XPS - monochromatic
+Tuning : Spectroscopy
+Emission current : 15.00mA
+Anode library : Al
+ESCA modes
+Collimation : Slot
+Lens : Hybrid
+Resolution : 20.00
+Scan
+Deflection : (0.000, 0.000)mm
+O 1s : 943.690-961.690eV, Sweeps 4
+Start : 943.690eV
+End : 961.690eV
+Centre : 952.690eV
+Width : 18.000eV
+Step size : 0.200eV
+Number Steps : 90
+Dwell time : 659ms
+Sweep time : 60s
+Sweeps : 4
+Instrument Conditions
+Work function : -4.50
+Acquisition Conditions
+X-ray Power : 225.00W
+##$technique=XPS
+##$analysis source label=Al (mono)
+##$analysis source characteristic energy=1486.69
+##$analysis source strength=225
+##$analysis source beam width x=1e+37
+##$analysis source beam width y=1e+37
+##$analysis source polar angle of incidence=1e+37
+##$analysis source azimuth=1e+37
+##$analyser mode=FAT
+##$analyser pass energy or retard ratio or mass resolution=20
+##$magnification of analyser transfer lens=1e+37
+##$analyser work function or acceptance energy of atom or ion=-4.5
+##$target bias=1e+37
+##$analysis width x=1e+37
+##$analysis width y=1e+37
+##$analyser axis take off polar angle=1e+37
+##$analyser axis take off azimuth=1e+37
+##$species label=O
+##$transition or charge state label=1s
+##$charge of detected particle=-1
+##$abscissa label=Kinetic energy
+##$abscissa units=eV
+##$abscissa start=943.69
+##$abscissa increment=0.2
+##$number of corresponding variables=2
+##$signal mode=pulse counting
+##$signal collection time=0.659341
+##$number of scans to compile this block=4
+##$signal time correction=0
+##$sample normal polar angle of tilt=1e+37
+##$sample normal tilt azimuth=1e+37
+##$sample rotation angle=1e+37
+##$number of additional numerical parameters=0
+##$nbOrdinateValues=182
+##NTUPLES= XPS
+##VAR_NAME=  Bonding energy,Intensity,Kinetic energy
+##SYMBOL=    x,y,k
+##VAR_TYPE=  DEPENDENT,DEPENDENT,INDEPENDENT
+##VAR_DIM=   91,91,91
+##UNITS=     eV,Intensity,eV
+##PAGE= N=1
+##DATA TABLE= (xyk..xyk), PEAKS
+525	19926	961.69
+525.2	20113	961.49
+525.4	19843	961.2900000000001
+525.6	19746	961.09
+525.8	19848	960.8900000000001
+526	20150	960.69
+526.2	20154	960.49
+526.4	20057	960.2900000000001
+526.6	20012	960.09
+526.8	20015	959.8900000000001
+527	20030	959.69
+527.2	20149	959.49
+527.4	20191	959.2900000000001
+527.6	19991	959.09
+527.8	20106	958.8900000000001
+528	20256	958.69
+528.2	20290	958.49
+528.4	20253	958.2900000000001
+528.6	20177	958.09
+528.8	20357	957.8900000000001
+529	20508	957.69
+529.2	20274	957.49
+529.4	20825	957.2900000000001
+529.6	21418	957.09
+529.8	22476	956.8900000000001
+530	24901	956.69
+530.2	29138	956.49
+530.4	36277	956.2900000000001
+530.6	46424	956.09
+530.8	59330	955.8900000000001
+531	71138	955.69
+531.2	79089	955.49
+531.4	80673	955.2900000000001
+531.6	74895	955.09
+531.8	65118	954.8900000000001
+532	54158	954.69
+532.2	43985	954.49
+532.4	37302	954.2900000000001
+532.6	32421	954.09
+532.8	29725	953.8900000000001
+533	27690	953.69
+533.2	26525	953.49
+533.4	25585	953.2900000000001
+533.6	24718	953.09
+533.8	24491	952.8900000000001
+534	23958	952.69
+534.2	23402	952.49
+534.4	23095	952.2900000000001
+534.6	22668	952.09
+534.8	22449	951.8900000000001
+535	22347	951.69
+535.2	21906	951.49
+535.4	21763	951.2900000000001
+535.6	21501	951.09
+535.8	21587	950.8900000000001
+536	21334	950.69
+536.2	21273	950.49
+536.4	21398	950.2900000000001
+536.6	21406	950.09
+536.8	21490	949.8900000000001
+537	21384	949.69
+537.2	21542	949.49
+537.4	21569	949.2900000000001
+537.6	21699	949.09
+537.8	21744	948.8900000000001
+538	21677	948.69
+538.2	21599	948.49
+538.4	21671	948.2900000000001
+538.6	21636	948.09
+538.8	21690	947.8900000000001
+539	21878	947.69
+539.2	22112	947.49
+539.4	21979	947.2900000000001
+539.6	22235	947.09
+539.8	22103	946.8900000000001
+540	22051	946.69
+540.2	22285	946.49
+540.4	22349	946.2900000000001
+540.6	22037	946.09
+540.8	21808	945.8900000000001
+541	22310	945.69
+541.2	22253	945.49
+541.4	22082	945.2900000000001
+541.6	22205	945.09
+541.8	22232	944.8900000000001
+542	22298	944.69
+542.2	22255	944.49
+542.4	22405	944.2900000000001
+542.6	22128	944.09
+542.8	22432	943.8900000000001
+543	22606	943.69
+##END
