@@ -34,22 +34,26 @@ describe('getNormalizedSpectrum baseline', () => {
       2.5308098591015087,
       3.4771126759818163,
       4.423415492862123,
-      5.36971830974243
-    ]
-    );
+      5.36971830974243,
+    ]);
   });
 
   it('rollingaveragebaseline', () => {
     let normalized = getNormalizedSpectrum(spectrum, {
       filters: [{ name: 'rollingaveragebaseline' }],
     });
-    expect(normalized.variables.y.data).toMatchCloseTo([
-      0, 0.5, 0.5,
-      0.5, 12.5, -11.5,
-      0.5, 0.5, 0.5,
-      0.5
-    ]
-    );
+    expect(Array.from(normalized.variables.y.data)).toMatchCloseTo([
+      0,
+      0.5,
+      0.5,
+      0.5,
+      12.5,
+      -11.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+    ]);
   });
 
   it('iterativepolynomialbaseline', () => {
@@ -66,9 +70,8 @@ describe('getNormalizedSpectrum baseline', () => {
       0.2740427530456975,
       0.6263371572550227,
       0.9667213421160419,
-      1.208391608391885
-    ]
-    );
+      1.208391608391885,
+    ]);
   });
 
   it('rollingballbaseline', () => {
@@ -76,24 +79,34 @@ describe('getNormalizedSpectrum baseline', () => {
       filters: [{ name: 'rollingballbaseline' }],
     });
     expect(Array.from(normalized.variables.y.data)).toMatchCloseTo([
-      0, -2, 0, -4, 0,
-      -2, 0, -2, 0, 0
-    ]
-    );
+      0,
+      -2,
+      0,
+      -4,
+      0,
+      -2,
+      0,
+      -2,
+      0,
+      0,
+    ]);
   });
 
-  it.only('rollingmedianbaseline', () => {
+  it('rollingmedianbaseline', () => {
     let normalized = getNormalizedSpectrum(spectrum, {
       filters: [{ name: 'rollingmedianbaseline' }],
     });
     expect(Array.from(normalized.variables.y.data)).toMatchCloseTo([
-      0, 1, 1, 1, 25,
-      0, 1, 1, 1, 1
-    ]
-    );
+      0,
+      1,
+      1,
+      1,
+      25,
+      0,
+      1,
+      1,
+      1,
+      1,
+    ]);
   });
-
-
-
-
 });

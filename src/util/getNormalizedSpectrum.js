@@ -1,3 +1,10 @@
+import {
+  airPLSBaseline,
+  rollingAverageBaseline,
+  iterativePolynomialBaseline,
+  rollingBallBaseline,
+  rollingMedianBaseline,
+} from 'baselines';
 import max from 'ml-array-max';
 import min from 'ml-array-min';
 import normed from 'ml-array-normed';
@@ -5,7 +12,6 @@ import rescale from 'ml-array-rescale';
 import equallySpaced from 'ml-array-xy-equally-spaced';
 import filterX from 'ml-array-xy-filter-x';
 import savitzkyGolay from 'ml-savitzky-golay';
-import { airPLSBaseline, rollingAverageBaseline, iterativePolynomialBaseline, rollingBallBaseline, rollingMedianBaseline } from 'baselines'
 import {
   xDivide,
   xSubtract,
@@ -172,7 +178,8 @@ export function getNormalizedSpectrum(spectrum, options = {}) {
         break;
       }
       case 'iterativepolynomialbaseline': {
-        y = iterativePolynomialBaseline(y, undefined, filterOptions).correctedSpectrum;
+        y = iterativePolynomialBaseline(y, undefined, filterOptions)
+          .correctedSpectrum;
         break;
       }
       case 'rollingballbaseline': {

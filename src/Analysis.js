@@ -62,13 +62,13 @@ export class Analysis {
   }
 
   /**
-     * Retrieve a xy object
-     * @param {object} [selector={}]
-     * @param {string} [selector.units] Units separated by vs like for example "g vs °C"
-     * @param {string} [selector.xUnits] if undefined takes the first variable
-     * @param {string} [selector.yUnits] if undefined takes the second variable
-     * @returns {Spectrum}
-     */
+   * Retrieve a xy object
+   * @param {object} [selector={}]
+   * @param {string} [selector.units] Units separated by vs like for example "g vs °C"
+   * @param {string} [selector.xUnits] if undefined takes the first variable
+   * @param {string} [selector.yUnits] if undefined takes the second variable
+   * @returns {Spectrum}
+   */
   getXY(selector = {}) {
     let spectrum = this.getXYSpectrum(selector);
     if (!spectrum) return undefined;
