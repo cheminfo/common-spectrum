@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/prefer-regexp-exec */
 import type { SelectorType, SpectrumType, VariableType } from '../types';
 
 import { convertUnit } from './convertUnit';
@@ -91,7 +92,7 @@ function getPossibleVariable(
   selector: Selector = {},
 ) {
   const { units, label, variableName } = selector;
-  let possible = { ...variables };
+  let possible: Record<string, VariableType | undefined> = { ...variables };
   if (units !== undefined) {
     for (let key in possible) {
       let converted = convertUnit(1, variables[key].units || '', units);

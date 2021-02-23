@@ -1,10 +1,11 @@
 import { toBeDeepCloseTo, toMatchCloseTo } from 'jest-matcher-deep-close-to';
+import { SpectrumType } from '../../types';
 
 import { getXYSpectrum } from '../getXYSpectrum';
 
 expect.extend({ toBeDeepCloseTo, toMatchCloseTo });
 
-const spectra = [
+const spectra: SpectrumType[] = [
   {
     variables: {
       x: {
@@ -67,10 +68,11 @@ const spectra = [
 
 describe('getXYSpectrum', () => {
   it('Spectrum by labels', () => {
-    let xy = getXYSpectrum(spectra, {
-      xLabel: 'Weight [mg]',
-      yLabel: 'Temperature [°C]',
-    }).variables;
+    let xy =
+      getXYSpectrum(spectra, {
+        xLabel: 'Weight [mg]',
+        yLabel: 'Temperature [°C]',
+      })?.variables || {};
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toStrictEqual({
       x: {
@@ -87,10 +89,11 @@ describe('getXYSpectrum', () => {
   });
 
   it('Spectrum by partial labels', () => {
-    let xy = getXYSpectrum(spectra, {
-      xLabel: 'weight',
-      yLabel: 'temp',
-    }).variables;
+    let xy =
+      getXYSpectrum(spectra, {
+        xLabel: 'weight',
+        yLabel: 'temp',
+      })?.variables || {};
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toStrictEqual({
       x: {
@@ -107,7 +110,8 @@ describe('getXYSpectrum', () => {
   });
 
   it('Spectrum by units s vs g', () => {
-    let xy = getXYSpectrum(spectra, { xUnits: 's', yUnits: 'g' }).variables;
+    let xy =
+      getXYSpectrum(spectra, { xUnits: 's', yUnits: 'g' })?.variables || {};
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toStrictEqual({
       x: {
@@ -130,7 +134,7 @@ describe('getXYSpectrum', () => {
   });
 
   it('Spectrum by units "" vs °C', () => {
-    let xy = getXYSpectrum(spectra, { units: 'vs °C' }).variables;
+    let xy = getXYSpectrum(spectra, { units: 'vs °C' })?.variables || {};
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toStrictEqual({
       x: {
@@ -153,7 +157,8 @@ describe('getXYSpectrum', () => {
   });
 
   it('Spectrum by units °C vs g', () => {
-    let xy = getXYSpectrum(spectra, { xUnits: '°C', yUnits: 'g' }).variables;
+    let xy =
+      getXYSpectrum(spectra, { xUnits: '°C', yUnits: 'g' })?.variables || {};
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toStrictEqual({
       x: {
@@ -176,7 +181,7 @@ describe('getXYSpectrum', () => {
   });
 
   it('Spectrum by dataType TGA', () => {
-    let xy = getXYSpectrum(spectra, { dataType: 'TGA' }).variables;
+    let xy = getXYSpectrum(spectra, { dataType: 'TGA' })?.variables || {};
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toStrictEqual({
       x: {
@@ -193,7 +198,7 @@ describe('getXYSpectrum', () => {
   });
 
   it('Spectrum by title My', () => {
-    let xy = getXYSpectrum(spectra, { title: 'My' }).variables;
+    let xy = getXYSpectrum(spectra, { title: 'My' })?.variables || {};
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toStrictEqual({
       x: {
@@ -210,7 +215,8 @@ describe('getXYSpectrum', () => {
   });
 
   it('Spectrum by meta meta2="Meta"', () => {
-    let xy = getXYSpectrum(spectra, { meta: { meta2: 'meta' } }).variables;
+    let xy =
+      getXYSpectrum(spectra, { meta: { meta2: 'meta' } })?.variables || {};
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toStrictEqual({
       x: {
@@ -254,7 +260,7 @@ describe('getXYSpectrum', () => {
   });
 
   it('Spectrum by units s vs g as units', () => {
-    let xy = getXYSpectrum(spectra, { units: 'g vs s' }).variables;
+    let xy = getXYSpectrum(spectra, { units: 'g vs s' })?.variables || {};
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toStrictEqual({
       x: {

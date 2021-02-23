@@ -19,8 +19,13 @@ export interface ReactPlotOptions {
 /**
  * Parses from {x[], y[]} to [{x,y}]
  */
-function getData(x: Array<number>, y: Array<number>) {
-  let data = new Array(x.length);
+interface DataXY {
+  x: number;
+  y: number;
+}
+type ListNumber = number[] | Float64Array;
+function getData(x: ListNumber, y: ListNumber) {
+  let data: DataXY[] = new Array(x.length);
   for (let i = 0; i < x.length; i++) {
     data[i] = { x: x[i], y: y[i] };
   }

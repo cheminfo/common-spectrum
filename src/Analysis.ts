@@ -3,7 +3,12 @@ import max from 'ml-array-max';
 import min from 'ml-array-min';
 import { xIsMonotone } from 'ml-spectra-processing';
 
-import type { SelectorType, SpectrumType, VariableType } from './types';
+import type {
+  NormalizedSpectrumOptions,
+  SelectorType,
+  SpectrumType,
+  VariableType,
+} from './types';
 import { getNormalizedSpectrum } from './util/getNormalizedSpectrum';
 import { getXYSpectrum } from './util/getXYSpectrum';
 
@@ -12,7 +17,7 @@ interface AnalysisOptions {
   label?: string;
 }
 interface NormalizedOptions {
-  normalization?: any;
+  normalization?: NormalizedSpectrumOptions;
   selector?: SelectorType;
 }
 

@@ -19,7 +19,7 @@ export interface DifferentType extends CounterType {
   values: string[];
 }
 export interface VariableType {
-  data: number[];
+  data: number[] | Float64Array;
   symbol?: string;
   label: string;
   units?: string;
@@ -44,6 +44,30 @@ export interface MultipleType {
     x: { label: string };
     y: { label: string };
   };
+}
+export interface NormalizedFilters {
+  name:
+    | 'airPLSBaseline'
+    | 'centerMean'
+    | 'divideBySD'
+    | 'divideByMax'
+    | 'normalize'
+    | 'multiply'
+    | 'add'
+    | 'rollingAverageBaseline'
+    | 'iterativePolynomialBaseline'
+    | 'rollingballBaseline'
+    | 'rollingMedianBaseline'
+    | 'rescale';
+  options?: Record<string, unknown>;
+}
+export interface NormalizedSpectrumOptions {
+  from?: number;
+  to?: number;
+  numberOfPoints?: number;
+  processing?: boolean;
+  filters?: NormalizedFilters[];
+  exclusions?: string[];
 }
 export interface PlotObject {
   series: Array<{

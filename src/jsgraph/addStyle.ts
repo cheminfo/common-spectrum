@@ -1,5 +1,17 @@
-export function addStyle(serie, spectrum, options = {}) {
+import { Analysis } from '../Analysis';
+
+interface StyleOptions {
+  color?: string;
+  opacity?: number;
+  lineWidth?: number;
+}
+export function addStyle(
+  serie: Record<string, unknown>,
+  spectrum: Analysis,
+  options: StyleOptions = {},
+) {
   let { color = '#A9A9A9', opacity = 1, lineWidth = 1 } = options;
+  // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
   if (color.match(/#[0-9A-F]{6}$/i)) {
     color = (color + ((opacity * 255) >> 0).toString(16)).toUpperCase();
   } else {

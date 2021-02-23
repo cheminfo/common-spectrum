@@ -21,31 +21,8 @@ import {
 } from 'ml-spectra-processing';
 import Stat from 'ml-stat/array';
 
-import { SpectrumType } from '../types';
+import { NormalizedSpectrumOptions, SpectrumType } from '../types';
 
-interface Filters {
-  name: 'centerMean' | 'divideSD' | 'normalize' | 'rescale';
-  options: Record<string, string>;
-}
-interface NormalizedSpectrumOptions {
-  from?: number;
-  to?: number;
-  numberOfPoints?: number;
-  processing?: boolean;
-  filters?: Filters[];
-  exclusions?: string[];
-}
-/**
- * @private
- * @param {object} [options={}]
- * @param {number} [options.from=x.min]
- * @param {number} [options.to=x.max]
- * @param {number} [options.numberOfPoints]
- * @param {String} [options.processing] Allows to calculate derivatives
- * @param {Array} [options.filters=[]] Array of object containing 'name' (centerMean, divideSD, normalize, rescale) and 'options'
- * @param {Array} [options.exclusions=[]]
- * @returns {DataXY}
- */
 export function getNormalizedSpectrum(
   spectrum: SpectrumType,
   options: NormalizedSpectrumOptions = {},

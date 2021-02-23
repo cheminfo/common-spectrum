@@ -1,22 +1,25 @@
+import { Analysis } from '../Analysis';
+import type { NormalizedSpectrumOptions } from '../types';
+
 import { addStyle } from './addStyle';
 import { COLORS } from './colors';
+
+interface JSGraphOptions {
+  colors?: string[];
+  opacities?: number[];
+  linesWidth?: number[];
+  selector?: Record<string, unknown>;
+  normalization?: NormalizedSpectrumOptions;
+}
 /**
  * Generate a jsgraph chart format from an array of Analysis
- * @param {Array<Analysis>} analyses
- * @param {object} [options={}]
- * @param {Array} [options.ids] List of spectra ids, by all
- * @param {Array} [options.colors] List of colors
- * @param {Array} [options.opacities=[1]] List of opacities
- * @param {Array} [options.linesWidth=[1]] List of linesWidth
- * @param {object} [options.selector={}]
- * @param {object} [options.normalization]
  */
-export function getJSGraph(analyses, options = {}) {
+export function getJSGraph(analyses: Analysis[], options: JSGraphOptions = {}) {
   const {
     colors = COLORS,
     opacities = [1],
     linesWidth = [1],
-    selector,
+    selector = {},
     normalization,
   } = options;
   let series = [];
@@ -26,7 +29,7 @@ export function getJSGraph(analyses, options = {}) {
 
   for (let i = 0; i < analyses.length; i++) {
     const analysis = analyses[i];
-    let serie = {};
+    let serie: Record<string, unknown> = {};
     let currentData = analysis.getNormalizedSpectrum({
       selector,
       normalization,

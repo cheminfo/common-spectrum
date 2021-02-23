@@ -44,15 +44,17 @@ describe('case for ntuples', () => {
   it('First spectrum', () => {
     let firstSpectrum = analysis.getXYSpectrum();
 
-    expect(firstSpectrum.variables.x.data).toStrictEqual([1, 2]);
-    expect(firstSpectrum.variables.y.data).toStrictEqual([3, 4]);
+    expect(firstSpectrum?.variables.x.data).toStrictEqual([1, 2]);
+    expect(firstSpectrum?.variables.y.data).toStrictEqual([3, 4]);
 
     let normalized = analysis.getNormalizedSpectrum({
       normalization: {
         filters: [{ name: 'normalize' }],
       },
-    }).variables;
-    expect(normalized.y.data[0] + normalized.y.data[1]).toBeCloseTo(1, 10);
+    })?.variables;
+    expect(
+      (normalized?.y?.data?.[0] || 0) + (normalized?.y?.data?.[1] || 0),
+    ).toBeCloseTo(1, 10);
   });
 
   it('Spectrum by units', () => {
@@ -61,8 +63,8 @@ describe('case for ntuples', () => {
       yUnits: 'xUnits',
     };
     let spectrum = analysis.getXYSpectrum(selector);
-    expect(spectrum.variables.x.data).toStrictEqual([5, 6]);
-    expect(spectrum.variables.y.data).toStrictEqual([1, 2]);
+    expect(spectrum?.variables.x.data).toStrictEqual([5, 6]);
+    expect(spectrum?.variables.y.data).toStrictEqual([1, 2]);
 
     let jsgraph = JSGraph.getJSGraph([analysis], { selector });
     expect(jsgraph.series[0].data).toStrictEqual({ x: [5, 6], y: [1, 2] });
