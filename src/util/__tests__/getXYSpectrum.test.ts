@@ -110,8 +110,8 @@ describe('getXYSpectrum', () => {
   });
 
   it('Spectrum by units s vs g', () => {
-    let xy =
-      getXYSpectrum(spectra, { xUnits: 's', yUnits: 'g' })?.variables || {};
+    const query = { xUnits: 's', yUnits: 'g' };
+    let xy = getXYSpectrum(spectra, query)?.variables || {};
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toStrictEqual({
       x: {

@@ -118,7 +118,11 @@ function getPossibleVariable(
       return possible[variableName.toUpperCase()];
     }
   }
-  if (Object.keys(possible).length > 0) {
-    return possible[Object.keys(possible)[0]];
+
+  const possibleFiltered = Object.values(possible).filter(
+    (val) => val !== undefined,
+  );
+  if (possibleFiltered.length > 0) {
+    return possibleFiltered[0];
   }
 }

@@ -10,7 +10,7 @@
     "src"
   ],
   "scripts": {
-    "build": "cheminfo-build  --entry src/index.js --root CommonSpectrum",
+    "build": "npm run tsc && cheminfo-build -r CommonSpectrum",
     "clean": "rimraf lib lib-esm",
     "eslint": "eslint src --ext ts --cache",
     "eslint-fix": "npm run eslint -- --fix",
