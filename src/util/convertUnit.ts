@@ -1,6 +1,22 @@
 import Qty from 'js-quantities';
 
-export function convertUnit(array, fromUnit, toUnit) {
+// overloads for typing correct values
+export function convertUnit(
+  array: number[],
+  fromUnit: string,
+  toUnit: string,
+): number[] | undefined;
+export function convertUnit(
+  array: number,
+  fromUnit: string,
+  toUnit: string,
+): number | undefined;
+
+export function convertUnit(
+  array: any,
+  fromUnit: string,
+  toUnit: string,
+): any | undefined {
   fromUnit = normalize(fromUnit);
   toUnit = normalize(toUnit);
 
@@ -14,7 +30,7 @@ export function convertUnit(array, fromUnit, toUnit) {
   }
 }
 
-function normalize(unit) {
+function normalize(unit: string) {
   unit = unit.replace(/°C/g, 'tempC');
   unit = unit.replace(/°F/g, 'tempF');
   unit = unit.replace(/(^|\W)K(\W|$)/g, '$1tempK$2');

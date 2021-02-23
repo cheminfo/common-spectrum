@@ -1,4 +1,10 @@
-export function appendDistinctParameter(values, key, value) {
+import type { DifferentType } from '../types';
+
+export function appendDistinctParameter(
+  values: Record<string, DifferentType>,
+  key: string,
+  value: string,
+) {
   if (!values[key]) {
     values[key] = {
       key,

@@ -1,12 +1,20 @@
+import { Analysis } from './Analysis';
+import { CounterType, DifferentType } from './types';
 import { appendDistinctParameter } from './util/appendDistinctParameter';
 import { appendDistinctValue } from './util/appendDistinctValue';
 
+interface GetAnalysesOptions {
+  ids?: string[];
+}
+
 export class AnalysesManager {
-  constructor() {
+  public analyses: Analysis[];
+
+  public constructor() {
     this.analyses = [];
   }
 
-  addAnalysis(analysis) {
+  public addAnalysis(analysis: Analysis) {
     let index = this.getAnalysisIndex(analysis.id);
     if (index === undefined) {
       this.analyses.push(analysis);
@@ -15,9 +23,9 @@ export class AnalysesManager {
     }
   }
 
-  getAnalyses(options = {}) {
+  public getAnalyses(options: GetAnalysesOptions = {}) {
     const { ids } = options;
-    let analyses = [];
+    let analyses: Analysis[] = [];
     for (const analysis of this.analyses) {
       if (!ids || ids.includes(analysis.id)) {
         analyses.push(analysis);
@@ -26,7 +34,7 @@ export class AnalysesManager {
     return analyses;
   }
 
-  getSpectra() {
+  public getSpectra() {
     const spectra = [];
     for (const analysis of this.analyses) {
       spectra.push(...analysis.spectra);
@@ -37,10 +45,12 @@ export class AnalysesManager {
   /**
    * Get an array of objects (key + count) of all the titles
    */
-  getDistinctTitles() {
-    let values = {};
+  public getDistinctTitles() {
+    let values: Record<string, CounterType> = {};
     for (let spectrum of this.getSpectra()) {
-      appendDistinctValue(values, spectrum.title);
+      if (spectrum.title) {
+        appendDistinctValue(values, spectrum.title);
+      }
     }
     return Object.keys(values).map((key) => values[key]);
   }
@@ -48,15 +58,15 @@ export class AnalysesManager {
   /**
    * Get an array of objects (key + count) of all the units
    */
-  getDistinctUnits() {
-    let values = {};
+  public getDistinctUnits() {
+    let values: Record<string, CounterType> = {};
     for (let spectrum of this.getSpectra()) {
       if (spectrum.variables) {
         for (let key in spectrum.variables) {
-          appendDistinctValue(
-            values,
-            spectrum.variables[key].units.replace(/\s+\[.*/, ''),
-          );
+          const units = spectrum.variables[key].units?.replace(/\s+\[.*/, '');
+          if (units) {
+            appendDistinctValue(values, units);
+          }
         }
       }
     }
@@ -66,8 +76,8 @@ export class AnalysesManager {
   /**
    * Get an array of objects (key + count) of all the labels
    */
-  getDistinctLabels() {
-    let values = {};
+  public getDistinctLabels() {
+    let values: Record<string, CounterType> = {};
     for (let spectrum of this.getSpectra()) {
       if (spectrum.variables) {
         for (let key in spectrum.variables) {
@@ -84,10 +94,12 @@ export class AnalysesManager {
   /**
    * Get an array of objects (key + count) of all the dataTypes
    */
-  getDistinctDataTypes() {
-    let values = {};
+  public getDistinctDataTypes() {
+    let values: Record<string, CounterType> = {};
     for (let spectrum of this.getSpectra()) {
-      appendDistinctValue(values, spectrum.dataType);
+      if (spectrum.dataType) {
+        appendDistinctValue(values, spectrum.dataType);
+      }
     }
     return Object.keys(values).map((key) => values[key]);
   }
@@ -95,8 +107,8 @@ export class AnalysesManager {
   /**
    * Get an array of objects (key + count) of all the meta
    */
-  getDistinctMeta() {
-    let values = {};
+  public getDistinctMeta() {
+    let values: Record<string, DifferentType> = {};
     for (let spectrum of this.getSpectra()) {
       if (spectrum.meta) {
         for (let key in spectrum.meta) {
@@ -107,15 +119,14 @@ export class AnalysesManager {
     return Object.keys(values).map((key) => values[key]);
   }
 
-  removeAllAnalyses() {
+  public removeAllAnalyses() {
     this.analyses.splice(0);
   }
 
   /**
    * Remove the analysis from the AnalysesManager for the specified id
-   * @param {string} id
    */
-  removeAnalysis(id) {
+  public removeAnalysis(id: string) {
     let index = this.getAnalysisIndex(id);
     if (index === undefined) return undefined;
     return this.analyses.splice(index, 1);
@@ -123,10 +134,8 @@ export class AnalysesManager {
 
   /**
    * Returns the index of the analysis in the analyses array
-   * @param {string} id
-   * @returns {number}
    */
-  getAnalysisIndex(id) {
+  public getAnalysisIndex(id: string) {
     if (!id) return undefined;
     for (let i = 0; i < this.analyses.length; i++) {
       let analysis = this.analyses[i];
@@ -137,9 +146,9 @@ export class AnalysesManager {
 
   /**
    * Checks if the ID of an analysis exists in the AnalysesManager
-   * @param {string} id
    */
-  includes(id) {
-    return !isNaN(this.getAnalysisIndex(id));
+  public includes(id: string) {
+    const index = this.getAnalysisIndex(id);
+    return index === undefined ? false : !isNaN(index);
   }
 }

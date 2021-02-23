@@ -3,20 +3,31 @@ import max from 'ml-array-max';
 import min from 'ml-array-min';
 import { xIsMonotone } from 'ml-spectra-processing';
 
+import type { SelectorType, SpectrumType, VariableType } from './types';
 import { getNormalizedSpectrum } from './util/getNormalizedSpectrum';
 import { getXYSpectrum } from './util/getXYSpectrum';
+
+interface AnalysisOptions {
+  id?: string;
+  label?: string;
+}
+interface NormalizedOptions {
+  normalization?: any;
+  selector?: SelectorType;
+}
 
 /**
  * Class allowing to store and manipulate an analysis.
  * An analysis may contain one or more spectra that can be selected
  * based on their units
- * @class Analysis
- * @param {object} [options={}]
- * @param {string} [options.id=randomString] unique identifier
- * @param {string} [options.label=options.id] human redeable label
  */
 export class Analysis {
-  constructor(options = {}) {
+  public id: string;
+  public label: string;
+  public spectra: Array<SpectrumType>;
+  public cache: Record<string, SpectrumType | undefined>;
+
+  public constructor(options: AnalysisOptions = {}) {
     this.id = options.id || Math.random().toString(36).substring(2, 10);
     this.label = options.label || this.id;
     this.spectra = [];
@@ -25,22 +36,11 @@ export class Analysis {
 
   /**
    * Add a spectrum in the internal spectra variable
-   * @param {object} [variables]
-   * @param {object} [variables.x]
-   * @param {array} [variables.x.data]
-   * @param {array} [variables.x.units='x']
-   * @param {array} [variables.x.label='x']
-   * @param {object} [variables.y]
-   * @param {array} [variables.y.data]
-   * @param {array} [variables.y.units='y']
-   * @param {array} [variables.y.label='y']
-   * @param {object} [options={}]
-   * @param {string} [options.dataType='']
-   * @param {string} [options.title='']
-   * @param {string} [options.meta={}]
-   * @param {string} [options.tmp={}] Any temporary data
    */
-  pushSpectrum(variables, options = {}) {
+  public pushSpectrum(
+    variables: Record<string, VariableType>,
+    options: Omit<SpectrumType, 'variables'> = {},
+  ) {
     this.spectra.push(standardizeData(variables, options));
     this.cache = {};
   }
@@ -53,7 +53,7 @@ export class Analysis {
    * @param {string} [selector.yUnits] if undefined takes the second variable
    * @returns {Spectrum}
    */
-  getXYSpectrum(selector = {}) {
+  public getXYSpectrum(selector: SelectorType = {}) {
     let id = JSON.stringify(selector);
     if (!this.cache[id]) {
       this.cache[id] = getXYSpectrum(this.spectra, selector);
@@ -69,7 +69,7 @@ export class Analysis {
    * @param {string} [selector.yUnits] if undefined takes the second variable
    * @returns {Spectrum}
    */
-  getXY(selector = {}) {
+  public getXY(selector = {}) {
     let spectrum = this.getXYSpectrum(selector);
     if (!spectrum) return undefined;
     return {
@@ -88,7 +88,7 @@ export class Analysis {
    * @param {object} [options.normalization]
    *
    */
-  getNormalizedSpectrum(options = {}) {
+  public getNormalizedSpectrum(options: NormalizedOptions = {}) {
     const { normalization, selector } = options;
     const spectrum = this.getXYSpectrum(selector);
     if (!spectrum) return undefined;
@@ -102,8 +102,8 @@ export class Analysis {
    * @param {string} [selector.yUnits] // if undefined takes the second variable
    * @returns {string}
    */
-  getXLabel(selector) {
-    return this.getXYSpectrum(selector).variables.x.label;
+  public getXLabel(selector: SelectorType) {
+    return this.getXYSpectrum(selector)?.variables.x.label;
   }
 
   /**
@@ -113,22 +113,18 @@ export class Analysis {
    * @param {string} [selector.yUnits] // if undefined takes the second variable
    * @returns {string}
    */
-  getYLabel(selector) {
-    return this.getXYSpectrum(selector).variables.y.label;
+  public getYLabel(selector: SelectorType) {
+    return this.getXYSpectrum(selector)?.variables.y.label;
   }
 }
 
 /**
  * Internal function that ensure the order of x / y array
- * @param {DataXY} [variables]
- * @param {object} [options={}]
- * @param {string} [options.dataType='']
- * @param {string} [options.title='']
- * @param {string} [options.meta={}]
- * @param {string} [options.tmp={}] Any temporary data
- * @return {Spectrum}
  */
-function standardizeData(variables, options = {}) {
+function standardizeData(
+  variables: Record<string, VariableType>,
+  options: Omit<SpectrumType, 'variables'> = {},
+) {
   let { meta = {}, tmp = {}, dataType = '', title = '' } = options;
 
   let xVariable = variables.x;
