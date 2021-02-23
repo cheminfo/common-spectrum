@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getJSGraph 1`] = `
+Object {
+  "axes": Object {
+    "x": Object {
+      "display": true,
+      "flipped": false,
+      "label": "X axis [xUnits]",
+      "unit": "",
+    },
+    "y": Object {
+      "display": true,
+      "flipped": false,
+      "label": "Y axis",
+      "unit": "",
+    },
+  },
+  "series": Array [
+    Object {
+      "data": Object {
+        "x": Array [
+          1,
+          2,
+        ],
+        "y": Float64Array [
+          300,
+          400,
+        ],
+      },
+      "style": Array [
+        Object {
+          "name": "unselected",
+          "style": Object {
+            "line": Object {
+              "color": "#FFB300FF",
+              "dash": 1,
+              "width": 1,
+            },
+          },
+        },
+        Object {
+          "name": "selected",
+          "style": Object {
+            "line": Object {
+              "color": "#FFB300FF",
+              "dash": 1,
+              "width": 3,
+            },
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
