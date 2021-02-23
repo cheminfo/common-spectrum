@@ -1,4 +1,5 @@
 import { fromVariables } from 'convert-to-jcamp';
+
 import { Analysis } from '../Analysis';
 import { SpectrumType } from '../types';
 
