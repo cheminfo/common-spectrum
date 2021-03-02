@@ -20,25 +20,18 @@ import {
   xIsMonotone,
 } from 'ml-spectra-processing';
 import Stat from 'ml-stat/array';
-/**
- *
- * @private
- * @param {object} spectrum
- * @param {object} [options={}]
- * @param {number} [options.from=x.min]
- * @param {number} [options.to=x.max]
- * @param {number} [options.numberOfPoints]
- * @param {String} [options.processing] Allows to calculate derivatives
- * @param {Array} [options.filters=[]] Array of object containing 'name' (centerMean, divideSD, normalize, rescale) and 'options'
- * @param {Array} [options.exclusions=[]]
- * @returns {DataXY}
- */
-export function getNormalizedSpectrum(spectrum, options = {}) {
+
+import { NormalizedSpectrumOptions, SpectrumType } from '../types';
+
+export function getNormalizedSpectrum(
+  spectrum: SpectrumType,
+  options: NormalizedSpectrumOptions = {},
+) {
   let data = {
     x: spectrum.variables.x.data,
     y: spectrum.variables.y.data,
   };
-  let newSpectrum = {
+  let newSpectrum: SpectrumType = {
     variables: {
       x: {
         data: spectrum.variables.x.data,
@@ -124,9 +117,10 @@ export function getNormalizedSpectrum(spectrum, options = {}) {
   if (filters.length) {
     // filters change the y axis, we get rid of the units
     newSpectrum.variables.y.units = '';
-    newSpectrum.variables.y.label =
-      newSpectrum.variables.y.label &&
-      newSpectrum.variables.y.label.replace(/\s*\[.*\]/, '');
+    newSpectrum.variables.y.label = newSpectrum.variables.y.label?.replace(
+      /\s*\[.*\]/,
+      '',
+    );
   }
 
   for (let filter of filters) {
@@ -194,7 +188,7 @@ export function getNormalizedSpectrum(spectrum, options = {}) {
       case undefined:
         break;
       default:
-        throw new Error(`Unknown process kind: ${process.kind}`);
+        throw new Error(`Unknown process kind: ${filter.name}`);
     }
   }
 

@@ -12,7 +12,7 @@ describe('Analysis', () => {
 
     let analysis = fromJcamp(text);
 
-    let xy = analysis.getXY();
+    let xy = analysis.getXY() || { x: [], y: [] };
     expect(xy.x).toHaveLength(91);
     expect(xy.y).toHaveLength(91);
   });

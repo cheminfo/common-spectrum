@@ -34,8 +34,8 @@ test('index', () => {
 
   let firstSpectrum = analysis.getXYSpectrum();
 
-  expect(firstSpectrum.variables.x.data).toStrictEqual([1, 2]);
-  expect(firstSpectrum.variables.y.data).toStrictEqual([3, 4]);
+  expect(firstSpectrum?.variables.x.data).toStrictEqual([1, 2]);
+  expect(firstSpectrum?.variables.y.data).toStrictEqual([3, 4]);
 
   let normalizedSpectrum = analysis.getNormalizedSpectrum({
     normalization: {
@@ -43,16 +43,16 @@ test('index', () => {
     },
   });
   expect(
-    normalizedSpectrum.variables.y.data[0] +
-      normalizedSpectrum.variables.y.data[1],
+    (normalizedSpectrum?.variables?.y?.data?.[0] || 0) +
+      (normalizedSpectrum?.variables?.y?.data?.[1] || 0),
   ).toBeCloseTo(1, 10);
 
   let undefinedSpectrum = analysis.getXYSpectrum({ xUnits: 'J' });
   expect(undefinedSpectrum).toBeUndefined();
 
   let inverted = analysis.getXYSpectrum({ xUnits: 'yUnits', yUnits: 'xUnits' });
-  expect(inverted.variables.x.data).toStrictEqual([3, 4]);
-  expect(inverted.variables.y.data).toStrictEqual([1, 2]);
+  expect(inverted?.variables.x.data).toStrictEqual([3, 4]);
+  expect(inverted?.variables.y.data).toStrictEqual([1, 2]);
 
   let jsgraph = JSGraph.getJSGraph([analysis]);
   expect(jsgraph.series[0].data).toStrictEqual({ x: [1, 2], y: [3, 4] });

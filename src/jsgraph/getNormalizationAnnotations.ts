@@ -4,9 +4,13 @@
  * @param {object} [filter.exclusions=[]] Array of exclusions zones
  * @param {object} [boundary={y: {min:'0px', max:'2000px'}}] Height of the annotation
  */
-
+interface AnnotationsFilter {
+  exclusions?: { ignore?: boolean; from: number; to: number }[];
+  from?: number;
+  to?: number;
+}
 export function getNormalizationAnnotations(
-  filter = {},
+  filter: AnnotationsFilter = {},
   boundary = { y: { min: '0px', max: '2000px' } },
 ) {
   let { exclusions = [] } = filter;

@@ -88,7 +88,7 @@ describe('getNormalizedSpectrum', () => {
   });
   it('dividebysd', () => {
     let normalized = getNormalizedSpectrum(spectrum, {
-      filters: [{ name: 'dividebysd' }],
+      filters: [{ name: 'divideBySD' }],
     });
     expect(normalized.variables.y.data).toBeDeepCloseTo(
       [2.82842712474619, 4.242640687119285],
@@ -97,7 +97,7 @@ describe('getNormalizedSpectrum', () => {
   });
   it('centermean', () => {
     let normalized = getNormalizedSpectrum(spectrum, {
-      filters: [{ name: 'centermean' }],
+      filters: [{ name: 'centerMean' }],
     });
     expect(normalized.variables.y.data).toBeDeepCloseTo([-0.5, 0.5], 4);
   });

@@ -1,6 +1,13 @@
 import { fromVariables } from 'convert-to-jcamp';
 
-export function toJcamps(analysis, options = {}) {
+import { Analysis } from '../Analysis';
+import { SpectrumType } from '../types';
+
+interface GetJcampOptions {
+  info?: Record<string, string>;
+  meta?: Record<string, string>;
+}
+export function toJcamps(analysis: Analysis, options: GetJcampOptions = {}) {
   let jcamps = [];
   for (let spectrum of analysis.spectra) {
     jcamps.push(getJcamp(spectrum, options));
@@ -8,7 +15,7 @@ export function toJcamps(analysis, options = {}) {
   return jcamps;
 }
 
-function getJcamp(spectrum, options) {
+function getJcamp(spectrum: SpectrumType, options: GetJcampOptions) {
   const { info = {}, meta = {} } = options;
 
   let jcampOptions = {

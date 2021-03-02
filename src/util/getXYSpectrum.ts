@@ -1,30 +1,24 @@
+/* eslint-disable @typescript-eslint/prefer-regexp-exec */
+import type { SelectorType, SpectrumType, VariableType } from '../types';
+
 import { convertUnit } from './convertUnit';
 import { ensureRegexp } from './ensureRegexp';
 import { getConvertedVariable } from './getConvertedVariable';
+
 /**
  * Retrieve the spectrum with only X/Y data that match all the selectors
  * If more than one variable match the selector the 'x' or 'y' variable will be
  * taken
- * @param {Array} [spectra] Array of spectra
- * @param {object} [selector={}]
- * @param {string} [selector.units] Units separated by "vs", e.g., "g vs °C"
- * @param {string} [selector.xUnits]
- * @param {string} [selector.yUnits]
- * @param {string} [selector.labels] Labels separated by "vs", e.g., "relative pressure vs excess adsorption"
- * @param {string} [selector.xLabel] will be converted to case insensitive regexp
- * @param {string} [selector.yLabel] will be converted to case insensitive regexp
- * @param {string} [selector.dataType] will be converted to case insensitive regexp
- * @param {string} [selector.title] will be converted to case insensitive regexp
- * @param {object} [selector.meta] object of key/value to filter meta information. Each value will be converted to case insensitive regexp
- * @returns {Spectrum}
  */
-
-export function getXYSpectrum(spectra = [], selector = {}) {
+export function getXYSpectrum(
+  spectra: Array<SpectrumType> = [],
+  selector: SelectorType = {},
+): SpectrumType | undefined {
   if (spectra.length < 1) return;
 
   for (let spectrum of spectra) {
     let variableNames = Object.keys(spectrum.variables);
-    if (!variableNames.length > 1) continue;
+    if (!(variableNames.length > 1)) continue;
     let {
       dataType,
       title,
@@ -88,16 +82,24 @@ export function getXYSpectrum(spectra = [], selector = {}) {
   return;
 }
 
-function getPossibleVariable(variables, selector = {}) {
+interface Selector {
+  units?: string;
+  label?: string | RegExp;
+  variableName?: string;
+}
+function getPossibleVariable(
+  variables: Record<string, VariableType>,
+  selector: Selector = {},
+) {
   const { units, label, variableName } = selector;
-  let possible = { ...variables };
+  let possible: Record<string, VariableType | undefined> = { ...variables };
   if (units !== undefined) {
     for (let key in possible) {
-      let converted = convertUnit(1, variables[key].units, units);
+      let converted = convertUnit(1, variables[key].units || '', units);
       if (converted) {
         possible[key] = getConvertedVariable(variables[key], units);
       } else {
-        delete possible[key];
+        possible[key] = undefined;
       }
     }
   }
@@ -105,16 +107,22 @@ function getPossibleVariable(variables, selector = {}) {
   if (label !== undefined) {
     for (let key in possible) {
       if (!variables[key].label.match(label)) {
-        delete possible[key];
+        possible[key] = undefined;
       }
     }
   }
 
-  if (possible[variableName]) return possible[variableName];
-  if (possible[variableName.toUpperCase()]) {
-    return possible[variableName.toUpperCase()];
+  if (variableName !== undefined) {
+    if (possible[variableName]) return possible[variableName];
+    if (possible[variableName.toUpperCase()]) {
+      return possible[variableName.toUpperCase()];
+    }
   }
-  if (Object.keys(possible).length > 0) {
-    return possible[Object.keys(possible)[0]];
+
+  const possibleFiltered = Object.values(possible).filter(
+    (val) => val !== undefined,
+  );
+  if (possibleFiltered.length > 0) {
+    return possibleFiltered[0];
   }
 }

@@ -1,6 +1,7 @@
 import { convert } from 'jcampconverter';
 
 import { Analysis } from '../Analysis';
+import { VariableType } from '../types';
 
 /**
  * Creates a new Analysis from a JCAMP string
@@ -10,13 +11,13 @@ import { Analysis } from '../Analysis';
  * @param {string} [options.label=options.id] human redeable label
  * @return {Analysis} - New class element with the given data
  */
-export function fromJcamp(jcamp, options = {}) {
+export function fromJcamp(jcamp: string, options = {}): Analysis {
   let analysis = new Analysis(options);
-  addJcamp(analysis, jcamp, options);
+  addJcamp(analysis, jcamp);
   return analysis;
 }
 
-function addJcamp(analysis, jcamp) {
+function addJcamp(analysis: Analysis, jcamp: string) {
   let converted = convert(jcamp, {
     keepRecordsRegExp: /.*/,
   });
@@ -26,7 +27,7 @@ function addJcamp(analysis, jcamp) {
 
     // we ensure variables
     if (!currentSpectrum.variables) {
-      const variables = {};
+      const variables: Record<string, VariableType> = {};
       currentSpectrum.variables = variables;
       variables.x = {
         label: currentSpectrum.xUnits,
