@@ -149,7 +149,8 @@ function standardizeData(
     if (reverse) variable.data = variable.data.reverse();
     variable.label = variable.label || key;
     variable.units =
-      variable.units || variable.label.replace(/^.*[([](.*)[)\]].*$/, '$1');
+      variable.units ||
+      variable.label.replace(/^.*[([](?<units>.*)[)\]].*$/, '$<units>');
     variable.min = min(variable.data);
     variable.max = max(variable.data);
     variable.isMonotone = xIsMonotone(variable.data);
