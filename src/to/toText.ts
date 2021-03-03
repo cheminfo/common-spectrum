@@ -10,17 +10,17 @@ interface ToTextOptions {
 export function toText(analysis: Analysis, options: ToTextOptions = {}) {
   // Export all the data to Csv
   if (!options.selector) {
-    return exportCSV(analysis.spectra, options);
+    return exportText(analysis.spectra, options);
   }
 
   // Export selected variables
-  const spectrums = analysis.getXYSpectrum(options.selector);
-  return exportCSV(spectrums ? [spectrums] : [], options);
+  const spectra = analysis.getXYSpectrum(options.selector);
+  return exportText(spectra ? [spectra] : [], options);
 }
 
-function exportCSV(spectrums: SpectrumType[], options: ToTextOptions) {
+function exportText(spectrums: SpectrumType[], options: ToTextOptions) {
   const { endOfLine = '\n', fieldSeparator = ',' } = options;
-  let res: string[] = new Array(spectrums.length);
+  let result: string[] = new Array(spectrums.length);
   for (let index = 0; index < spectrums.length; index++) {
     const variables = Object.values(spectrums[index].variables);
 
@@ -38,7 +38,7 @@ function exportCSV(spectrums: SpectrumType[], options: ToTextOptions) {
       );
     }
 
-    res[index] = lines.join(endOfLine);
+    result[index] = lines.join(endOfLine);
   }
-  return res;
+  return result;
 }
