@@ -23,6 +23,8 @@ import Stat from 'ml-stat/array';
 
 import { NormalizedSpectrumOptions, SpectrumType } from '../types';
 
+import { enforceSorted } from './enforceSorted';
+
 export function getNormalizedSpectrum(
   spectrum: SpectrumType,
   options: NormalizedSpectrumOptions = {},
@@ -182,6 +184,10 @@ export function getNormalizedSpectrum(
       }
       case 'rollingmedianbaseline': {
         y = rollingMedianBaseline(y, filterOptions).correctedSpectrum;
+        break;
+      }
+      case 'enforcesorted': {
+        [x, y] = enforceSorted(x, y);
         break;
       }
       case '':
