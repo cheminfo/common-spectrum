@@ -17,22 +17,16 @@ function exportCSV(spectrums: SpectrumType[]) {
   for (let index = 0; index < spectrums.length; index++) {
     const variables = Object.values(spectrums[index].variables);
 
-    const columns = variables.reduce(
-      (acc: { max: number; variables: string[] }, curr) => {
-        const max = Math.max(acc.max, curr.data.length);
-        const variables = [...acc.variables, curr.label];
-        return { max, variables };
-      },
-      { max: 0, variables: [] },
-    );
-    let lines = [columns.variables.join(',')];
-    for (let lineIndex = 0; lineIndex < columns.max; lineIndex++) {
+    const labels = variables.map((v) => v.label);
+    const maxNumberData = Math.max(...variables.map((v) => v.data.length));
+
+    let lines = [labels.join(',')];
+    for (let lineIndex = 0; lineIndex < maxNumberData; lineIndex++) {
       lines.push(
         variables
-          .map(({ data }) => {
-            const value = data[lineIndex];
-            return value === undefined ? '' : value;
-          })
+          .map(({ data }) =>
+            data[lineIndex] === undefined ? '' : data[lineIndex],
+          )
           .join(','),
       );
     }
