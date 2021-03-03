@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.21.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.20.0...v0.21.0) (2021-03-03)
+
+
+### Features
+
+* **getJSGraph:** add xAxis and yAxis options ([03b1245](https://www.github.com/cheminfo/common-spectrum/commit/03b1245502929ddee8493234dc007f4d9a29dfe5))
+* migration to Typescript ([#25](https://www.github.com/cheminfo/common-spectrum/issues/25)) ([c953912](https://www.github.com/cheminfo/common-spectrum/commit/c953912a8c3a0bf50208cee42f43f9850491f206))
+
+
+### Bug Fixes
+
+* delete previous documentation ([18abd56](https://www.github.com/cheminfo/common-spectrum/commit/18abd566a93dfc64bf71f148c3917f806889ea1f))
+* dependencies update removes inference error ([0dc8610](https://www.github.com/cheminfo/common-spectrum/commit/0dc8610d5506c0214b25d5a37315b2101ba3c47a))
+
 ## [0.20.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.19.0...v0.20.0) (2021-02-17)
 
 
