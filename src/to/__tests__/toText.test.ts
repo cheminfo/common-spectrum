@@ -1,5 +1,5 @@
 import { Analysis } from '../../Analysis';
-import { toCsv } from '../toCsv';
+import { toText } from '../toText';
 
 let analysis = new Analysis();
 analysis.pushSpectrum({
@@ -28,19 +28,21 @@ analysis.pushSpectrum({
 
 describe('toCvs', () => {
   it('all variables', () => {
-    let result = toCsv(analysis);
+    let result = toText(analysis);
     expect(result).toHaveLength(1);
     expect(result[0]).toBe('voltage,current,seconds\n1,3,5\n2,4,6\n,,7');
   });
 
   it('select variables', () => {
-    let result = toCsv(analysis, { xLabel: 'seconds', yLabel: 'voltage' });
+    let result = toText(analysis, {
+      selector: { xLabel: 'seconds', yLabel: 'voltage' },
+    });
     expect(result).toHaveLength(1);
     expect(result[0]).toBe('seconds,voltage\n5,1\n6,2\n7,');
   });
 
   it('empty analysis', () => {
-    let result = toCsv(new Analysis());
+    let result = toText(new Analysis());
     expect(result).toHaveLength(0);
   });
 });

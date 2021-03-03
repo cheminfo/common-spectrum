@@ -1,18 +1,25 @@
 import { Analysis } from '../Analysis';
 import type { SelectorType, SpectrumType } from '../types';
 
-export function toCsv(analysis: Analysis, options?: SelectorType) {
+interface ToTextOptions {
+  selector?: SelectorType;
+  endOfLine?: string;
+  fieldSeparator?: string;
+}
+
+export function toText(analysis: Analysis, options: ToTextOptions = {}) {
   // Export all the data to Csv
-  if (!options) {
-    return exportCSV(analysis.spectra);
+  if (!options.selector) {
+    return exportCSV(analysis.spectra, options);
   }
 
   // Export selected variables
-  const spectrums = analysis.getXYSpectrum(options);
-  return exportCSV(spectrums ? [spectrums] : []);
+  const spectrums = analysis.getXYSpectrum(options.selector);
+  return exportCSV(spectrums ? [spectrums] : [], options);
 }
 
-function exportCSV(spectrums: SpectrumType[]) {
+function exportCSV(spectrums: SpectrumType[], options: ToTextOptions) {
+  const { endOfLine = '\n', fieldSeparator = ',' } = options;
   let res: string[] = new Array(spectrums.length);
   for (let index = 0; index < spectrums.length; index++) {
     const variables = Object.values(spectrums[index].variables);
@@ -20,18 +27,18 @@ function exportCSV(spectrums: SpectrumType[]) {
     const labels = variables.map((v) => v.label);
     const maxNumberData = Math.max(...variables.map((v) => v.data.length));
 
-    let lines = [labels.join(',')];
+    let lines = [labels.join(fieldSeparator)];
     for (let lineIndex = 0; lineIndex < maxNumberData; lineIndex++) {
       lines.push(
         variables
           .map(({ data }) =>
             data[lineIndex] === undefined ? '' : data[lineIndex],
           )
-          .join(','),
+          .join(fieldSeparator),
       );
     }
 
-    res[index] = lines.join('\n');
+    res[index] = lines.join(endOfLine);
   }
   return res;
 }
