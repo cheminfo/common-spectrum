@@ -52,11 +52,9 @@ export class Analysis {
 
   /**
    * Retrieve a Spectrum based on x/y units
-   * @param {object} [selector={}]
-   * @param {string} [selector.units] Units separated by vs like for example "g vs °C"
-   * @param {string} [selector.xUnits] if undefined takes the first variable
-   * @param {string} [selector.yUnits] if undefined takes the second variable
-   * @returns {Spectrum}
+   * @param selector.units Units separated by vs like for example "g vs °C"
+   * @param selector.xUnits if undefined takes the first variable
+   * @param selector.yUnits if undefined takes the second variable
    */
   public getXYSpectrum(selector: SelectorType = {}) {
     let id = JSON.stringify(selector);
@@ -68,11 +66,9 @@ export class Analysis {
 
   /**
    * Retrieve a xy object
-   * @param {object} [selector={}]
-   * @param {string} [selector.units] Units separated by vs like for example "g vs °C"
-   * @param {string} [selector.xUnits] if undefined takes the first variable
-   * @param {string} [selector.yUnits] if undefined takes the second variable
-   * @returns {Spectrum}
+   * @param selector.units Units separated by vs like for example "g vs °C"
+   * @param selector.xUnits if undefined takes the first variable
+   * @param selector.yUnits if undefined takes the second variable
    */
   public getXY(selector = {}) {
     let spectrum = this.getXYSpectrum(selector);
@@ -86,12 +82,8 @@ export class Analysis {
   /**
    * Return the data object for specific x/y units with possibly some
    * normalization options
-   * @param {object} [options={}]
-   * @param {object} [options.selector]
-   * @param {string} [options.selector.xUnits] // if undefined takes the first variable
-   * @param {string} [options.selector.yUnits] // if undefined takes the second variable
-   * @param {object} [options.normalization]
-   *
+   * @param options.selector.xUnits // if undefined takes the first variable
+   * @param options.selector.yUnits // if undefined takes the second variable
    */
   public getNormalizedSpectrum(options: NormalizedOptions = {}) {
     const { normalization, selector } = options;
@@ -102,10 +94,8 @@ export class Analysis {
 
   /**
    * Returns the xLabel
-   * @param {object} [selector]
-   * @param {string} [selector.xUnits] // if undefined takes the first variable
-   * @param {string} [selector.yUnits] // if undefined takes the second variable
-   * @returns {string}
+   * @param selector.xUnits // if undefined takes the first variable
+   * @param selector.yUnits // if undefined takes the second variable
    */
   public getXLabel(selector: SelectorType) {
     return this.getXYSpectrum(selector)?.variables.x.label;
@@ -113,10 +103,8 @@ export class Analysis {
 
   /**
    * Returns the yLabel
-   * @param {object} [selector]
-   * @param {string} [selector.xUnits] // if undefined takes the first variable
-   * @param {string} [selector.yUnits] // if undefined takes the second variable
-   * @returns {string}
+   * @param selector.xUnits // if undefined takes the first variable
+   * @param selector.yUnits // if undefined takes the second variable
    */
   public getYLabel(selector: SelectorType) {
     return this.getXYSpectrum(selector)?.variables.y.label;

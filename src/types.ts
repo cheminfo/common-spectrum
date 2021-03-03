@@ -51,6 +51,7 @@ export interface NormalizedFilters {
     | 'centerMean'
     | 'divideBySD'
     | 'divideByMax'
+    | 'enforceScale'
     | 'normalize'
     | 'multiply'
     | 'add'
