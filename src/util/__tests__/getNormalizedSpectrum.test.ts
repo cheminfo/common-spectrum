@@ -4,22 +4,22 @@ import { getNormalizedSpectrum } from '../getNormalizedSpectrum';
 
 expect.extend({ toBeDeepCloseTo, toMatchCloseTo });
 
-describe('getNormalizedSpectrum', () => {
-  let spectrum = {
-    variables: {
-      x: {
-        data: [1, 2],
-        units: 's',
-        label: 'X axis [s]',
-      },
-      y: {
-        data: [2, 3],
-        units: '°C',
-        label: 'Y axis [°C]',
-      },
+let spectrum = {
+  variables: {
+    x: {
+      data: [1, 2],
+      units: 's',
+      label: 'X axis [s]',
     },
-  };
+    y: {
+      data: [2, 3],
+      units: '°C',
+      label: 'Y axis [°C]',
+    },
+  },
+};
 
+describe('getNormalizedSpectrum', () => {
   it('no filter', () => {
     let normalized = getNormalizedSpectrum(spectrum, {});
     expect(normalized).toStrictEqual({
@@ -106,5 +106,26 @@ describe('getNormalizedSpectrum', () => {
       filters: [{ name: 'rescale', options: { min: 100, max: 200 } }],
     });
     expect(normalized.variables.y.data).toStrictEqual([100, 200]);
+  });
+  it('enforceSorted', () => {
+    let spectrum = {
+      variables: {
+        x: {
+          data: [100, 200, 1, 2, 300],
+          units: 's',
+          label: 'X axis [s]',
+        },
+        y: {
+          data: [1, 2, 3, 4, 5],
+          units: '°C',
+          label: 'Y axis [°C]',
+        },
+      },
+    };
+    let normalized = getNormalizedSpectrum(spectrum, {
+      filters: [{ name: 'enforceSorted' }],
+    });
+    expect(normalized.variables.y.data).toStrictEqual([1, 2, 5]);
+    expect(normalized.variables.x.data).toStrictEqual([100, 200, 300]);
   });
 });
