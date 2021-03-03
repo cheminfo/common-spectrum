@@ -4,12 +4,26 @@ import type { NormalizedSpectrumOptions } from '../types';
 import { addStyle } from './addStyle';
 import { COLORS } from './colors';
 
+interface JSGraphAxisOptions {
+  /**
+   * Change the scale to logarihtmic
+   * @default false
+   */
+  logScale?: boolean;
+  flipped?: boolean;
+  display?: boolean;
+  label?: string;
+  units?: string;
+}
+
 interface JSGraphOptions {
   colors?: string[];
   opacities?: number[];
   linesWidth?: number[];
   selector?: Record<string, unknown>;
   normalization?: NormalizedSpectrumOptions;
+  xAxis?: JSGraphAxisOptions;
+  yAxis?: JSGraphAxisOptions;
 }
 /**
  * Generate a jsgraph chart format from an array of Analysis
@@ -21,6 +35,8 @@ export function getJSGraph(analyses: Analysis[], options: JSGraphOptions = {}) {
     linesWidth = [1],
     selector = {},
     normalization,
+    xAxis,
+    yAxis,
   } = options;
   let series = [];
 
@@ -55,12 +71,14 @@ export function getJSGraph(analyses: Analysis[], options: JSGraphOptions = {}) {
         unit: '',
         flipped: false,
         display: true,
+        ...xAxis,
       },
       y: {
         label: yLabel,
         unit: '',
         flipped: false,
         display: true,
+        ...yAxis,
       },
     },
     series,

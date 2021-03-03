@@ -29,6 +29,9 @@ test('getJSGraph', () => {
 
   const jsgraph = JSGraph.getJSGraph([analysis], {
     normalization: { filters: [{ name: 'multiply', options: { value: 100 } }] },
+    xAxis: {
+      logScale: true,
+    },
   });
 
   delete jsgraph.series[0].name;
