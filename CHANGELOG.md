@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.24.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.23.0...v0.24.0) (2021-03-04)
+
+
+### Features
+
+* if log scale remove x<=0 point ([7d1a8ac](https://www.github.com/cheminfo/common-spectrum/commit/7d1a8ac502ffa27409a05e672d69299137ec197b))
+
 ## [0.23.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.22.0...v0.23.0) (2021-03-04)
 
 
