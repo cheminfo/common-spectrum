@@ -10,9 +10,9 @@ import { SelectorType } from '../types';
 
 type LineSeriesType = { type: 'line' } & LineSeriesProps;
 export interface ReactPlotOptions {
-  xAxis?: AxisProps;
-  yAxis?: AxisProps;
-  series?: LineSeriesProps;
+  xAxis?: Partial<AxisProps>;
+  yAxis?: Partial<AxisProps>;
+  series?: Partial<LineSeriesProps>;
   dimentions?: Omit<PlotProps, 'colorScheme' | 'children'>;
 }
 
