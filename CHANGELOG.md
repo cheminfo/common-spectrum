@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.23.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.22.0...v0.23.0) (2021-03-04)
+
+
+### Features
+
+* add filter that removes not crecent x values ([91eb815](https://www.github.com/cheminfo/common-spectrum/commit/91eb8155dba9bae6242ca622b268b12c1959f93d))
+
+
+### Bug Fixes
+
+* typo in normalizer filter ([b7d5336](https://www.github.com/cheminfo/common-spectrum/commit/b7d53362ebf13ffb3009f616d9036fb2bffca7de))
+
 ## [0.22.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.21.0...v0.22.0) (2021-03-04)
 
 
