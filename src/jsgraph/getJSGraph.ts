@@ -1,4 +1,5 @@
 import { xyFilterXPositive } from 'ml-spectra-processing';
+
 import { Analysis } from '../Analysis';
 import type { NormalizedSpectrumOptions } from '../types';
 
