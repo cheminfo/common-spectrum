@@ -7,12 +7,12 @@ test('getJSGraph', () => {
   analysis.pushSpectrum(
     {
       x: {
-        data: [1, 2],
+        data: [-1, 1, 2],
         units: 'xUnits',
         label: 'X axis [xUnits]',
       },
       y: {
-        data: [3, 4],
+        data: [2, 3, 4],
         units: 'yUnits',
         label: 'Y axis [yUnits]',
       },

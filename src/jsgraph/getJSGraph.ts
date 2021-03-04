@@ -1,3 +1,4 @@
+import { xyFilterXPositive } from 'ml-spectra-processing';
 import { Analysis } from '../Analysis';
 import type { NormalizedSpectrumOptions } from '../types';
 
@@ -35,8 +36,8 @@ export function getJSGraph(analyses: Analysis[], options: JSGraphOptions = {}) {
     linesWidth = [1],
     selector = {},
     normalization,
-    xAxis,
-    yAxis,
+    xAxis = {},
+    yAxis = {},
   } = options;
   let series = [];
 
@@ -62,6 +63,11 @@ export function getJSGraph(analyses: Analysis[], options: JSGraphOptions = {}) {
       x: currentData.variables.x.data,
       y: currentData.variables.y.data,
     };
+
+    if (xAxis.logScale) {
+      serie.data = xyFilterXPositive(serie.data);
+    }
+
     series.push(serie);
   }
   return {

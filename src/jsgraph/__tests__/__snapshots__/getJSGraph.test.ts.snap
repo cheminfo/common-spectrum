@@ -24,7 +24,7 @@ Object {
           1,
           2,
         ],
-        "y": Float64Array [
+        "y": Array [
           300,
           400,
         ],
