@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.22.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.21.0...v0.22.0) (2021-03-04)
+
+
+### Features
+
+* export to csv ([#29](https://www.github.com/cheminfo/common-spectrum/issues/29)) ([d7fae5b](https://www.github.com/cheminfo/common-spectrum/commit/d7fae5b3f5184626f2ced561f150b05c81293fc1))
+
+
+### Bug Fixes
+
+* publish lib-esm in npm ([dbad0a1](https://www.github.com/cheminfo/common-spectrum/commit/dbad0a11cadb3fc6d01fa622576c6b25b46af59b))
+
 ## [0.21.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.20.0...v0.21.0) (2021-03-03)
 
 
