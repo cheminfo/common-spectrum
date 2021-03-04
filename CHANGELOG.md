@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.24.1](https://www.github.com/cheminfo/common-spectrum/compare/v0.24.0...v0.24.1) (2021-03-04)
+
+
+### Bug Fixes
+
+* allow empty data as options ([#34](https://www.github.com/cheminfo/common-spectrum/issues/34)) ([0abd7b6](https://www.github.com/cheminfo/common-spectrum/commit/0abd7b6147a49d0cb630c26e7e9548d8cb5ca5b6))
+
 ## [0.24.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.23.0...v0.24.0) (2021-03-04)
 
 
