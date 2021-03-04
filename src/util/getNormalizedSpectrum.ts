@@ -18,12 +18,11 @@ import {
   xMultiply,
   xAdd,
   xIsMonotone,
+  xyEnsureGrowingX,
 } from 'ml-spectra-processing';
 import Stat from 'ml-stat/array';
 
 import { NormalizedSpectrumOptions, SpectrumType } from '../types';
-
-import { enforceSorted } from './enforceSorted';
 
 export function getNormalizedSpectrum(
   spectrum: SpectrumType,
@@ -186,8 +185,10 @@ export function getNormalizedSpectrum(
         y = rollingMedianBaseline(y, filterOptions).correctedSpectrum;
         break;
       }
-      case 'enforcesorted': {
-        [x, y] = enforceSorted(x, y);
+      case 'ensuregrowing': {
+        const ans = xyEnsureGrowingX({ x, y });
+        x = ans.x;
+        y = ans.y;
         break;
       }
       case '':
