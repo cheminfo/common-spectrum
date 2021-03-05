@@ -10,6 +10,7 @@ import { SelectorType } from '../types';
 
 type LineSeriesType = { type: 'line' } & LineSeriesProps;
 export interface ReactPlotOptions {
+  enforceGrowing?: boolean;
   xAxis?: Partial<AxisProps>;
   yAxis?: Partial<AxisProps>;
   series?: Partial<LineSeriesProps>;
@@ -39,20 +40,26 @@ export function getReactPlotJSON(
   analyses: Analysis[],
   query: SelectorType,
   options: ReactPlotOptions = {},
-): PlotObjectType & { meta: Record<string, unknown>[] } {
+): PlotObjectType & { meta: Record<string, string>[] } {
   const {
+    enforceGrowing = false,
     xAxis: xAxisOptions = {},
     yAxis: yAxisOptions = { labelSpace: 40 },
     series: seriesOptions = { displayMarker: true },
     dimentions = { width: 550, height: 500 },
   } = options;
   let series = [];
-  let meta: Record<string, unknown>[] = [];
+  let meta: Record<string, string>[] = [];
   let xAxis: AxisProps | null = null;
   let yAxis: AxisProps | null = null;
 
   for (const analysis of analyses) {
-    const spectra = analysis.getXYSpectrum(query);
+    let spectra = enforceGrowing
+      ? analysis.getNormalizedSpectrum({
+          selector: query,
+          normalization: { filters: [{ name: 'ensureGrowing' }] },
+        })
+      : analysis.getXYSpectrum(query);
     if (!spectra) continue;
 
     if (spectra.meta) {
