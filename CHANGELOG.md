@@ -1,5 +1,46 @@
 # Changelog
 
+## [0.13.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.12.0...v0.13.0) (2021-03-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* getDistinct does not lowercase values
+
+### Features
+
+* add Analysys.getXY ([230a374](https://www.github.com/cheminfo/common-spectrum/commit/230a3745210622fa868718a5ce4d7171afe127ae))
+* add baseline filters ([7c39f87](https://www.github.com/cheminfo/common-spectrum/commit/7c39f87f7602dcb15653c666e800496d84aeb63c))
+* add configuration options for each component ([ad949e7](https://www.github.com/cheminfo/common-spectrum/commit/ad949e74fccb7743f87050cc05966717e453365e))
+* add filter that removes not crecent x values ([91eb815](https://www.github.com/cheminfo/common-spectrum/commit/91eb8155dba9bae6242ca622b268b12c1959f93d))
+* add function for multiple spectra retrieval ([0a9a56b](https://www.github.com/cheminfo/common-spectrum/commit/0a9a56b3ba156fa7093362f5fdaf20a47ce6067a))
+* add getDistinctDataTypes, getDistinctTitles, getDistinctMeta ([6266b68](https://www.github.com/cheminfo/common-spectrum/commit/6266b68b5a9aa2347d0af6491865293e0a7bc697))
+* add getDistinctLabels and getDistinctUnits ([7487200](https://www.github.com/cheminfo/common-spectrum/commit/748720032019f51649b28d04cdccc9a9d1a87396))
+* Add JSGraph object ([1b0a3f4](https://www.github.com/cheminfo/common-spectrum/commit/1b0a3f4570cb9a6109eaa7728934f603c07001ca))
+* add option to ensure growing on x axis ([#36](https://www.github.com/cheminfo/common-spectrum/issues/36)) ([be0f2b2](https://www.github.com/cheminfo/common-spectrum/commit/be0f2b2b73f16ff468c719698a27435ee2982522))
+* added third derivative ([#23](https://www.github.com/cheminfo/common-spectrum/issues/23)) ([6c101b9](https://www.github.com/cheminfo/common-spectrum/commit/6c101b9e1f15aa50d10721c10a39f37479890023))
+* export to csv ([#29](https://www.github.com/cheminfo/common-spectrum/issues/29)) ([d7fae5b](https://www.github.com/cheminfo/common-spectrum/commit/d7fae5b3f5184626f2ced561f150b05c81293fc1))
+* if log scale remove x<=0 point ([7d1a8ac](https://www.github.com/cheminfo/common-spectrum/commit/7d1a8ac502ffa27409a05e672d69299137ec197b))
+* **getJSGraph:** add xAxis and yAxis options ([03b1245](https://www.github.com/cheminfo/common-spectrum/commit/03b1245502929ddee8493234dc007f4d9a29dfe5))
+* allow to store `tmp` information in spectra ([794a1fd](https://www.github.com/cheminfo/common-spectrum/commit/794a1fd667a9b9d2a468f793479b654f92c0d96f))
+* export metadata to reactplot ([12549df](https://www.github.com/cheminfo/common-spectrum/commit/12549dffd20139da269c4a33db37f212b6145e72))
+* getDistinct does not lowercase values ([94f162c](https://www.github.com/cheminfo/common-spectrum/commit/94f162cc6a04d1ef4ed2b090c90d44b2c9a2b131))
+* migration to Typescript ([#25](https://www.github.com/cheminfo/common-spectrum/issues/25)) ([c953912](https://www.github.com/cheminfo/common-spectrum/commit/c953912a8c3a0bf50208cee42f43f9850491f206))
+
+
+### Bug Fixes
+
+* add default option for getReactPlot ([9bf160f](https://www.github.com/cheminfo/common-spectrum/commit/9bf160fa24a0983466a7915b010575deecd594e7))
+* add id to axis for reactPlot ([0219bc0](https://www.github.com/cheminfo/common-spectrum/commit/0219bc0e99a7062c39bebab0b9ccdc3846d9c04b))
+* allow empty data as options ([#34](https://www.github.com/cheminfo/common-spectrum/issues/34)) ([0abd7b6](https://www.github.com/cheminfo/common-spectrum/commit/0abd7b6147a49d0cb630c26e7e9548d8cb5ca5b6))
+* delete previous documentation ([18abd56](https://www.github.com/cheminfo/common-spectrum/commit/18abd566a93dfc64bf71f148c3917f806889ea1f))
+* dependencies update removes inference error ([0dc8610](https://www.github.com/cheminfo/common-spectrum/commit/0dc8610d5506c0214b25d5a37315b2101ba3c47a))
+* deployment of getReactPlot ([f3a2caf](https://www.github.com/cheminfo/common-spectrum/commit/f3a2caf0dcb1d4d0dd8d0ea8daa1ef2490150ff6))
+* missing export ([f5daa33](https://www.github.com/cheminfo/common-spectrum/commit/f5daa33691e917f550b62312d0b0993d5c27423f))
+* publish lib-esm in npm ([dbad0a1](https://www.github.com/cheminfo/common-spectrum/commit/dbad0a11cadb3fc6d01fa622576c6b25b46af59b))
+* typo in normalizer filter ([b7d5336](https://www.github.com/cheminfo/common-spectrum/commit/b7d53362ebf13ffb3009f616d9036fb2bffca7de))
+* wrong iteration over reactPlot data ([fbab146](https://www.github.com/cheminfo/common-spectrum/commit/fbab1465cf943964007fb6174d7179c2187c5379))
+
 ### [0.24.1](https://www.github.com/cheminfo/common-spectrum/compare/v0.24.0...v0.24.1) (2021-03-04)
 
 
