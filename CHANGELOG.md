@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.25.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.24.1...v0.25.0) (2021-03-05)
+
+
+### Features
+
+* add option to ensure growing on x axis ([#36](https://www.github.com/cheminfo/common-spectrum/issues/36)) ([be0f2b2](https://www.github.com/cheminfo/common-spectrum/commit/be0f2b2b73f16ff468c719698a27435ee2982522))
+
+
+### Bug Fixes
+
+* update release action ([#38](https://www.github.com/cheminfo/common-spectrum/issues/38)) ([42c4612](https://www.github.com/cheminfo/common-spectrum/commit/42c461220cb4a9e119903e72150f7693ab706c88))
+
 ### [0.24.1](https://www.github.com/cheminfo/common-spectrum/compare/v0.24.0...v0.24.1) (2021-03-04)
 
 
