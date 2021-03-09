@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.25.1](https://www.github.com/cheminfo/common-spectrum/compare/v0.25.0...v0.25.1) (2021-03-09)
+
+
+### Bug Fixes
+
+* rename typo ([#40](https://www.github.com/cheminfo/common-spectrum/issues/40)) ([12f569e](https://www.github.com/cheminfo/common-spectrum/commit/12f569ed76ec50def2c57376016b96cf4dc67bdf))
+
 ## [0.25.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.24.1...v0.25.0) (2021-03-05)
 
 
