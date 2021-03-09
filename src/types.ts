@@ -78,6 +78,6 @@ export interface PlotObject {
     data: Array<{ x: number; y: number }>;
   }>;
   axes: Array<{ position: 'bottom' | 'left'; label: string }>;
-  dimentions: { width: number; heigth: number };
+  dimensions: { width: number; heigth: number };
   meta: json[];
 }

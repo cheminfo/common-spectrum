@@ -14,7 +14,7 @@ export interface ReactPlotOptions {
   xAxis?: Partial<AxisProps>;
   yAxis?: Partial<AxisProps>;
   series?: Partial<LineSeriesProps>;
-  dimentions?: Omit<PlotProps, 'colorScheme' | 'children'>;
+  dimensions?: Omit<PlotProps, 'colorScheme' | 'children'>;
 }
 
 /**
@@ -46,7 +46,7 @@ export function getReactPlotJSON(
     xAxis: xAxisOptions = {},
     yAxis: yAxisOptions = { labelSpace: 40 },
     series: seriesOptions = { displayMarker: true },
-    dimentions = { width: 550, height: 500 },
+    dimensions = { width: 550, height: 500 },
   } = options;
   let series = [];
   let meta: Record<string, string>[] = [];
@@ -96,7 +96,7 @@ export function getReactPlotJSON(
   return {
     series,
     axes: [xAxis, yAxis],
-    dimentions,
+    dimensions,
     meta,
   };
 }
