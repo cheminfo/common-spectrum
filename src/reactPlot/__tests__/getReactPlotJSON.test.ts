@@ -6,22 +6,22 @@ const spectra = {
     x: {
       data: [1, 2],
       units: 'V',
-      label: 'Voltage',
+      label: 'Voltage [V]',
     },
     y: {
       data: [0.5, 0.2],
       units: 'A',
-      label: 'Current',
+      label: 'Current [A]',
     },
     z: {
       data: [5, 6],
       units: '°C',
-      label: 'Temperature',
+      label: 'Temperature [°C]',
     },
     t: {
       data: [7, 8],
       units: 's',
-      label: 'Time',
+      label: 'Time [s]',
     },
   },
 };
@@ -45,7 +45,35 @@ test('simple test case', () => {
   });
   expect(result.series).toHaveLength(len);
   expect(result.axes).toStrictEqual([
-    { id: 'x', label: 'Voltage', position: 'bottom' },
-    { id: 'y', label: 'Current', position: 'left', labelSpace: 40 },
+    { id: 'x', label: 'Voltage [V]', position: 'bottom' },
+    { id: 'y', label: 'Current [A]', position: 'left', labelSpace: 40 },
+  ]);
+});
+
+test('enforce growing', () => {
+  const len = 3;
+  let analyses = new Array(len);
+  for (let i = 0; i < len; i++) {
+    analyses[i] = new Analysis();
+    analyses[i].pushSpectrum(spectra.variables, { title: `Vg = ${i + 3}` });
+  }
+
+  // ignored value
+  analyses.push(new Analysis());
+
+  const result = getReactPlotJSON(
+    analyses,
+    {
+      xLabel: 'Voltage',
+      xUnits: 'kV',
+      yLabel: 'Current',
+      yUnits: 'mA',
+    },
+    { enforceGrowing: true },
+  );
+  expect(result.series).toHaveLength(len);
+  expect(result.axes).toStrictEqual([
+    { id: 'x', label: 'Voltage [kV]', position: 'bottom' },
+    { id: 'y', label: 'Current [mA]', position: 'left', labelSpace: 40 },
   ]);
 });

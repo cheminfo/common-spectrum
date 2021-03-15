@@ -57,6 +57,7 @@ export function getNormalizedSpectrum(
     filters = [],
     exclusions = [],
     processing = '',
+    keepYUnits = false,
   } = options;
   let { x, y } = filterX(data, { from, to });
 
@@ -115,7 +116,7 @@ export function getNormalizedSpectrum(
     default:
   }
 
-  if (filters.length) {
+  if (!keepYUnits && filters.length) {
     // filters change the y axis, we get rid of the units
     newSpectrum.variables.y.units = '';
     newSpectrum.variables.y.label = newSpectrum.variables.y.label?.replace(

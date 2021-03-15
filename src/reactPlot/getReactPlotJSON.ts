@@ -57,7 +57,10 @@ export function getReactPlotJSON(
     let spectra = enforceGrowing
       ? analysis.getNormalizedSpectrum({
           selector: query,
-          normalization: { filters: [{ name: 'ensureGrowing' }] },
+          normalization: {
+            filters: [{ name: 'ensureGrowing' }],
+            keepYUnits: true,
+          },
         })
       : analysis.getXYSpectrum(query);
     if (!spectra) continue;
