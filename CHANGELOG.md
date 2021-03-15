@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.26.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.25.1...v0.26.0) (2021-03-15)
+
+
+### Features
+
+* keep the units after filtering by user ([#42](https://www.github.com/cheminfo/common-spectrum/issues/42)) ([02eaa88](https://www.github.com/cheminfo/common-spectrum/commit/02eaa88a3b43e461d4504927e6589424e3dc42e4))
+
 ### [0.25.1](https://www.github.com/cheminfo/common-spectrum/compare/v0.25.0...v0.25.1) (2021-03-09)
 
 
