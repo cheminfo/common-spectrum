@@ -69,6 +69,7 @@ export interface NormalizedSpectrumOptions {
   processing?: boolean;
   filters?: NormalizedFilters[];
   exclusions?: string[];
+  keepYUnits?: boolean;
 }
 export interface PlotObject {
   series: Array<{
