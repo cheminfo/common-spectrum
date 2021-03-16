@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.26.1](https://www.github.com/cheminfo/common-spectrum/compare/v0.26.0...v0.26.1) (2021-03-16)
+
+
+### Bug Fixes
+
+* export reactPlot separatelly from jsgraph ([6ae3041](https://www.github.com/cheminfo/common-spectrum/commit/6ae304191de4b18a8f2df091d11c484e4925135f))
+
 ## [0.26.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.25.1...v0.26.0) (2021-03-15)
 
 
