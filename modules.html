@@ -79,6 +79,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function"><a href="modules.html#fromjcamp" class="tsd-kind-icon">from<wbr>Jcamp</a></li>
 								<li class="tsd-kind-function"><a href="modules.html#getnormalizedspectrum" class="tsd-kind-icon">get<wbr>Normalized<wbr>Spectrum</a></li>
+								<li class="tsd-kind-function"><a href="modules.html#getreactplotjson" class="tsd-kind-icon">get<wbr>React<wbr>PlotJSON</a></li>
 								<li class="tsd-kind-function"><a href="modules.html#tojcamp" class="tsd-kind-icon">to<wbr>Jcamp</a></li>
 								<li class="tsd-kind-function"><a href="modules.html#tojcamps" class="tsd-kind-icon">to<wbr>Jcamps</a></li>
 								<li class="tsd-kind-function"><a href="modules.html#totext" class="tsd-kind-icon">to<wbr>Text</a></li>
@@ -92,10 +93,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-variable">
 					<a name="jsgraph" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> JSGraph</h3>
-					<div class="tsd-signature tsd-kind-icon">JSGraph<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>getJSGraph<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>analyses<span class="tsd-signature-symbol">: </span><a href="classes/analysis.html" class="tsd-signature-type" data-tsd-kind="Class">Analysis</a><span class="tsd-signature-symbol">[]</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">JSGraphOptions</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-symbol">{ </span>axes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>display<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>flipped<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>label<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>logScale<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>unit<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>units<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">; </span>y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>display<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>flipped<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>label<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>logScale<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>unit<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>units<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">; </span>series<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">; </span>getNormalizationAnnotations<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">AnnotationsFilter</span>, boundary<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span>y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>max<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>min<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-symbol">{ </span>fillColor<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>position<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>strokeWidth<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>getReactPlotJSON<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>analyses<span class="tsd-signature-symbol">: </span><a href="classes/analysis.html" class="tsd-signature-type" data-tsd-kind="Class">Analysis</a><span class="tsd-signature-symbol">[]</span>, query<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SelectorType</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">ReactPlotOptions</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">PlotObjectType</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>meta<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> = ...</span></div>
+					<div class="tsd-signature tsd-kind-icon">JSGraph<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>getJSGraph<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>analyses<span class="tsd-signature-symbol">: </span><a href="classes/analysis.html" class="tsd-signature-type" data-tsd-kind="Class">Analysis</a><span class="tsd-signature-symbol">[]</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">JSGraphOptions</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-symbol">{ </span>axes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>display<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>flipped<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>label<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>logScale<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>unit<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>units<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">; </span>y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>display<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>flipped<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>label<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>logScale<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>unit<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>units<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">; </span>series<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">; </span>getNormalizationAnnotations<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">AnnotationsFilter</span>, boundary<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span>y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>max<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>min<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-symbol">{ </span>fillColor<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>position<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>strokeWidth<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/63e5da1/src/index.ts#L13">index.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/026dacd/src/index.ts#L13">index.ts:13</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -243,38 +244,6 @@
 									</li>
 								</ul>
 							</li>
-							<li class="tsd-parameter">
-								<h5>get<wbr>React<wbr>PlotJSON<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>analyses<span class="tsd-signature-symbol">: </span><a href="classes/analysis.html" class="tsd-signature-type" data-tsd-kind="Class">Analysis</a><span class="tsd-signature-symbol">[]</span>, query<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SelectorType</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">ReactPlotOptions</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">PlotObjectType</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>meta<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span></h5>
-								<ul class="tsd-parameters">
-									<li class="tsd-parameter-signature">
-										<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-literal">
-											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>analyses<span class="tsd-signature-symbol">: </span><a href="classes/analysis.html" class="tsd-signature-type" data-tsd-kind="Class">Analysis</a><span class="tsd-signature-symbol">[]</span>, query<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SelectorType</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">ReactPlotOptions</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">PlotObjectType</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>meta<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span></li>
-										</ul>
-										<ul class="tsd-descriptions">
-											<li class="tsd-description">
-												<div class="tsd-comment tsd-typography">
-													<div class="lead">
-														<p>Generate a jsgraph chart format from an array of Analysis</p>
-													</div>
-												</div>
-												<h4 class="tsd-parameters-title">Parameters</h4>
-												<ul class="tsd-parameters">
-													<li>
-														<h5>analyses: <a href="classes/analysis.html" class="tsd-signature-type" data-tsd-kind="Class">Analysis</a><span class="tsd-signature-symbol">[]</span></h5>
-													</li>
-													<li>
-														<h5>query: <span class="tsd-signature-type">SelectorType</span></h5>
-													</li>
-													<li>
-														<h5>options: <span class="tsd-signature-type">ReactPlotOptions</span><span class="tsd-signature-symbol"> = ...</span></h5>
-													</li>
-												</ul>
-												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">PlotObjectType</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>meta<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span></h4>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</li>
 						</ul>
 					</div>
 				</section>
@@ -291,7 +260,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/63e5da1/src/from/fromJcamp.ts#L14">from/fromJcamp.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/026dacd/src/from/fromJcamp.ts#L14">from/fromJcamp.ts:14</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -330,7 +299,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/63e5da1/src/util/getNormalizedSpectrum.ts#L27">util/getNormalizedSpectrum.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/026dacd/src/util/getNormalizedSpectrum.ts#L27">util/getNormalizedSpectrum.ts:27</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -347,6 +316,40 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="getreactplotjson" class="tsd-anchor"></a>
+					<h3>get<wbr>React<wbr>PlotJSON</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>React<wbr>PlotJSON<span class="tsd-signature-symbol">(</span>analyses<span class="tsd-signature-symbol">: </span><a href="classes/analysis.html" class="tsd-signature-type" data-tsd-kind="Class">Analysis</a><span class="tsd-signature-symbol">[]</span>, query<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SelectorType</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">ReactPlotOptions</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">PlotObjectType</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>meta<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/026dacd/src/reactPlot/getReactPlotJSON.ts#L39">reactPlot/getReactPlotJSON.ts:39</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Generate a jsgraph chart format from an array of Analysis</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>analyses: <a href="classes/analysis.html" class="tsd-signature-type" data-tsd-kind="Class">Analysis</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li>
+									<h5>query: <span class="tsd-signature-type">SelectorType</span></h5>
+								</li>
+								<li>
+									<h5>options: <span class="tsd-signature-type">ReactPlotOptions</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">PlotObjectType</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>meta<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
 					<a name="tojcamp" class="tsd-anchor"></a>
 					<h3>to<wbr>Jcamp</h3>
 					<ul class="tsd-signatures tsd-kind-function">
@@ -356,7 +359,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/63e5da1/src/to/toJcamp.ts#L9">to/toJcamp.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/026dacd/src/to/toJcamp.ts#L9">to/toJcamp.ts:9</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -382,7 +385,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/63e5da1/src/to/toJcamps.ts#L10">to/toJcamps.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/026dacd/src/to/toJcamps.ts#L10">to/toJcamps.ts:10</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -408,7 +411,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/63e5da1/src/to/toText.ts#L10">to/toText.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/026dacd/src/to/toText.ts#L10">to/toText.ts:10</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -450,6 +453,9 @@
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="modules.html#getnormalizedspectrum" class="tsd-kind-icon">get<wbr>Normalized<wbr>Spectrum</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#getreactplotjson" class="tsd-kind-icon">get<wbr>React<wbr>PlotJSON</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="modules.html#tojcamp" class="tsd-kind-icon">to<wbr>Jcamp</a>
