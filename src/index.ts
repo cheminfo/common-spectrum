@@ -1,6 +1,5 @@
 import { getJSGraph } from './jsgraph/getJSGraph';
 import { getNormalizationAnnotations } from './jsgraph/getNormalizationAnnotations';
-import { getReactPlotJSON } from './reactPlot/getReactPlotJSON';
 
 export * from './AnalysesManager';
 export * from './Analysis';
@@ -9,9 +8,9 @@ export * from './to/toJcamp';
 export * from './to/toJcamps';
 export * from './to/toText';
 export * from './util/getNormalizedSpectrum';
+export { getReactPlotJSON } from './reactPlot/getReactPlotJSON';
 
 export const JSGraph = {
   getJSGraph,
-  getReactPlotJSON,
   getNormalizationAnnotations,
 };
