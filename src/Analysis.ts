@@ -12,9 +12,9 @@ import type {
 import { getNormalizedSpectrum } from './util/getNormalizedSpectrum';
 import { getXYSpectrum } from './util/getXYSpectrum';
 
-interface SpectrumCallback {
-  (variables: Record<string, VariableType>): Record<string, VariableType>;
-}
+type SpectrumCallback = (
+  variables: Record<string, VariableType>,
+) => Record<string, VariableType>;
 
 interface AnalysisOptions {
   id?: string;
@@ -127,7 +127,7 @@ export class Analysis {
  */
 function standardizeData(
   variables: Record<string, VariableType>,
-  options: Omit<SpectrumType, 'variables'> = {},
+  options: Omit<SpectrumType, 'variables'>,
   analysisOptions: any,
 ) {
   let { meta = {}, tmp = {}, dataType = '', title = '' } = options;
