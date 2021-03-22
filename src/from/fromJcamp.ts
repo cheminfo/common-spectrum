@@ -9,6 +9,7 @@ import { VariableType } from '../types';
  * @param {object} [options={}]
  * @param {object} [options.id=Math.random()]
  * @param {string} [options.label=options.id] human redeable label
+ * @param {string} [options.spectrumCallback] a callback to apply on variables when creating spectrum
  * @return {Analysis} - New class element with the given data
  */
 export function fromJcamp(jcamp: string, options = {}): Analysis {

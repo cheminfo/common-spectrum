@@ -12,9 +12,14 @@ import type {
 import { getNormalizedSpectrum } from './util/getNormalizedSpectrum';
 import { getXYSpectrum } from './util/getXYSpectrum';
 
+interface SpectrumCallback {
+  (variables: Record<string, VariableType>): Record<string, VariableType>;
+}
+
 interface AnalysisOptions {
   id?: string;
   label?: string;
+  spectrumCallback?: SpectrumCallback;
 }
 interface NormalizedOptions {
   normalization?: NormalizedSpectrumOptions;
@@ -29,12 +34,14 @@ interface NormalizedOptions {
 export class Analysis {
   public id: string;
   public label: string;
+  public spectrumCallback: SpectrumCallback | undefined;
   public spectra: Array<SpectrumType>;
   public cache: Record<string, SpectrumType | undefined>;
 
   public constructor(options: AnalysisOptions = {}) {
     this.id = options.id || Math.random().toString(36).substring(2, 10);
     this.label = options.label || this.id;
+    this.spectrumCallback = options.spectrumCallback;
     this.spectra = [];
     this.cache = {};
   }
@@ -46,7 +53,11 @@ export class Analysis {
     variables: Record<string, VariableType>,
     options: Omit<SpectrumType, 'variables'> = {},
   ) {
-    this.spectra.push(standardizeData(variables, options));
+    this.spectra.push(
+      standardizeData(variables, options, {
+        spectrumCallback: this.spectrumCallback,
+      }),
+    );
     this.cache = {};
   }
 
@@ -117,8 +128,14 @@ export class Analysis {
 function standardizeData(
   variables: Record<string, VariableType>,
   options: Omit<SpectrumType, 'variables'> = {},
+  analysisOptions: any,
 ) {
   let { meta = {}, tmp = {}, dataType = '', title = '' } = options;
+  const { spectrumCallback } = analysisOptions;
+
+  if (spectrumCallback) {
+    spectrumCallback(variables);
+  }
 
   let xVariable = variables.x;
   let yVariable = variables.y;
