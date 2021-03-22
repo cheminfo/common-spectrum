@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.27.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.26.1...v0.27.0) (2021-03-22)
+
+
+### Features
+
+* add spectrumCallback ([0a7e832](https://www.github.com/cheminfo/common-spectrum/commit/0a7e832ec454a28b6fe9bd3d3c52d6b276ef3765))
+
 ### [0.26.1](https://www.github.com/cheminfo/common-spectrum/compare/v0.26.0...v0.26.1) (2021-03-16)
 
 
