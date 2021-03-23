@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.28.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.27.0...v0.28.0) (2021-03-23)
+
+
+### Features
+
+* add variables to the selector ([152c741](https://www.github.com/cheminfo/common-spectrum/commit/152c7417c0d3d5a9fbe33d1095cc254a17c8e90b))
+* allow to use xVariable and yVariable as selector ([15c543a](https://www.github.com/cheminfo/common-spectrum/commit/15c543a6dd9a5226b1a48cebac9350893560a0fd))
+
 ## [0.27.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.26.1...v0.27.0) (2021-03-22)
 
 
