@@ -8,9 +8,11 @@ import type {
   SelectorType,
   SpectrumType,
   VariableType,
+  PeakPickingOptions,
 } from './types';
 import { getNormalizedSpectrum } from './util/getNormalizedSpectrum';
 import { getXYSpectrum } from './util/getXYSpectrum';
+import { peakPicking } from './util/peakPicking';
 
 type SpectrumCallback = (
   variables: Record<string, VariableType>,
@@ -101,6 +103,16 @@ export class Analysis {
     const spectrum = this.getXYSpectrum(selector);
     if (!spectrum) return undefined;
     return getNormalizedSpectrum(spectrum, normalization);
+  }
+
+  /**
+   * Return an object corresponding to the result of a peakPicking
+   * @param target
+   * @param options
+   * @returns
+   */
+  public getPeak(target: number, options: PeakPickingOptions = {}) {
+    return peakPicking(this.spectra[0], target, options);
   }
 
   /**

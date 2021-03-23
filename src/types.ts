@@ -97,3 +97,14 @@ export interface PlotObject {
   dimensions: { width: number; heigth: number };
   meta: json[];
 }
+
+export interface PeakPickingOptions {
+  /** x variable label, by default 'x' */
+  xVariable?: string;
+  /** y variable label, by default 'y' */
+  yVariable?: string;
+  /** should we look for the closest min / max, default true */
+  optimize?: boolean;
+  /** is it a min or max value, default true */
+  max?: boolean;
+}
