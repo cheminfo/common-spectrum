@@ -13,6 +13,8 @@ export interface SelectorType {
   xLabel?: string | RegExp;
   /** Filter based on yLabel */
   yLabel?: string | RegExp;
+  /** Allows to specify X and Y variables using a string like 'c vs d' */
+  variables?: string;
   /** Select a specific X variable by one letter name */
   xVariable?: string;
   /** Select a specific Y variable by one letter name */

@@ -24,6 +24,7 @@ export function getXYSpectrum(
       title,
       xUnits,
       yUnits,
+      variables,
       xVariable = 'x',
       yVariable = 'y',
       units,
@@ -55,8 +56,9 @@ export function getXYSpectrum(
 
     if (units && !xUnits && !yUnits) [yUnits, xUnits] = units.split(/\s*vs\s*/);
     if (labels && !xLabel && !yLabel) {
-      [xLabel, yLabel] = labels.split(/\s*vs\s*/);
+      [yLabel, xLabel] = labels.split(/\s*vs\s*/);
     }
+    if (variables) [yVariable, xVariable] = variables.split(/\s*vs\s*/);
 
     if (xLabel) xLabel = ensureRegexp(xLabel);
     if (yLabel) yLabel = ensureRegexp(yLabel);
