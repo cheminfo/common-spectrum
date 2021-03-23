@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.29.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.28.0...v0.29.0) (2021-03-23)
+
+
+### Features
+
+* add Analysis.peakPicking ([332db57](https://www.github.com/cheminfo/common-spectrum/commit/332db573553169aaff51facaa960343448539640))
+
 ## [0.28.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.27.0...v0.28.0) (2021-03-23)
 
 
