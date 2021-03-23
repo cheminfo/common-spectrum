@@ -24,6 +24,8 @@ export function getXYSpectrum(
       title,
       xUnits,
       yUnits,
+      xVariable = 'x',
+      yVariable = 'y',
       units,
       labels,
       xLabel,
@@ -31,7 +33,7 @@ export function getXYSpectrum(
       meta,
     } = selector;
 
-    // we filter on generatl spectrum information
+    // we filter on general spectrum information
     if (dataType) {
       dataType = ensureRegexp(dataType);
       if (!spectrum.dataType || !spectrum.dataType.match(dataType)) continue;
@@ -62,12 +64,12 @@ export function getXYSpectrum(
     let x = getPossibleVariable(spectrum.variables, {
       units: xUnits,
       label: xLabel,
-      variableName: 'x',
+      variableName: xVariable,
     });
     let y = getPossibleVariable(spectrum.variables, {
       units: yUnits,
       label: yLabel,
-      variableName: 'y',
+      variableName: yVariable,
     });
 
     if (x && y) {
@@ -116,6 +118,9 @@ function getPossibleVariable(
     if (possible[variableName]) return possible[variableName];
     if (possible[variableName.toUpperCase()]) {
       return possible[variableName.toUpperCase()];
+    }
+    if (possible[variableName.toLowerCase()]) {
+      return possible[variableName.toLowerCase()];
     }
   }
 

@@ -281,4 +281,20 @@ describe('getXYSpectrum', () => {
       },
     });
   });
+
+  it('xVariable: t, yVariable: a', () => {
+    let xy = getXYSpectrum(spectra, { xVariable: 't', yVariable: 'Z' });
+    expect(xy).toMatchObject({
+      variables: {
+        x: {
+          units: 's',
+          label: 'Time [s]',
+        },
+        y: {
+          units: '°C',
+          label: 'Expected temperature [°C]',
+        },
+      },
+    });
+  });
 });
