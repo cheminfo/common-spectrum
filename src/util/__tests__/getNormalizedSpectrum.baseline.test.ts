@@ -79,16 +79,16 @@ describe('getNormalizedSpectrum baseline', () => {
       filters: [{ name: 'rollingballBaseline' }],
     });
     expect(Array.from(normalized.variables.y.data)).toMatchCloseTo([
-      0,
-      -2,
-      0,
-      -4,
-      0,
-      -2,
-      0,
-      -2,
+      -0.5,
       0,
       0,
+      -8,
+      16,
+      -8,
+      0,
+      0,
+      0,
+      0.5,
     ]);
   });
 
