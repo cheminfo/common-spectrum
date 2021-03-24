@@ -1,9 +1,10 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
+import type { VariableType } from '../../types';
 import { fromJcamp } from '../fromJcamp';
 
-function irCallback(variables: any) {
+function irCallback(variables: Record<string, VariableType>) {
   if (variables.y.label === 'ABSORBANCE') {
     variables.t = {
       data: variables.y.data.map(
