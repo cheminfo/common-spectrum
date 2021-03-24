@@ -106,13 +106,11 @@ export class Analysis {
   }
 
   /**
-   * Return an object corresponding to the result of a peakPicking
-   * @param target
-   * @param options
+   * Returns the first spectrum. This method could be improved in the future
    * @returns
    */
-  public getPeak(target: number, options: PeakPickingOptions = {}) {
-    return peakPicking(this.spectra[0], target, options);
+  public getSpectrum() {
+    return this.spectra[0];
   }
 
   /**

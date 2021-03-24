@@ -8,6 +8,9 @@ export * from './to/toJcamp';
 export * from './to/toJcamps';
 export * from './to/toText';
 export * from './util/getNormalizedSpectrum';
+
+export * from './util/peakPicking';
+
 export { getReactPlotJSON } from './reactPlot/getReactPlotJSON';
 
 export const JSGraph = {
