@@ -10,6 +10,7 @@ export * from './to/toText';
 export * from './util/getNormalizedSpectrum';
 
 export * from './util/peakPicking';
+export * from './util/autoPeakPicking';
 
 export { getReactPlotJSON } from './reactPlot/getReactPlotJSON';
 

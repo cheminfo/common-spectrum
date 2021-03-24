@@ -108,3 +108,10 @@ export interface PeakPickingOptions {
   /** is it a min or max value, default true */
   max?: boolean;
 }
+
+export interface AutoPeakPickingOptions {
+  /** x variable label, by default 'x' */
+  xVariable?: string;
+  /** y variable label, by default 'y' */
+  yVariable?: string;
+}

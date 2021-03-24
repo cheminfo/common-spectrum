@@ -1,0 +1,53 @@
+import { SpectrumType } from '../../types';
+import { autoPeakPicking } from '../autoPeakPicking';
+
+describe('autoPeakPicking', () => {
+  const spectrum: SpectrumType = {
+    variables: {
+      x: {
+        data: [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+        ],
+        label: 'x',
+      },
+      y: {
+        data: [1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1],
+        label: 'y',
+      },
+      z: {
+        data: [0, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 3, 4, 5, 6, 5, 4, 3, 2],
+        label: 'z',
+      },
+    },
+  };
+
+  it('No options', () => {
+    let peaks = autoPeakPicking(spectrum);
+    expect(peaks).toStrictEqual([
+      { x: 6, y: 6, z: 5, width: 4 },
+      { x: 14, y: 6, z: 5, width: 4 },
+    ]);
+  });
+  it('xVariable=x, yVariable=z', () => {
+    let peaks = autoPeakPicking(spectrum, { xVariable: 'x', yVariable: 'z' });
+    expect(peaks).toStrictEqual([{ x: 7, y: 5, z: 6, width: 4 }]);
+  });
+});

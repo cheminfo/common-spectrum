@@ -8,11 +8,9 @@ import type {
   SelectorType,
   SpectrumType,
   VariableType,
-  PeakPickingOptions,
 } from './types';
 import { getNormalizedSpectrum } from './util/getNormalizedSpectrum';
 import { getXYSpectrum } from './util/getXYSpectrum';
-import { peakPicking } from './util/peakPicking';
 
 type SpectrumCallback = (
   variables: Record<string, VariableType>,
