@@ -136,7 +136,7 @@ export class Analysis {
 function standardizeData(
   variables: Record<string, VariableType>,
   options: Omit<SpectrumType, 'variables'>,
-  analysisOptions: any,
+  analysisOptions: Pick<AnalysisOptions, 'spectrumCallback'>,
 ) {
   let { meta = {}, tmp = {}, dataType = '', title = '' } = options;
   const { spectrumCallback } = analysisOptions;
