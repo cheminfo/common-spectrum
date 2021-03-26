@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.30.1](https://www.github.com/cheminfo/common-spectrum/compare/v0.30.0...v0.30.1) (2021-03-26)
+
+
+### Bug Fixes
+
+* put back type definition to allow build and doc generation ([10ebed9](https://www.github.com/cheminfo/common-spectrum/commit/10ebed932a6077e65dcb96750498c989e7a26f32))
+
 ## [0.30.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.29.0...v0.30.0) (2021-03-26)
 
 
