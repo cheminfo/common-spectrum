@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.30.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.29.0...v0.30.0) (2021-03-26)
+
+
+### Features
+
+* add autoPeakPicking(spectrum) ([2a7034c](https://www.github.com/cheminfo/common-spectrum/commit/2a7034cb8be68864f1990ad0454e945474b37e0b))
+* refactor to expose peakPicking(spectrum) ([391b2ec](https://www.github.com/cheminfo/common-spectrum/commit/391b2ec3264c543d37a56bed3a928a643c77c68e))
+
+
+### Bug Fixes
+
+* move devdeps for simplification over dependents ([115caf3](https://www.github.com/cheminfo/common-spectrum/commit/115caf38235e82acfb0531b8395eb328d185926b))
+
 ## [0.29.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.28.0...v0.29.0) (2021-03-23)
 
 
