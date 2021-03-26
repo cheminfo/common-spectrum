@@ -47,8 +47,10 @@
     "trailingComma": "all"
   },
   "devDependencies": {
+    "@types/d3-scale": "^3.2.2",
     "@types/jest": "^26.0.21",
     "@types/js-quantities": "^1.6.2",
+    "@types/react": "^17.0.3",
     "cheminfo-build": "^1.1.10",
     "eslint": "^7.22.0",
     "eslint-config-cheminfo-typescript": "^8.0.8",
