@@ -1,21 +1,15 @@
-import type {
-  AxisProps,
-  LineSeriesProps,
-  PlotObjectType,
-  PlotProps,
-} from 'react-plot';
+import type { AxisProps, LineSeriesProps, PlotObjectType } from 'react-plot';
 
 import { Analysis } from '../Analysis';
 import { SelectorType } from '../types';
 
 type LineSeriesType = { type: 'line' } & LineSeriesProps;
-export interface ReactPlotOptions {
+export type ReactPlotOptions = Omit<PlotObjectType, 'axes' | 'series'> & {
   enforceGrowing?: boolean;
   xAxis?: Partial<AxisProps>;
   yAxis?: Partial<AxisProps>;
   series?: Partial<LineSeriesProps>;
-  dimensions?: Omit<PlotProps, 'colorScheme' | 'children'>;
-}
+};
 
 /**
  * Parses from {x[], y[]} to [{x,y}]
@@ -47,6 +41,7 @@ export function getReactPlotJSON(
     yAxis: yAxisOptions = { labelSpace: 40 },
     series: seriesOptions = { displayMarker: true },
     dimensions = { width: 550, height: 500 },
+    ...otherOptions
   } = options;
   let series = [];
   let meta: Record<string, string>[] = [];
@@ -101,5 +96,6 @@ export function getReactPlotJSON(
     axes: [xAxis, yAxis],
     dimensions,
     meta,
+    ...otherOptions,
   };
 }
