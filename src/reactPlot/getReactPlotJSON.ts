@@ -43,10 +43,11 @@ export function getReactPlotJSON(
     dimensions = { width: 550, height: 500 },
     ...otherOptions
   } = options;
-  let series = [];
+  let series: PlotObjectType['series'] = [];
   let meta: Record<string, string>[] = [];
-  let xAxis: AxisProps | null = null;
-  let yAxis: AxisProps | null = null;
+  type Axes = { type: 'main' } & AxisProps;
+  let xAxis: Axes | null = null;
+  let yAxis: Axes | null = null;
 
   for (const analysis of analyses) {
     let spectra = enforceGrowing
@@ -69,12 +70,14 @@ export function getReactPlotJSON(
       label: spectra.variables.x.label,
       ...xAxisOptions,
       position: 'bottom',
+      type: 'main',
     };
     yAxis = {
       id: 'y',
       label: spectra.variables.y.label,
       ...yAxisOptions,
       position: 'left',
+      type: 'main',
     };
 
     const data = getData(spectra.variables.x.data, spectra.variables.y.data);

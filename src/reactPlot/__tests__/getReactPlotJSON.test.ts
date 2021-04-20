@@ -45,8 +45,14 @@ test('simple test case', () => {
   });
   expect(result.series).toHaveLength(len);
   expect(result.axes).toStrictEqual([
-    { id: 'x', label: 'Voltage [V]', position: 'bottom' },
-    { id: 'y', label: 'Current [A]', position: 'left', labelSpace: 40 },
+    { id: 'x', label: 'Voltage [V]', position: 'bottom', type: 'main' },
+    {
+      id: 'y',
+      label: 'Current [A]',
+      position: 'left',
+      labelSpace: 40,
+      type: 'main',
+    },
   ]);
 });
 
@@ -73,7 +79,13 @@ test('enforce growing', () => {
   );
   expect(result.series).toHaveLength(len);
   expect(result.axes).toStrictEqual([
-    { id: 'x', label: 'Voltage [kV]', position: 'bottom' },
-    { id: 'y', label: 'Current [mA]', position: 'left', labelSpace: 40 },
+    { id: 'x', label: 'Voltage [kV]', position: 'bottom', type: 'main' },
+    {
+      id: 'y',
+      label: 'Current [mA]',
+      position: 'left',
+      labelSpace: 40,
+      type: 'main',
+    },
   ]);
 });
