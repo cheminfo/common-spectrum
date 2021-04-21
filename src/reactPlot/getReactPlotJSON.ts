@@ -4,11 +4,11 @@ import { Analysis } from '../Analysis';
 import { SelectorType } from '../types';
 
 type LineSeriesType = { type: 'line' } & LineSeriesProps;
-export type ReactPlotOptions = Omit<PlotObjectType, 'axes' | 'series'> & {
+export type ReactPlotOptions = Omit<PlotObjectType, 'axes' | 'content'> & {
   enforceGrowing?: boolean;
   xAxis?: Partial<AxisProps>;
   yAxis?: Partial<AxisProps>;
-  series?: Partial<LineSeriesProps>;
+  content?: Partial<LineSeriesProps>;
 };
 
 /**
@@ -39,14 +39,15 @@ export function getReactPlotJSON(
     enforceGrowing = false,
     xAxis: xAxisOptions = {},
     yAxis: yAxisOptions = { labelSpace: 40 },
-    series: seriesOptions = { displayMarker: true },
+    content: seriesOptions = { displayMarker: true },
     dimensions = { width: 550, height: 500 },
     ...otherOptions
   } = options;
-  let series = [];
+  let content: PlotObjectType['content'] = [];
   let meta: Record<string, string>[] = [];
-  let xAxis: AxisProps | null = null;
-  let yAxis: AxisProps | null = null;
+  type Axes = { type: 'main' } & AxisProps;
+  let xAxis: Axes | null = null;
+  let yAxis: Axes | null = null;
 
   for (const analysis of analyses) {
     let spectra = enforceGrowing
@@ -69,12 +70,14 @@ export function getReactPlotJSON(
       label: spectra.variables.x.label,
       ...xAxisOptions,
       position: 'bottom',
+      type: 'main',
     };
     yAxis = {
       id: 'y',
       label: spectra.variables.y.label,
       ...yAxisOptions,
       position: 'left',
+      type: 'main',
     };
 
     const data = getData(spectra.variables.x.data, spectra.variables.y.data);
@@ -84,7 +87,7 @@ export function getReactPlotJSON(
       data,
       ...seriesOptions,
     };
-    series.push(serie);
+    content.push(serie);
   }
 
   if (xAxis === null || yAxis === null) {
@@ -92,7 +95,7 @@ export function getReactPlotJSON(
   }
 
   return {
-    series,
+    content,
     axes: [xAxis, yAxis],
     dimensions,
     meta,
