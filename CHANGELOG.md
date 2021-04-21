@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.32.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.31.0...v0.32.0) (2021-04-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* series is renamed to content, allowing the addition of annotations
+
+### Features
+
+* update dependencies and react-plot ([#57](https://www.github.com/cheminfo/common-spectrum/issues/57)) ([07f5491](https://www.github.com/cheminfo/common-spectrum/commit/07f54919b2beee41d705651a5d3dd4ecb8a145b1))
+
 ## [0.31.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.30.1...v0.31.0) (2021-04-14)
 
 
