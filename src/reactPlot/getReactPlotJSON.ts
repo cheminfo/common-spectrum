@@ -4,11 +4,11 @@ import { Analysis } from '../Analysis';
 import { SelectorType } from '../types';
 
 type LineSeriesType = { type: 'line' } & LineSeriesProps;
-export type ReactPlotOptions = Omit<PlotObjectType, 'axes' | 'series'> & {
+export type ReactPlotOptions = Omit<PlotObjectType, 'axes' | 'content'> & {
   enforceGrowing?: boolean;
   xAxis?: Partial<AxisProps>;
   yAxis?: Partial<AxisProps>;
-  series?: Partial<LineSeriesProps>;
+  content?: Partial<LineSeriesProps>;
 };
 
 /**
@@ -39,11 +39,11 @@ export function getReactPlotJSON(
     enforceGrowing = false,
     xAxis: xAxisOptions = {},
     yAxis: yAxisOptions = { labelSpace: 40 },
-    series: seriesOptions = { displayMarker: true },
+    content: seriesOptions = { displayMarker: true },
     dimensions = { width: 550, height: 500 },
     ...otherOptions
   } = options;
-  let series: PlotObjectType['series'] = [];
+  let content: PlotObjectType['content'] = [];
   let meta: Record<string, string>[] = [];
   type Axes = { type: 'main' } & AxisProps;
   let xAxis: Axes | null = null;
@@ -87,7 +87,7 @@ export function getReactPlotJSON(
       data,
       ...seriesOptions,
     };
-    series.push(serie);
+    content.push(serie);
   }
 
   if (xAxis === null || yAxis === null) {
@@ -95,7 +95,7 @@ export function getReactPlotJSON(
   }
 
   return {
-    series,
+    content,
     axes: [xAxis, yAxis],
     dimensions,
     meta,
