@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.33.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.32.0...v0.33.0) (2021-04-27)
+
+
+### Features
+
+* update jcamp dependencies to deal with meta.cheminfo property ([52d4490](https://www.github.com/cheminfo/common-spectrum/commit/52d4490115c3df27289b0be8c1da53222788530a))
+
 ## [0.32.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.31.0...v0.32.0) (2021-04-21)
 
 
