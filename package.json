@@ -64,9 +64,9 @@
   },
   "dependencies": {
     "baselines": "^1.0.0",
-    "convert-to-jcamp": "^4.3.1",
+    "convert-to-jcamp": "^4.4.0",
     "is-any-array": "^1.0.0",
-    "jcampconverter": "^7.9.0",
+    "jcampconverter": "^7.10.0",
     "js-quantities": "^1.7.6",
     "ml-array-max": "^1.2.3",
     "ml-array-min": "^1.2.2",
