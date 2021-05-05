@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.34.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.33.0...v0.34.0) (2021-05-05)
+
+
+### Features
+
+* update dependency and allow to store metadata object in jcamp ([107d1eb](https://www.github.com/cheminfo/common-spectrum/commit/107d1ebda5e7394fd1a5fd9a9ad555f434f19792))
+
 ## [0.33.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.32.0...v0.33.0) (2021-04-27)
 
 
