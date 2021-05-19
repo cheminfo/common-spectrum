@@ -32,4 +32,14 @@ describe('autoPeakPicking', () => {
     let peaks = autoPeakPicking(spectrum, { xVariable: 'x', yVariable: 'z' });
     expect(peaks).toStrictEqual([{ x: 7, y: 5, z: 6, width: 4 }]);
   });
+
+  it('xVariable=x, yVariable=z, from:2, to:18', () => {
+    let peaks = autoPeakPicking(spectrum, {
+      xVariable: 'x',
+      yVariable: 'z',
+      from: 2,
+      to: 18,
+    });
+    expect(peaks).toStrictEqual([{ x: 7, y: 5, z: 6, width: 5 }]);
+  });
 });

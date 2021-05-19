@@ -109,9 +109,34 @@ export interface PeakPickingOptions {
   max?: boolean;
 }
 
+export interface ShapeOptions {
+  /** kind of shape; lorentzian, gaussian and pseudovoigt are supported. */
+  kind?: string;
+  /** options depending the kind of shape */
+  options?: any;
+}
+
+export interface SGOptions {
+  /** Points to use in the approximations (default: 9) */
+  windowSize?: number;
+  /** Degree of the polynomial to use in the approximations (default: 3) */
+  polynomial?: number;
+}
 export interface AutoPeakPickingOptions {
   /** x variable label, by default 'x' */
   xVariable?: string;
   /** y variable label, by default 'y' */
   yVariable?: string;
+  shape?: ShapeOptions;
+  sgOptions?: SGOptions;
+  /** Noise threshold in spectrum units (default: 0) */
+  noiseLevel?: number;
+  /** First X value for the peak picking (default: first X value */
+  from?: number;
+  /** Last X value for the peak picking (default: last X value */
+  to?: number;
+  /** Peaks are local maximum (true) or minimum (false) (default: true) */
+  maxCriteria?: boolean;
+  /** Threshold to determine if a given peak should be considered as a noise (default: 0.00025 */
+  minMaxRatio?: number;
 }
