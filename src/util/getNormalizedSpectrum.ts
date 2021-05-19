@@ -174,8 +174,11 @@ export function getNormalizedSpectrum(
         break;
       }
       case 'iterativepolynomialbaseline': {
-        y = iterativePolynomialBaseline(y, undefined, filterOptions)
-          .correctedSpectrum;
+        y = iterativePolynomialBaseline(
+          y,
+          undefined,
+          filterOptions,
+        ).correctedSpectrum;
         break;
       }
       case 'rollingballbaseline': {
