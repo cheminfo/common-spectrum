@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.35.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.34.0...v0.35.0) (2021-05-19)
+
+
+### Features
+
+* add options for autoPeakPicking and from/to ([aa22609](https://www.github.com/cheminfo/common-spectrum/commit/aa22609fc146d315d637e828f3775f79b0ff76e3))
+
 ## [0.34.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.33.0...v0.34.0) (2021-05-05)
 
 
