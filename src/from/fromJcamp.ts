@@ -22,7 +22,6 @@ function addJcamp(analysis: Analysis, jcamp: string | ArrayBuffer) {
   let converted = convert(jcamp, {
     keepRecordsRegExp: /.*/,
   });
-  console.log(converted);
 
   for (let entry of converted.flatten) {
     let currentSpectrum = entry.spectra[0];
