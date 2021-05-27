@@ -12,16 +12,17 @@ import { VariableType } from '../types';
  * @param {string} [options.spectrumCallback] a callback to apply on variables when creating spectrum
  * @return {Analysis} - New class element with the given data
  */
-export function fromJcamp(jcamp: string, options = {}): Analysis {
+export function fromJcamp(jcamp: string | ArrayBuffer, options = {}): Analysis {
   let analysis = new Analysis(options);
   addJcamp(analysis, jcamp);
   return analysis;
 }
 
-function addJcamp(analysis: Analysis, jcamp: string) {
+function addJcamp(analysis: Analysis, jcamp: string | ArrayBuffer) {
   let converted = convert(jcamp, {
     keepRecordsRegExp: /.*/,
   });
+  console.log(converted);
 
   for (let entry of converted.flatten) {
     let currentSpectrum = entry.spectra[0];
