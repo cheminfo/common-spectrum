@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.36.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.35.0...v0.36.0) (2021-05-27)
+
+
+### Features
+
+* allow jcamp to be an ArrayBuffer ([945199b](https://www.github.com/cheminfo/common-spectrum/commit/945199b6313c0c6d904c622a38b42c7d9f187f62))
+
+
+### Bug Fixes
+
+* update dependencies and solve nD problem ([ebc03c2](https://www.github.com/cheminfo/common-spectrum/commit/ebc03c2f89d09b3ce24dbd8cb58e631efb15c42b))
+
 ## [0.35.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.34.0...v0.35.0) (2021-05-19)
 
 
