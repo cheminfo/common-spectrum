@@ -15,9 +15,13 @@ export interface SelectorType {
   yLabel?: string | RegExp;
   /** Allows to specify X and Y variables using a string like 'c vs d' */
   variables?: string;
-  /** Select a specific X variable by one letter name */
+  /** Select a specific X variable by one letter name
+   * @default 'x'
+   */
   xVariable?: string;
-  /** Select a specific Y variable by one letter name */
+  /** Select a specific Y variable by one letter name
+   * @default 'y'
+   */
   yVariable?: string;
   /** Select based on the data type */
   dataType?: string | RegExp;
@@ -25,6 +29,10 @@ export interface SelectorType {
   title?: string | RegExp;
   /** Select based on the presence of a meta information */
   meta?: Record<string, string>;
+  /** Minimal peak width
+   * @default 0
+   */
+  minPeakWidth?: number;
 }
 export interface CounterType {
   key: string;
@@ -139,4 +147,8 @@ export interface AutoPeakPickingOptions {
   maxCriteria?: boolean;
   /** Threshold to determine if a given peak should be considered as a noise (default: 0.00025 */
   minMaxRatio?: number;
+  /** Normalization can be applied before peak picking. This is useful for example to correct baseline while still have a minMaxRatio filter */
+  normalizationOptions?: NormalizedSpectrumOptions;
+  /** Minimal peak width */
+  minPeakWidth?: number;
 }
