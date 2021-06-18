@@ -136,6 +136,7 @@ export interface AutoPeakPickingOptions {
   /** y variable label, by default 'y' */
   yVariable?: string;
   shape?: ShapeOptions;
+  /** Savitzky-Golay parameters used for global spectra deconvolution. windowSize should be odd; polynomial is the degree of the polynomial to use in the approximations. It should be bigger than 2. */
   sgOptions?: SGOptions;
   /** Noise threshold in spectrum units (default: 0) */
   noiseLevel?: number;
