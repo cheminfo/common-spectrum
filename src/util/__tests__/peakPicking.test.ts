@@ -29,10 +29,25 @@ describe('peakPicking', () => {
   });
   it('optimize=true', () => {
     let peak = peakPicking(spectrum, 2, { optimize: true });
-    expect(peak).toStrictEqual({ x: 3, y: 3, z: 0.3, t: 30 });
+    expect(peak).toStrictEqual({
+      x: 3,
+      y: 3,
+      z: 0.3,
+      t: 30,
+      width: 3.189546886416098,
+    });
   });
   it('max=false, optimize=true', () => {
-    let peak = peakPicking(spectrum, 2, { optimize: true, max: false });
-    expect(peak).toStrictEqual({ x: 1, y: 1, z: 0.1, t: 10 });
+    let peak = peakPicking(spectrum, 6, {
+      optimize: true,
+      max: false,
+    });
+    expect(peak).toStrictEqual({
+      x: 6,
+      y: 0,
+      z: 0,
+      t: 0,
+      width: 3.200124158892267,
+    });
   });
 });

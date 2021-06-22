@@ -12,3 +12,4 @@ declare module 'ml-savitzky-golay';
 declare module 'ml-spectra-processing';
 declare module 'ml-stat';
 declare module 'ml-stat/array';
+declare module 'ml-spectra-fitting';
