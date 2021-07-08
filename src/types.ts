@@ -117,7 +117,7 @@ export interface PeakPickingOptions {
   shapeOptions?: ShapeOptions;
   /** is it a min or max value, default true */
   max?: boolean;
-  widthGuess?: number;
+  expectedWidth?: number;
 }
 
 export interface ShapeOptions {

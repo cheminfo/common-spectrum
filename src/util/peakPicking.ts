@@ -1,3 +1,4 @@
+import max from 'ml-array-max';
 import { optimize as optimizePeak } from 'ml-spectra-fitting';
 import { xFindClosestIndex } from 'ml-spectra-processing';
 
@@ -14,13 +15,19 @@ export function peakPicking(
     xVariable = 'x',
     yVariable = 'y',
     optimize = false,
-    widthGuess = 1,
-    max = true,
+    expectedWidth = 1,
+    max: isMax = true,
     shapeOptions = {},
   } = options;
 
   const x = spectrum.variables[xVariable]?.data;
-  const y = spectrum.variables[yVariable]?.data.slice(); // do deep copy as we maybe need to flip sign
+  let y;
+  if (!isMax) {
+    y = spectrum.variables[yVariable]?.data.slice(); // do deep copy as we maybe need to flip sign
+  } else {
+    y = spectrum.variables[yVariable]?.data;
+  }
+
   if (!x || !y) return;
   let targetIndex;
   targetIndex = xFindClosestIndex(x, target);
@@ -28,8 +35,8 @@ export function peakPicking(
   let optimizedIndex;
   const result: Record<string, number> = {};
   if (optimize) {
-    if (max === false) {
-      let maximumY = Math.max(...y);
+    if (isMax === false) {
+      let maximumY = max(y);
       for (let i = 0; i < y.length; i++) {
         y[i] *= -1;
         y[i] += maximumY; // This makes it somewhat more robust
@@ -37,8 +44,8 @@ export function peakPicking(
     }
 
     optimizedPeak = optimizePeak(
-      { x: x, y: y },
-      [{ x: x[targetIndex], y: y[targetIndex], width: widthGuess }],
+      { x, y },
+      [{ x: x[targetIndex], y: y[targetIndex], width: expectedWidth }],
       shapeOptions,
     );
 
