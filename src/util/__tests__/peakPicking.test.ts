@@ -31,7 +31,9 @@ describe('peakPicking', () => {
     let peak = peakPicking(spectrum, 2, { optimize: true });
     expect(peak).toStrictEqual({
       x: 3,
+      xOptimized: 2.999611971277297,
       y: 3,
+      yOptimized: 2.813521959845332,
       z: 0.3,
       t: 30,
       width: 3.189546886416098,
@@ -44,6 +46,8 @@ describe('peakPicking', () => {
     });
     expect(peak).toStrictEqual({
       x: 6,
+      xOptimized: 5.996603710710172,
+      yOptimized: 2.8052577297402275,
       y: 0,
       z: 0,
       t: 0,
