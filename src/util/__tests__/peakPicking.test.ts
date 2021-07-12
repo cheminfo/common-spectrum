@@ -1,9 +1,9 @@
 import { toBeDeepCloseTo, toMatchCloseTo } from 'jest-matcher-deep-close-to';
 
-expect.extend({ toBeDeepCloseTo, toMatchCloseTo });
-
 import { SpectrumType } from '../../types';
 import { peakPicking } from '../peakPicking';
+
+expect.extend({ toBeDeepCloseTo, toMatchCloseTo });
 
 describe('peakPicking', () => {
   const spectrum: SpectrumType = {
