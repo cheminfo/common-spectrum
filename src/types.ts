@@ -115,7 +115,7 @@ export interface PeakPickingOptions {
   optimize?: boolean;
   /** options of the peak shape fit */
   shapeOptions?: ShapeOptions;
-  /** is it a min or max value, default true */
+  /** are we looking for maxima or minima, default true */
   max?: boolean;
   expectedWidth?: number;
 }

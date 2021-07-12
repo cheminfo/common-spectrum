@@ -1,3 +1,7 @@
+import { toBeDeepCloseTo, toMatchCloseTo } from 'jest-matcher-deep-close-to';
+
+expect.extend({ toBeDeepCloseTo, toMatchCloseTo });
+
 import { SpectrumType } from '../../types';
 import { peakPicking } from '../peakPicking';
 
@@ -29,14 +33,16 @@ describe('peakPicking', () => {
   });
   it('optimize=true', () => {
     let peak = peakPicking(spectrum, 2, { optimize: true });
-    expect(peak).toStrictEqual({
+    expect(peak).toBeDeepCloseTo({
       x: 3,
-      xOptimized: 2.999611971277297,
       y: 3,
-      yOptimized: 2.813521959845332,
       z: 0.3,
       t: 30,
-      width: 3.189546886416098,
+      optimized: {
+        width: 3.189546886416098,
+        x: 2.999611971277297,
+        y: 2.813521959845332,
+      },
     });
   });
   it('max=false, optimize=true', () => {
@@ -44,14 +50,16 @@ describe('peakPicking', () => {
       optimize: true,
       max: false,
     });
-    expect(peak).toStrictEqual({
+    expect(peak).toBeDeepCloseTo({
       x: 6,
-      xOptimized: 5.996603710710172,
-      yOptimized: 2.8052577297402275,
       y: 0,
       z: 0,
       t: 0,
-      width: 3.200124158892267,
+      optimized: {
+        width: 3.200124158892267,
+        x: 5.996603710710172,
+        y: 2.8052577297402275,
+      },
     });
   });
 });

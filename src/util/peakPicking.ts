@@ -8,7 +8,7 @@ import type { SpectrumType, PeakPickingOptions } from '../types';
  * if you set optimize=True the returned positions will be
  * the closest actual datapoints to the fitted peak location.
  * the x/y of the fitted peak will be in xOptimized and yOptimized
-*/
+ */
 export function peakPicking(
   spectrum: SpectrumType,
   /** value to search (on x axis) */
@@ -57,9 +57,7 @@ export function peakPicking(
     for (let key in spectrum.variables) {
       result[key] = spectrum.variables[key].data[optimizedIndex];
     }
-    result.width = optimizedPeak.peaks[0].width;
-    result.xOptimized = optimizedPeak.peaks[0].x;
-    result.yOptimized = optimizedPeak.peaks[0].y;
+    result.optimized = optimizedPeak.peaks[0];
   } else {
     for (let key in spectrum.variables) {
       result[key] = spectrum.variables[key].data[targetIndex];
