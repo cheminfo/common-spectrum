@@ -113,8 +113,11 @@ export interface PeakPickingOptions {
   yVariable?: string;
   /** should we look for the closest min / max, default true */
   optimize?: boolean;
-  /** is it a min or max value, default true */
+  /** options of the peak shape fit */
+  shapeOptions?: ShapeOptions;
+  /** are we looking for maxima or minima, default true */
   max?: boolean;
+  expectedWidth?: number;
 }
 
 export interface ShapeOptions {

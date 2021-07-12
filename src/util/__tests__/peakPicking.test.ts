@@ -1,5 +1,9 @@
+import { toBeDeepCloseTo, toMatchCloseTo } from 'jest-matcher-deep-close-to';
+
 import { SpectrumType } from '../../types';
 import { peakPicking } from '../peakPicking';
+
+expect.extend({ toBeDeepCloseTo, toMatchCloseTo });
 
 describe('peakPicking', () => {
   const spectrum: SpectrumType = {
@@ -29,10 +33,33 @@ describe('peakPicking', () => {
   });
   it('optimize=true', () => {
     let peak = peakPicking(spectrum, 2, { optimize: true });
-    expect(peak).toStrictEqual({ x: 3, y: 3, z: 0.3, t: 30 });
+    expect(peak).toBeDeepCloseTo({
+      x: 3,
+      y: 3,
+      z: 0.3,
+      t: 30,
+      optimized: {
+        width: 3.189546886416098,
+        x: 2.999611971277297,
+        y: 2.813521959845332,
+      },
+    });
   });
   it('max=false, optimize=true', () => {
-    let peak = peakPicking(spectrum, 2, { optimize: true, max: false });
-    expect(peak).toStrictEqual({ x: 1, y: 1, z: 0.1, t: 10 });
+    let peak = peakPicking(spectrum, 6, {
+      optimize: true,
+      max: false,
+    });
+    expect(peak).toBeDeepCloseTo({
+      x: 6,
+      y: 0,
+      z: 0,
+      t: 0,
+      optimized: {
+        width: 3.200124158892267,
+        x: 5.996603710710172,
+        y: 2.8052577297402275,
+      },
+    });
   });
 });
