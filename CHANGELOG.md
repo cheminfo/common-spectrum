@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.38.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.37.0...v0.38.0) (2021-07-12)
+
+
+### Features
+
+* optimize manually picked peaks ([#67](https://www.github.com/cheminfo/common-spectrum/issues/67)) ([8b062f7](https://www.github.com/cheminfo/common-spectrum/commit/8b062f7fda62e843f981cf18dfc05dace8837c08))
+
 ## [0.37.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.36.0...v0.37.0) (2021-06-18)
 
 
