@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.39.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.38.0...v0.39.0) (2021-07-14)
+
+
+### Features
+
+* add fromText ([35872f6](https://www.github.com/cheminfo/common-spectrum/commit/35872f69106f4d4bf3d3f2f51b395a1757e5311e))
+
 ## [0.38.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.37.0...v0.38.0) (2021-07-12)
 
 
