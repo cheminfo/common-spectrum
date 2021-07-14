@@ -4,6 +4,7 @@ import { getNormalizationAnnotations } from './jsgraph/getNormalizationAnnotatio
 export * from './AnalysesManager';
 export * from './Analysis';
 export * from './from/fromJcamp';
+export * from './from/fromText';
 export * from './to/toJcamp';
 export * from './to/toJcamps';
 export * from './to/toText';
