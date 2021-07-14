@@ -79,6 +79,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function"><a href="modules.html#autopeakpicking" class="tsd-kind-icon">auto<wbr>Peak<wbr>Picking</a></li>
 								<li class="tsd-kind-function"><a href="modules.html#fromjcamp" class="tsd-kind-icon">from<wbr>Jcamp</a></li>
+								<li class="tsd-kind-function"><a href="modules.html#fromtext" class="tsd-kind-icon">from<wbr>Text</a></li>
 								<li class="tsd-kind-function"><a href="modules.html#getnormalizedspectrum" class="tsd-kind-icon">get<wbr>Normalized<wbr>Spectrum</a></li>
 								<li class="tsd-kind-function"><a href="modules.html#getreactplotjson" class="tsd-kind-icon">get<wbr>React<wbr>PlotJSON</a></li>
 								<li class="tsd-kind-function"><a href="modules.html#peakpicking" class="tsd-kind-icon">peak<wbr>Picking</a></li>
@@ -98,7 +99,7 @@
 					<div class="tsd-signature tsd-kind-icon">JSGraph<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>getJSGraph<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>analyses<span class="tsd-signature-symbol">: </span><a href="classes/analysis.html" class="tsd-signature-type" data-tsd-kind="Class">Analysis</a><span class="tsd-signature-symbol">[]</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">JSGraphOptions</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-symbol">{ </span>axes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>display<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>flipped<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>label<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>logScale<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>unit<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>units<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">; </span>y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>display<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>flipped<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>label<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>logScale<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>unit<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>units<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">; </span>series<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">; </span>getNormalizationAnnotations<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">AnnotationsFilter</span>, boundary<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span>y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>max<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>min<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-symbol">{ </span>fillColor<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>position<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>strokeWidth<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/82d4c42/src/index.ts#L17">index.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/8dae098/src/index.ts#L18">index.ts:18</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -262,7 +263,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/82d4c42/src/util/autoPeakPicking.ts#L10">util/autoPeakPicking.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/8dae098/src/util/autoPeakPicking.ts#L10">util/autoPeakPicking.ts:10</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -293,7 +294,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/82d4c42/src/from/fromJcamp.ts#L15">from/fromJcamp.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/8dae098/src/from/fromJcamp.ts#L15">from/fromJcamp.ts:15</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -323,6 +324,43 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="fromtext" class="tsd-anchor"></a>
+					<h3>from<wbr>Text</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">from<wbr>Text<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ArrayBuffer</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="classes/analysis.html" class="tsd-signature-type" data-tsd-kind="Class">Analysis</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/8dae098/src/from/fromText.ts#L23">from/fromText.ts:23</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Convert strings into JCAMP and add extra information</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>data: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ArrayBuffer</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>values to add to the file, usually a csv or tsv values</p>
+									</div>
+								</li>
+								<li>
+									<h5>options: <span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol"> = {}</span></h5>
+									<ul class="tsd-parameters">
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="classes/analysis.html" class="tsd-signature-type" data-tsd-kind="Class">Analysis</a></h4>
+							<p>JCAMP of the input</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
 					<a name="getnormalizedspectrum" class="tsd-anchor"></a>
 					<h3>get<wbr>Normalized<wbr>Spectrum</h3>
 					<ul class="tsd-signatures tsd-kind-function">
@@ -332,7 +370,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/82d4c42/src/util/getNormalizedSpectrum.ts#L27">util/getNormalizedSpectrum.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/8dae098/src/util/getNormalizedSpectrum.ts#L27">util/getNormalizedSpectrum.ts:27</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -358,7 +396,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/82d4c42/src/reactPlot/getReactPlotJSON.ts#L33">reactPlot/getReactPlotJSON.ts:33</a></li>
+									<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/8dae098/src/reactPlot/getReactPlotJSON.ts#L33">reactPlot/getReactPlotJSON.ts:33</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -392,7 +430,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/82d4c42/src/util/peakPicking.ts#L12">util/peakPicking.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/8dae098/src/util/peakPicking.ts#L12">util/peakPicking.ts:12</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -429,7 +467,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/82d4c42/src/to/toJcamp.ts#L9">to/toJcamp.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/8dae098/src/to/toJcamp.ts#L9">to/toJcamp.ts:9</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -455,7 +493,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/82d4c42/src/to/toJcamps.ts#L10">to/toJcamps.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/8dae098/src/to/toJcamps.ts#L10">to/toJcamps.ts:10</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -481,7 +519,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/82d4c42/src/to/toText.ts#L10">to/toText.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/cheminfo/common-spectrum/blob/8dae098/src/to/toText.ts#L10">to/toText.ts:10</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -523,6 +561,9 @@
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="modules.html#fromjcamp" class="tsd-kind-icon">from<wbr>Jcamp</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#fromtext" class="tsd-kind-icon">from<wbr>Text</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="modules.html#getnormalizedspectrum" class="tsd-kind-icon">get<wbr>Normalized<wbr>Spectrum</a>
