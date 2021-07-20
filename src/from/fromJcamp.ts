@@ -24,6 +24,7 @@ function addJcamp(analysis: Analysis, jcamp: string | ArrayBuffer) {
   });
 
   for (let entry of converted.flatten) {
+    if (!entry.spectra || !entry.spectra[0]) continue;
     let currentSpectrum = entry.spectra[0];
 
     // we ensure variables
