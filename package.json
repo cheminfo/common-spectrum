@@ -52,7 +52,7 @@
     "@types/js-quantities": "^1.6.2",
     "@types/react": "^17.0.14",
     "cheminfo-build": "^1.1.11",
-    "eslint": "^7.30.0",
+    "eslint": "^7.31.0",
     "eslint-config-cheminfo-typescript": "^8.0.9",
     "jest": "^27.0.6",
     "jest-matcher-deep-close-to": "^2.0.1",
