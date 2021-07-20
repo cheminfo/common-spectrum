@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.40.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.39.0...v0.40.0) (2021-07-20)
+
+
+### Features
+
+* deal correctly with linked jcamps ([cd7ca08](https://www.github.com/cheminfo/common-spectrum/commit/cd7ca08ae112ef7e52cea9de360f7a1d7fae874e))
+
 ## [0.39.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.38.0...v0.39.0) (2021-07-14)
 
 
