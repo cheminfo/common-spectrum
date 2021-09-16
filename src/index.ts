@@ -13,6 +13,8 @@ export * from './util/getNormalizedSpectrum';
 export * from './util/peakPicking';
 export * from './util/autoPeakPicking';
 
+export * from './types';
+
 export { getReactPlotJSON } from './reactPlot/getReactPlotJSON';
 
 export const JSGraph = {
