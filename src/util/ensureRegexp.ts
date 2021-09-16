@@ -15,9 +15,7 @@ export function ensureRegexp(string: any) {
 
 function stringToRegexp(string: any, flags = 'i') {
   return new RegExp(
-    string.replace(/[[\]\\{}()+*?.$^|]/g, function (match: string) {
-      return `\\${match}`;
-    }),
+    string.replace(/[[\]\\{}()+*?.$^|]/g, (match: string) => `\\${match}`),
     flags,
   );
 }
