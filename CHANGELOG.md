@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.42.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.41.0...v0.42.0) (2021-09-17)
+
+
+### Features
+
+* VariableType allows to have isDependent property ([3bc0865](https://www.github.com/cheminfo/common-spectrum/commit/3bc08652bdc000131cac615fad85217b363538f5))
+
 ## [0.41.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.40.0...v0.41.0) (2021-09-16)
 
 
