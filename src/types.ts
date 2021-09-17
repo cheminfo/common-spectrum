@@ -46,6 +46,7 @@ export interface VariableType {
   symbol?: string;
   label: string;
   units?: string;
+  isDependent?: boolean;
   min?: number;
   max?: number;
   isMonotone?: boolean;
