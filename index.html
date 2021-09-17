@@ -1,200 +1,39 @@
-<!doctype html>
-<html class="default no-js">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>common-spectrum</title>
-	<meta name="description" content="Documentation for common-spectrum">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
-	<script async src="assets/js/search.js" id="search-script"></script>
-</head>
-<body>
-<header>
-	<div class="tsd-page-toolbar">
-		<div class="container">
-			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
-					<div class="field">
-						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-						<input id="tsd-search-field" type="text" />
-					</div>
-					<ul class="results">
-						<li class="state loading">Preparing search index...</li>
-						<li class="state failure">The search index is not available</li>
-					</ul>
-					<a href="index.html" class="title">common-spectrum</a>
-				</div>
-				<div class="table-cell" id="tsd-widgets">
-					<div id="tsd-filter">
-						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-						<div class="tsd-filter-group">
-							<div class="tsd-select" id="tsd-filter-visibility">
-								<span class="tsd-select-label">All</span>
-								<ul class="tsd-select-list">
-									<li data-value="public">Public</li>
-									<li data-value="protected">Public/Protected</li>
-									<li data-value="private" class="selected">All</li>
-								</ul>
-							</div>
-							<input type="checkbox" id="tsd-filter-inherited" checked />
-							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-						</div>
-					</div>
-					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tsd-page-title">
-		<div class="container">
-			<h1>common-spectrum</h1>
-		</div>
-	</div>
-</header>
-<div class="container container-main">
-	<div class="row">
-		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<a href="#common-spectrum" id="common-spectrum" style="color: inherit; text-decoration: none;">
-					<h1>common-spectrum</h1>
-				</a>
-				<p><a href="https://www.npmjs.com/package/common-spectrum"><img src="https://img.shields.io/npm/v/common-spectrum.svg" alt="NPM version"></a>
-					<a href="https://github.com/cheminfo/common-spectrum/actions?query=workflow%3A%22Node.js+CI%22"><img src="https://github.com/cheminfo/common-spectrum/workflows/Node.js%20CI/badge.svg?branch=master" alt="build status"></a>
-					<a href="https://codecov.io/gh/cheminfo/common-spectrum"><img src="https://img.shields.io/codecov/c/github/cheminfo/common-spectrum.svg" alt="Test coverage"></a>
-				<a href="https://www.npmjs.com/package/common-spectrum"><img src="https://img.shields.io/npm/dm/common-spectrum.svg" alt="npm download"></a></p>
-				<p>Common package to deal with spectral analysis.</p>
-				<p>An <code>Analysis</code> may be composed of many <code>Spectrum</code> of different flavors.</p>
-				<p>By default the flavor is an empty string and if your analysis only generates
-				one spectrum you may forget this level of complexity.</p>
-				<p>In the case of Thermogravitaional Analysis (TGA) we may have 2 flavor for the data:</p>
-				<ul>
-					<li>Weight versus Temperature</li>
-					<li>Weight versus Time</li>
-				</ul>
-				<p>This package allow to load / save an Analysis as a JCAMP-DX text file.</p>
-				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
-					<h2>Installation</h2>
-				</a>
-				<p><code>$ npm i common-spectrum</code></p>
-				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
-					<h2>Usage</h2>
-				</a>
-				<pre><code class="language-js"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">Analysis</span><span style="color: #000000">, </span><span style="color: #001080">fromJcamp</span><span style="color: #000000">, </span><span style="color: #001080">toJcamp</span><span style="color: #000000">, </span><span style="color: #001080">getJSGraph</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;..&#039;</span><span style="color: #000000">;</span>
+<!DOCTYPE html><html class="default no-js"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>common-spectrum</title><meta name="description" content="Documentation for common-spectrum"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">common-spectrum</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>common-spectrum</h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
+<a href="#common-spectrum" id="common-spectrum" style="color: inherit; text-decoration: none;">
+  <h1>common-spectrum</h1>
+</a>
+<p><a href="https://www.npmjs.com/package/common-spectrum"><img src="https://img.shields.io/npm/v/common-spectrum.svg" alt="NPM version"></a>
+<a href="https://github.com/cheminfo/common-spectrum/actions?query=workflow%3A%22Node.js+CI%22"><img src="https://github.com/cheminfo/common-spectrum/workflows/Node.js%20CI/badge.svg?branch=master" alt="build status"></a>
+<a href="https://codecov.io/gh/cheminfo/common-spectrum"><img src="https://img.shields.io/codecov/c/github/cheminfo/common-spectrum.svg" alt="Test coverage"></a>
+<a href="https://www.npmjs.com/package/common-spectrum"><img src="https://img.shields.io/npm/dm/common-spectrum.svg" alt="npm download"></a></p>
+<p>Common package to deal with spectral analysis.</p>
+<p>An <code>Analysis</code> may be composed of many <code>Spectrum</code> of different flavors.</p>
+<p>By default the flavor is an empty string and if your analysis only generates
+one spectrum you may forget this level of complexity.</p>
+<p>In the case of Thermogravitaional Analysis (TGA) we may have 2 flavor for the data:</p>
+<ul>
+<li>Weight versus Temperature</li>
+<li>Weight versus Time</li>
+</ul>
+<p>This package allow to load / save an Analysis as a JCAMP-DX text file.</p>
 
-<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">analysis</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Analysis</span><span style="color: #000000">();</span>
-<span style="color: #795E26">expect</span><span style="color: #000000">(</span><span style="color: #001080">analysis</span><span style="color: #000000">.</span><span style="color: #001080">id</span><span style="color: #000000">).</span><span style="color: #795E26">toHaveLength</span><span style="color: #000000">(</span><span style="color: #098658">8</span><span style="color: #000000">);</span>
+<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+  <h2>Installation</h2>
+</a>
+<p><code>$ npm i common-spectrum</code></p>
 
-<span style="color: #001080">analysis</span><span style="color: #000000">.</span><span style="color: #795E26">pushSpectrum</span><span style="color: #000000">(</span>
-<span style="color: #000000">  { </span><span style="color: #001080">x:</span><span style="color: #000000"> [</span><span style="color: #098658">1</span><span style="color: #000000">, </span><span style="color: #098658">2</span><span style="color: #000000">], </span><span style="color: #001080">y:</span><span style="color: #000000"> [</span><span style="color: #098658">3</span><span style="color: #000000">, </span><span style="color: #098658">4</span><span style="color: #000000">] },</span>
-<span style="color: #000000">  {</span>
-<span style="color: #000000">    </span><span style="color: #001080">xUnits:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;xUnits&#039;</span><span style="color: #000000">,</span>
-<span style="color: #000000">    </span><span style="color: #001080">yUnits:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;yUnits&#039;</span><span style="color: #000000">,</span>
-<span style="color: #000000">    </span><span style="color: #001080">xLabel:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;X axis&#039;</span><span style="color: #000000">,</span>
-<span style="color: #000000">    </span><span style="color: #001080">yLabel:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Y axis&#039;</span><span style="color: #000000">,</span>
-<span style="color: #000000">    </span><span style="color: #001080">title:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;My spectrum&#039;</span><span style="color: #000000">,</span>
-<span style="color: #000000">    </span><span style="color: #001080">dataType:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;TGA&#039;</span><span style="color: #000000">,</span>
-<span style="color: #000000">    </span><span style="color: #001080">meta:</span><span style="color: #000000"> {</span>
-<span style="color: #000000">      </span><span style="color: #001080">meta1:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Meta 1&#039;</span><span style="color: #000000">,</span>
-<span style="color: #000000">      </span><span style="color: #001080">meta2:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Meta 2&#039;</span><span style="color: #000000">,</span>
-<span style="color: #000000">    },</span>
-<span style="color: #000000">  },</span>
-<span style="color: #000000">);</span>
-
-<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">firstSpectrum</span><span style="color: #000000"> = </span><span style="color: #001080">analysis</span><span style="color: #000000">.</span><span style="color: #795E26">getSpectrum</span><span style="color: #000000">();</span>
-
-<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">normalized</span><span style="color: #000000"> = </span><span style="color: #001080">analysis</span><span style="color: #000000">.</span><span style="color: #795E26">getNormalizedData</span><span style="color: #000000">({</span>
-<span style="color: #000000">  </span><span style="color: #001080">normalization:</span><span style="color: #000000"> {</span>
-<span style="color: #000000">    </span><span style="color: #001080">filters:</span><span style="color: #000000"> [{ </span><span style="color: #001080">name:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;normalize&#039;</span><span style="color: #000000"> }],</span>
-<span style="color: #000000">  },</span>
-<span style="color: #000000">});</span>
-
-<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">jsgraph</span><span style="color: #000000"> = </span><span style="color: #795E26">getJSGraph</span><span style="color: #000000">([</span><span style="color: #001080">analysis</span><span style="color: #000000">]);</span>
-
-<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">jcamp</span><span style="color: #000000"> = </span><span style="color: #795E26">toJcamp</span><span style="color: #000000">(</span><span style="color: #001080">analysis</span><span style="color: #000000">, {</span>
-<span style="color: #000000">  </span><span style="color: #001080">info:</span><span style="color: #000000"> {</span>
-<span style="color: #000000">    </span><span style="color: #001080">owner:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;cheminfo&#039;</span><span style="color: #000000">,</span>
-<span style="color: #000000">    </span><span style="color: #001080">origin:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Common Spectrum&#039;</span><span style="color: #000000">,</span>
-<span style="color: #000000">  },</span>
-<span style="color: #000000">});</span>
-
-<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">analysis2</span><span style="color: #000000"> = </span><span style="color: #795E26">fromJcamp</span><span style="color: #000000">(</span><span style="color: #001080">jcamp</span><span style="color: #000000">);</span>
+<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+  <h2>Usage</h2>
+</a>
+<pre><code class="language-js"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">Analysis</span><span class="hl-1">, </span><span class="hl-2">fromJcamp</span><span class="hl-1">, </span><span class="hl-2">toJcamp</span><span class="hl-1">, </span><span class="hl-2">getJSGraph</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;..&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-4">let</span><span class="hl-1"> </span><span class="hl-2">analysis</span><span class="hl-1"> = </span><span class="hl-4">new</span><span class="hl-1"> </span><span class="hl-5">Analysis</span><span class="hl-1">();</span><br/><span class="hl-5">expect</span><span class="hl-1">(</span><span class="hl-2">analysis</span><span class="hl-1">.</span><span class="hl-2">id</span><span class="hl-1">).</span><span class="hl-5">toHaveLength</span><span class="hl-1">(</span><span class="hl-6">8</span><span class="hl-1">);</span><br/><br/><span class="hl-2">analysis</span><span class="hl-1">.</span><span class="hl-5">pushSpectrum</span><span class="hl-1">(</span><br/><span class="hl-1">  { </span><span class="hl-2">x:</span><span class="hl-1"> [</span><span class="hl-6">1</span><span class="hl-1">, </span><span class="hl-6">2</span><span class="hl-1">], </span><span class="hl-2">y:</span><span class="hl-1"> [</span><span class="hl-6">3</span><span class="hl-1">, </span><span class="hl-6">4</span><span class="hl-1">] },</span><br/><span class="hl-1">  {</span><br/><span class="hl-1">    </span><span class="hl-2">xUnits:</span><span class="hl-1"> </span><span class="hl-3">&#39;xUnits&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-2">yUnits:</span><span class="hl-1"> </span><span class="hl-3">&#39;yUnits&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-2">xLabel:</span><span class="hl-1"> </span><span class="hl-3">&#39;X axis&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-2">yLabel:</span><span class="hl-1"> </span><span class="hl-3">&#39;Y axis&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-2">title:</span><span class="hl-1"> </span><span class="hl-3">&#39;My spectrum&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-2">dataType:</span><span class="hl-1"> </span><span class="hl-3">&#39;TGA&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-2">meta:</span><span class="hl-1"> {</span><br/><span class="hl-1">      </span><span class="hl-2">meta1:</span><span class="hl-1"> </span><span class="hl-3">&#39;Meta 1&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">      </span><span class="hl-2">meta2:</span><span class="hl-1"> </span><span class="hl-3">&#39;Meta 2&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">    },</span><br/><span class="hl-1">  },</span><br/><span class="hl-1">);</span><br/><br/><span class="hl-4">let</span><span class="hl-1"> </span><span class="hl-2">firstSpectrum</span><span class="hl-1"> = </span><span class="hl-2">analysis</span><span class="hl-1">.</span><span class="hl-5">getSpectrum</span><span class="hl-1">();</span><br/><br/><span class="hl-4">let</span><span class="hl-1"> </span><span class="hl-2">normalized</span><span class="hl-1"> = </span><span class="hl-2">analysis</span><span class="hl-1">.</span><span class="hl-5">getNormalizedData</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-2">normalization:</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-2">filters:</span><span class="hl-1"> [{ </span><span class="hl-2">name:</span><span class="hl-1"> </span><span class="hl-3">&#39;normalize&#39;</span><span class="hl-1"> }],</span><br/><span class="hl-1">  },</span><br/><span class="hl-1">});</span><br/><br/><span class="hl-4">let</span><span class="hl-1"> </span><span class="hl-2">jsgraph</span><span class="hl-1"> = </span><span class="hl-5">getJSGraph</span><span class="hl-1">([</span><span class="hl-2">analysis</span><span class="hl-1">]);</span><br/><br/><span class="hl-4">let</span><span class="hl-1"> </span><span class="hl-2">jcamp</span><span class="hl-1"> = </span><span class="hl-5">toJcamp</span><span class="hl-1">(</span><span class="hl-2">analysis</span><span class="hl-1">, {</span><br/><span class="hl-1">  </span><span class="hl-2">info:</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-2">owner:</span><span class="hl-1"> </span><span class="hl-3">&#39;cheminfo&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-2">origin:</span><span class="hl-1"> </span><span class="hl-3">&#39;Common Spectrum&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">  },</span><br/><span class="hl-1">});</span><br/><br/><span class="hl-4">let</span><span class="hl-1"> </span><span class="hl-2">analysis2</span><span class="hl-1"> = </span><span class="hl-5">fromJcamp</span><span class="hl-1">(</span><span class="hl-2">jcamp</span><span class="hl-1">);</span>
 </code></pre>
-				<a href="#api-documentation" id="api-documentation" style="color: inherit; text-decoration: none;">
-					<h2><a href="https://cheminfo.github.io/common-spectrum/">API Documentation</a></h2>
-				</a>
-				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
-					<h2>License</h2>
-				</a>
-				<p><a href="./LICENSE">MIT</a></p>
-			</div>
-		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class=" ">
-						<a href="modules.html">Exports</a>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-					<li class=" tsd-kind-class">
-						<a href="classes/analysesmanager.html" class="tsd-kind-icon">Analyses<wbr>Manager</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/analysis.html" class="tsd-kind-icon">Analysis</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="modules.html#jsgraph" class="tsd-kind-icon">JSGraph</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#autopeakpicking" class="tsd-kind-icon">auto<wbr>Peak<wbr>Picking</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#fromjcamp" class="tsd-kind-icon">from<wbr>Jcamp</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#fromtext" class="tsd-kind-icon">from<wbr>Text</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#getnormalizedspectrum" class="tsd-kind-icon">get<wbr>Normalized<wbr>Spectrum</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#getreactplotjson" class="tsd-kind-icon">get<wbr>React<wbr>PlotJSON</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#peakpicking" class="tsd-kind-icon">peak<wbr>Picking</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#tojcamp" class="tsd-kind-icon">to<wbr>Jcamp</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#tojcamps" class="tsd-kind-icon">to<wbr>Jcamps</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#totext" class="tsd-kind-icon">to<wbr>Text</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<footer>
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-		</div>
-	</div>
-</footer>
-<div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-</body>
-</html>
+
+<a href="#api-documentation" id="api-documentation" style="color: inherit; text-decoration: none;">
+  <h2><a href="https://cheminfo.github.io/common-spectrum/">API Documentation</a></h2>
+</a>
+
+<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+  <h2>License</h2>
+</a>
+<p><a href="./LICENSE">MIT</a></p>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-class"><a href="classes/AnalysesManager.html" class="tsd-kind-icon">Analyses<wbr/>Manager</a></li><li class="tsd-kind-class"><a href="classes/Analysis.html" class="tsd-kind-icon">Analysis</a></li><li class="tsd-kind-interface"><a href="interfaces/AutoPeakPickingOptions.html" class="tsd-kind-icon">Auto<wbr/>Peak<wbr/>Picking<wbr/>Options</a></li><li class="tsd-kind-interface"><a href="interfaces/CounterType.html" class="tsd-kind-icon">Counter<wbr/>Type</a></li><li class="tsd-kind-interface"><a href="interfaces/DifferentType.html" class="tsd-kind-icon">Different<wbr/>Type</a></li><li class="tsd-kind-interface"><a href="interfaces/MultipleType.html" class="tsd-kind-icon">Multiple<wbr/>Type</a></li><li class="tsd-kind-interface"><a href="interfaces/NormalizedFilters.html" class="tsd-kind-icon">Normalized<wbr/>Filters</a></li><li class="tsd-kind-interface"><a href="interfaces/NormalizedSpectrumOptions.html" class="tsd-kind-icon">Normalized<wbr/>Spectrum<wbr/>Options</a></li><li class="tsd-kind-interface"><a href="interfaces/PeakPickingOptions.html" class="tsd-kind-icon">Peak<wbr/>Picking<wbr/>Options</a></li><li class="tsd-kind-interface"><a href="interfaces/PlotObject.html" class="tsd-kind-icon">Plot<wbr/>Object</a></li><li class="tsd-kind-interface"><a href="interfaces/SGOptions.html" class="tsd-kind-icon">SGOptions</a></li><li class="tsd-kind-interface"><a href="interfaces/SelectorType.html" class="tsd-kind-icon">Selector<wbr/>Type</a></li><li class="tsd-kind-interface"><a href="interfaces/ShapeOptions.html" class="tsd-kind-icon">Shape<wbr/>Options</a></li><li class="tsd-kind-interface"><a href="interfaces/SpectrumType.html" class="tsd-kind-icon">Spectrum<wbr/>Type</a></li><li class="tsd-kind-interface"><a href="interfaces/VariableType.html" class="tsd-kind-icon">Variable<wbr/>Type</a></li><li class="tsd-kind-type-alias"><a href="modules.html#json" class="tsd-kind-icon">json</a></li><li class="tsd-kind-variable"><a href="modules.html#JSGraph" class="tsd-kind-icon">JSGraph</a></li><li class="tsd-kind-function"><a href="modules.html#autoPeakPicking" class="tsd-kind-icon">auto<wbr/>Peak<wbr/>Picking</a></li><li class="tsd-kind-function"><a href="modules.html#fromJcamp" class="tsd-kind-icon">from<wbr/>Jcamp</a></li><li class="tsd-kind-function"><a href="modules.html#fromText" class="tsd-kind-icon">from<wbr/>Text</a></li><li class="tsd-kind-function"><a href="modules.html#getNormalizedSpectrum" class="tsd-kind-icon">get<wbr/>Normalized<wbr/>Spectrum</a></li><li class="tsd-kind-function"><a href="modules.html#getReactPlotJSON" class="tsd-kind-icon">get<wbr/>React<wbr/>PlotJSON</a></li><li class="tsd-kind-function"><a href="modules.html#peakPicking" class="tsd-kind-icon">peak<wbr/>Picking</a></li><li class="tsd-kind-function"><a href="modules.html#toJcamp" class="tsd-kind-icon">to<wbr/>Jcamp</a></li><li class="tsd-kind-function"><a href="modules.html#toJcamps" class="tsd-kind-icon">to<wbr/>Jcamps</a></li><li class="tsd-kind-function"><a href="modules.html#toText" class="tsd-kind-icon">to<wbr/>Text</a></li></ul></nav></div></div></div><footer class=""><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li><li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li><li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="overlay"></div><script src="assets/main.js"></script></body></html>
