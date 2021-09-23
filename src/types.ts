@@ -29,10 +29,6 @@ export interface SelectorType {
   title?: string | RegExp;
   /** Select based on the presence of a meta information */
   meta?: Record<string, string>;
-  /** Minimal peak width
-   * @default 0
-   */
-  minPeakWidth?: number;
 }
 export interface CounterType {
   key: string;
