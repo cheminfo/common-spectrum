@@ -2,7 +2,8 @@ import max from 'ml-array-max';
 import { optimize as optimizePeak } from 'ml-spectra-fitting';
 import { xFindClosestIndex } from 'ml-spectra-processing';
 
-import type { SpectrumType, PeakPickingOptions } from '../types';
+import { SpectrumType } from '../types/SpectrumType';
+import { PeakPickingOptions } from '../types/PeakPickingOptions';
 
 /** Based on a x value we will return a peak
  * if you set optimize=True the returned positions will be

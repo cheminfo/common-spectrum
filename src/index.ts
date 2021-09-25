@@ -13,7 +13,16 @@ export * from './util/getNormalizedSpectrum';
 export * from './util/peakPicking';
 export * from './util/autoPeakPicking';
 
-export * from './types';
+export * from './types/types';
+export * from './types/AutoPeakPickingOptions';
+export * from './types/NormalizedFilters';
+export * from './types/NormalizedSpectrumOptions';
+export { SpectrumVariable } from 'cheminfo-types';
+export * from './types/PlotObject';
+export * from './types/SGOptions';
+export * from './types/ShapeOptions';
+export * from './types/SpectrumSelector';
+export * from './types/SpectrumType';
 
 export { getReactPlotJSON } from './reactPlot/getReactPlotJSON';
 

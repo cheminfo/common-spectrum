@@ -22,7 +22,8 @@ import {
 } from 'ml-spectra-processing';
 import Stat from 'ml-stat/array';
 
-import { NormalizedSpectrumOptions, SpectrumType } from '../types';
+import { SpectrumType } from '../types/SpectrumType';
+import { NormalizedSpectrumOptions } from '../types/NormalizedSpectrumOptions';
 
 export function getNormalizedSpectrum(
   spectrum: SpectrumType,

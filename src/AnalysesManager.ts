@@ -1,5 +1,5 @@
 import { Analysis } from './Analysis';
-import { CounterType, DifferentType } from './types';
+import { CounterType, DifferentType } from './types/types';
 import { appendDistinctParameter } from './util/appendDistinctParameter';
 import { appendDistinctValue } from './util/appendDistinctValue';
 

@@ -1,20 +1,18 @@
+import { SpectrumVariable } from 'cheminfo-types';
 import isAnyArray from 'is-any-array';
 import max from 'ml-array-max';
 import min from 'ml-array-min';
 import { xIsMonotone } from 'ml-spectra-processing';
 
-import type {
-  NormalizedSpectrumOptions,
-  SelectorType,
-  SpectrumType,
-  VariableType,
-} from './types';
+import { SpectrumSelector } from './types/SpectrumSelector';
+import { SpectrumType } from './types/SpectrumType';
+import { NormalizedSpectrumOptions } from './types/NormalizedSpectrumOptions';
 import { getNormalizedSpectrum } from './util/getNormalizedSpectrum';
 import { getXYSpectrum } from './util/getXYSpectrum';
 
 type SpectrumCallback = (
-  variables: Record<string, VariableType>,
-) => Record<string, VariableType>;
+  variables: Record<string, SpectrumVariable>,
+) => Record<string, SpectrumVariable>;
 
 interface AnalysisOptions {
   id?: string;
@@ -23,7 +21,7 @@ interface AnalysisOptions {
 }
 interface NormalizedOptions {
   normalization?: NormalizedSpectrumOptions;
-  selector?: SelectorType;
+  selector?: SpectrumSelector;
 }
 
 /**
@@ -50,7 +48,7 @@ export class Analysis {
    * Add a spectrum in the internal spectra variable
    */
   public pushSpectrum(
-    variables: Record<string, VariableType>,
+    variables: Record<string, SpectrumVariable>,
     options: Omit<SpectrumType, 'variables'> = {},
   ) {
     this.spectra.push(
@@ -63,11 +61,8 @@ export class Analysis {
 
   /**
    * Retrieve a Spectrum based on x/y units
-   * @param selector.units Units separated by vs like for example "g vs °C"
-   * @param selector.xUnits if undefined takes the first variable
-   * @param selector.yUnits if undefined takes the second variable
    */
-  public getXYSpectrum(selector: SelectorType = {}) {
+  public getXYSpectrum(selector: SpectrumSelector = {}) {
     let id = JSON.stringify(selector);
     if (!this.cache[id]) {
       this.cache[id] = getXYSpectrum(this.spectra, selector);
@@ -81,7 +76,7 @@ export class Analysis {
    * @param selector.xUnits if undefined takes the first variable
    * @param selector.yUnits if undefined takes the second variable
    */
-  public getXY(selector = {}) {
+  public getXY(selector: SpectrumSelector = {}) {
     let spectrum = this.getXYSpectrum(selector);
     if (!spectrum) return undefined;
     return {
@@ -116,7 +111,7 @@ export class Analysis {
    * @param selector.xUnits // if undefined takes the first variable
    * @param selector.yUnits // if undefined takes the second variable
    */
-  public getXLabel(selector: SelectorType) {
+  public getXLabel(selector: SpectrumSelector) {
     return this.getXYSpectrum(selector)?.variables.x.label;
   }
 
@@ -125,7 +120,7 @@ export class Analysis {
    * @param selector.xUnits // if undefined takes the first variable
    * @param selector.yUnits // if undefined takes the second variable
    */
-  public getYLabel(selector: SelectorType) {
+  public getYLabel(selector: SpectrumSelector) {
     return this.getXYSpectrum(selector)?.variables.y.label;
   }
 }
@@ -134,7 +129,7 @@ export class Analysis {
  * Internal function that ensure the order of x / y array
  */
 function standardizeData(
-  variables: Record<string, VariableType>,
+  variables: Record<string, SpectrumVariable>,
   options: Omit<SpectrumType, 'variables'>,
   analysisOptions: Pick<AnalysisOptions, 'spectrumCallback'>,
 ) {

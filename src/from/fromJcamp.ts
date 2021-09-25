@@ -1,7 +1,7 @@
+import { SpectrumVariable } from 'cheminfo-types';
 import { convert } from 'jcampconverter';
 
 import { Analysis } from '../Analysis';
-import { VariableType } from '../types';
 
 /**
  * Creates a new Analysis from a JCAMP string
@@ -29,7 +29,7 @@ function addJcamp(analysis: Analysis, jcamp: string | ArrayBuffer) {
 
     // we ensure variables
     if (!currentSpectrum.variables) {
-      const variables: Record<string, VariableType> = {};
+      const variables: Record<string, SpectrumVariable> = {};
       currentSpectrum.variables = variables;
       variables.x = {
         label: currentSpectrum.xUnits,

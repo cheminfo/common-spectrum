@@ -1,4 +1,4 @@
-import type { CounterType } from '../types';
+import type { CounterType } from '../types/types';
 
 export function appendDistinctValue(
   values: Record<string, CounterType>,

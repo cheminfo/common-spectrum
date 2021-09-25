@@ -1,5 +1,7 @@
-/* eslint-disable @typescript-eslint/prefer-regexp-exec */
-import type { SelectorType, SpectrumType, VariableType } from '../types';
+import { SpectrumVariable } from 'cheminfo-types';
+
+import { SpectrumSelector } from '../types/SpectrumSelector';
+import { SpectrumType } from '../types/SpectrumType';
 
 import { convertUnit } from './convertUnit';
 import { ensureRegexp } from './ensureRegexp';
@@ -12,36 +14,52 @@ import { getConvertedVariable } from './getConvertedVariable';
  */
 export function getXYSpectrum(
   spectra: Array<SpectrumType> = [],
-  selector: SelectorType = {},
+  selector: SpectrumSelector = {},
 ): SpectrumType | undefined {
   if (spectra.length < 1) return;
+
+  let {
+    dataType,
+    title,
+    xUnits,
+    yUnits,
+    variables,
+    xVariable = 'x',
+    yVariable = 'y',
+    units,
+    labels,
+    xLabel,
+    yLabel,
+    meta,
+  } = selector;
+
+  if (dataType) {
+    dataType = ensureRegexp(dataType);
+  }
+
+  if (title) {
+    title = ensureRegexp(title);
+  }
+
+  if (units && !xUnits && !yUnits) [yUnits, xUnits] = units.split(/\s*vs\s*/);
+  if (labels && !xLabel && !yLabel) {
+    [yLabel, xLabel] = labels.split(/\s*vs\s*/);
+  }
+  if (variables) [yVariable, xVariable] = variables.split(/\s*vs\s*/);
+
+  if (xLabel) xLabel = ensureRegexp(xLabel);
+  if (yLabel) yLabel = ensureRegexp(yLabel);
 
   for (let spectrum of spectra) {
     let variableNames = Object.keys(spectrum.variables);
     if (!(variableNames.length > 1)) continue;
-    let {
-      dataType,
-      title,
-      xUnits,
-      yUnits,
-      variables,
-      xVariable = 'x',
-      yVariable = 'y',
-      units,
-      labels,
-      xLabel,
-      yLabel,
-      meta,
-    } = selector;
 
     // we filter on general spectrum information
     if (dataType) {
-      dataType = ensureRegexp(dataType);
       if (!spectrum.dataType || !spectrum.dataType.match(dataType)) continue;
     }
 
     if (title) {
-      title = ensureRegexp(title);
       if (!spectrum.title || !spectrum.title.match(title)) continue;
     }
 
@@ -50,18 +68,9 @@ export function getXYSpectrum(
       for (let key in spectrum.meta) {
         if (!spectrum.meta[key]) continue;
         let value = ensureRegexp(spectrum.meta[key]);
-        if (!spectrum.meta[key].match(value)) continue;
+        if (!value.exec(spectrum.meta[key])) continue;
       }
     }
-
-    if (units && !xUnits && !yUnits) [yUnits, xUnits] = units.split(/\s*vs\s*/);
-    if (labels && !xLabel && !yLabel) {
-      [yLabel, xLabel] = labels.split(/\s*vs\s*/);
-    }
-    if (variables) [yVariable, xVariable] = variables.split(/\s*vs\s*/);
-
-    if (xLabel) xLabel = ensureRegexp(xLabel);
-    if (yLabel) yLabel = ensureRegexp(yLabel);
 
     let x = getPossibleVariable(spectrum.variables, {
       units: xUnits,
@@ -92,11 +101,11 @@ interface Selector {
   variableName?: string;
 }
 function getPossibleVariable(
-  variables: Record<string, VariableType>,
+  variables: Record<string, SpectrumVariable>,
   selector: Selector = {},
 ) {
   const { units, label, variableName } = selector;
-  let possible: Record<string, VariableType | undefined> = { ...variables };
+  let possible: Record<string, SpectrumVariable | undefined> = { ...variables };
   if (units !== undefined) {
     for (let key in possible) {
       let converted = convertUnit(1, variables[key].units || '', units);

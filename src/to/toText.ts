@@ -1,8 +1,9 @@
 import { Analysis } from '../Analysis';
-import type { SelectorType, SpectrumType } from '../types';
+import { SpectrumType } from '../types/SpectrumType';
+import { SpectrumSelector } from '../types/SpectrumSelector';
 
 interface ToTextOptions {
-  selector?: SelectorType;
+  selector?: SpectrumSelector;
   endOfLine?: string;
   fieldSeparator?: string;
 }

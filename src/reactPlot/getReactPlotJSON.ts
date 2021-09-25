@@ -1,7 +1,7 @@
 import type { AxisProps, LineSeriesProps, PlotObjectType } from 'react-plot';
 
 import { Analysis } from '../Analysis';
-import { SelectorType } from '../types';
+import { SpectrumSelector } from '../types/SpectrumSelector';
 
 type LineSeriesType = { type: 'line' } & LineSeriesProps;
 export type ReactPlotOptions = Omit<PlotObjectType, 'axes' | 'content'> & {
@@ -32,7 +32,7 @@ function getData(x: ListNumber, y: ListNumber) {
  */
 export function getReactPlotJSON(
   analyses: Analysis[],
-  query: SelectorType,
+  query: SpectrumSelector,
   options: ReactPlotOptions = {},
 ): PlotObjectType & { meta: Record<string, string>[] } {
   const {

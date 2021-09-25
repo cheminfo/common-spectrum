@@ -1,4 +1,4 @@
-import { SpectrumType } from '../../types';
+import { SpectrumType } from '../../types/SpectrumType';
 import { autoPeakPicking } from '../autoPeakPicking';
 
 describe('autoPeakPicking positive', () => {

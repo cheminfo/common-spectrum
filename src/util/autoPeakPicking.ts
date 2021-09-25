@@ -2,7 +2,8 @@
 import { gsd } from 'ml-gsd';
 import { xyMaxClosestYPoint, xyMinClosestYPoint } from 'ml-spectra-processing';
 
-import type { SpectrumType, AutoPeakPickingOptions } from '../types';
+import { SpectrumType } from '../types/SpectrumType';
+import { AutoPeakPickingOptions } from '../types/AutoPeakPickingOptions';
 
 import { getNormalizedSpectrum } from './getNormalizedSpectrum';
 

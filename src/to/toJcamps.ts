@@ -1,7 +1,7 @@
 import { fromVariables } from 'convert-to-jcamp';
 
 import { Analysis } from '../Analysis';
-import { SpectrumType } from '../types';
+import { SpectrumType } from '../types/SpectrumType';
 
 interface GetJcampOptions {
   info?: Record<string, string>;
