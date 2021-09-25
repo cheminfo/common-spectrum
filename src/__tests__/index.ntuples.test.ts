@@ -127,7 +127,6 @@ describe('case for ntuples', () => {
         },
       },
       title: 'My spectrum',
-      tmp: {},
       dataType: 'TGA',
       meta: { meta1: 'Meta 1', meta2: 'Meta 2' },
     });

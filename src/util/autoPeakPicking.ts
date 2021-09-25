@@ -2,14 +2,14 @@
 import { gsd } from 'ml-gsd';
 import { xyMaxClosestYPoint, xyMinClosestYPoint } from 'ml-spectra-processing';
 
-import { SpectrumType } from '../types/SpectrumType';
+import { Spectrum } from 'cheminfo-types';
 import { AutoPeakPickingOptions } from '../types/AutoPeakPickingOptions';
 
 import { getNormalizedSpectrum } from './getNormalizedSpectrum';
 
 /** Based on a x value we will return a peak*/
 export function autoPeakPicking(
-  spectrum: SpectrumType,
+  spectrum: Spectrum,
   options: AutoPeakPickingOptions = {},
 ) {
   const {
@@ -23,7 +23,7 @@ export function autoPeakPicking(
   let y = spectrum.variables[yVariable]?.data;
 
   if (normalizationOptions) {
-    const tempSpectrum: SpectrumType = {
+    const tempSpectrum: Spectrum = {
       variables: {
         x: { data: x, label: '' },
         y: { data: y, label: '' },

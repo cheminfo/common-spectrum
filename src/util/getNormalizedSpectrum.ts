@@ -22,18 +22,18 @@ import {
 } from 'ml-spectra-processing';
 import Stat from 'ml-stat/array';
 
-import { SpectrumType } from '../types/SpectrumType';
+import { Spectrum } from 'cheminfo-types';
 import { NormalizedSpectrumOptions } from '../types/NormalizedSpectrumOptions';
 
 export function getNormalizedSpectrum(
-  spectrum: SpectrumType,
+  spectrum: Spectrum,
   options: NormalizedSpectrumOptions = {},
 ) {
   let data = {
     x: spectrum.variables.x.data,
     y: spectrum.variables.y.data,
   };
-  let newSpectrum: SpectrumType = {
+  let newSpectrum: Spectrum = {
     variables: {
       x: {
         data: spectrum.variables.x.data,

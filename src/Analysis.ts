@@ -1,18 +1,15 @@
-import { SpectrumVariable } from 'cheminfo-types';
+import { SpectrumVariables, Spectrum } from 'cheminfo-types';
 import isAnyArray from 'is-any-array';
 import max from 'ml-array-max';
 import min from 'ml-array-min';
 import { xIsMonotone } from 'ml-spectra-processing';
 
 import { SpectrumSelector } from './types/SpectrumSelector';
-import { SpectrumType } from './types/SpectrumType';
 import { NormalizedSpectrumOptions } from './types/NormalizedSpectrumOptions';
 import { getNormalizedSpectrum } from './util/getNormalizedSpectrum';
 import { getXYSpectrum } from './util/getXYSpectrum';
 
-type SpectrumCallback = (
-  variables: Record<string, SpectrumVariable>,
-) => Record<string, SpectrumVariable>;
+type SpectrumCallback = (variables: SpectrumVariables) => SpectrumVariables;
 
 interface AnalysisOptions {
   id?: string;
@@ -33,8 +30,8 @@ export class Analysis {
   public id: string;
   public label: string;
   public spectrumCallback: SpectrumCallback | undefined;
-  public spectra: Array<SpectrumType>;
-  public cache: Record<string, SpectrumType | undefined>;
+  public spectra: Array<Spectrum>;
+  public cache: Record<string, Spectrum | undefined>;
 
   public constructor(options: AnalysisOptions = {}) {
     this.id = options.id || Math.random().toString(36).substring(2, 10);
@@ -48,8 +45,8 @@ export class Analysis {
    * Add a spectrum in the internal spectra variable
    */
   public pushSpectrum(
-    variables: Record<string, SpectrumVariable>,
-    options: Omit<SpectrumType, 'variables'> = {},
+    variables: SpectrumVariables,
+    options: Omit<Spectrum, 'variables'> = {},
   ) {
     this.spectra.push(
       standardizeData(variables, options, {
@@ -129,11 +126,11 @@ export class Analysis {
  * Internal function that ensure the order of x / y array
  */
 function standardizeData(
-  variables: Record<string, SpectrumVariable>,
-  options: Omit<SpectrumType, 'variables'>,
+  variables: SpectrumVariables,
+  options: Omit<Spectrum, 'variables'>,
   analysisOptions: Pick<AnalysisOptions, 'spectrumCallback'>,
 ) {
-  let { meta = {}, tmp = {}, dataType = '', title = '' } = options;
+  let { meta = {}, dataType = '', title = '' } = options;
   const { spectrumCallback } = analysisOptions;
 
   if (spectrumCallback) {
@@ -152,8 +149,7 @@ function standardizeData(
   let x = xVariable.data;
   let reverse = x && x.length > 1 && x[0] > x[x.length - 1];
 
-  for (let key in variables) {
-    let variable = variables[key];
+  for (let [key, variable] of Object.entries(variables)) {
     if (reverse) variable.data = variable.data.reverse();
     variable.label = variable.label || key;
     if (!variable.units && variable.label.includes('[')) {
@@ -172,6 +168,5 @@ function standardizeData(
     title,
     dataType,
     meta,
-    tmp,
   };
 }

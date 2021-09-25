@@ -1,7 +1,7 @@
-import { SpectrumVariable } from 'cheminfo-types';
+import { SpectrumVariable, OneLowerCase } from 'cheminfo-types';
 
 import { SpectrumSelector } from '../types/SpectrumSelector';
-import { SpectrumType } from '../types/SpectrumType';
+import { Spectrum } from 'cheminfo-types';
 
 import { convertUnit } from './convertUnit';
 import { ensureRegexp } from './ensureRegexp';
@@ -13,9 +13,9 @@ import { getConvertedVariable } from './getConvertedVariable';
  * taken
  */
 export function getXYSpectrum(
-  spectra: Array<SpectrumType> = [],
+  spectra: Array<Spectrum> = [],
   selector: SpectrumSelector = {},
-): SpectrumType | undefined {
+): Spectrum | undefined {
   if (spectra.length < 1) return;
 
   let {
@@ -45,7 +45,13 @@ export function getXYSpectrum(
   if (labels && !xLabel && !yLabel) {
     [yLabel, xLabel] = labels.split(/\s*vs\s*/);
   }
-  if (variables) [yVariable, xVariable] = variables.split(/\s*vs\s*/);
+  if (variables) {
+    const parts = variables.split(/\s*vs\s*/);
+    if (parts.length === 2) {
+      xVariable = parts[1] as OneLowerCase;
+      yVariable = parts[0] as OneLowerCase;
+    }
+  }
 
   if (xLabel) xLabel = ensureRegexp(xLabel);
   if (yLabel) yLabel = ensureRegexp(yLabel);

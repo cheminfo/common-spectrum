@@ -1,5 +1,5 @@
 import { Analysis } from '../Analysis';
-import { SpectrumType } from '../types/SpectrumType';
+import { Spectrum } from 'cheminfo-types';
 import { SpectrumSelector } from '../types/SpectrumSelector';
 
 interface ToTextOptions {
@@ -19,7 +19,7 @@ export function toText(analysis: Analysis, options: ToTextOptions = {}) {
   return exportText(spectra ? [spectra] : [], options);
 }
 
-function exportText(spectrums: SpectrumType[], options: ToTextOptions) {
+function exportText(spectrums: Spectrum[], options: ToTextOptions) {
   const { endOfLine = '\n', fieldSeparator = ',' } = options;
   let result: string[] = new Array(spectrums.length);
   for (let index = 0; index < spectrums.length; index++) {

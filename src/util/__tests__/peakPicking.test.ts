@@ -1,12 +1,12 @@
 import { toBeDeepCloseTo, toMatchCloseTo } from 'jest-matcher-deep-close-to';
 
-import { SpectrumType } from '../../types/SpectrumType';
+import { Spectrum } from 'cheminfo-types';
 import { peakPicking } from '../peakPicking';
 
 expect.extend({ toBeDeepCloseTo, toMatchCloseTo });
 
 describe('peakPicking', () => {
-  const spectrum: SpectrumType = {
+  const spectrum: Spectrum = {
     variables: {
       x: {
         data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],

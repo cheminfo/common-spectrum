@@ -2,7 +2,7 @@ import max from 'ml-array-max';
 import { optimize as optimizePeak } from 'ml-spectra-fitting';
 import { xFindClosestIndex } from 'ml-spectra-processing';
 
-import { SpectrumType } from '../types/SpectrumType';
+import { Spectrum } from 'cheminfo-types';
 import { PeakPickingOptions } from '../types/PeakPickingOptions';
 
 /** Based on a x value we will return a peak
@@ -11,7 +11,7 @@ import { PeakPickingOptions } from '../types/PeakPickingOptions';
  * the x/y of the fitted peak will be in xOptimized and yOptimized
  */
 export function peakPicking(
-  spectrum: SpectrumType,
+  spectrum: Spectrum,
   /** value to search (on x axis) */
   target: number,
   options: PeakPickingOptions = {},

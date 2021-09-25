@@ -1,3 +1,5 @@
+import { OneLowerCase } from 'cheminfo-types';
+
 export interface SpectrumSelector {
   /** Allows to specify 2 units using a string like 'nm vs °C' */
   units?: string;
@@ -16,11 +18,11 @@ export interface SpectrumSelector {
   /** Select a specific X variable by one letter name
    * @default 'x'
    */
-  xVariable?: string;
+  xVariable?: OneLowerCase;
   /** Select a specific Y variable by one letter name
    * @default 'y'
    */
-  yVariable?: string;
+  yVariable?: OneLowerCase;
   /** Select based on the data type */
   dataType?: string | RegExp;
   /** Select based on the title field */

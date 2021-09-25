@@ -1,11 +1,11 @@
 import { toBeDeepCloseTo, toMatchCloseTo } from 'jest-matcher-deep-close-to';
 
-import { SpectrumType } from '../../types/SpectrumType';
+import { Spectrum } from 'cheminfo-types';
 import { getXYSpectrum } from '../getXYSpectrum';
 
 expect.extend({ toBeDeepCloseTo, toMatchCloseTo });
 
-const spectra: SpectrumType[] = [
+const spectra: Spectrum[] = [
   {
     variables: {
       x: {

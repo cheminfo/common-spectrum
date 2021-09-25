@@ -1,8 +1,8 @@
-import { SpectrumType } from '../../types/SpectrumType';
+import { Spectrum } from 'cheminfo-types';
 import { autoPeakPicking } from '../autoPeakPicking';
 
 describe('autoPeakPicking positive', () => {
-  const spectrum: SpectrumType = {
+  const spectrum: Spectrum = {
     variables: {
       x: {
         data: [
@@ -50,7 +50,7 @@ describe('autoPeakPicking positive', () => {
 });
 
 describe('autoPeakPicking negative', () => {
-  const spectrum: SpectrumType = {
+  const spectrum: Spectrum = {
     variables: {
       x: {
         data: [
