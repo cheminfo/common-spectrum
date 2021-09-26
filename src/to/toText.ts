@@ -1,4 +1,4 @@
-import { Spectrum } from 'cheminfo-types/src/index';
+import type { Spectrum } from 'cheminfo-types/src/index';
 
 import { Analysis } from '../Analysis';
 import { SpectrumSelector } from '../types/SpectrumSelector';

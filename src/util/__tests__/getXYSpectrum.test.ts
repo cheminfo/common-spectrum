@@ -1,4 +1,4 @@
-import { Spectrum } from 'cheminfo-types/src/index';
+import type { Spectrum } from 'cheminfo-types/src/index';
 import { toBeDeepCloseTo, toMatchCloseTo } from 'jest-matcher-deep-close-to';
 
 import { getXYSpectrum } from '../getXYSpectrum';

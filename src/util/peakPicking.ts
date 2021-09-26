@@ -1,4 +1,4 @@
-import { Spectrum } from 'cheminfo-types/src/index';
+import type { Spectrum } from 'cheminfo-types/src/index';
 import max from 'ml-array-max';
 import { optimize as optimizePeak } from 'ml-spectra-fitting';
 import { xFindClosestIndex } from 'ml-spectra-processing';

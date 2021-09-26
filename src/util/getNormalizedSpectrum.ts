@@ -5,7 +5,7 @@ import {
   rollingBallBaseline,
   rollingMedianBaseline,
 } from 'baselines';
-import { Spectrum } from 'cheminfo-types/src/index';
+import type { Spectrum } from 'cheminfo-types/src/index';
 import max from 'ml-array-max';
 import min from 'ml-array-min';
 import normed from 'ml-array-normed';
