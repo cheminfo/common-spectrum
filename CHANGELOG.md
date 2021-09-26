@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.43.1](https://www.github.com/cheminfo/common-spectrum/compare/v0.43.0...v0.43.1) (2021-09-26)
+
+
+### Bug Fixes
+
+* define react-plot as a dependency ([ce65110](https://www.github.com/cheminfo/common-spectrum/commit/ce651102b7977bbe25a605341b9568d60facae0b))
+
 ## [0.43.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.42.0...v0.43.0) (2021-09-26)
 
 
