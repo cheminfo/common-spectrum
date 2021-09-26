@@ -6,22 +6,22 @@ const spectra = {
     x: {
       data: [1, 2],
       units: 'V',
-      label: 'Voltage [V]',
+      label: 'Voltage',
     },
     y: {
       data: [0.5, 0.2],
       units: 'A',
-      label: 'Current [A]',
+      label: 'Current',
     },
     z: {
       data: [5, 6],
       units: '°C',
-      label: 'Temperature [°C]',
+      label: 'Temperature',
     },
     t: {
       data: [7, 8],
       units: 's',
-      label: 'Time [s]',
+      label: 'Time',
     },
   },
 };
