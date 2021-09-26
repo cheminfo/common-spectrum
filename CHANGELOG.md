@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.43.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.42.0...v0.43.0) (2021-09-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* Always extract units from label
+* getReactPlotJSON does not repeat units in label
+* Rename SpectrumType to Spectrum and enforce the presence of variables 'x' and 'y'
+* rename VariableType to SpectrumVariable and SelectorType to SpectrumSelector
+
+### Features
+
+* Always extract units from label ([6e5da98](https://www.github.com/cheminfo/common-spectrum/commit/6e5da98b6263a83f8313cb49cd1dfa0ec2ac9ca0))
+* getReactPlotJSON does not repeat units in label ([f0cb4ff](https://www.github.com/cheminfo/common-spectrum/commit/f0cb4ff6ae6eeb48922bb70d35e1d8f2fe1cf0e6))
+* Rename SpectrumType to Spectrum and enforce the presence of variables 'x' and 'y' ([52123c0](https://www.github.com/cheminfo/common-spectrum/commit/52123c0b7c0fadd120f2fe5e82178b133442c131))
+* rename VariableType to SpectrumVariable and SelectorType to SpectrumSelector ([f9bdc1f](https://www.github.com/cheminfo/common-spectrum/commit/f9bdc1f311ca6dd893740003389dd9942c03b6d3))
+
 ## [0.42.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.41.0...v0.42.0) (2021-09-17)
 
 
