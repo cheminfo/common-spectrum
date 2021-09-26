@@ -67,14 +67,18 @@ export function getReactPlotJSON(
 
     xAxis = {
       id: 'x',
-      label: spectra.variables.x.label,
+      label:
+        spectra.variables.x.label +
+        (spectra.variables.x.units ? ` [${spectra.variables.x.units}]` : ''),
       ...xAxisOptions,
       position: 'bottom',
       type: 'main',
     };
     yAxis = {
       id: 'y',
-      label: spectra.variables.y.label,
+      label:
+        spectra.variables.y.label +
+        (spectra.variables.y.units ? ` [${spectra.variables.y.units}]` : ''),
       ...yAxisOptions,
       position: 'left',
       type: 'main',

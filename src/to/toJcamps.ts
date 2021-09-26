@@ -1,7 +1,7 @@
+import { Spectrum } from 'cheminfo-types/src/index';
 import { fromVariables } from 'convert-to-jcamp';
 
 import { Analysis } from '../Analysis';
-import { Spectrum } from 'cheminfo-types';
 
 interface GetJcampOptions {
   info?: Record<string, string>;

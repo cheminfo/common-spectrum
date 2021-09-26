@@ -6,15 +6,19 @@ Object {
     "x": Object {
       "display": true,
       "flipped": false,
-      "label": "X axis [xUnits]",
+      "label": "X axis",
       "logScale": true,
-      "unit": "",
+      "unit": "xUnits",
+      "unitWrapperAfter": ")",
+      "unitWrapperBefore": "(",
     },
     "y": Object {
       "display": true,
       "flipped": false,
       "label": "Y axis",
       "unit": "",
+      "unitWrapperAfter": ")",
+      "unitWrapperBefore": "(",
     },
   },
   "series": Array [

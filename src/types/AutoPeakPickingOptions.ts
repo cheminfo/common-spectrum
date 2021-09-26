@@ -1,12 +1,14 @@
+import { OneLowerCase } from 'cheminfo-types/src/index';
+
 import { NormalizedSpectrumOptions } from './NormalizedSpectrumOptions';
-import { ShapeOptions } from './ShapeOptions';
 import { SGOptions } from './SGOptions';
+import { ShapeOptions } from './ShapeOptions';
 
 export interface AutoPeakPickingOptions {
   /** x variable label, by default 'x' */
-  xVariable?: string;
+  xVariable?: OneLowerCase;
   /** y variable label, by default 'y' */
-  yVariable?: string;
+  yVariable?: OneLowerCase;
   shape?: ShapeOptions;
   /** Savitzky-Golay parameters used for global spectra deconvolution. windowSize should be odd; polynomial is the degree of the polynomial to use in the approximations. It should be bigger than 2. */
   sgOptions?: SGOptions;

@@ -1,8 +1,8 @@
+import { Spectrum } from 'cheminfo-types/src/index';
 import max from 'ml-array-max';
 import { optimize as optimizePeak } from 'ml-spectra-fitting';
 import { xFindClosestIndex } from 'ml-spectra-processing';
 
-import { Spectrum } from 'cheminfo-types';
 import { PeakPickingOptions } from '../types/PeakPickingOptions';
 
 /** Based on a x value we will return a peak
@@ -55,13 +55,14 @@ export function peakPicking(
     );
 
     optimizedIndex = xFindClosestIndex(x, optimizedPeak.peaks[0].x);
-    for (let key in spectrum.variables) {
-      result[key] = spectrum.variables[key].data[optimizedIndex];
+
+    for (let [key, variable] of Object.entries(spectrum.variables)) {
+      result[key] = variable.data[optimizedIndex];
     }
     result.optimized = optimizedPeak.peaks[0];
   } else {
-    for (let key in spectrum.variables) {
-      result[key] = spectrum.variables[key].data[targetIndex];
+    for (let [key, variable] of Object.entries(spectrum.variables)) {
+      result[key] = variable.data[targetIndex];
     }
   }
 

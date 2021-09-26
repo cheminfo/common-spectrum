@@ -1,7 +1,10 @@
-import { SpectrumVariable, OneLowerCase } from 'cheminfo-types';
+import type {
+  OneLowerCase,
+  Spectrum,
+  SpectrumVariables,
+} from 'cheminfo-types/src/index';
 
 import { SpectrumSelector } from '../types/SpectrumSelector';
-import { Spectrum } from 'cheminfo-types';
 
 import { convertUnit } from './convertUnit';
 import { ensureRegexp } from './ensureRegexp';
@@ -31,7 +34,12 @@ export function getXYSpectrum(
     xLabel,
     yLabel,
     meta,
+    index,
   } = selector;
+
+  if (index !== undefined) {
+    return spectra[index];
+  }
 
   if (dataType) {
     dataType = ensureRegexp(dataType);
@@ -104,28 +112,34 @@ export function getXYSpectrum(
 interface Selector {
   units?: string;
   label?: string | RegExp;
-  variableName?: string;
+  variableName?: OneLowerCase;
 }
 function getPossibleVariable(
-  variables: Record<string, SpectrumVariable>,
+  variables: SpectrumVariables,
   selector: Selector = {},
 ) {
   const { units, label, variableName } = selector;
-  let possible: Record<string, SpectrumVariable | undefined> = { ...variables };
+  let possible = { ...variables };
+  let key: keyof typeof possible;
   if (units !== undefined) {
-    for (let key in possible) {
+    for (key in possible) {
+      // @ts-ignore
       let converted = convertUnit(1, variables[key].units || '', units);
       if (converted) {
+        // @ts-ignore
         possible[key] = getConvertedVariable(variables[key], units);
       } else {
+        // @ts-ignore
         possible[key] = undefined;
       }
     }
   }
 
   if (label !== undefined) {
-    for (let key in possible) {
+    for (key in possible) {
+      // @ts-ignore
       if (!variables[key].label.match(label)) {
+        // @ts-ignore
         possible[key] = undefined;
       }
     }
@@ -133,10 +147,14 @@ function getPossibleVariable(
 
   if (variableName !== undefined) {
     if (possible[variableName]) return possible[variableName];
+    // @ts-ignore this should disappear if once for ever the variables are lowercases
     if (possible[variableName.toUpperCase()]) {
+      // @ts-ignore
       return possible[variableName.toUpperCase()];
     }
+    // @ts-ignore
     if (possible[variableName.toLowerCase()]) {
+      // @ts-ignore
       return possible[variableName.toLowerCase()];
     }
   }

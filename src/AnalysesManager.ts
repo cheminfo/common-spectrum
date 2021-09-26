@@ -62,8 +62,8 @@ export class AnalysesManager {
     let values: Record<string, CounterType> = {};
     for (let spectrum of this.getSpectra()) {
       if (spectrum.variables) {
-        for (let key in spectrum.variables) {
-          const units = spectrum.variables[key].units?.replace(/\s+\[.*/, '');
+        for (let [, variable] of Object.entries(spectrum.variables)) {
+          const units = variable.units?.replace(/\s+\[.*/, '');
           if (units) {
             appendDistinctValue(values, units);
           }
@@ -80,11 +80,8 @@ export class AnalysesManager {
     let values: Record<string, CounterType> = {};
     for (let spectrum of this.getSpectra()) {
       if (spectrum.variables) {
-        for (let key in spectrum.variables) {
-          appendDistinctValue(
-            values,
-            spectrum.variables[key].label.replace(/\s+\[.*/, ''),
-          );
+        for (let [, variable] of Object.entries(spectrum.variables)) {
+          appendDistinctValue(values, variable.label.replace(/\s+\[.*/, ''));
         }
       }
     }

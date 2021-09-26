@@ -1,6 +1,6 @@
+import { Spectrum } from 'cheminfo-types/src/index';
 import { toBeDeepCloseTo, toMatchCloseTo } from 'jest-matcher-deep-close-to';
 
-import { Spectrum } from 'cheminfo-types';
 import { peakPicking } from '../peakPicking';
 
 expect.extend({ toBeDeepCloseTo, toMatchCloseTo });

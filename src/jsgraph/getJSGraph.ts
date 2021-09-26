@@ -42,8 +42,10 @@ export function getJSGraph(analyses: Analysis[], options: JSGraphOptions = {}) {
   } = options;
   let series = [];
 
-  let xLabel = '';
-  let yLabel = '';
+  let xLabel = xAxis.label;
+  let yLabel = yAxis.label;
+  let xUnits = xAxis.units;
+  let yUnits = yAxis.units;
 
   for (let i = 0; i < analyses.length; i++) {
     const analysis = analyses[i];
@@ -55,6 +57,8 @@ export function getJSGraph(analyses: Analysis[], options: JSGraphOptions = {}) {
     if (!currentData) continue;
     if (!xLabel) xLabel = currentData.variables.x.label;
     if (!yLabel) yLabel = currentData.variables.y.label;
+    if (!xUnits) xUnits = currentData.variables.x.units;
+    if (!yUnits) yUnits = currentData.variables.y.units;
     addStyle(serie, analysis, {
       color: colors[i % colors.length],
       opacity: opacities[i % opacities.length],
@@ -75,14 +79,18 @@ export function getJSGraph(analyses: Analysis[], options: JSGraphOptions = {}) {
     axes: {
       x: {
         label: xLabel,
-        unit: '',
+        unit: xUnits,
+        unitWrapperBefore: '(',
+        unitWrapperAfter: ')',
         flipped: false,
         display: true,
         ...xAxis,
       },
       y: {
         label: yLabel,
-        unit: '',
+        unit: yUnits,
+        unitWrapperBefore: '(',
+        unitWrapperAfter: ')',
         flipped: false,
         display: true,
         ...yAxis,

@@ -9,7 +9,7 @@ test('getJSGraph', () => {
       x: {
         data: [-1, 1, 2],
         units: 'xUnits',
-        label: 'X axis [xUnits]',
+        label: 'X axis (xUnits)',
       },
       y: {
         data: [2, 3, 4],

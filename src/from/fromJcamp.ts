@@ -1,4 +1,4 @@
-import { SpectrumVariable } from 'cheminfo-types';
+import { SpectrumVariable } from 'cheminfo-types/src/index';
 import { convert } from 'jcampconverter';
 
 import { Analysis } from '../Analysis';

@@ -1,10 +1,12 @@
+import { OneLowerCase } from 'cheminfo-types/src/index';
+
 import { ShapeOptions } from './ShapeOptions';
 
 export interface PeakPickingOptions {
   /** x variable label, by default 'x' */
-  xVariable?: string;
+  xVariable?: OneLowerCase;
   /** y variable label, by default 'y' */
-  yVariable?: string;
+  yVariable?: OneLowerCase;
   /** should we look for the closest min / max, default true */
   optimize?: boolean;
   /** options of the peak shape fit */

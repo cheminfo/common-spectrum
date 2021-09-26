@@ -1,11 +1,11 @@
-import { SpectrumVariables, Spectrum } from 'cheminfo-types';
+import type { SpectrumVariables, Spectrum } from 'cheminfo-types/src/index';
 import isAnyArray from 'is-any-array';
 import max from 'ml-array-max';
 import min from 'ml-array-min';
 import { xIsMonotone } from 'ml-spectra-processing';
 
-import { SpectrumSelector } from './types/SpectrumSelector';
 import { NormalizedSpectrumOptions } from './types/NormalizedSpectrumOptions';
+import { SpectrumSelector } from './types/SpectrumSelector';
 import { getNormalizedSpectrum } from './util/getNormalizedSpectrum';
 import { getXYSpectrum } from './util/getXYSpectrum';
 
@@ -152,11 +152,15 @@ function standardizeData(
   for (let [key, variable] of Object.entries(variables)) {
     if (reverse) variable.data = variable.data.reverse();
     variable.label = variable.label || key;
-    if (!variable.units && variable.label.includes('[')) {
-      variable.units = variable.label.replace(
+    if (variable.label.match(/^.*[([](?<units>.*)[)\]].*$/)) {
+      const units = variable.label.replace(
         /^.*[([](?<units>.*)[)\]].*$/,
         '$<units>',
       );
+      if (!variable.units || variable.units === units) {
+        variable.units = units;
+        variable.label = variable.label.replace(/[([].*[)\]]/, '').trim();
+      }
     }
     variable.min = min(variable.data);
     variable.max = max(variable.data);

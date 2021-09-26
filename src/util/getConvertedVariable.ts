@@ -1,4 +1,4 @@
-import { SpectrumVariable } from 'cheminfo-types';
+import { SpectrumVariable } from 'cheminfo-types/src/index';
 import max from 'ml-array-max';
 import min from 'ml-array-min';
 import { xIsMonotone } from 'ml-spectra-processing';

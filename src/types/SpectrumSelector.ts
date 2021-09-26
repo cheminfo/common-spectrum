@@ -1,4 +1,4 @@
-import { OneLowerCase } from 'cheminfo-types';
+import type { OneLowerCase } from 'cheminfo-types/src/index';
 
 export interface SpectrumSelector {
   /** Allows to specify 2 units using a string like 'nm vs °C' */
@@ -29,4 +29,6 @@ export interface SpectrumSelector {
   title?: string | RegExp;
   /** Select based on the presence of a meta information */
   meta?: Record<string, string>;
+  /** The index of the spectrum in the spectra array */
+  index?: number;
 }

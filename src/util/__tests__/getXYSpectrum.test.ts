@@ -1,6 +1,6 @@
+import { Spectrum } from 'cheminfo-types/src/index';
 import { toBeDeepCloseTo, toMatchCloseTo } from 'jest-matcher-deep-close-to';
 
-import { Spectrum } from 'cheminfo-types';
 import { getXYSpectrum } from '../getXYSpectrum';
 
 expect.extend({ toBeDeepCloseTo, toMatchCloseTo });
@@ -68,11 +68,12 @@ const spectra: Spectrum[] = [
 
 describe('getXYSpectrum', () => {
   it('Spectrum by labels', () => {
-    let xy =
-      getXYSpectrum(spectra, {
-        xLabel: 'Weight [mg]',
-        yLabel: 'Temperature [°C]',
-      })?.variables || {};
+    let xy = getXYSpectrum(spectra, {
+      xLabel: 'Weight [mg]',
+      yLabel: 'Temperature [°C]',
+    })?.variables;
+
+    // @ts-expect-error
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toStrictEqual({
       x: {
@@ -94,6 +95,8 @@ describe('getXYSpectrum', () => {
         xLabel: 'weight',
         yLabel: 'temp',
       })?.variables || {};
+
+    // @ts-expect-error
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toStrictEqual({
       x: {
@@ -112,6 +115,8 @@ describe('getXYSpectrum', () => {
   it('Spectrum by units s vs g', () => {
     const query = { xUnits: 's', yUnits: 'g' };
     let xy = getXYSpectrum(spectra, query)?.variables || {};
+
+    // @ts-expect-error
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toStrictEqual({
       x: {
@@ -135,6 +140,8 @@ describe('getXYSpectrum', () => {
 
   it('Spectrum by units "" vs °C', () => {
     let xy = getXYSpectrum(spectra, { units: 'vs °C' })?.variables || {};
+
+    // @ts-expect-error
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toStrictEqual({
       x: {
@@ -159,6 +166,8 @@ describe('getXYSpectrum', () => {
   it('Spectrum by units °C vs g', () => {
     let xy =
       getXYSpectrum(spectra, { xUnits: '°C', yUnits: 'g' })?.variables || {};
+
+    // @ts-expect-error
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toStrictEqual({
       x: {
@@ -182,6 +191,8 @@ describe('getXYSpectrum', () => {
 
   it('Spectrum by dataType TGA', () => {
     let xy = getXYSpectrum(spectra, { dataType: 'TGA' })?.variables || {};
+
+    // @ts-expect-error
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toStrictEqual({
       x: {
@@ -199,6 +210,8 @@ describe('getXYSpectrum', () => {
 
   it('Spectrum by title My', () => {
     let xy = getXYSpectrum(spectra, { title: 'My' })?.variables || {};
+
+    // @ts-expect-error
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toStrictEqual({
       x: {
@@ -217,6 +230,8 @@ describe('getXYSpectrum', () => {
   it('Spectrum by meta meta2="Meta"', () => {
     let xy =
       getXYSpectrum(spectra, { meta: { meta2: 'meta' } })?.variables || {};
+
+    // @ts-expect-error
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toStrictEqual({
       x: {
@@ -261,6 +276,8 @@ describe('getXYSpectrum', () => {
 
   it('Spectrum by units s vs g as units', () => {
     let xy = getXYSpectrum(spectra, { units: 'g vs s' })?.variables || {};
+
+    // @ts-expect-error
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toStrictEqual({
       x: {
@@ -283,6 +300,7 @@ describe('getXYSpectrum', () => {
   });
 
   it('xVariable: t, yVariable: Z', () => {
+    // @ts-expect-error We still allow upper or lowercase, this could change in the future
     let xy = getXYSpectrum(spectra, { xVariable: 't', yVariable: 'Z' });
     expect(xy).toMatchObject({
       variables: {

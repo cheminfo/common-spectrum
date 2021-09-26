@@ -1,8 +1,8 @@
+import { Spectrum } from 'cheminfo-types/src/index';
 // @ts-ignore
 import { gsd } from 'ml-gsd';
 import { xyMaxClosestYPoint, xyMinClosestYPoint } from 'ml-spectra-processing';
 
-import { Spectrum } from 'cheminfo-types';
 import { AutoPeakPickingOptions } from '../types/AutoPeakPickingOptions';
 
 import { getNormalizedSpectrum } from './getNormalizedSpectrum';
@@ -21,6 +21,8 @@ export function autoPeakPicking(
 
   let x = spectrum.variables[xVariable]?.data;
   let y = spectrum.variables[yVariable]?.data;
+
+  if (!x || !y) return [];
 
   if (normalizationOptions) {
     const tempSpectrum: Spectrum = {
@@ -71,8 +73,8 @@ export function autoPeakPicking(
 
   return peaks.map((peak) => {
     const result: Record<string, number> = {};
-    for (let key in spectrum.variables) {
-      result[key] = spectrum.variables[key].data[peak.index];
+    for (const [key, variable] of Object.entries(spectrum.variables)) {
+      result[key] = variable.data[peak.index];
     }
     result.width = peak.width;
     return result;

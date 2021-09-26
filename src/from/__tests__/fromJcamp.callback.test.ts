@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
-import type { SpectrumVariable } from 'cheminfo-types';
+import type { SpectrumVariable } from 'cheminfo-types/src/index';
 
 import { fromJcamp } from '../fromJcamp';
 
@@ -28,9 +28,13 @@ describe('fromJcamp with callback', () => {
     const spectrum = result.spectra[0];
     expect(spectrum.variables.x.label).toBe('1/CM');
     expect(spectrum.variables.y.label).toBe('ABSORBANCE');
-    expect(spectrum.variables.t.label).toBe('Transmittance (%)');
+    // @ts-expect-error
+    expect(spectrum.variables.t.label).toBe('Transmittance');
+    // @ts-expect-error
+    expect(spectrum.variables.t.units).toBe('%');
     expect(spectrum.variables.x.data).toHaveLength(1738);
     expect(spectrum.variables.y.data).toHaveLength(1738);
+    // @ts-expect-error
     expect(spectrum.variables.t.data).toHaveLength(1738);
   });
 });

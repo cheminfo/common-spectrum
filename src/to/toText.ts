@@ -1,5 +1,6 @@
+import { Spectrum } from 'cheminfo-types/src/index';
+
 import { Analysis } from '../Analysis';
-import { Spectrum } from 'cheminfo-types';
 import { SpectrumSelector } from '../types/SpectrumSelector';
 
 interface ToTextOptions {
