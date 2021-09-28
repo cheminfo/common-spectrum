@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.43.2](https://www.github.com/cheminfo/common-spectrum/compare/v0.43.1...v0.43.2) (2021-09-28)
+
+
+### Bug Fixes
+
+* add @types/react ad developper dependency ([9331f50](https://www.github.com/cheminfo/common-spectrum/commit/9331f50f0862071c9b4020bb88627a9c28d41ef4))
+
 ### [0.43.1](https://www.github.com/cheminfo/common-spectrum/compare/v0.43.0...v0.43.1) (2021-09-26)
 
 
