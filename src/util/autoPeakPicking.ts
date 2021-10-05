@@ -1,4 +1,4 @@
-import type { Spectrum } from 'cheminfo-types/src/index';
+import type { MeasurementXY } from 'cheminfo-types';
 // @ts-ignore
 import { gsd } from 'ml-gsd';
 import { xyMaxClosestYPoint, xyMinClosestYPoint } from 'ml-spectra-processing';
@@ -9,7 +9,7 @@ import { getNormalizedSpectrum } from './getNormalizedSpectrum';
 
 /** Based on a x value we will return a peak*/
 export function autoPeakPicking(
-  spectrum: Spectrum,
+  spectrum: MeasurementXY,
   options: AutoPeakPickingOptions = {},
 ) {
   const {
@@ -17,6 +17,7 @@ export function autoPeakPicking(
     yVariable = 'y',
     normalizationOptions,
     minPeakWidth,
+    gsdOptions = {},
   } = options;
 
   let x = spectrum.variables[xVariable]?.data;
@@ -25,7 +26,7 @@ export function autoPeakPicking(
   if (!x || !y) return [];
 
   if (normalizationOptions) {
-    const tempSpectrum: Spectrum = {
+    const tempSpectrum: MeasurementXY = {
       variables: {
         x: { data: x, label: '' },
         y: { data: y, label: '' },
@@ -43,12 +44,12 @@ export function autoPeakPicking(
   let { from, to } = options;
 
   let peaks: Array<{ x: number; y: number; width: number; index: number }> =
-    gsd({ x, y }, options);
+    gsd({ x, y }, gsdOptions);
 
   if (normalizationOptions) {
     // we need to recalculate the real count
     const xyClosestYPoint =
-      options.maxCriteria === undefined || options.maxCriteria
+      gsdOptions.maxCriteria === undefined || gsdOptions.maxCriteria
         ? xyMaxClosestYPoint
         : xyMinClosestYPoint;
     for (let peak of peaks) {

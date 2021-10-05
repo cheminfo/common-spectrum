@@ -1,4 +1,4 @@
-import type { Spectrum } from 'cheminfo-types/src/index';
+import type { MeasurementXY } from 'cheminfo-types';
 import { toBeDeepCloseTo, toMatchCloseTo } from 'jest-matcher-deep-close-to';
 
 import { peakPicking } from '../peakPicking';
@@ -6,7 +6,7 @@ import { peakPicking } from '../peakPicking';
 expect.extend({ toBeDeepCloseTo, toMatchCloseTo });
 
 describe('peakPicking', () => {
-  const spectrum: Spectrum = {
+  const spectrum: MeasurementXY = {
     variables: {
       x: {
         data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],

@@ -5,7 +5,7 @@ import {
   rollingBallBaseline,
   rollingMedianBaseline,
 } from 'baselines';
-import type { Spectrum } from 'cheminfo-types/src/index';
+import type { MeasurementXY } from 'cheminfo-types';
 import max from 'ml-array-max';
 import min from 'ml-array-min';
 import normed from 'ml-array-normed';
@@ -26,34 +26,35 @@ import Stat from 'ml-stat/array';
 import { NormalizedSpectrumOptions } from '../types/NormalizedSpectrumOptions';
 
 export function getNormalizedSpectrum(
-  spectrum: Spectrum,
+  measurement: MeasurementXY,
   options: NormalizedSpectrumOptions = {},
 ) {
   let data = {
-    x: spectrum.variables.x.data,
-    y: spectrum.variables.y.data,
+    x: measurement.variables.x.data,
+    y: measurement.variables.y.data,
   };
-  let newSpectrum: Spectrum = {
+  let newSpectrum: MeasurementXY = {
     variables: {
       x: {
-        data: spectrum.variables.x.data,
-        units: spectrum.variables.x.units,
-        label: spectrum.variables.x.label,
+        data: measurement.variables.x.data,
+        units: measurement.variables.x.units,
+        label: measurement.variables.x.label,
       },
       y: {
-        data: spectrum.variables.y.data,
-        units: spectrum.variables.y.units,
-        label: spectrum.variables.y.label,
+        data: measurement.variables.y.data,
+        units: measurement.variables.y.units,
+        label: measurement.variables.y.label,
       },
     },
   };
-  if (spectrum.title) newSpectrum.title = spectrum.title;
-  if (spectrum.dataType) newSpectrum.dataType = spectrum.dataType;
-  if (spectrum.meta) newSpectrum.meta = spectrum.meta;
+  if (measurement.description) {
+    newSpectrum.description = measurement.description;
+  }
+  if (measurement.meta) newSpectrum.meta = measurement.meta;
 
   let {
-    from = spectrum.variables.x.min,
-    to = spectrum.variables.x.max,
+    from = measurement.variables.x.min,
+    to = measurement.variables.x.max,
     numberOfPoints,
     filters = [],
     exclusions = [],

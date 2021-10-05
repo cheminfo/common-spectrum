@@ -1,9 +1,9 @@
-import type { Spectrum } from 'cheminfo-types/src/index';
+import type { MeasurementXY } from 'cheminfo-types';
 
 import { autoPeakPicking } from '../autoPeakPicking';
 
 describe('autoPeakPicking positive', () => {
-  const spectrum: Spectrum = {
+  const spectrum: MeasurementXY = {
     variables: {
       x: {
         data: [
@@ -51,7 +51,7 @@ describe('autoPeakPicking positive', () => {
 });
 
 describe('autoPeakPicking negative', () => {
-  const spectrum: Spectrum = {
+  const spectrum: MeasurementXY = {
     variables: {
       x: {
         data: [
@@ -74,7 +74,9 @@ describe('autoPeakPicking negative', () => {
   };
 
   it('maxCriteria=false', () => {
-    let peaks = autoPeakPicking(spectrum, { maxCriteria: false });
+    let peaks = autoPeakPicking(spectrum, {
+      gsdOptions: { maxCriteria: false },
+    });
 
     expect(peaks).toStrictEqual([
       { x: 6, y: -6, z: 5, width: 4 },

@@ -1,4 +1,4 @@
-import type { Spectrum } from 'cheminfo-types/src/index';
+import type { MeasurementXY } from 'cheminfo-types';
 
 import { Analysis } from '../Analysis';
 import { SpectrumSelector } from '../types/SpectrumSelector';
@@ -20,7 +20,7 @@ export function toText(analysis: Analysis, options: ToTextOptions = {}) {
   return exportText(spectra ? [spectra] : [], options);
 }
 
-function exportText(spectrums: Spectrum[], options: ToTextOptions) {
+function exportText(spectrums: MeasurementXY[], options: ToTextOptions) {
   const { endOfLine = '\n', fieldSeparator = ',' } = options;
   let result: string[] = new Array(spectrums.length);
   for (let index = 0; index < spectrums.length; index++) {

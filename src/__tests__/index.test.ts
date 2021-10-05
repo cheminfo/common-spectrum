@@ -23,7 +23,7 @@ test('index', () => {
       },
     },
     {
-      title: 'My spectrum',
+      description: 'My spectrum',
       dataType: 'TGA',
       meta: {
         meta1: 'Meta 1',
@@ -60,7 +60,7 @@ test('index', () => {
   let jcamp = toJcamp(analysis, {
     info: {
       owner: 'cheminfo',
-      origin: 'Common Spectrum',
+      origin: 'Common MeasurementXY',
     },
   });
 
@@ -87,7 +87,7 @@ test('index', () => {
         symbol: 'Y',
       },
     },
-    title: 'My spectrum',
+    description: 'My spectrum',
     dataType: 'TGA',
     meta: { meta1: 'Meta 1', meta2: 'Meta 2' },
   });

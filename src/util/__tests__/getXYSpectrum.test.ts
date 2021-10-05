@@ -1,11 +1,11 @@
-import type { Spectrum } from 'cheminfo-types/src/index';
+import type { MeasurementXY } from 'cheminfo-types';
 import { toBeDeepCloseTo, toMatchCloseTo } from 'jest-matcher-deep-close-to';
 
 import { getXYSpectrum } from '../getXYSpectrum';
 
 expect.extend({ toBeDeepCloseTo, toMatchCloseTo });
 
-const spectra: Spectrum[] = [
+const spectra: MeasurementXY[] = [
   {
     variables: {
       x: {
@@ -43,7 +43,7 @@ const spectra: Spectrum[] = [
         label: 'Temperature [°C]',
       },
     },
-    title: 'My spectrum',
+    description: 'My spectrum',
     dataType: 'TGA',
     meta: {
       meta1: 'Meta 1',
@@ -67,7 +67,7 @@ const spectra: Spectrum[] = [
 ];
 
 describe('getXYSpectrum', () => {
-  it('Spectrum by labels', () => {
+  it('MeasurementXY by labels', () => {
     let xy = getXYSpectrum(spectra, {
       xLabel: 'Weight [mg]',
       yLabel: 'Temperature [°C]',
@@ -89,7 +89,7 @@ describe('getXYSpectrum', () => {
     });
   });
 
-  it('Spectrum by partial labels', () => {
+  it('MeasurementXY by partial labels', () => {
     let xy =
       getXYSpectrum(spectra, {
         xLabel: 'weight',
@@ -112,7 +112,7 @@ describe('getXYSpectrum', () => {
     });
   });
 
-  it('Spectrum by units s vs g', () => {
+  it('MeasurementXY by units s vs g', () => {
     const query = { xUnits: 's', yUnits: 'g' };
     let xy = getXYSpectrum(spectra, query)?.variables || {};
 
@@ -138,7 +138,7 @@ describe('getXYSpectrum', () => {
     });
   });
 
-  it('Spectrum by units "" vs °C', () => {
+  it('MeasurementXY by units "" vs °C', () => {
     let xy = getXYSpectrum(spectra, { units: 'vs °C' })?.variables || {};
 
     // @ts-expect-error
@@ -163,7 +163,7 @@ describe('getXYSpectrum', () => {
     });
   });
 
-  it('Spectrum by units °C vs g', () => {
+  it('MeasurementXY by units °C vs g', () => {
     let xy =
       getXYSpectrum(spectra, { xUnits: '°C', yUnits: 'g' })?.variables || {};
 
@@ -189,7 +189,7 @@ describe('getXYSpectrum', () => {
     });
   });
 
-  it('Spectrum by dataType TGA', () => {
+  it('MeasurementXY by dataType TGA', () => {
     let xy = getXYSpectrum(spectra, { dataType: 'TGA' })?.variables || {};
 
     // @ts-expect-error
@@ -208,8 +208,8 @@ describe('getXYSpectrum', () => {
     });
   });
 
-  it('Spectrum by title My', () => {
-    let xy = getXYSpectrum(spectra, { title: 'My' })?.variables || {};
+  it('MeasurementXY by description My', () => {
+    let xy = getXYSpectrum(spectra, { description: 'My' })?.variables || {};
 
     // @ts-expect-error
     xy.x.data = Array.from(xy.x.data);
@@ -227,7 +227,7 @@ describe('getXYSpectrum', () => {
     });
   });
 
-  it('Spectrum by meta meta2="Meta"', () => {
+  it('MeasurementXY by meta meta2="Meta"', () => {
     let xy =
       getXYSpectrum(spectra, { meta: { meta2: 'meta' } })?.variables || {};
 
@@ -247,10 +247,10 @@ describe('getXYSpectrum', () => {
     });
   });
 
-  it('Spectrum by units L vs °F', () => {
+  it('MeasurementXY by units L vs °F', () => {
     let xy = getXYSpectrum(spectra, { xUnits: 'L', yUnits: '°F' });
     expect(xy).toBeDeepCloseTo({
-      title: 'My spectrum',
+      description: 'My spectrum',
       dataType: 'TGA',
       meta: { meta1: 'Meta 1', meta2: 'Meta 2' },
       variables: {
@@ -274,7 +274,7 @@ describe('getXYSpectrum', () => {
     });
   });
 
-  it('Spectrum by units s vs g as units', () => {
+  it('MeasurementXY by units s vs g as units', () => {
     let xy = getXYSpectrum(spectra, { units: 'g vs s' })?.variables || {};
 
     // @ts-expect-error

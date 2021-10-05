@@ -1,4 +1,4 @@
-import { SpectrumVariable } from 'cheminfo-types/src/index';
+import { MeasurementVariable } from 'cheminfo-types';
 import { convert } from 'jcampconverter';
 
 import { Analysis } from '../Analysis';
@@ -29,7 +29,7 @@ function addJcamp(analysis: Analysis, jcamp: string | ArrayBuffer) {
 
     // we ensure variables
     if (!currentSpectrum.variables) {
-      const variables: Record<string, SpectrumVariable> = {};
+      const variables: Record<string, MeasurementVariable> = {};
       currentSpectrum.variables = variables;
       variables.x = {
         label: currentSpectrum.xUnits,
@@ -54,7 +54,7 @@ function addJcamp(analysis: Analysis, jcamp: string | ArrayBuffer) {
 
     analysis.pushSpectrum(currentSpectrum.variables, {
       dataType: entry.dataType,
-      title: entry.title,
+      description: entry.description,
       meta: entry.meta,
     });
   }

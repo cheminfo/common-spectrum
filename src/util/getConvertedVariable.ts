@@ -1,4 +1,4 @@
-import { SpectrumVariable } from 'cheminfo-types/src/index';
+import { MeasurementVariable } from 'cheminfo-types';
 import max from 'ml-array-max';
 import min from 'ml-array-min';
 import { xIsMonotone } from 'ml-spectra-processing';
@@ -6,9 +6,9 @@ import { xIsMonotone } from 'ml-spectra-processing';
 import { convertUnit } from './convertUnit';
 
 export function getConvertedVariable(
-  variable: SpectrumVariable,
+  variable: MeasurementVariable,
   newUnits: string,
-): SpectrumVariable {
+): MeasurementVariable {
   const data =
     variable.units !== undefined && variable.units !== newUnits // would be nice if convertUnit would allow typedArray
       ? convertUnit(Array.from(variable.data), variable.units, newUnits)

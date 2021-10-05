@@ -27,7 +27,7 @@ describe('AnalysesManager test', () => {
       },
     },
     {
-      title: 'My spectrum',
+      description: 'My spectrum',
       dataType: 'TGA',
       meta: {
         meta1: 'Meta 1',
@@ -62,7 +62,7 @@ describe('AnalysesManager test', () => {
       },
     },
     {
-      title: 'My spectrum 2',
+      description: 'My spectrum 2',
       dataType: 'TGA',
       meta: {
         meta1: 'Meta2 1',
@@ -90,7 +90,7 @@ describe('AnalysesManager test', () => {
       },
     },
     {
-      title: 'My spectrum',
+      description: 'My spectrum',
       dataType: 'TGA',
       meta: {
         meta1: 'Meta2 1',

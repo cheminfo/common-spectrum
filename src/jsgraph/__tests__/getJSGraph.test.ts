@@ -18,7 +18,7 @@ test('getJSGraph', () => {
       },
     },
     {
-      title: 'My spectrum',
+      description: 'My spectrum',
       dataType: 'TGA',
       meta: {
         meta1: 'Meta 1',
