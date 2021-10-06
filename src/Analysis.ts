@@ -138,7 +138,6 @@ function standardizeData(
   if (spectrumCallback) {
     spectrumCallback(variables);
   }
-
   let xVariable = variables.x;
   let yVariable = variables.y;
   if (!xVariable || !yVariable) {

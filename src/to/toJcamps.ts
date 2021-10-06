@@ -21,7 +21,7 @@ function getJcamp(spectrum: MeasurementXY, options: GetJcampOptions) {
   let jcampOptions = {
     options: {},
     info: {
-      description: spectrum.description,
+      title: spectrum.description,
       dataType: spectrum.dataType,
       ...info,
     },

@@ -101,6 +101,7 @@ describe('case for ntuples', () => {
           label: 'X axis',
         },
         y: {
+          symbol: 'y',
           isDependent: true,
           dim: 2,
           units: 'yUnits',

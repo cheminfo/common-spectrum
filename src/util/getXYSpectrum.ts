@@ -75,7 +75,7 @@ export function getXYSpectrum(
 
     if (description) {
       if (!spectrum.description || !spectrum.description.match(description))
-        continue;
+        {continue;}
     }
 
     if (meta && typeof meta === 'object') {

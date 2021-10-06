@@ -52,9 +52,23 @@ function addJcamp(analysis: Analysis, jcamp: string | ArrayBuffer) {
       }
     }
 
+    // todo hack waiting jcampconverter update
+    for (let symbol in currentSpectrum.variables) {
+      const variable = currentSpectrum.variables[symbol];
+      if (variable?.type?.toUpperCase() === 'DEPENDENT') {
+        delete variable.type;
+        variable.isDependent = true;
+      }
+      if (variable?.type?.toUpperCase() === 'INDEPENDENT') {
+        delete variable.type;
+        variable.isDependent = false;
+      }
+      delete variable.name;
+    }
+
     analysis.pushSpectrum(currentSpectrum.variables, {
       dataType: entry.dataType,
-      description: entry.description,
+      description: entry.description || entry.title, // todo hack waiting for jcampconverter update
       meta: entry.meta,
     });
   }
