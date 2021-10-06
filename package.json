@@ -1,7 +1,7 @@
 {
-  "name": "common-spectrum",
-  "version": "0.43.2",
-  "description": "Common package to deal with spectra",
+  "name": "base-analysis",
+  "version": "0.0.0",
+  "description": "Common package to deal with analysis",
   "main": "./lib/index.js",
   "module": "./lib-esm/index.js",
   "types": "./lib/index.d.ts",
@@ -11,7 +11,7 @@
     "src"
   ],
   "scripts": {
-    "build": "npm run tsc && cheminfo-build -r CommonSpectrum",
+    "build": "npm run tsc && cheminfo-build -r BaseAnalysis",
     "check-types": "tsc --noEmit",
     "clean": "rimraf lib lib-esm",
     "eslint": "eslint src --ext ts --cache",
@@ -28,15 +28,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cheminfo/common-spectrum.git"
+    "url": "git+https://github.com/cheminfo/analysis.git"
   },
   "keywords": [],
   "author": "Luc Patiny",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cheminfo/common-spectrum/issues"
+    "url": "https://github.com/cheminfo/analysis/issues"
   },
-  "homepage": "https://github.com/cheminfo/common-spectrum#readme",
+  "homepage": "https://github.com/cheminfo/analysis#readme",
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node"
