@@ -1,6 +1,6 @@
 const testRegExp = /^\/((?:\\\/|[^/])+)\/([migyu]{0,5})?$/;
 
-export function ensureRegexp(string: string | RegExp) {
+export function ensureRegexp(string: string | RegExp): RegExp {
   if (typeof string !== 'string') return string;
   const parts = testRegExp.exec(string);
   if (parts) {

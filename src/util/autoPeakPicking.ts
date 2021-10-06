@@ -1,5 +1,4 @@
 import type { Spectrum } from 'cheminfo-types/src/index';
-// @ts-ignore
 import { gsd } from 'ml-gsd';
 import { xyMaxClosestYPoint, xyMinClosestYPoint } from 'ml-spectra-processing';
 

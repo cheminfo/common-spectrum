@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-dynamic-delete */
 import type {
   OneLowerCase,
   Spectrum,
@@ -70,11 +71,15 @@ export function getXYSpectrum(
 
     // we filter on general spectrum information
     if (dataType) {
-      if (!spectrum.dataType || !spectrum.dataType.match(dataType)) continue;
+      if (!spectrum.dataType || !(dataType as RegExp).exec(spectrum.dataType)) {
+        continue;
+      }
     }
 
     if (title) {
-      if (!spectrum.title || !spectrum.title.match(title)) continue;
+      if (!spectrum.title || !(title as RegExp).exec(spectrum.title)) {
+        continue;
+      }
     }
 
     if (meta && typeof meta === 'object') {
@@ -119,43 +124,38 @@ function getPossibleVariable(
   selector: Selector = {},
 ) {
   const { units, label, variableName } = selector;
-  let possible = { ...variables };
+  let possible: SpectrumVariables = { ...variables };
   let key: keyof typeof possible;
   if (units !== undefined) {
     for (key in possible) {
-      // @ts-ignore
-      let converted = convertUnit(1, variables[key].units || '', units);
-      if (converted) {
-        // @ts-ignore
-        possible[key] = getConvertedVariable(variables[key], units);
+      const variable = variables[key];
+      let converted = convertUnit(1, variable?.units || '', units);
+      if (converted && variable) {
+        possible[key] = getConvertedVariable(variable, units);
       } else {
-        // @ts-ignore
-        possible[key] = undefined;
+        delete possible[key];
       }
     }
   }
 
   if (label !== undefined) {
+    const regexpLabel = ensureRegexp(label);
     for (key in possible) {
-      // @ts-ignore
-      if (!variables[key].label.match(label)) {
-        // @ts-ignore
-        possible[key] = undefined;
+      if (!regexpLabel.exec(variables[key]?.label ?? '')) {
+        delete possible[key];
       }
     }
   }
 
   if (variableName !== undefined) {
     if (possible[variableName]) return possible[variableName];
-    // @ts-ignore this should disappear if once for ever the variables are lowercases
-    if (possible[variableName.toUpperCase()]) {
-      // @ts-ignore
-      return possible[variableName.toUpperCase()];
+    const upper = variableName.toUpperCase();
+    if (Object.prototype.hasOwnProperty.call(possible, upper)) {
+      return possible[upper as keyof typeof possible];
     }
-    // @ts-ignore
-    if (possible[variableName.toLowerCase()]) {
-      // @ts-ignore
-      return possible[variableName.toLowerCase()];
+    const lower = variableName.toLowerCase();
+    if (Object.prototype.hasOwnProperty.call(possible, lower)) {
+      return possible[lower as keyof typeof possible];
     }
   }
 
