@@ -19,7 +19,6 @@ export * from './types/NormalizedFilters';
 export * from './types/NormalizedSpectrumOptions';
 export { MeasurementVariable, MeasurementXY } from 'cheminfo-types';
 export * from './types/PlotObject';
-export * from './types/SGOptions';
 export * from './types/ShapeOptions';
 export * from './types/SpectrumSelector';
 
