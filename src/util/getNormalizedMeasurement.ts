@@ -23,17 +23,17 @@ import {
 } from 'ml-spectra-processing';
 import Stat from 'ml-stat/array';
 
-import { NormalizedSpectrumOptions } from '../types/NormalizedSpectrumOptions';
+import { MeasurementNormalizationOptions } from '../types/MeasurementNormalizationOptions';
 
-export function getNormalizedSpectrum(
+export function getNormalizedMeasurement(
   measurement: MeasurementXY,
-  options: NormalizedSpectrumOptions = {},
-) {
+  options: MeasurementNormalizationOptions = {},
+): MeasurementXY {
   let data = {
     x: measurement.variables.x.data,
     y: measurement.variables.y.data,
   };
-  let newSpectrum: MeasurementXY = {
+  let newMeasurement: MeasurementXY = {
     variables: {
       x: {
         data: measurement.variables.x.data,
@@ -48,9 +48,9 @@ export function getNormalizedSpectrum(
     },
   };
   if (measurement.description) {
-    newSpectrum.description = measurement.description;
+    newMeasurement.description = measurement.description;
   }
-  if (measurement.meta) newSpectrum.meta = measurement.meta;
+  if (measurement.meta) newMeasurement.meta = measurement.meta;
 
   let {
     from = measurement.variables.x.min,
@@ -66,10 +66,10 @@ export function getNormalizedSpectrum(
   switch (processing) {
     case 'firstDerivative':
       if (options.processing) {
-        newSpectrum.variables.y.units = '';
-        newSpectrum.variables.y.label =
-          newSpectrum.variables.y.label &&
-          `1st derivative of ${newSpectrum.variables.y.label.replace(
+        newMeasurement.variables.y.units = '';
+        newMeasurement.variables.y.label =
+          newMeasurement.variables.y.label &&
+          `1st derivative of ${newMeasurement.variables.y.label.replace(
             /\s*\[.*\]/,
             '',
           )}`;
@@ -83,10 +83,10 @@ export function getNormalizedSpectrum(
       break;
     case 'secondDerivative':
       if (options.processing) {
-        newSpectrum.variables.y.units = '';
-        newSpectrum.variables.y.label =
-          newSpectrum.variables.y.label &&
-          `2nd derivative of ${newSpectrum.variables.y.label.replace(
+        newMeasurement.variables.y.units = '';
+        newMeasurement.variables.y.label =
+          newMeasurement.variables.y.label &&
+          `2nd derivative of ${newMeasurement.variables.y.label.replace(
             /\s*\[.*\]/,
             '',
           )}`;
@@ -100,10 +100,10 @@ export function getNormalizedSpectrum(
       break;
     case 'thirdDerivative':
       if (options.processing) {
-        newSpectrum.variables.y.units = '';
-        newSpectrum.variables.y.label =
-          newSpectrum.variables.y.label &&
-          `3rd derivative of ${newSpectrum.variables.y.label.replace(
+        newMeasurement.variables.y.units = '';
+        newMeasurement.variables.y.label =
+          newMeasurement.variables.y.label &&
+          `3rd derivative of ${newMeasurement.variables.y.label.replace(
             /\s*\[.*\]/,
             '',
           )}`;
@@ -120,11 +120,9 @@ export function getNormalizedSpectrum(
 
   if (!keepYUnits && filters.length) {
     // filters change the y axis, we get rid of the units
-    newSpectrum.variables.y.units = '';
-    newSpectrum.variables.y.label = newSpectrum.variables.y.label?.replace(
-      /\s*\[.*\]/,
-      '',
-    );
+    newMeasurement.variables.y.units = '';
+    newMeasurement.variables.y.label =
+      newMeasurement.variables.y.label?.replace(/\s*\[.*\]/, '');
   }
 
   for (let filter of filters) {
@@ -211,14 +209,14 @@ export function getNormalizedSpectrum(
     data = equallySpaced({ x, y }, { from, to, numberOfPoints, exclusions });
   }
 
-  newSpectrum.variables.x.data = x;
-  newSpectrum.variables.x.min = min(x);
-  newSpectrum.variables.x.max = max(x);
-  newSpectrum.variables.x.isMonotone = xIsMonotone(x);
-  newSpectrum.variables.y.data = y;
-  newSpectrum.variables.y.min = min(y);
-  newSpectrum.variables.y.max = max(y);
-  newSpectrum.variables.y.isMonotone = xIsMonotone(y);
+  newMeasurement.variables.x.data = x;
+  newMeasurement.variables.x.min = min(x);
+  newMeasurement.variables.x.max = max(x);
+  newMeasurement.variables.x.isMonotone = xIsMonotone(x);
+  newMeasurement.variables.y.data = y;
+  newMeasurement.variables.y.min = min(y);
+  newMeasurement.variables.y.max = max(y);
+  newMeasurement.variables.y.isMonotone = xIsMonotone(y);
 
-  return newSpectrum;
+  return newMeasurement;
 }

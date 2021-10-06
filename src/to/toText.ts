@@ -1,10 +1,10 @@
 import type { MeasurementXY } from 'cheminfo-types';
 
 import { Analysis } from '../Analysis';
-import { SpectrumSelector } from '../types/SpectrumSelector';
+import { MeasurementSelector } from '../types/MeasurementSelector';
 
 interface ToTextOptions {
-  selector?: SpectrumSelector;
+  selector?: MeasurementSelector;
   endOfLine?: string;
   fieldSeparator?: string;
 }
@@ -12,19 +12,19 @@ interface ToTextOptions {
 export function toText(analysis: Analysis, options: ToTextOptions = {}) {
   // Export all the data to Csv
   if (!options.selector) {
-    return exportText(analysis.spectra, options);
+    return exportText(analysis.measurements, options);
   }
 
   // Export selected variables
-  const spectra = analysis.getXYSpectrum(options.selector);
-  return exportText(spectra ? [spectra] : [], options);
+  const measurements = analysis.getMeasurementXY(options.selector);
+  return exportText(measurements ? [measurements] : [], options);
 }
 
-function exportText(spectrums: MeasurementXY[], options: ToTextOptions) {
+function exportText(measurements: MeasurementXY[], options: ToTextOptions) {
   const { endOfLine = '\n', fieldSeparator = ',' } = options;
-  let result: string[] = new Array(spectrums.length);
-  for (let index = 0; index < spectrums.length; index++) {
-    const variables = Object.values(spectrums[index].variables);
+  let result: string[] = new Array(measurements.length);
+  for (let index = 0; index < measurements.length; index++) {
+    const variables = Object.values(measurements[index].variables);
 
     const labels = variables.map((v) => v.label);
     const maxNumberData = Math.max(...variables.map((v) => v.data.length));

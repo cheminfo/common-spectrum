@@ -7,7 +7,7 @@ interface StyleOptions {
 }
 export function addStyle(
   serie: Record<string, unknown>,
-  spectrum: Analysis,
+  measurement: Analysis,
   options: StyleOptions = {},
 ) {
   let { color = '#A9A9A9', opacity = 1, lineWidth = 1 } = options;
@@ -39,5 +39,5 @@ export function addStyle(
       },
     },
   ];
-  serie.name = spectrum.label || spectrum.id;
+  serie.name = measurement.label || measurement.id;
 }

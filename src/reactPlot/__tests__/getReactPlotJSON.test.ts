@@ -1,7 +1,7 @@
 import { Analysis } from '../..';
 import { getReactPlotJSON } from '../getReactPlotJSON';
 
-const spectra = {
+const measurements = {
   variables: {
     x: {
       data: [1, 2],
@@ -31,7 +31,7 @@ test('simple test case', () => {
   let analyses = new Array(len);
   for (let i = 0; i < len; i++) {
     analyses[i] = new Analysis();
-    analyses[i].pushSpectrum(spectra.variables, {
+    analyses[i].pushMeasurement(measurements.variables, {
       description: `Vg = ${i + 3}`,
     });
   }
@@ -63,7 +63,7 @@ test('enforce growing', () => {
   let analyses = new Array(len);
   for (let i = 0; i < len; i++) {
     analyses[i] = new Analysis();
-    analyses[i].pushSpectrum(spectra.variables, {
+    analyses[i].pushMeasurement(measurements.variables, {
       description: `Vg = ${i + 3}`,
     });
   }

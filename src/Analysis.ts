@@ -4,55 +4,55 @@ import max from 'ml-array-max';
 import min from 'ml-array-min';
 import { xIsMonotone } from 'ml-spectra-processing';
 
-import { NormalizedSpectrumOptions } from './types/NormalizedSpectrumOptions';
-import { SpectrumSelector } from './types/SpectrumSelector';
-import { getNormalizedSpectrum } from './util/getNormalizedSpectrum';
-import { getXYSpectrum } from './util/getXYSpectrum';
+import { MeasurementNormalizationOptions } from './types/MeasurementNormalizationOptions';
+import { MeasurementSelector } from './types/MeasurementSelector';
+import { getMeasurementXY } from './util/getMeasurementXY';
+import { getNormalizedMeasurement } from './util/getNormalizedMeasurement';
 
-type SpectrumCallback = (
+type MeasurementCallback = (
   variables: MeasurementXYVariables,
 ) => MeasurementXYVariables;
 
 interface AnalysisOptions {
   id?: string;
   label?: string;
-  spectrumCallback?: SpectrumCallback;
+  measurementCallback?: MeasurementCallback;
 }
 interface NormalizedOptions {
-  normalization?: NormalizedSpectrumOptions;
-  selector?: SpectrumSelector;
+  normalization?: MeasurementNormalizationOptions;
+  selector?: MeasurementSelector;
 }
 
 /**
  * Class allowing to store and manipulate an analysis.
- * An analysis may contain one or more spectra that can be selected
+ * An analysis may contain one or more measurements that can be selected
  * based on their units
  */
 export class Analysis {
   public id: string;
   public label: string;
-  public spectrumCallback: SpectrumCallback | undefined;
-  public spectra: Array<MeasurementXY>;
+  public measurementCallback: MeasurementCallback | undefined;
+  public measurements: Array<MeasurementXY>;
   public cache: Record<string, MeasurementXY | undefined>;
 
   public constructor(options: AnalysisOptions = {}) {
     this.id = options.id || Math.random().toString(36).substring(2, 10);
     this.label = options.label || this.id;
-    this.spectrumCallback = options.spectrumCallback;
-    this.spectra = [];
+    this.measurementCallback = options.measurementCallback;
+    this.measurements = [];
     this.cache = {};
   }
 
   /**
-   * Add a spectrum in the internal spectra variable
+   * Add a measurement in the internal measurements variable
    */
-  public pushSpectrum(
+  public pushMeasurement(
     variables: MeasurementXYVariables,
     options: Omit<MeasurementXY, 'variables'> = {},
   ) {
-    this.spectra.push(
+    this.measurements.push(
       standardizeData(variables, options, {
-        spectrumCallback: this.spectrumCallback,
+        measurementCallback: this.measurementCallback,
       }),
     );
     this.cache = {};
@@ -61,10 +61,10 @@ export class Analysis {
   /**
    * Retrieve a MeasurementXY based on x/y units
    */
-  public getXYSpectrum(selector: SpectrumSelector = {}) {
+  public getMeasurementXY(selector: MeasurementSelector = {}) {
     let id = JSON.stringify(selector);
     if (!this.cache[id]) {
-      this.cache[id] = getXYSpectrum(this.spectra, selector);
+      this.cache[id] = getMeasurementXY(this.measurements, selector);
     }
     return this.cache[id];
   }
@@ -75,12 +75,12 @@ export class Analysis {
    * @param selector.xUnits if undefined takes the first variable
    * @param selector.yUnits if undefined takes the second variable
    */
-  public getXY(selector: SpectrumSelector = {}) {
-    let spectrum = this.getXYSpectrum(selector);
-    if (!spectrum) return undefined;
+  public getXY(selector: MeasurementSelector = {}) {
+    let measurement = this.getMeasurementXY(selector);
+    if (!measurement) return undefined;
     return {
-      x: spectrum.variables.x.data,
-      y: spectrum.variables.y.data,
+      x: measurement.variables.x.data,
+      y: measurement.variables.y.data,
     };
   }
 
@@ -90,19 +90,19 @@ export class Analysis {
    * @param options.selector.xUnits // if undefined takes the first variable
    * @param options.selector.yUnits // if undefined takes the second variable
    */
-  public getNormalizedSpectrum(options: NormalizedOptions = {}) {
+  public getNormalizedMeasurement(options: NormalizedOptions = {}) {
     const { normalization, selector } = options;
-    const spectrum = this.getXYSpectrum(selector);
-    if (!spectrum) return undefined;
-    return getNormalizedSpectrum(spectrum, normalization);
+    const measurement = this.getMeasurementXY(selector);
+    if (!measurement) return undefined;
+    return getNormalizedMeasurement(measurement, normalization);
   }
 
   /**
-   * Returns the first spectrum. This method could be improved in the future
+   * Returns the first measurement. This method could be improved in the future
    * @returns
    */
-  public getSpectrum() {
-    return this.spectra[0];
+  public getFirstMeasurement() {
+    return this.measurements[0];
   }
 
   /**
@@ -110,8 +110,8 @@ export class Analysis {
    * @param selector.xUnits // if undefined takes the first variable
    * @param selector.yUnits // if undefined takes the second variable
    */
-  public getXLabel(selector: SpectrumSelector) {
-    return this.getXYSpectrum(selector)?.variables.x.label;
+  public getXLabel(selector: MeasurementSelector) {
+    return this.getMeasurementXY(selector)?.variables.x.label;
   }
 
   /**
@@ -119,8 +119,8 @@ export class Analysis {
    * @param selector.xUnits // if undefined takes the first variable
    * @param selector.yUnits // if undefined takes the second variable
    */
-  public getYLabel(selector: SpectrumSelector) {
-    return this.getXYSpectrum(selector)?.variables.y.label;
+  public getYLabel(selector: MeasurementSelector) {
+    return this.getMeasurementXY(selector)?.variables.y.label;
   }
 }
 
@@ -130,18 +130,18 @@ export class Analysis {
 function standardizeData(
   variables: MeasurementXYVariables,
   options: Omit<MeasurementXY, 'variables'>,
-  analysisOptions: Pick<AnalysisOptions, 'spectrumCallback'>,
+  analysisOptions: Pick<AnalysisOptions, 'measurementCallback'>,
 ) {
   let { meta = {}, dataType = '', description = '' } = options;
-  const { spectrumCallback } = analysisOptions;
+  const { measurementCallback } = analysisOptions;
 
-  if (spectrumCallback) {
-    spectrumCallback(variables);
+  if (measurementCallback) {
+    measurementCallback(variables);
   }
   let xVariable = variables.x;
   let yVariable = variables.y;
   if (!xVariable || !yVariable) {
-    throw Error('A spectrum must contain at least x and y variables');
+    throw Error('A measurement must contain at least x and y variables');
   }
   if (!isAnyArray(xVariable.data) || !isAnyArray(yVariable.data)) {
     throw Error('x and y variables must contain an array data');

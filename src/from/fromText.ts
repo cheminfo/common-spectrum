@@ -40,7 +40,7 @@ export function fromText(data: string | ArrayBuffer, options = {}): Analysis {
     },
   };
 
-  analysis.pushSpectrum(variables, options);
+  analysis.pushMeasurement(variables, options);
 
   return analysis;
 }

@@ -9,24 +9,24 @@ interface GetJcampOptions {
 }
 export function toJcamps(analysis: Analysis, options: GetJcampOptions = {}) {
   let jcamps = [];
-  for (let spectrum of analysis.spectra) {
-    jcamps.push(getJcamp(spectrum, options));
+  for (let measurement of analysis.measurements) {
+    jcamps.push(getJcamp(measurement, options));
   }
   return jcamps;
 }
 
-function getJcamp(spectrum: MeasurementXY, options: GetJcampOptions) {
+function getJcamp(measurement: MeasurementXY, options: GetJcampOptions) {
   const { info = {}, meta = {} } = options;
 
   let jcampOptions = {
     options: {},
     info: {
-      title: spectrum.description,
-      dataType: spectrum.dataType,
+      title: measurement.description,
+      dataType: measurement.dataType,
       ...info,
     },
-    meta: { ...spectrum.meta, ...meta },
+    meta: { ...measurement.meta, ...meta },
   };
 
-  return fromVariables(spectrum.variables, jcampOptions);
+  return fromVariables(measurement.variables, jcampOptions);
 }

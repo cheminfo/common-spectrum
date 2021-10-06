@@ -4,7 +4,7 @@ test('getJSGraph', () => {
   let analysis = new Analysis();
   expect(analysis.id).toHaveLength(8);
 
-  analysis.pushSpectrum(
+  analysis.pushMeasurement(
     {
       x: {
         data: [-1, 1, 2],
@@ -18,7 +18,7 @@ test('getJSGraph', () => {
       },
     },
     {
-      description: 'My spectrum',
+      description: 'My measurement',
       dataType: 'TGA',
       meta: {
         meta1: 'Meta 1',

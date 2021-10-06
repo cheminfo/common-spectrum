@@ -24,17 +24,17 @@ describe('fromJcamp with callback', () => {
       'utf8',
     );
 
-    const result = fromJcamp(jcamp, { spectrumCallback: irCallback });
-    const spectrum = result.spectra[0];
-    expect(spectrum.variables.x.label).toBe('1/CM');
-    expect(spectrum.variables.y.label).toBe('ABSORBANCE');
+    const result = fromJcamp(jcamp, { measurementCallback: irCallback });
+    const measurement = result.measurements[0];
+    expect(measurement.variables.x.label).toBe('1/CM');
+    expect(measurement.variables.y.label).toBe('ABSORBANCE');
     // @ts-expect-error
-    expect(spectrum.variables.t.label).toBe('Transmittance');
+    expect(measurement.variables.t.label).toBe('Transmittance');
     // @ts-expect-error
-    expect(spectrum.variables.t.units).toBe('%');
-    expect(spectrum.variables.x.data).toHaveLength(1738);
-    expect(spectrum.variables.y.data).toHaveLength(1738);
+    expect(measurement.variables.t.units).toBe('%');
+    expect(measurement.variables.x.data).toHaveLength(1738);
+    expect(measurement.variables.y.data).toHaveLength(1738);
     // @ts-expect-error
-    expect(spectrum.variables.t.data).toHaveLength(1738);
+    expect(measurement.variables.t.data).toHaveLength(1738);
   });
 });

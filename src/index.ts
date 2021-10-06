@@ -8,7 +8,7 @@ export * from './from/fromText';
 export * from './to/toJcamp';
 export * from './to/toJcamps';
 export * from './to/toText';
-export * from './util/getNormalizedSpectrum';
+export * from './util/getNormalizedMeasurement';
 
 export * from './util/peakPicking';
 export * from './util/autoPeakPicking';
@@ -16,11 +16,11 @@ export * from './util/autoPeakPicking';
 export * from './types/types';
 export * from './types/AutoPeakPickingOptions';
 export * from './types/NormalizedFilters';
-export * from './types/NormalizedSpectrumOptions';
+export * from './types/MeasurementNormalizationOptions';
 export { MeasurementVariable, MeasurementXY } from 'cheminfo-types';
 export * from './types/PlotObject';
 export * from './types/ShapeOptions';
-export * from './types/SpectrumSelector';
+export * from './types/MeasurementSelector';
 
 export { getReactPlotJSON } from './reactPlot/getReactPlotJSON';
 

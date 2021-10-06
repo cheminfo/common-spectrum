@@ -35,11 +35,11 @@ export class AnalysesManager {
   }
 
   public getSpectra() {
-    const spectra = [];
+    const measurements = [];
     for (const analysis of this.analyses) {
-      spectra.push(...analysis.spectra);
+      measurements.push(...analysis.measurements);
     }
-    return spectra;
+    return measurements;
   }
 
   /**
@@ -47,9 +47,9 @@ export class AnalysesManager {
    */
   public getDistinctTitles() {
     let values: Record<string, CounterType> = {};
-    for (let spectrum of this.getSpectra()) {
-      if (spectrum.description) {
-        appendDistinctValue(values, spectrum.description);
+    for (let measurement of this.getSpectra()) {
+      if (measurement.description) {
+        appendDistinctValue(values, measurement.description);
       }
     }
     return Object.keys(values).map((key) => values[key]);
@@ -60,9 +60,9 @@ export class AnalysesManager {
    */
   public getDistinctUnits() {
     let values: Record<string, CounterType> = {};
-    for (let spectrum of this.getSpectra()) {
-      if (spectrum.variables) {
-        for (let [, variable] of Object.entries(spectrum.variables)) {
+    for (let measurement of this.getSpectra()) {
+      if (measurement.variables) {
+        for (let [, variable] of Object.entries(measurement.variables)) {
           const units = variable.units?.replace(/\s+\[.*/, '');
           if (units) {
             appendDistinctValue(values, units);
@@ -78,9 +78,9 @@ export class AnalysesManager {
    */
   public getDistinctLabels() {
     let values: Record<string, CounterType> = {};
-    for (let spectrum of this.getSpectra()) {
-      if (spectrum.variables) {
-        for (let [, variable] of Object.entries(spectrum.variables)) {
+    for (let measurement of this.getSpectra()) {
+      if (measurement.variables) {
+        for (let [, variable] of Object.entries(measurement.variables)) {
           appendDistinctValue(values, variable.label.replace(/\s+\[.*/, ''));
         }
       }
@@ -93,9 +93,9 @@ export class AnalysesManager {
    */
   public getDistinctDataTypes() {
     let values: Record<string, CounterType> = {};
-    for (let spectrum of this.getSpectra()) {
-      if (spectrum.dataType) {
-        appendDistinctValue(values, spectrum.dataType);
+    for (let measurement of this.getSpectra()) {
+      if (measurement.dataType) {
+        appendDistinctValue(values, measurement.dataType);
       }
     }
     return Object.keys(values).map((key) => values[key]);
@@ -106,10 +106,10 @@ export class AnalysesManager {
    */
   public getDistinctMeta() {
     let values: Record<string, DifferentType> = {};
-    for (let spectrum of this.getSpectra()) {
-      if (spectrum.meta) {
-        for (let key in spectrum.meta) {
-          appendDistinctParameter(values, key, spectrum.meta[key]);
+    for (let measurement of this.getSpectra()) {
+      if (measurement.meta) {
+        for (let key in measurement.meta) {
+          appendDistinctParameter(values, key, measurement.meta[key]);
         }
       }
     }

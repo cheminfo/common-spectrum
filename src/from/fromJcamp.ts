@@ -9,7 +9,7 @@ import { Analysis } from '../Analysis';
  * @param {object} [options={}]
  * @param {object} [options.id=Math.random()]
  * @param {string} [options.label=options.id] human redeable label
- * @param {string} [options.spectrumCallback] a callback to apply on variables when creating spectrum
+ * @param {string} [options.measurementCallback] a callback to apply on variables when creating measurement
  * @return {Analysis} - New class element with the given data
  */
 export function fromJcamp(jcamp: string | ArrayBuffer, options = {}): Analysis {
@@ -25,25 +25,25 @@ function addJcamp(analysis: Analysis, jcamp: string | ArrayBuffer) {
 
   for (let entry of converted.flatten) {
     if (!entry.spectra || !entry.spectra[0]) continue;
-    let currentSpectrum = entry.spectra[0];
+    let currentMeasurement = entry.spectra[0];
 
     // we ensure variables
-    if (!currentSpectrum.variables) {
+    if (!currentMeasurement.variables) {
       const variables: Record<string, MeasurementVariable> = {};
-      currentSpectrum.variables = variables;
+      currentMeasurement.variables = variables;
       variables.x = {
-        label: currentSpectrum.xUnits,
+        label: currentMeasurement.xUnits,
         symbol: 'X',
-        data: currentSpectrum.data.x || currentSpectrum.data.X,
+        data: currentMeasurement.data.x || currentMeasurement.data.X,
       };
       variables.y = {
-        label: currentSpectrum.yUnits,
+        label: currentMeasurement.yUnits,
         symbol: 'Y',
-        data: currentSpectrum.data.y || currentSpectrum.data.Y,
+        data: currentMeasurement.data.y || currentMeasurement.data.Y,
       };
     } else {
-      for (let key in currentSpectrum.variables) {
-        const variable = currentSpectrum.variables[key];
+      for (let key in currentMeasurement.variables) {
+        const variable = currentMeasurement.variables[key];
         if (variable.label) continue;
         variable.label = variable.name || variable.symbol || key;
         if (variable.units && !variable.label.includes(variable.units)) {
@@ -53,8 +53,8 @@ function addJcamp(analysis: Analysis, jcamp: string | ArrayBuffer) {
     }
 
     // todo hack waiting jcampconverter update
-    for (let symbol in currentSpectrum.variables) {
-      const variable = currentSpectrum.variables[symbol];
+    for (let symbol in currentMeasurement.variables) {
+      const variable = currentMeasurement.variables[symbol];
       if (variable?.type?.toUpperCase() === 'DEPENDENT') {
         delete variable.type;
         variable.isDependent = true;
@@ -66,7 +66,7 @@ function addJcamp(analysis: Analysis, jcamp: string | ArrayBuffer) {
       delete variable.name;
     }
 
-    analysis.pushSpectrum(currentSpectrum.variables, {
+    analysis.pushMeasurement(currentMeasurement.variables, {
       dataType: entry.dataType,
       description: entry.description || entry.title, // todo hack waiting for jcampconverter update
       meta: entry.meta,

@@ -4,22 +4,22 @@ import type {
   MeasurementXYVariables,
 } from 'cheminfo-types';
 
-import { SpectrumSelector } from '../types/SpectrumSelector';
+import { MeasurementSelector } from '../types/MeasurementSelector';
 
 import { convertUnit } from './convertUnit';
 import { ensureRegexp } from './ensureRegexp';
 import { getConvertedVariable } from './getConvertedVariable';
 
 /**
- * Retrieve the spectrum with only X/Y data that match all the selectors
+ * Retrieve the measurement with only X/Y data that match all the selectors
  * If more than one variable match the selector the 'x' or 'y' variable will be
  * taken
  */
-export function getXYSpectrum(
-  spectra: Array<MeasurementXY> = [],
-  selector: SpectrumSelector = {},
+export function getMeasurementXY(
+  measurements: Array<MeasurementXY> = [],
+  selector: MeasurementSelector = {},
 ): MeasurementXY | undefined {
-  if (spectra.length < 1) return;
+  if (measurements.length < 1) return;
 
   let {
     dataType,
@@ -38,7 +38,7 @@ export function getXYSpectrum(
   } = selector;
 
   if (index !== undefined) {
-    return spectra[index];
+    return measurements[index];
   }
 
   if (dataType) {
@@ -64,35 +64,41 @@ export function getXYSpectrum(
   if (xLabel) xLabel = ensureRegexp(xLabel);
   if (yLabel) yLabel = ensureRegexp(yLabel);
 
-  for (let spectrum of spectra) {
-    let variableNames = Object.keys(spectrum.variables);
+  for (let measurement of measurements) {
+    let variableNames = Object.keys(measurement.variables);
     if (!(variableNames.length > 1)) continue;
 
-    // we filter on general spectrum information
+    // we filter on general measurement information
     if (dataType) {
-      if (!spectrum.dataType || !spectrum.dataType.match(dataType)) continue;
-    }
-
-    if (description) {
-      if (!spectrum.description || !spectrum.description.match(description))
-        {continue;}
-    }
-
-    if (meta && typeof meta === 'object') {
-      if (!spectrum.meta) continue;
-      for (let key in spectrum.meta) {
-        if (!spectrum.meta[key]) continue;
-        let value = ensureRegexp(spectrum.meta[key]);
-        if (!value.exec(spectrum.meta[key])) continue;
+      if (!measurement.dataType || !measurement.dataType.match(dataType)) {
+        continue;
       }
     }
 
-    let x = getPossibleVariable(spectrum.variables, {
+    if (description) {
+      if (
+        !measurement.description ||
+        !measurement.description.match(description)
+      ) {
+        continue;
+      }
+    }
+
+    if (meta && typeof meta === 'object') {
+      if (!measurement.meta) continue;
+      for (let key in measurement.meta) {
+        if (!measurement.meta[key]) continue;
+        let value = ensureRegexp(measurement.meta[key]);
+        if (!value.exec(measurement.meta[key])) continue;
+      }
+    }
+
+    let x = getPossibleVariable(measurement.variables, {
       units: xUnits,
       label: xLabel,
       variableName: xVariable,
     });
-    let y = getPossibleVariable(spectrum.variables, {
+    let y = getPossibleVariable(measurement.variables, {
       units: yUnits,
       label: yLabel,
       variableName: yVariable,
@@ -100,9 +106,9 @@ export function getXYSpectrum(
 
     if (x && y) {
       return {
-        description: spectrum.description,
-        dataType: spectrum.dataType,
-        meta: spectrum.meta,
+        description: measurement.description,
+        dataType: measurement.dataType,
+        meta: measurement.meta,
         variables: { x, y },
       };
     }

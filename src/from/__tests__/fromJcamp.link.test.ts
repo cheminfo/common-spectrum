@@ -8,16 +8,16 @@ test('fromJcamp linked file', () => {
 
   let result = fromJcamp(jcamp);
 
-  expect(result.spectra).toHaveLength(2);
+  expect(result.measurements).toHaveLength(2);
 
-  let first = result.spectra[0];
+  let first = result.measurements[0];
 
   expect(first.variables.x.data).toHaveLength(911);
   expect(first.variables.y.data).toHaveLength(911);
   expect(first.variables.x.label).toStrictEqual('NANOMETERS');
   expect(first.variables.y.label).toStrictEqual('ABSORBANCE');
 
-  let second = result.spectra[1];
+  let second = result.measurements[1];
 
   expect(second.variables.x.data).toHaveLength(911);
   expect(second.variables.y.data).toHaveLength(911);

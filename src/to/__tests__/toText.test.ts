@@ -2,7 +2,7 @@ import { Analysis } from '../../Analysis';
 import { toText } from '../toText';
 
 let analysis = new Analysis();
-analysis.pushSpectrum({
+analysis.pushMeasurement({
   x: {
     data: [1, 2],
     min: 1,

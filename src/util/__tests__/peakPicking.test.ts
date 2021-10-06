@@ -6,7 +6,7 @@ import { peakPicking } from '../peakPicking';
 expect.extend({ toBeDeepCloseTo, toMatchCloseTo });
 
 describe('peakPicking', () => {
-  const spectrum: MeasurementXY = {
+  const measurement: MeasurementXY = {
     variables: {
       x: {
         data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -28,11 +28,11 @@ describe('peakPicking', () => {
   };
 
   it('No options', () => {
-    let peak = peakPicking(spectrum, 2);
+    let peak = peakPicking(measurement, 2);
     expect(peak).toStrictEqual({ x: 2, y: 2, z: 0.2, t: 20 });
   });
   it('optimize=true', () => {
-    let peak = peakPicking(spectrum, 2, { optimize: true });
+    let peak = peakPicking(measurement, 2, { optimize: true });
     expect(peak).toBeDeepCloseTo({
       x: 3,
       y: 3,
@@ -46,7 +46,7 @@ describe('peakPicking', () => {
     });
   });
   it('max=false, optimize=true', () => {
-    let peak = peakPicking(spectrum, 6, {
+    let peak = peakPicking(measurement, 6, {
       optimize: true,
       max: false,
     });

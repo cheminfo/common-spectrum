@@ -4,7 +4,7 @@ test('index', () => {
   let analysis = new Analysis();
   expect(analysis.id).toHaveLength(8);
 
-  analysis.pushSpectrum(
+  analysis.pushMeasurement(
     {
       x: {
         data: [1, 2],
@@ -23,7 +23,7 @@ test('index', () => {
       },
     },
     {
-      description: 'My spectrum',
+      description: 'My measurement',
       dataType: 'TGA',
       meta: {
         meta1: 'Meta 1',
@@ -32,25 +32,28 @@ test('index', () => {
     },
   );
 
-  let firstSpectrum = analysis.getXYSpectrum();
+  let firstMeasurement = analysis.getMeasurementXY();
 
-  expect(firstSpectrum?.variables.x.data).toStrictEqual([1, 2]);
-  expect(firstSpectrum?.variables.y.data).toStrictEqual([3, 4]);
+  expect(firstMeasurement?.variables.x.data).toStrictEqual([1, 2]);
+  expect(firstMeasurement?.variables.y.data).toStrictEqual([3, 4]);
 
-  let normalizedSpectrum = analysis.getNormalizedSpectrum({
+  let normalizedMeasurement = analysis.getNormalizedMeasurement({
     normalization: {
       filters: [{ name: 'normalize' }],
     },
   });
   expect(
-    (normalizedSpectrum?.variables?.y?.data?.[0] || 0) +
-      (normalizedSpectrum?.variables?.y?.data?.[1] || 0),
+    (normalizedMeasurement?.variables?.y?.data?.[0] || 0) +
+      (normalizedMeasurement?.variables?.y?.data?.[1] || 0),
   ).toBeCloseTo(1, 10);
 
-  let undefinedSpectrum = analysis.getXYSpectrum({ xUnits: 'J' });
-  expect(undefinedSpectrum).toBeUndefined();
+  let undefinedMeasurement = analysis.getMeasurementXY({ xUnits: 'J' });
+  expect(undefinedMeasurement).toBeUndefined();
 
-  let inverted = analysis.getXYSpectrum({ xUnits: 'yUnits', yUnits: 'xUnits' });
+  let inverted = analysis.getMeasurementXY({
+    xUnits: 'yUnits',
+    yUnits: 'xUnits',
+  });
   expect(inverted?.variables.x.data).toStrictEqual([3, 4]);
   expect(inverted?.variables.y.data).toStrictEqual([1, 2]);
 
@@ -66,7 +69,7 @@ test('index', () => {
 
   let analysis2 = fromJcamp(jcamp);
 
-  expect(analysis2.spectra[0]).toStrictEqual({
+  expect(analysis2.measurements[0]).toStrictEqual({
     variables: {
       x: {
         data: [1, 2],
@@ -87,7 +90,7 @@ test('index', () => {
         symbol: 'Y',
       },
     },
-    description: 'My spectrum',
+    description: 'My measurement',
     dataType: 'TGA',
     meta: { meta1: 'Meta 1', meta2: 'Meta 2' },
   });

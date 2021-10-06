@@ -12,13 +12,13 @@ test('fromText', () => {
       yUnits: '',
       xLabel: 'Wavenumber',
       yLabel: 'Intensity',
-      dataType: 'UV spectrum',
+      dataType: 'UV measurement',
     },
   });
 
-  expect(result.spectra).toHaveLength(1);
+  expect(result.measurements).toHaveLength(1);
 
-  let first = result.spectra[0];
+  let first = result.measurements[0];
 
   expect(first.variables.x.data).toHaveLength(551);
   expect(first.variables.y.data).toHaveLength(551);

@@ -1,7 +1,7 @@
 import type { AxisProps, LineSeriesProps, PlotObjectType } from 'react-plot';
 
 import { Analysis } from '../Analysis';
-import { SpectrumSelector } from '../types/SpectrumSelector';
+import { MeasurementSelector } from '../types/MeasurementSelector';
 
 type LineSeriesType = { type: 'line' } & LineSeriesProps;
 export type ReactPlotOptions = Omit<PlotObjectType, 'axes' | 'content'> & {
@@ -32,7 +32,7 @@ function getData(x: ListNumber, y: ListNumber) {
  */
 export function getReactPlotJSON(
   analyses: Analysis[],
-  query: SpectrumSelector,
+  query: MeasurementSelector,
   options: ReactPlotOptions = {},
 ): PlotObjectType & { meta: Record<string, string>[] } {
   const {
@@ -50,26 +50,28 @@ export function getReactPlotJSON(
   let yAxis: Axes | null = null;
 
   for (const analysis of analyses) {
-    let spectra = enforceGrowing
-      ? analysis.getNormalizedSpectrum({
+    let measurements = enforceGrowing
+      ? analysis.getNormalizedMeasurement({
           selector: query,
           normalization: {
             filters: [{ name: 'ensureGrowing' }],
             keepYUnits: true,
           },
         })
-      : analysis.getXYSpectrum(query);
-    if (!spectra) continue;
+      : analysis.getMeasurementXY(query);
+    if (!measurements) continue;
 
-    if (spectra.meta) {
-      meta.push(spectra.meta);
+    if (measurements.meta) {
+      meta.push(measurements.meta);
     }
 
     xAxis = {
       id: 'x',
       label:
-        spectra.variables.x.label +
-        (spectra.variables.x.units ? ` [${spectra.variables.x.units}]` : ''),
+        measurements.variables.x.label +
+        (measurements.variables.x.units
+          ? ` [${measurements.variables.x.units}]`
+          : ''),
       ...xAxisOptions,
       position: 'bottom',
       type: 'main',
@@ -77,17 +79,22 @@ export function getReactPlotJSON(
     yAxis = {
       id: 'y',
       label:
-        spectra.variables.y.label +
-        (spectra.variables.y.units ? ` [${spectra.variables.y.units}]` : ''),
+        measurements.variables.y.label +
+        (measurements.variables.y.units
+          ? ` [${measurements.variables.y.units}]`
+          : ''),
       ...yAxisOptions,
       position: 'left',
       type: 'main',
     };
 
-    const data = getData(spectra.variables.x.data, spectra.variables.y.data);
+    const data = getData(
+      measurements.variables.x.data,
+      measurements.variables.y.data,
+    );
     const serie: LineSeriesType = {
       type: 'line',
-      label: spectra.description,
+      label: measurements.description,
       data,
       ...seriesOptions,
     };

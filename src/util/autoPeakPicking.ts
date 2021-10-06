@@ -5,11 +5,11 @@ import { xyMaxClosestYPoint, xyMinClosestYPoint } from 'ml-spectra-processing';
 
 import { AutoPeakPickingOptions } from '../types/AutoPeakPickingOptions';
 
-import { getNormalizedSpectrum } from './getNormalizedSpectrum';
+import { getNormalizedMeasurement } from './getNormalizedMeasurement';
 
 /** Based on a x value we will return a peak*/
 export function autoPeakPicking(
-  spectrum: MeasurementXY,
+  measurement: MeasurementXY,
   options: AutoPeakPickingOptions = {},
 ) {
   const {
@@ -20,24 +20,24 @@ export function autoPeakPicking(
     gsdOptions = {},
   } = options;
 
-  let x = spectrum.variables[xVariable]?.data;
-  let y = spectrum.variables[yVariable]?.data;
+  let x = measurement.variables[xVariable]?.data;
+  let y = measurement.variables[yVariable]?.data;
 
   if (!x || !y) return [];
 
   if (normalizationOptions) {
-    const tempSpectrum: MeasurementXY = {
+    const tempMeasurement: MeasurementXY = {
       variables: {
         x: { data: x, label: '' },
         y: { data: y, label: '' },
       },
     };
-    const normalizedSpectrum = getNormalizedSpectrum(
-      tempSpectrum,
+    const normalizedMeasurement = getNormalizedMeasurement(
+      tempMeasurement,
       normalizationOptions,
     );
-    x = normalizedSpectrum.variables.x.data;
-    y = normalizedSpectrum.variables.y.data;
+    x = normalizedMeasurement.variables.x.data;
+    y = normalizedMeasurement.variables.y.data;
   }
 
   if (!x || !y) return;
@@ -54,7 +54,10 @@ export function autoPeakPicking(
         : xyMinClosestYPoint;
     for (let peak of peaks) {
       const closest = xyClosestYPoint(
-        { x: spectrum.variables.x.data, y: spectrum.variables.y.data },
+        {
+          x: measurement.variables.x.data,
+          y: measurement.variables.y.data,
+        },
         { target: peak.x },
       );
       peak.x = closest.x;
@@ -74,7 +77,7 @@ export function autoPeakPicking(
 
   return peaks.map((peak) => {
     const result: Record<string, number> = {};
-    for (const [key, variable] of Object.entries(spectrum.variables)) {
+    for (const [key, variable] of Object.entries(measurement.variables)) {
       result[key] = variable.data[peak.index];
     }
     result.width = peak.width;

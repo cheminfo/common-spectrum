@@ -2,7 +2,7 @@ import { Analysis, AnalysesManager } from '..';
 
 describe('AnalysesManager test', () => {
   let analysis1 = new Analysis();
-  analysis1.pushSpectrum(
+  analysis1.pushMeasurement(
     {
       x: {
         data: [1, 2],
@@ -27,7 +27,7 @@ describe('AnalysesManager test', () => {
       },
     },
     {
-      description: 'My spectrum',
+      description: 'My measurement',
       dataType: 'TGA',
       meta: {
         meta1: 'Meta 1',
@@ -37,7 +37,7 @@ describe('AnalysesManager test', () => {
   );
 
   let analysis2 = new Analysis();
-  analysis2.pushSpectrum(
+  analysis2.pushMeasurement(
     {
       x: {
         data: [1, 2],
@@ -62,7 +62,7 @@ describe('AnalysesManager test', () => {
       },
     },
     {
-      description: 'My spectrum 2',
+      description: 'My measurement 2',
       dataType: 'TGA',
       meta: {
         meta1: 'Meta2 1',
@@ -72,7 +72,7 @@ describe('AnalysesManager test', () => {
   );
 
   let analysis3 = new Analysis();
-  analysis3.pushSpectrum(
+  analysis3.pushMeasurement(
     {
       x: {
         data: [1, 2],
@@ -90,7 +90,7 @@ describe('AnalysesManager test', () => {
       },
     },
     {
-      description: 'My spectrum',
+      description: 'My measurement',
       dataType: 'TGA',
       meta: {
         meta1: 'Meta2 1',

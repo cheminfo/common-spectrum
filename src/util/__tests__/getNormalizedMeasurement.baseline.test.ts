@@ -1,11 +1,11 @@
 import { toBeDeepCloseTo, toMatchCloseTo } from 'jest-matcher-deep-close-to';
 
-import { getNormalizedSpectrum } from '../getNormalizedSpectrum';
+import { getNormalizedMeasurement } from '../getNormalizedMeasurement';
 
 expect.extend({ toBeDeepCloseTo, toMatchCloseTo });
 
-describe('getNormalizedSpectrum baseline', () => {
-  let spectrum = {
+describe('getNormalizedMeasurement baseline', () => {
+  let measurement = {
     variables: {
       x: {
         data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -21,7 +21,7 @@ describe('getNormalizedSpectrum baseline', () => {
   };
 
   it('airPLSBaseline', () => {
-    let normalized = getNormalizedSpectrum(spectrum, {
+    let normalized = getNormalizedMeasurement(measurement, {
       filters: [{ name: 'airPLSBaseline' }],
     });
     expect(normalized.variables.y.data).toMatchCloseTo([
@@ -33,7 +33,7 @@ describe('getNormalizedSpectrum baseline', () => {
   });
 
   it('rollingaveragebaseline', () => {
-    let normalized = getNormalizedSpectrum(spectrum, {
+    let normalized = getNormalizedMeasurement(measurement, {
       filters: [{ name: 'rollingAverageBaseline' }],
     });
     expect(Array.from(normalized.variables.y.data)).toMatchCloseTo([
@@ -42,7 +42,7 @@ describe('getNormalizedSpectrum baseline', () => {
   });
 
   it('iterativepolynomialbaseline', () => {
-    let normalized = getNormalizedSpectrum(spectrum, {
+    let normalized = getNormalizedMeasurement(measurement, {
       filters: [{ name: 'iterativePolynomialBaseline' }],
     });
     expect(normalized.variables.y.data).toMatchCloseTo([
@@ -53,7 +53,7 @@ describe('getNormalizedSpectrum baseline', () => {
   });
 
   it('rollingballbaseline', () => {
-    let normalized = getNormalizedSpectrum(spectrum, {
+    let normalized = getNormalizedMeasurement(measurement, {
       filters: [{ name: 'rollingballBaseline' }],
     });
     expect(Array.from(normalized.variables.y.data)).toMatchCloseTo([
@@ -62,7 +62,7 @@ describe('getNormalizedSpectrum baseline', () => {
   });
 
   it('rollingmedianbaseline', () => {
-    let normalized = getNormalizedSpectrum(spectrum, {
+    let normalized = getNormalizedMeasurement(measurement, {
       filters: [{ name: 'rollingMedianBaseline' }],
     });
     expect(Array.from(normalized.variables.y.data)).toMatchCloseTo([

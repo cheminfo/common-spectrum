@@ -1,7 +1,7 @@
 import { OneLowerCase } from 'cheminfo-types';
 import { GSDOptions } from 'ml-gsd';
 
-import { NormalizedSpectrumOptions } from './NormalizedSpectrumOptions';
+import { MeasurementNormalizationOptions } from './MeasurementNormalizationOptions';
 
 export interface AutoPeakPickingOptions {
   /** x variable label, by default 'x' */
@@ -13,7 +13,7 @@ export interface AutoPeakPickingOptions {
   /** Last X value for the peak picking (default: last X value */
   to?: number;
   /** Normalization can be applied before peak picking. This is useful for example to correct baseline while still have a minMaxRatio filter */
-  normalizationOptions?: NormalizedSpectrumOptions;
+  normalizationOptions?: MeasurementNormalizationOptions;
   /** Options for the peak picking */
   gsdOptions?: GSDOptions;
   /** Minimal peak width */

@@ -1,6 +1,6 @@
 import { NormalizedFilters } from './NormalizedFilters';
 
-export interface NormalizedSpectrumOptions {
+export interface MeasurementNormalizationOptions {
   from?: number;
   to?: number;
   numberOfPoints?: number;

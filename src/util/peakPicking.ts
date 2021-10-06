@@ -11,7 +11,7 @@ import { PeakPickingOptions } from '../types/PeakPickingOptions';
  * the x/y of the fitted peak will be in xOptimized and yOptimized
  */
 export function peakPicking(
-  spectrum: MeasurementXY,
+  measurement: MeasurementXY,
   /** value to search (on x axis) */
   target: number,
   options: PeakPickingOptions = {},
@@ -25,12 +25,12 @@ export function peakPicking(
     shapeOptions = {},
   } = options;
 
-  const x = spectrum.variables[xVariable]?.data;
+  const x = measurement.variables[xVariable]?.data;
   let y;
   if (!isMax) {
-    y = spectrum.variables[yVariable]?.data.slice(); // do deep copy as we maybe need to flip sign
+    y = measurement.variables[yVariable]?.data.slice(); // do deep copy as we maybe need to flip sign
   } else {
-    y = spectrum.variables[yVariable]?.data;
+    y = measurement.variables[yVariable]?.data;
   }
 
   if (!x || !y) return;
@@ -56,12 +56,12 @@ export function peakPicking(
 
     optimizedIndex = xFindClosestIndex(x, optimizedPeak.peaks[0].x);
 
-    for (let [key, variable] of Object.entries(spectrum.variables)) {
+    for (let [key, variable] of Object.entries(measurement.variables)) {
       result[key] = variable.data[optimizedIndex];
     }
     result.optimized = optimizedPeak.peaks[0];
   } else {
-    for (let [key, variable] of Object.entries(spectrum.variables)) {
+    for (let [key, variable] of Object.entries(measurement.variables)) {
       result[key] = variable.data[targetIndex];
     }
   }

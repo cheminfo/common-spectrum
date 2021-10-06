@@ -1,6 +1,6 @@
 import type { OneLowerCase } from 'cheminfo-types';
 
-export interface SpectrumSelector {
+export interface MeasurementSelector {
   /** Allows to specify 2 units using a string like 'nm vs °C' */
   units?: string;
   /** Filter based on xUnits */
@@ -29,6 +29,6 @@ export interface SpectrumSelector {
   description?: string | RegExp;
   /** Select based on the presence of a meta information */
   meta?: Record<string, string>;
-  /** The index of the spectrum in the spectra array */
+  /** The index of the measurement in the measurements array */
   index?: number;
 }

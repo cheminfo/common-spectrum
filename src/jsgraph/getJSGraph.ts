@@ -1,7 +1,7 @@
 import { xyFilterXPositive } from 'ml-spectra-processing';
 
 import { Analysis } from '../Analysis';
-import { NormalizedSpectrumOptions } from '../types/NormalizedSpectrumOptions';
+import { MeasurementNormalizationOptions } from '../types/MeasurementNormalizationOptions';
 
 import { addStyle } from './addStyle';
 import { COLORS } from './colors';
@@ -23,7 +23,7 @@ interface JSGraphOptions {
   opacities?: number[];
   linesWidth?: number[];
   selector?: Record<string, unknown>;
-  normalization?: NormalizedSpectrumOptions;
+  normalization?: MeasurementNormalizationOptions;
   xAxis?: JSGraphAxisOptions;
   yAxis?: JSGraphAxisOptions;
 }
@@ -50,7 +50,7 @@ export function getJSGraph(analyses: Analysis[], options: JSGraphOptions = {}) {
   for (let i = 0; i < analyses.length; i++) {
     const analysis = analyses[i];
     let serie: Record<string, unknown> = {};
-    let currentData = analysis.getNormalizedSpectrum({
+    let currentData = analysis.getNormalizedMeasurement({
       selector,
       normalization,
     });

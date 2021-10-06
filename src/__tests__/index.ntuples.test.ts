@@ -3,7 +3,7 @@ import { Analysis, fromJcamp, toJcamp, toJcamps, JSGraph } from '..';
 describe('case for ntuples', () => {
   let analysis = new Analysis();
 
-  analysis.pushSpectrum(
+  analysis.pushMeasurement(
     {
       x: {
         data: [1, 2],
@@ -28,7 +28,7 @@ describe('case for ntuples', () => {
       },
     },
     {
-      description: 'My spectrum',
+      description: 'My measurement',
       dataType: 'TGA',
       meta: {
         meta1: 'Meta 1',
@@ -41,13 +41,13 @@ describe('case for ntuples', () => {
     expect(analysis.id).toHaveLength(8);
   });
 
-  it('First spectrum', () => {
-    let firstSpectrum = analysis.getXYSpectrum();
+  it('First measurement', () => {
+    let firstMeasurement = analysis.getMeasurementXY();
 
-    expect(firstSpectrum?.variables.x.data).toStrictEqual([1, 2]);
-    expect(firstSpectrum?.variables.y.data).toStrictEqual([3, 4]);
+    expect(firstMeasurement?.variables.x.data).toStrictEqual([1, 2]);
+    expect(firstMeasurement?.variables.y.data).toStrictEqual([3, 4]);
 
-    let normalized = analysis.getNormalizedSpectrum({
+    let normalized = analysis.getNormalizedMeasurement({
       normalization: {
         filters: [{ name: 'normalize' }],
       },
@@ -62,9 +62,9 @@ describe('case for ntuples', () => {
       xUnits: 'tUnits',
       yUnits: 'xUnits',
     };
-    let spectrum = analysis.getXYSpectrum(selector);
-    expect(spectrum?.variables.x.data).toStrictEqual([5, 6]);
-    expect(spectrum?.variables.y.data).toStrictEqual([1, 2]);
+    let measurement = analysis.getMeasurementXY(selector);
+    expect(measurement?.variables.x.data).toStrictEqual([5, 6]);
+    expect(measurement?.variables.y.data).toStrictEqual([1, 2]);
 
     let jsgraph = JSGraph.getJSGraph([analysis], { selector });
     expect(jsgraph.series[0].data).toStrictEqual({ x: [5, 6], y: [1, 2] });
@@ -87,7 +87,7 @@ describe('case for ntuples', () => {
 
     let analysis2 = fromJcamp(jcamp);
 
-    expect(analysis2.spectra[0]).toStrictEqual({
+    expect(analysis2.measurements[0]).toStrictEqual({
       variables: {
         x: {
           symbol: 'x',
@@ -123,7 +123,7 @@ describe('case for ntuples', () => {
           label: 'T axis',
         },
       },
-      description: 'My spectrum',
+      description: 'My measurement',
       dataType: 'TGA',
       meta: { meta1: 'Meta 1', meta2: 'Meta 2' },
     });
