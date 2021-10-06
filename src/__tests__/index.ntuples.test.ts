@@ -28,7 +28,7 @@ describe('case for ntuples', () => {
       },
     },
     {
-      description: 'My spectrum',
+      title: 'My spectrum',
       dataType: 'TGA',
       meta: {
         meta1: 'Meta 1',
@@ -57,7 +57,7 @@ describe('case for ntuples', () => {
     ).toBeCloseTo(1, 10);
   });
 
-  it('MeasurementXY by units', () => {
+  it('Spectrum by units', () => {
     const selector = {
       xUnits: 'tUnits',
       yUnits: 'xUnits',
@@ -72,7 +72,7 @@ describe('case for ntuples', () => {
     let jcamps = toJcamps(analysis, {
       info: {
         owner: 'cheminfo',
-        origin: 'Common MeasurementXY',
+        origin: 'Common Spectrum',
       },
     });
 
@@ -81,7 +81,7 @@ describe('case for ntuples', () => {
     let jcamp = toJcamp(analysis, {
       info: {
         owner: 'cheminfo',
-        origin: 'Common MeasurementXY',
+        origin: 'Common Spectrum',
       },
     });
 
@@ -90,8 +90,9 @@ describe('case for ntuples', () => {
     expect(analysis2.spectra[0]).toStrictEqual({
       variables: {
         x: {
+          name: 'X axis',
           symbol: 'x',
-          isDependent: false,
+          type: 'INDEPENDENT',
           dim: 2,
           units: 'xUnits',
           data: [1, 2],
@@ -101,7 +102,9 @@ describe('case for ntuples', () => {
           label: 'X axis',
         },
         y: {
-          isDependent: true,
+          name: 'Y axis',
+          symbol: 'y',
+          type: 'DEPENDENT',
           dim: 2,
           units: 'yUnits',
           isMonotone: true,
@@ -111,8 +114,9 @@ describe('case for ntuples', () => {
           label: 'Y axis',
         },
         t: {
+          name: 'T axis',
           symbol: 't',
-          isDependent: true,
+          type: 'DEPENDENT',
           dim: 2,
           units: 'tUnits',
           isMonotone: true,
@@ -122,7 +126,7 @@ describe('case for ntuples', () => {
           label: 'T axis',
         },
       },
-      description: 'My spectrum',
+      title: 'My spectrum',
       dataType: 'TGA',
       meta: { meta1: 'Meta 1', meta2: 'Meta 2' },
     });

@@ -17,8 +17,9 @@ export * from './types/types';
 export * from './types/AutoPeakPickingOptions';
 export * from './types/NormalizedFilters';
 export * from './types/NormalizedSpectrumOptions';
-export { MeasurementVariable, MeasurementXY } from 'cheminfo-types';
+export { SpectrumVariable, Spectrum } from 'cheminfo-types/src/index';
 export * from './types/PlotObject';
+export * from './types/SGOptions';
 export * from './types/ShapeOptions';
 export * from './types/SpectrumSelector';
 

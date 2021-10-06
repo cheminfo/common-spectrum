@@ -1,11 +1,11 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
-import type { MeasurementVariable } from 'cheminfo-types';
+import type { SpectrumVariable } from 'cheminfo-types/src/index';
 
 import { fromJcamp } from '../fromJcamp';
 
-function irCallback(variables: Record<string, MeasurementVariable>) {
+function irCallback(variables: Record<string, SpectrumVariable>) {
   if (variables.y.label === 'ABSORBANCE') {
     variables.t = {
       data: variables.y.data.map(

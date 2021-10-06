@@ -1,4 +1,4 @@
-import type { MeasurementXY } from 'cheminfo-types';
+import type { Spectrum } from 'cheminfo-types/src/index';
 import { fromVariables } from 'convert-to-jcamp';
 
 import { Analysis } from '../Analysis';
@@ -15,13 +15,13 @@ export function toJcamps(analysis: Analysis, options: GetJcampOptions = {}) {
   return jcamps;
 }
 
-function getJcamp(spectrum: MeasurementXY, options: GetJcampOptions) {
+function getJcamp(spectrum: Spectrum, options: GetJcampOptions) {
   const { info = {}, meta = {} } = options;
 
   let jcampOptions = {
     options: {},
     info: {
-      description: spectrum.description,
+      title: spectrum.title,
       dataType: spectrum.dataType,
       ...info,
     },

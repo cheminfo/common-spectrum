@@ -31,9 +31,7 @@ test('simple test case', () => {
   let analyses = new Array(len);
   for (let i = 0; i < len; i++) {
     analyses[i] = new Analysis();
-    analyses[i].pushSpectrum(spectra.variables, {
-      description: `Vg = ${i + 3}`,
-    });
+    analyses[i].pushSpectrum(spectra.variables, { title: `Vg = ${i + 3}` });
   }
 
   // ignored value
@@ -63,9 +61,7 @@ test('enforce growing', () => {
   let analyses = new Array(len);
   for (let i = 0; i < len; i++) {
     analyses[i] = new Analysis();
-    analyses[i].pushSpectrum(spectra.variables, {
-      description: `Vg = ${i + 3}`,
-    });
+    analyses[i].pushSpectrum(spectra.variables, { title: `Vg = ${i + 3}` });
   }
 
   // ignored value

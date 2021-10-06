@@ -48,8 +48,8 @@ export class AnalysesManager {
   public getDistinctTitles() {
     let values: Record<string, CounterType> = {};
     for (let spectrum of this.getSpectra()) {
-      if (spectrum.description) {
-        appendDistinctValue(values, spectrum.description);
+      if (spectrum.title) {
+        appendDistinctValue(values, spectrum.title);
       }
     }
     return Object.keys(values).map((key) => values[key]);

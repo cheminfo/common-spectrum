@@ -87,7 +87,7 @@ export function getReactPlotJSON(
     const data = getData(spectra.variables.x.data, spectra.variables.y.data);
     const serie: LineSeriesType = {
       type: 'line',
-      label: spectra.description,
+      label: spectra.title,
       data,
       ...seriesOptions,
     };

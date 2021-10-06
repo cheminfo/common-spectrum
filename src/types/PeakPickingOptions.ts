@@ -1,4 +1,4 @@
-import { OneLowerCase } from 'cheminfo-types';
+import { OneLowerCase } from 'cheminfo-types/src/index';
 
 import { ShapeOptions } from './ShapeOptions';
 

@@ -1,8 +1,8 @@
 import type {
   OneLowerCase,
-  MeasurementXY,
-  MeasurementXYVariables,
-} from 'cheminfo-types';
+  Spectrum,
+  SpectrumVariables,
+} from 'cheminfo-types/src/index';
 
 import { SpectrumSelector } from '../types/SpectrumSelector';
 
@@ -16,14 +16,14 @@ import { getConvertedVariable } from './getConvertedVariable';
  * taken
  */
 export function getXYSpectrum(
-  spectra: Array<MeasurementXY> = [],
+  spectra: Array<Spectrum> = [],
   selector: SpectrumSelector = {},
-): MeasurementXY | undefined {
+): Spectrum | undefined {
   if (spectra.length < 1) return;
 
   let {
     dataType,
-    description,
+    title,
     xUnits,
     yUnits,
     variables,
@@ -45,8 +45,8 @@ export function getXYSpectrum(
     dataType = ensureRegexp(dataType);
   }
 
-  if (description) {
-    description = ensureRegexp(description);
+  if (title) {
+    title = ensureRegexp(title);
   }
 
   if (units && !xUnits && !yUnits) [yUnits, xUnits] = units.split(/\s*vs\s*/);
@@ -73,9 +73,8 @@ export function getXYSpectrum(
       if (!spectrum.dataType || !spectrum.dataType.match(dataType)) continue;
     }
 
-    if (description) {
-      if (!spectrum.description || !spectrum.description.match(description))
-        continue;
+    if (title) {
+      if (!spectrum.title || !spectrum.title.match(title)) continue;
     }
 
     if (meta && typeof meta === 'object') {
@@ -100,7 +99,7 @@ export function getXYSpectrum(
 
     if (x && y) {
       return {
-        description: spectrum.description,
+        title: spectrum.title,
         dataType: spectrum.dataType,
         meta: spectrum.meta,
         variables: { x, y },
@@ -116,7 +115,7 @@ interface Selector {
   variableName?: OneLowerCase;
 }
 function getPossibleVariable(
-  variables: MeasurementXYVariables,
+  variables: SpectrumVariables,
   selector: Selector = {},
 ) {
   const { units, label, variableName } = selector;

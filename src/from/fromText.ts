@@ -9,7 +9,7 @@ import { Analysis } from '../Analysis';
  * @param {string} data - values to add to the file, usually a csv or tsv values
  * @param {object} [options={}]
  * @param {string} [options.info={}] - metadata of the file
- * @param {string} [options.info.description = ''] - description of the file
+ * @param {string} [options.info.title = ''] - title of the file
  * @param {string} [options.info.dataType = ''] - type of data
  * @param {string} [options.info.xUnits = ''] - units for the x axis
  * @param {string} [options.info.yUnits = ''] - units for the y axis
