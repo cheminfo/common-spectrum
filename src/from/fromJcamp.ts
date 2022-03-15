@@ -1,7 +1,7 @@
-import { SpectrumVariable } from 'cheminfo-types/src/index';
 import { convert } from 'jcampconverter';
 
 import { Analysis } from '../Analysis';
+import { SpectrumVariable } from '../types/Cheminfo';
 
 /**
  * Creates a new Analysis from a JCAMP string

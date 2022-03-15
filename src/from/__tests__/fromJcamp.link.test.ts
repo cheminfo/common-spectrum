@@ -14,13 +14,13 @@ test('fromJcamp linked file', () => {
 
   expect(first.variables.x.data).toHaveLength(911);
   expect(first.variables.y.data).toHaveLength(911);
-  expect(first.variables.x.label).toStrictEqual('NANOMETERS');
-  expect(first.variables.y.label).toStrictEqual('ABSORBANCE');
+  expect(first.variables.x.label).toBe('NANOMETERS');
+  expect(first.variables.y.label).toBe('ABSORBANCE');
 
   let second = result.spectra[1];
 
   expect(second.variables.x.data).toHaveLength(911);
   expect(second.variables.y.data).toHaveLength(911);
-  expect(second.variables.x.label).toStrictEqual('NANOMETERS');
-  expect(second.variables.y.label).toStrictEqual('VARIANCE');
+  expect(second.variables.x.label).toBe('NANOMETERS');
+  expect(second.variables.y.label).toBe('VARIANCE');
 });

@@ -1,6 +1,6 @@
-import type { Spectrum } from 'cheminfo-types/src/index';
 import { toBeDeepCloseTo, toMatchCloseTo } from 'jest-matcher-deep-close-to';
 
+import type { Spectrum } from '../../types/Cheminfo';
 import { getXYSpectrum } from '../getXYSpectrum';
 
 expect.extend({ toBeDeepCloseTo, toMatchCloseTo });
@@ -300,7 +300,7 @@ describe('getXYSpectrum', () => {
   });
 
   it('xVariable: t, yVariable: Z', () => {
-    // @ts-expect-error We still allow upper or lowercase, this could change in the future
+    // @ts-expect-error we check that the variable is converted to lowercase
     let xy = getXYSpectrum(spectra, { xVariable: 't', yVariable: 'Z' });
     expect(xy).toMatchObject({
       variables: {

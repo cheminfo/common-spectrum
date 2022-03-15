@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-dynamic-delete */
+
 import type {
   OneLowerCase,
   Spectrum,
   SpectrumVariables,
-} from 'cheminfo-types/src/index';
-
+} from '../types/Cheminfo';
 import { SpectrumSelector } from '../types/SpectrumSelector';
 
 import { convertUnit } from './convertUnit';

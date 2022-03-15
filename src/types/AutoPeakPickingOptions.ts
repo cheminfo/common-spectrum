@@ -1,5 +1,4 @@
-import { OneLowerCase } from 'cheminfo-types/src/index';
-
+import { OneLowerCase } from './Cheminfo';
 import { NormalizedSpectrumOptions } from './NormalizedSpectrumOptions';
 import { SGOptions } from './SGOptions';
 import { ShapeOptions } from './ShapeOptions';

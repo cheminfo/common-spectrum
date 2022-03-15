@@ -1,5 +1,4 @@
-import { OneLowerCase } from 'cheminfo-types/src/index';
-
+import { OneLowerCase } from './Cheminfo';
 import { ShapeOptions } from './ShapeOptions';
 
 export interface PeakPickingOptions {

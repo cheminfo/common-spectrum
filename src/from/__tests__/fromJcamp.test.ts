@@ -18,19 +18,19 @@ describe('fromJcamp', () => {
 
     expect(first.variables.x.data).toHaveLength(2251);
     expect(first.variables.y.data).toHaveLength(2251);
-    expect(first.variables.x.label).toStrictEqual('Ts');
-    expect(first.variables.x.units).toStrictEqual('°C');
-    expect(first.variables.y.label).toStrictEqual('Value');
-    expect(first.variables.y.units).toStrictEqual('mg');
+    expect(first.variables.x.label).toBe('Ts');
+    expect(first.variables.x.units).toBe('°C');
+    expect(first.variables.y.label).toBe('Value');
+    expect(first.variables.y.units).toBe('mg');
 
     let second = result.spectra[1];
 
     expect(second.variables.x.data).toHaveLength(2251);
     expect(second.variables.y.data).toHaveLength(2251);
-    expect(second.variables.x.label).toStrictEqual('t');
-    expect(second.variables.x.units).toStrictEqual('s');
-    expect(second.variables.y.label).toStrictEqual('Value');
-    expect(second.variables.y.units).toStrictEqual('mg');
+    expect(second.variables.x.label).toBe('t');
+    expect(second.variables.x.units).toBe('s');
+    expect(second.variables.y.label).toBe('Value');
+    expect(second.variables.y.units).toBe('mg');
   });
 
   it('ntuples', () => {

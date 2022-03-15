@@ -1,5 +1,4 @@
-import type { Spectrum } from 'cheminfo-types/src/index';
-
+import type { Spectrum } from '../../types/Cheminfo';
 import { autoPeakPicking } from '../autoPeakPicking';
 
 describe('autoPeakPicking positive', () => {

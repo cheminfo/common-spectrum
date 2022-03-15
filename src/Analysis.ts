@@ -1,9 +1,9 @@
-import type { SpectrumVariables, Spectrum } from 'cheminfo-types/src/index';
 import isAnyArray from 'is-any-array';
 import max from 'ml-array-max';
 import min from 'ml-array-min';
 import { xIsMonotone } from 'ml-spectra-processing';
 
+import type { SpectrumVariables, Spectrum } from './types/Cheminfo';
 import { NormalizedSpectrumOptions } from './types/NormalizedSpectrumOptions';
 import { SpectrumSelector } from './types/SpectrumSelector';
 import { getNormalizedSpectrum } from './util/getNormalizedSpectrum';

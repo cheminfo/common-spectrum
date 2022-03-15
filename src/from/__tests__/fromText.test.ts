@@ -22,8 +22,8 @@ test('fromText', () => {
 
   expect(first.variables.x.data).toHaveLength(551);
   expect(first.variables.y.data).toHaveLength(551);
-  expect(first.variables.x.label).toStrictEqual('Wavenumber');
-  expect(first.variables.x.units).toStrictEqual('cm-1');
-  expect(first.variables.y.label).toStrictEqual('Intensity');
-  expect(first.variables.y.units).toStrictEqual('');
+  expect(first.variables.x.label).toBe('Wavenumber');
+  expect(first.variables.x.units).toBe('cm-1');
+  expect(first.variables.y.label).toBe('Intensity');
+  expect(first.variables.y.units).toBe('');
 });

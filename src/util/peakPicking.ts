@@ -1,8 +1,8 @@
-import type { Spectrum } from 'cheminfo-types/src/index';
 import max from 'ml-array-max';
 import { optimize as optimizePeak } from 'ml-spectra-fitting';
 import { xFindClosestIndex } from 'ml-spectra-processing';
 
+import type { Spectrum } from '../types/Cheminfo';
 import { PeakPickingOptions } from '../types/PeakPickingOptions';
 
 /** Based on a x value we will return a peak

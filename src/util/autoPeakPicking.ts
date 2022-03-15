@@ -1,8 +1,8 @@
-import type { Spectrum } from 'cheminfo-types/src/index';
 import { gsd } from 'ml-gsd';
 import { xyMaxClosestYPoint, xyMinClosestYPoint } from 'ml-spectra-processing';
 
 import { AutoPeakPickingOptions } from '../types/AutoPeakPickingOptions';
+import type { Spectrum } from '../types/Cheminfo';
 
 import { getNormalizedSpectrum } from './getNormalizedSpectrum';
 

@@ -1,8 +1,7 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
-import type { SpectrumVariable } from 'cheminfo-types/src/index';
-
+import type { SpectrumVariable } from '../../types/Cheminfo';
 import { fromJcamp } from '../fromJcamp';
 
 function irCallback(variables: Record<string, SpectrumVariable>) {
