@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.44.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.43.2...v0.44.0) (2022-03-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* rename interfaces based on cheminfo-types
+
+### Features
+
+* rename interfaces based on cheminfo-types ([2a2d4d9](https://www.github.com/cheminfo/common-spectrum/commit/2a2d4d926e242f15476fafb8de3f623eec941cfb))
+
+
+### Bug Fixes
+
+* avoid reverse data in place ([45d9658](https://www.github.com/cheminfo/common-spectrum/commit/45d96586dd41a55b8ab0508b79d9caf4c44a3bc8))
+* remove ts-ignore comments and regex match ([#78](https://www.github.com/cheminfo/common-spectrum/issues/78)) ([8ed0c54](https://www.github.com/cheminfo/common-spectrum/commit/8ed0c54747efd0441a1246b024e1bbf5e2618d70))
+* this is a temporary fix that brings all the types in the project waiting for full migration to analysis ([a48e2f6](https://www.github.com/cheminfo/common-spectrum/commit/a48e2f6b4f6204d64086ac3d198daaf6f381bcfc))
+
 ### [0.43.2](https://www.github.com/cheminfo/common-spectrum/compare/v0.43.1...v0.43.2) (2021-09-28)
 
 

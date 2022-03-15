@@ -1,6 +1,6 @@
 {
   "name": "common-spectrum",
-  "version": "0.43.2",
+  "version": "0.44.0",
   "description": "Common package to deal with spectra",
   "main": "./lib/index.js",
   "module": "./lib-esm/index.js",
