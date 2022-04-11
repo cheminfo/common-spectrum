@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import { parseXY } from 'xy-parser';
 
 import { Analysis } from '../Analysis';

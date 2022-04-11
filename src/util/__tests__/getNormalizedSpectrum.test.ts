@@ -45,7 +45,7 @@ describe('getNormalizedSpectrum', () => {
   });
   it('normalize', () => {
     let normalized = getNormalizedSpectrum(spectrum, {
-      filters: [{ name: 'normalize' }],
+      filters: [{ name: 'normed' }],
     });
     expect(normalized).toStrictEqual({
       variables: {
@@ -70,22 +70,11 @@ describe('getNormalizedSpectrum', () => {
   });
   it('divideByMax', () => {
     let normalized = getNormalizedSpectrum(spectrum, {
-      filters: [{ name: 'divideByMax' }],
+      filters: [{ name: 'normed', options: { algorithm: 'max', max: 1 } }],
     });
     expect(normalized.variables.y.data).toBeDeepCloseTo([0.66666, 1], 4);
   });
-  it('add', () => {
-    let normalized = getNormalizedSpectrum(spectrum, {
-      filters: [{ name: 'add', options: { value: 1 } }],
-    });
-    expect(normalized.variables.y.data).toStrictEqual([3, 4]);
-  });
-  it('multiply', () => {
-    let normalized = getNormalizedSpectrum(spectrum, {
-      filters: [{ name: 'multiply', options: { value: 100 } }],
-    });
-    expect(Array.from(normalized.variables.y.data)).toStrictEqual([200, 300]);
-  });
+
   it('dividebysd', () => {
     let normalized = getNormalizedSpectrum(spectrum, {
       filters: [{ name: 'divideBySD' }],

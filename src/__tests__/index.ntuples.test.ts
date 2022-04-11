@@ -49,7 +49,7 @@ describe('case for ntuples', () => {
 
     let normalized = analysis.getNormalizedSpectrum({
       normalization: {
-        filters: [{ name: 'normalize' }],
+        filters: [{ name: 'normed' }],
       },
     })?.variables;
     expect(

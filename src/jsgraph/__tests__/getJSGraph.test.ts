@@ -28,7 +28,9 @@ test('getJSGraph', () => {
   );
 
   const jsgraph = JSGraph.getJSGraph([analysis], {
-    normalization: { filters: [{ name: 'multiply', options: { value: 100 } }] },
+    normalization: {
+      filters: [{ name: 'normed', options: { algorithm: 'max', max: 100 } }],
+    },
     xAxis: {
       logScale: true,
     },
