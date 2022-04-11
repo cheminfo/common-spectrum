@@ -1,11 +1,13 @@
-import { NormalizedFilters } from './NormalizedFilters';
+import { FromTo } from 'cheminfo-types';
+import { FilterType } from 'ml-signal-processing/lib/FilterType';
 
 export interface NormalizedSpectrumOptions {
   from?: number;
   to?: number;
   numberOfPoints?: number;
   processing?: boolean;
-  filters?: NormalizedFilters[];
-  exclusions?: string[];
+  filters?: FilterType[];
+  zones?: FromTo[];
+  exclusions?: FromTo[];
   keepYUnits?: boolean;
 }
