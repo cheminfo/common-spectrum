@@ -20,7 +20,7 @@ export function peakPicking(
     xVariable = 'x',
     yVariable = 'y',
     optimize = false,
-    expectedWidth = 1,
+    expectedFWHM = 1,
     max: isMax = true,
     shapeOptions = {},
   } = options;
@@ -50,7 +50,7 @@ export function peakPicking(
 
     optimizedPeak = optimizePeak(
       { x, y },
-      [{ x: x[targetIndex], y: y[targetIndex], width: expectedWidth }],
+      [{ x: x[targetIndex], y: y[targetIndex], fwhm: expectedFWHM }],
       shapeOptions,
     );
 
@@ -59,7 +59,7 @@ export function peakPicking(
     for (let [key, variable] of Object.entries(spectrum.variables)) {
       result[key] = variable.data[optimizedIndex];
     }
-    result.optimized = optimizedPeak.peaks[0];
+    result.optimized = optimizedPeak.peaks[0].x;
   } else {
     for (let [key, variable] of Object.entries(spectrum.variables)) {
       result[key] = variable.data[targetIndex];

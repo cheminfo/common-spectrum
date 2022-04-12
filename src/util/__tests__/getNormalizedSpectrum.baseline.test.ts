@@ -52,16 +52,16 @@ describe('getNormalizedSpectrum baseline', () => {
     ]);
   });
 
-  it('rollingballbaseline', () => {
+  it('rollingAverageBaseline', () => {
     let normalized = getNormalizedSpectrum(spectrum, {
-      filters: [{ name: 'rollingballBaseline' }],
+      filters: [{ name: 'rollingAverageBaseline' }],
     });
     expect(Array.from(normalized.variables.y.data)).toMatchCloseTo([
       -0.5, 0, 0, -8, 16, -8, 0, 0, 0, 0.5,
     ]);
   });
 
-  it('rollingmedianbaseline', () => {
+  it('rollingMedianBaseline', () => {
     let normalized = getNormalizedSpectrum(spectrum, {
       filters: [{ name: 'rollingMedianBaseline' }],
     });

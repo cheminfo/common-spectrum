@@ -1,12 +1,12 @@
 import { FromTo } from 'cheminfo-types';
-import { FilterType } from 'ml-signal-processing/lib/FilterType';
+import { FilterXYType } from 'ml-signal-processing/src/FilterXYType';
 
 export interface NormalizedSpectrumOptions {
   from?: number;
   to?: number;
   numberOfPoints?: number;
   processing?: boolean;
-  filters?: FilterType[];
+  filters?: FilterXYType[];
   zones?: FromTo[];
   exclusions?: FromTo[];
   keepYUnits?: boolean;

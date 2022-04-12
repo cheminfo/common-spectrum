@@ -12,5 +12,6 @@ export interface PeakPickingOptions {
   shapeOptions?: ShapeOptions;
   /** are we looking for maxima or minima, default true */
   max?: boolean;
-  expectedWidth?: number;
+  /** expected fwhm (full width half maximum) of the peaks */
+  expectedFWHM?: number;
 }

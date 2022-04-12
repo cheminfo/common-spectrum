@@ -39,7 +39,6 @@ export function getNormalizedSpectrum(
     filters = [],
     exclusions = [],
     zones = [],
-    keepYUnits = false,
   } = options;
 
   filters = JSON.parse(JSON.stringify(filters));
@@ -55,10 +54,11 @@ export function getNormalizedSpectrum(
     });
   }
 
-  let { x, y } = filterXY(data, filters);
+  let { x, y } = filterXY(data, filters).data;
 
-  if (!keepYUnits && filters.length) {
-    // filters change the y axis, we get rid of the units
+  // filters change the y axis, we get rid of the units
+  // TODO we should deal correctly with this problem
+  if (filters.length > 1) {
     newSpectrum.variables.y.units = '';
     newSpectrum.variables.y.label = newSpectrum.variables.y.label?.replace(
       /\s*\[.*\]/,

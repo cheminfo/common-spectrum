@@ -63,7 +63,7 @@
     "typescript": "^4.6.3"
   },
   "dependencies": {
-    "@types/react": "^18.0.1",
+    "@types/react": "^18.0.2",
     "baselines": "^1.1.1",
     "cheminfo-types": "^1.1.0",
     "convert-to-jcamp": "^5.2.0",
@@ -78,7 +78,7 @@
     "ml-array-xy-filter-x": "^1.0.2",
     "ml-gsd": "^10.2.0",
     "ml-savitzky-golay": "^5.0.0",
-    "ml-signal-processing": "^0.3.0",
+    "ml-signal-processing": "^0.4.0",
     "ml-spectra-fitting": "^3.1.0",
     "ml-spectra-processing": "^11.4.0",
     "react-plot": "^0.17.1",
