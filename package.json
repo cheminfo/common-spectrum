@@ -81,7 +81,7 @@
     "ml-signal-processing": "^0.4.0",
     "ml-spectra-fitting": "^3.1.0",
     "ml-spectra-processing": "^11.4.0",
-    "react-plot": "^0.17.1",
+    "react-plot": "0.10.1",
     "xy-parser": "^5.0.2"
   }
 }

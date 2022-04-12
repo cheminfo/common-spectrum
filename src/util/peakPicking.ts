@@ -38,7 +38,12 @@ export function peakPicking(
   targetIndex = xFindClosestIndex(x, target);
   let optimizedPeak;
   let optimizedIndex;
-  const result: Record<string, number> = {};
+
+  interface ResultType {
+    optimized?: any;
+    [key: string]: number;
+  }
+  const result: ResultType = {};
   if (optimize) {
     if (isMax === false) {
       let maximumY = max(y);
@@ -59,7 +64,7 @@ export function peakPicking(
     for (let [key, variable] of Object.entries(spectrum.variables)) {
       result[key] = variable.data[optimizedIndex];
     }
-    result.optimized = optimizedPeak.peaks[0].x;
+    result.optimized = optimizedPeak.peaks[0];
   } else {
     for (let [key, variable] of Object.entries(spectrum.variables)) {
       result[key] = variable.data[targetIndex];

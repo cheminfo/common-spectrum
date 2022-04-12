@@ -57,7 +57,7 @@ describe('getNormalizedSpectrum baseline', () => {
       filters: [{ name: 'rollingAverageBaseline' }],
     });
     expect(Array.from(normalized.variables.y.data)).toMatchCloseTo([
-      -0.5, 0, 0, -8, 16, -8, 0, 0, 0, 0.5,
+      0, 0.5, 0.5, 0.5, 12.5, -11.5, 0.5, 0.5, 0.5, 0.5,
     ]);
   });
 
