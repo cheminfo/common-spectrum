@@ -1,5 +1,3 @@
-export type json = Record<string, string>;
-
 export interface CounterType {
   key: string;
   count: number;

@@ -1,4 +1,4 @@
-import { MeasurementVariable, MeasurementXYVariables } from 'cheminfo-types';
+import { MeasurementXYVariables } from 'cheminfo-types';
 import { parseXYAndKeepInfo, ParseXYOptions } from 'xy-parser';
 
 import { Analysis } from '../Analysis';
