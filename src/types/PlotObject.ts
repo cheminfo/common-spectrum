@@ -1,5 +1,3 @@
-import { json } from './types';
-
 export interface PlotObject {
   series: Array<{
     type: 'line';
@@ -9,5 +7,5 @@ export interface PlotObject {
   }>;
   axes: Array<{ position: 'bottom' | 'left'; label: string }>;
   dimensions: { width: number; heigth: number };
-  meta: json[];
+  meta: Record<string, string>;
 }

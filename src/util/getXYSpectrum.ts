@@ -129,8 +129,13 @@ function getPossibleVariable(
   if (units !== undefined) {
     for (key in possible) {
       const variable = variables[key];
-      let converted = convertUnit(1, variable?.units || '', units);
-      if (converted && variable) {
+      let convertibleUnits = true;
+      try {
+        convertUnit(1, variable?.units || '', units);
+      } catch (e) {
+        convertibleUnits = false;
+      }
+      if (convertibleUnits && variable) {
         possible[key] = getConvertedVariable(variable, units);
       } else {
         delete possible[key];

@@ -82,7 +82,7 @@ test('enforce growing', () => {
     { id: 'x', label: 'Voltage [kV]', position: 'bottom', type: 'main' },
     {
       id: 'y',
-      label: 'Current [mA]',
+      label: 'Current',
       position: 'left',
       labelSpace: 40,
       type: 'main',

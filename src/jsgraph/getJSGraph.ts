@@ -1,3 +1,4 @@
+import { DataXY } from 'cheminfo-types';
 import { xyFilterXPositive } from 'ml-spectra-processing';
 
 import { Analysis } from '../Analysis';
@@ -70,7 +71,7 @@ export function getJSGraph(analyses: Analysis[], options: JSGraphOptions = {}) {
     };
 
     if (xAxis.logScale) {
-      serie.data = xyFilterXPositive(serie.data);
+      serie.data = xyFilterXPositive(serie.data as DataXY);
     }
 
     series.push(serie);

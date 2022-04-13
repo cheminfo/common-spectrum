@@ -22,19 +22,28 @@ describe('autoPeakPicking positive', () => {
   };
 
   it('No options', () => {
-    let peaks = autoPeakPicking(spectrum);
+    let peaks = autoPeakPicking(spectrum, {});
+    expect(peaks).toStrictEqual([]);
+  });
+
+  it('noiseLevel: 0', () => {
+    let peaks = autoPeakPicking(spectrum, { noiseLevel: 0 });
     expect(peaks).toStrictEqual([
-      { x: 6, y: 6, z: 5, width: 4 },
-      { x: 14, y: 6, z: 5, width: 4 },
+      { x: 6, y: 6, z: 5, width: 6 },
+      { x: 14, y: 6, z: 5, width: 6 },
     ]);
   });
   it('xVariable=x, yVariable=z', () => {
-    let peaks = autoPeakPicking(spectrum, { xVariable: 'x', yVariable: 'z' });
-    expect(peaks).toStrictEqual([{ x: 7, y: 5, z: 6, width: 4 }]);
+    let peaks = autoPeakPicking(spectrum, {
+      xVariable: 'x',
+      yVariable: 'z',
+      noiseLevel: 0,
+    });
+    expect(peaks).toStrictEqual([{ x: 7, y: 5, z: 6, width: 5 }]);
   });
 
   it('minPeakWidth: 5', () => {
-    let peaks = autoPeakPicking(spectrum, { minPeakWidth: 5 });
+    let peaks = autoPeakPicking(spectrum, { noiseLevel: 0, minPeakWidth: 7 });
     expect(peaks).toStrictEqual([]);
   });
 
@@ -44,8 +53,9 @@ describe('autoPeakPicking positive', () => {
       yVariable: 'z',
       from: 2,
       to: 18,
+      noiseLevel: 0,
     });
-    expect(peaks).toStrictEqual([{ x: 7, y: 5, z: 6, width: 4 }]);
+    expect(peaks).toStrictEqual([{ x: 7, y: 5, z: 6, width: 5 }]);
   });
 });
 
@@ -73,11 +83,14 @@ describe('autoPeakPicking negative', () => {
   };
 
   it('maxCriteria=false', () => {
-    let peaks = autoPeakPicking(spectrum, { maxCriteria: false });
+    let peaks = autoPeakPicking(spectrum, {
+      maxCriteria: false,
+      noiseLevel: 0,
+    });
 
     expect(peaks).toStrictEqual([
-      { x: 6, y: -6, z: 5, width: 4 },
-      { x: 14, y: -6, z: 5, width: 4 },
+      { x: 6, y: -6, z: 5, width: 6 },
+      { x: 14, y: -6, z: 5, width: 6 },
     ]);
   });
 
@@ -87,7 +100,8 @@ describe('autoPeakPicking negative', () => {
       yVariable: 'z',
       from: 2,
       to: 18,
+      noiseLevel: 0,
     });
-    expect(peaks).toStrictEqual([{ x: 7, y: -5, z: 6, width: 4 }]);
+    expect(peaks).toStrictEqual([{ x: 7, y: -5, z: 6, width: 5 }]);
   });
 });

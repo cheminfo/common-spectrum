@@ -20,7 +20,7 @@ export function peakPicking(
     xVariable = 'x',
     yVariable = 'y',
     optimize = false,
-    expectedWidth = 1,
+    expectedFWHM = 1,
     max: isMax = true,
     shapeOptions = {},
   } = options;
@@ -38,7 +38,12 @@ export function peakPicking(
   targetIndex = xFindClosestIndex(x, target);
   let optimizedPeak;
   let optimizedIndex;
-  const result: Record<string, number> = {};
+
+  interface ResultType {
+    optimized?: any;
+    [key: string]: number;
+  }
+  const result: ResultType = {};
   if (optimize) {
     if (isMax === false) {
       let maximumY = max(y);
@@ -50,7 +55,7 @@ export function peakPicking(
 
     optimizedPeak = optimizePeak(
       { x, y },
-      [{ x: x[targetIndex], y: y[targetIndex], width: expectedWidth }],
+      [{ x: x[targetIndex], y: y[targetIndex], fwhm: expectedFWHM }],
       shapeOptions,
     );
 

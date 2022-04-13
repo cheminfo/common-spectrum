@@ -20,7 +20,6 @@ export function autoPeakPicking(
 
   let x = spectrum.variables[xVariable]?.data;
   let y = spectrum.variables[yVariable]?.data;
-
   if (!x || !y) return [];
 
   if (normalizationOptions) {

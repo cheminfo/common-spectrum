@@ -1,33 +1,31 @@
+import { DoubleArray } from 'cheminfo-types';
 import Qty from 'js-quantities';
 
 // overloads for typing correct values
 export function convertUnit(
-  array: number[],
+  array: DoubleArray,
   fromUnit: string,
   toUnit: string,
-): number[] | undefined;
+): DoubleArray;
 export function convertUnit(
   array: number,
   fromUnit: string,
   toUnit: string,
-): number | undefined;
+): number;
 
-export function convertUnit(
-  array: any,
+export function convertUnit<T extends DoubleArray | number>(
+  array: T,
   fromUnit: string,
   toUnit: string,
-): any | undefined {
+): T {
   fromUnit = normalize(fromUnit);
   toUnit = normalize(toUnit);
 
   if (fromUnit === toUnit) return array;
 
-  try {
-    const convert = Qty.swiftConverter(fromUnit, toUnit); // Configures converter
-    return convert(array);
-  } catch (e) {
-    return undefined;
-  }
+  const convert = Qty.swiftConverter(fromUnit, toUnit); // Configures converter
+  //@ts-expect-error convert does not allowed typed array but it works
+  return convert(array);
 }
 
 function normalize(unit: string) {

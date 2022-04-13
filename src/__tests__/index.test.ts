@@ -39,7 +39,7 @@ test('index', () => {
 
   let normalizedSpectrum = analysis.getNormalizedSpectrum({
     normalization: {
-      filters: [{ name: 'normalize' }],
+      filters: [{ name: 'normed' }],
     },
   });
   expect(

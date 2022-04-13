@@ -12,7 +12,6 @@ test('fromText', () => {
       yUnits: '',
       xLabel: 'Wavenumber',
       yLabel: 'Intensity',
-      dataType: 'UV spectrum',
     },
   });
 

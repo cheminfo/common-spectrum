@@ -15,7 +15,6 @@ export * from './util/autoPeakPicking';
 
 export * from './types/types';
 export * from './types/AutoPeakPickingOptions';
-export * from './types/NormalizedFilters';
 export * from './types/NormalizedSpectrumOptions';
 export { SpectrumVariable, Spectrum } from './types/Cheminfo';
 export * from './types/PlotObject';
