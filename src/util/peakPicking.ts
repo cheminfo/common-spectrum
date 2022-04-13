@@ -39,11 +39,10 @@ export function peakPicking(
   let optimizedPeak;
   let optimizedIndex;
 
-  interface ResultType {
+  const result: {
     optimized?: any;
     [key: string]: number;
-  }
-  const result: ResultType = {};
+  } = {};
   if (optimize) {
     if (isMax === false) {
       let maximumY = max(y);
