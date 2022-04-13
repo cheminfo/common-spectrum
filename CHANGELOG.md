@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.0.1](https://www.github.com/cheminfo/common-spectrum/compare/v1.0.0...v1.0.1) (2022-04-13)
+
+
+### Bug Fixes
+
+* remove ResultType to allow ts transpillation ([8f68400](https://www.github.com/cheminfo/common-spectrum/commit/8f68400ee5ea4ea9971ec4ea3c46f303062e29e1))
+
 ## [1.0.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.44.0...v1.0.0) (2022-04-13)
 
 
