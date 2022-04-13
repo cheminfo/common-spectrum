@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.0.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.44.0...v1.0.0) (2022-04-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* bump major version because filters name (normalization)  may have changed and peak picking does not give the same result
+
+### Features
+
+* add ml-signal-processing dependency ([e9852eb](https://www.github.com/cheminfo/common-spectrum/commit/e9852eb13caa57d588e6ba5c2aa2e2f53da5e43c))
+* improve typescript definition ([e9852eb](https://www.github.com/cheminfo/common-spectrum/commit/e9852eb13caa57d588e6ba5c2aa2e2f53da5e43c))
+* small breaking changes in peak picking and auto peak picking that can lead to different results (new ml-gsd) ([e9852eb](https://www.github.com/cheminfo/common-spectrum/commit/e9852eb13caa57d588e6ba5c2aa2e2f53da5e43c))
+* update all dependencies ([e9852eb](https://www.github.com/cheminfo/common-spectrum/commit/e9852eb13caa57d588e6ba5c2aa2e2f53da5e43c))
+
+
+### Miscellaneous Chores
+
+* bump major version because filters name (normalization)  may have changed and peak picking does not give the same result ([9728be1](https://www.github.com/cheminfo/common-spectrum/commit/9728be144f07824624db2e363337028b8efca13b))
+* release-as v1.0.0 ([019477a](https://www.github.com/cheminfo/common-spectrum/commit/019477a86ef93e07c32e55c7492269bf3cb133fb))
+
 ## [0.44.0](https://www.github.com/cheminfo/common-spectrum/compare/v0.43.2...v0.44.0) (2022-03-15)
 
 
