@@ -70,7 +70,7 @@ describe('getNormalizedSpectrum', () => {
   });
   it('divideByMax', () => {
     let normalized = getNormalizedSpectrum(spectrum, {
-      filters: [{ name: 'normed', options: { algorithm: 'max', max: 1 } }],
+      filters: [{ name: 'normed', options: { algorithm: 'max', value: 1 } }],
     });
     expect(normalized.variables.y.data).toBeDeepCloseTo([0.66666, 1], 4);
   });
