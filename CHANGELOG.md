@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.0.2](https://www.github.com/cheminfo/common-spectrum/compare/v1.0.1...v1.0.2) (2022-05-04)
+
+
+### Bug Fixes
+
+* update jcampconverter and fix tests ([a4a7995](https://www.github.com/cheminfo/common-spectrum/commit/a4a7995061c12e62e9a4f52501bc7ed44abc5ca1))
+
 ### [1.0.1](https://www.github.com/cheminfo/common-spectrum/compare/v1.0.0...v1.0.1) (2022-04-13)
 
 
