@@ -5,6 +5,7 @@ import type { SpectrumVariables, Spectrum } from './types/Cheminfo';
 import { NormalizedSpectrumOptions } from './types/NormalizedSpectrumOptions';
 import { SpectrumSelector } from './types/SpectrumSelector';
 import { getNormalizedSpectrum } from './util/getNormalizedSpectrum';
+import { getXYSpectra } from './util/getXYSpectra';
 import { getXYSpectrum } from './util/getXYSpectrum';
 
 type SpectrumCallback = (variables: SpectrumVariables) => SpectrumVariables;
@@ -29,14 +30,17 @@ export class Analysis {
   public label: string;
   public spectrumCallback: SpectrumCallback | undefined;
   public spectra: Array<Spectrum>;
-  public cache: Record<string, Spectrum | undefined>;
+  private cache: {
+    spectrum: Record<string, Spectrum | undefined>;
+    spectra: Record<string, Spectrum[] | undefined>;
+  };
 
   public constructor(options: AnalysisOptions = {}) {
     this.id = options.id || Math.random().toString(36).substring(2, 10);
     this.label = options.label || this.id;
     this.spectrumCallback = options.spectrumCallback;
     this.spectra = [];
-    this.cache = {};
+    this.cache = { spectrum: {}, spectra: {} };
   }
 
   /**
@@ -51,7 +55,7 @@ export class Analysis {
         spectrumCallback: this.spectrumCallback,
       }),
     );
-    this.cache = {};
+    this.cache = { spectrum: {}, spectra: {} };
   }
 
   /**
@@ -59,10 +63,21 @@ export class Analysis {
    */
   public getXYSpectrum(selector: SpectrumSelector = {}) {
     let id = JSON.stringify(selector);
-    if (!this.cache[id]) {
-      this.cache[id] = getXYSpectrum(this.spectra, selector);
+    if (!this.cache.spectrum[id]) {
+      this.cache.spectrum[id] = getXYSpectrum(this.spectra, selector);
     }
-    return this.cache[id];
+    return this.cache.spectrum[id];
+  }
+
+  /**
+   * Retrieve spectra matching selector
+   */
+  public getXYSpectra(selector: SpectrumSelector = {}) {
+    let id = JSON.stringify(selector);
+    if (!this.cache.spectra[id]) {
+      this.cache.spectra[id] = getXYSpectra(this.spectra, selector);
+    }
+    return this.cache.spectra[id];
   }
 
   /**
