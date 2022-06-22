@@ -110,10 +110,10 @@ export class Analysis {
 
   /**
    */
-  public getNormalizedSpectra(options: NormalizedOptions = {}) {
+  public getNormalizedSpectra(options: NormalizedOptions = {}): Spectrum[] {
     const { normalization, selector } = options;
     const spectra = this.getXYSpectra(selector);
-    if (spectra.length === 0) return undefined;
+    if (spectra.length === 0) return [];
     const normalizedSpectra = [];
     for (const spectrum of spectra) {
       normalizedSpectra.push(getNormalizedSpectrum(spectrum, normalization));

@@ -50,31 +50,39 @@ export function getJSGraph(analyses: Analysis[], options: JSGraphOptions = {}) {
 
   for (let i = 0; i < analyses.length; i++) {
     const analysis = analyses[i];
-    let serie: Record<string, unknown> = {};
-    let currentData = analysis.getNormalizedSpectrum({
+
+    let spectra = analysis.getNormalizedSpectra({
       selector,
       normalization,
     });
-    if (!currentData) continue;
-    if (!xLabel) xLabel = currentData.variables.x.label;
-    if (!yLabel) yLabel = currentData.variables.y.label;
-    if (!xUnits) xUnits = currentData.variables.x.units;
-    if (!yUnits) yUnits = currentData.variables.y.units;
-    addStyle(serie, analysis, {
-      color: colors[i % colors.length],
-      opacity: opacities[i % opacities.length],
-      lineWidth: linesWidth[i % linesWidth.length],
-    });
-    serie.data = {
-      x: currentData.variables.x.data,
-      y: currentData.variables.y.data,
-    };
+    if (spectra.length === 0) continue;
+    const firstSpectrum = spectra[0];
 
-    if (xAxis.logScale) {
-      serie.data = xyFilterXPositive(serie.data as DataXY);
+    // todo: if many spectra are available and not xUnits / yUnits are specified we should ensure that all the3 spectra are compatible
+
+    if (!xLabel) xLabel = firstSpectrum.variables.x.label;
+    if (!yLabel) yLabel = firstSpectrum.variables.y.label;
+    if (!xUnits) xUnits = firstSpectrum.variables.x.units;
+    if (!yUnits) yUnits = firstSpectrum.variables.y.units;
+
+    for (const spectrum of spectra) {
+      let serie: Record<string, unknown> = {};
+      addStyle(serie, analysis, {
+        color: colors[i % colors.length],
+        opacity: opacities[i % opacities.length],
+        lineWidth: linesWidth[i % linesWidth.length],
+      });
+      serie.data = {
+        x: spectrum.variables.x.data,
+        y: spectrum.variables.y.data,
+      };
+
+      if (xAxis.logScale) {
+        serie.data = xyFilterXPositive(serie.data as DataXY);
+      }
+
+      series.push(serie);
     }
-
-    series.push(serie);
   }
   return {
     axes: {
