@@ -1,8 +1,4 @@
-import type {
-  OneLowerCase,
-  Spectrum,
-  MeasurementVariables,
-} from '../types/Cheminfo';
+import type { Spectrum } from '../types/Cheminfo';
 import { SpectrumSelector } from '../types/SpectrumSelector';
 
 import { getXYSpectra } from './getXYSpectra';

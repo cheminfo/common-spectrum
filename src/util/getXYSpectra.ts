@@ -3,7 +3,7 @@
 import type {
   OneLowerCase,
   Spectrum,
-  MeasurementVariables,
+  SpectrumVariables,
 } from '../types/Cheminfo';
 import { SpectrumSelector } from '../types/SpectrumSelector';
 
@@ -122,11 +122,11 @@ interface Selector {
   variableName?: OneLowerCase;
 }
 function getPossibleVariable(
-  variables: MeasurementVariables,
+  variables: SpectrumVariables,
   selector: Selector = {},
 ) {
   const { units, label, variableName } = selector;
-  let possible: MeasurementVariables = { ...variables };
+  let possible: SpectrumVariables = { ...variables };
   let key: keyof typeof possible;
   if (units !== undefined) {
     for (key in possible) {
