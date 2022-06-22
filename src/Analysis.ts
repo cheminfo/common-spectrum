@@ -32,7 +32,7 @@ export class Analysis {
   public spectra: Array<Spectrum>;
   private cache: {
     spectrum: Record<string, Spectrum | undefined>;
-    spectra: Record<string, Spectrum[] | undefined>;
+    spectra: Record<string, Spectrum[]>;
   };
 
   public constructor(options: AnalysisOptions = {}) {
@@ -106,6 +106,19 @@ export class Analysis {
     const spectrum = this.getXYSpectrum(selector);
     if (!spectrum) return undefined;
     return getNormalizedSpectrum(spectrum, normalization);
+  }
+
+  /**
+   */
+  public getNormalizedSpectra(options: NormalizedOptions = {}) {
+    const { normalization, selector } = options;
+    const spectra = this.getXYSpectra(selector);
+    if (spectra.length === 0) return undefined;
+    const normalizedSpectra = [];
+    for (const spectrum of spectra) {
+      normalizedSpectra.push(getNormalizedSpectrum(spectrum, normalization));
+    }
+    return normalizedSpectra;
   }
 
   /**
