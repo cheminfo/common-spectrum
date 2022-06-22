@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://www.github.com/cheminfo/common-spectrum/compare/v1.0.2...v2.0.0) (2022-06-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* peak picking use 'shape' parameter
+
+### Features
+
+* peak picking use 'shape' parameter ([08d8150](https://www.github.com/cheminfo/common-spectrum/commit/08d81508f3fa7d6f96490b0190a76064335e81b1))
+
 ### [1.0.2](https://www.github.com/cheminfo/common-spectrum/compare/v1.0.1...v1.0.2) (2022-05-04)
 
 
