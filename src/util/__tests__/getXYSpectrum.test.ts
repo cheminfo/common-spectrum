@@ -249,7 +249,7 @@ describe('getXYSpectrum', () => {
 
   it('Spectrum by units L vs °F', () => {
     let xy = getXYSpectrum(spectra, { xUnits: 'L', yUnits: '°F' });
-    expect(xy).toBeDeepCloseTo({
+    expect(xy).toMatchCloseTo({
       title: 'My spectrum',
       dataType: 'TGA',
       meta: { meta1: 'Meta 1', meta2: 'Meta 2' },

@@ -65,6 +65,7 @@ test('index', () => {
   });
 
   let analysis2 = fromJcamp(jcamp);
+  delete analysis2.spectra[0].id;
 
   expect(analysis2.spectra[0]).toStrictEqual({
     variables: {

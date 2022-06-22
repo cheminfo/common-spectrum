@@ -10,6 +10,7 @@ export interface Spectrum<DataType extends DoubleArray = DoubleArray> {
   title?: string;
   dataType?: string;
   setup?: Record<string, any>;
+  id?: string;
   meta?: Record<string, any>;
 }
 

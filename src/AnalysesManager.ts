@@ -42,6 +42,24 @@ export class AnalysesManager {
     return spectra;
   }
 
+  public getAnalysisBySpectrumId(id: string) {
+    for (const analysis of this.analyses) {
+      for (const spectrum of analysis.spectra) {
+        if (spectrum.id === id) return analysis;
+      }
+    }
+    return undefined;
+  }
+
+  public getSpectrumById(id: string) {
+    for (const analysis of this.analyses) {
+      for (const spectrum of analysis.spectra) {
+        if (spectrum.id === id) return spectrum;
+      }
+    }
+    return undefined;
+  }
+
   /**
    * Get an array of objects (key + count) of all the titles
    */

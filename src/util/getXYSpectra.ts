@@ -110,6 +110,7 @@ export function getXYSpectra(
         dataType: spectrum.dataType,
         meta: spectrum.meta,
         variables: { x, y },
+        id: spectrum.id,
       });
     }
   }

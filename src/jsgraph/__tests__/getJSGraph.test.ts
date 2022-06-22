@@ -37,6 +37,7 @@ test('getJSGraph', () => {
   });
 
   delete jsgraph.series[0].name;
+  delete jsgraph.series[0].id;
 
   expect(jsgraph).toMatchSnapshot();
 });

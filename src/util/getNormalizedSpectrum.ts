@@ -29,6 +29,7 @@ export function getNormalizedSpectrum(
   if (spectrum.title) newSpectrum.title = spectrum.title;
   if (spectrum.dataType) newSpectrum.dataType = spectrum.dataType;
   if (spectrum.meta) newSpectrum.meta = spectrum.meta;
+  if (spectrum.id) newSpectrum.id = spectrum.id;
 
   let {
     from = spectrum.variables.x.min,

@@ -76,7 +76,7 @@ export function getJSGraph(analyses: Analysis[], options: JSGraphOptions = {}) {
         x: spectrum.variables.x.data,
         y: spectrum.variables.y.data,
       };
-
+      serie.id = spectrum.id;
       if (xAxis.logScale) {
         serie.data = xyFilterXPositive(serie.data as DataXY);
       }
@@ -84,6 +84,7 @@ export function getJSGraph(analyses: Analysis[], options: JSGraphOptions = {}) {
       series.push(serie);
     }
   }
+
   return {
     axes: {
       x: {
