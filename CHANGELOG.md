@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.1.0](https://www.github.com/cheminfo/common-spectrum/compare/v2.0.0...v2.1.0) (2022-06-22)
+
+
+### Features
+
+* add 'id' to all the spectra and add methods to retrie them ([3f15a51](https://www.github.com/cheminfo/common-spectrum/commit/3f15a5152e93148864eb0f95a6ac68079fdeb829))
+* add getNormalizedSpectra ([2351ce1](https://www.github.com/cheminfo/common-spectrum/commit/2351ce1dc87e3cfd2f5fabbf0cfb46ab9af9d2b4))
+* add gewtXYSpectra ([3924195](https://www.github.com/cheminfo/common-spectrum/commit/3924195255ce3df93f72224521e32555f835eb7c))
+* getJSGraph returns now all the matching series ([70e49e0](https://www.github.com/cheminfo/common-spectrum/commit/70e49e0a23cd2ac5eb53f78ca10f08fdf293e429))
+
 ## [2.0.0](https://www.github.com/cheminfo/common-spectrum/compare/v1.0.2...v2.0.0) (2022-06-22)
 
 
