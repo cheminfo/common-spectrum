@@ -1,6 +1,5 @@
-import max from 'ml-array-max';
 import { optimize as optimizePeak } from 'ml-spectra-fitting';
-import { xFindClosestIndex } from 'ml-spectra-processing';
+import { xFindClosestIndex, xMaxValue } from 'ml-spectra-processing';
 
 import type { Spectrum } from '../types/Cheminfo';
 import { PeakPickingOptions } from '../types/PeakPickingOptions';
@@ -20,9 +19,8 @@ export function peakPicking(
     xVariable = 'x',
     yVariable = 'y',
     optimize = false,
-    expectedFWHM = 1,
     max: isMax = true,
-    shapeOptions = {},
+    shape = { kind: 'gaussian', fwhm: 1 },
   } = options;
 
   const x = spectrum.variables[xVariable]?.data;
@@ -44,8 +42,8 @@ export function peakPicking(
     [key: string]: number;
   } = {};
   if (optimize) {
-    if (isMax === false) {
-      let maximumY = max(y);
+    if (!isMax) {
+      let maximumY = xMaxValue(y);
       for (let i = 0; i < y.length; i++) {
         y[i] *= -1;
         y[i] += maximumY; // This makes it somewhat more robust
@@ -54,8 +52,8 @@ export function peakPicking(
 
     optimizedPeak = optimizePeak(
       { x, y },
-      [{ x: x[targetIndex], y: y[targetIndex], fwhm: expectedFWHM }],
-      shapeOptions,
+      [{ x: x[targetIndex], y: y[targetIndex] }],
+      { shape },
     );
 
     optimizedIndex = xFindClosestIndex(x, optimizedPeak.peaks[0].x);

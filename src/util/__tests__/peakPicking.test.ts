@@ -32,17 +32,19 @@ describe('peakPicking', () => {
     expect(peak).toStrictEqual({ x: 2, y: 2, z: 0.2, t: 20 });
   });
   it('optimize=true', () => {
-    let peak = peakPicking(spectrum, 2, { optimize: true });
+    let peak = peakPicking(spectrum, 2, {
+      optimize: true,
+      shape: { kind: 'gaussian', fwhm: 1 },
+    });
     expect(peak).toBeDeepCloseTo({
       x: 3,
       y: 3,
       z: 0.3,
       t: 30,
       optimized: {
-        x: 2.9995777634192518,
-        y: 2.813804719395019,
-        fwhm: 3.18888848260097,
-        shape: { kind: 'gaussian' },
+        x: 2.9996130659938474,
+        y: 2.813512484947132,
+        shape: { kind: 'gaussian', fwhm: 3.189568901564484 },
       },
     });
   });
@@ -57,10 +59,9 @@ describe('peakPicking', () => {
       z: 0,
       t: 0,
       optimized: {
-        x: 5.9966268483642535,
-        y: 2.8055786511335583,
-        fwhm: 3.19939212677305,
-        shape: { kind: 'gaussian' },
+        x: 5.99663089533847,
+        y: 2.80563493205562,
+        shape: { kind: 'gaussian', fwhm: 3.199263679459118 },
       },
     });
   });
