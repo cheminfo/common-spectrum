@@ -1,7 +1,5 @@
-import max from 'ml-array-max';
-import min from 'ml-array-min';
 import { filterXY } from 'ml-signal-processing';
-import { xIsMonotone } from 'ml-spectra-processing';
+import { xIsMonotone, xMinValue, xMaxValue } from 'ml-spectra-processing';
 
 import type { Spectrum } from '../types/Cheminfo';
 import { NormalizedSpectrumOptions } from '../types/NormalizedSpectrumOptions';
@@ -67,12 +65,12 @@ export function getNormalizedSpectrum(
   }
 
   newSpectrum.variables.x.data = x;
-  newSpectrum.variables.x.min = min(x);
-  newSpectrum.variables.x.max = max(x);
+  newSpectrum.variables.x.min = xMinValue(x);
+  newSpectrum.variables.x.max = xMaxValue(x);
   newSpectrum.variables.x.isMonotone = xIsMonotone(x);
   newSpectrum.variables.y.data = y;
-  newSpectrum.variables.y.min = min(y);
-  newSpectrum.variables.y.max = max(y);
+  newSpectrum.variables.y.min = xMinValue(y);
+  newSpectrum.variables.y.max = xMaxValue(y);
   newSpectrum.variables.y.isMonotone = xIsMonotone(y);
 
   return newSpectrum;

@@ -111,7 +111,6 @@ export function getXYSpectrum(
       };
     }
   }
-  return;
 }
 
 interface Selector {

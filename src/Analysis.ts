@@ -1,7 +1,5 @@
 import { isAnyArray } from 'is-any-array';
-import max from 'ml-array-max';
-import min from 'ml-array-min';
-import { xIsMonotone } from 'ml-spectra-processing';
+import { xIsMonotone, xMinValue, xMaxValue } from 'ml-spectra-processing';
 
 import type { SpectrumVariables, Spectrum } from './types/Cheminfo';
 import { NormalizedSpectrumOptions } from './types/NormalizedSpectrumOptions';
@@ -162,8 +160,8 @@ function standardizeData(
         variable.label = variable.label.replace(/[([].*[)\]]/, '').trim();
       }
     }
-    variable.min = min(variable.data);
-    variable.max = max(variable.data);
+    variable.min = xMinValue(variable.data);
+    variable.max = xMaxValue(variable.data);
     variable.isMonotone = xIsMonotone(variable.data);
   }
 

@@ -1,6 +1,4 @@
-import max from 'ml-array-max';
-import min from 'ml-array-min';
-import { xIsMonotone } from 'ml-spectra-processing';
+import { xIsMonotone, xMinValue, xMaxValue } from 'ml-spectra-processing';
 
 import { SpectrumVariable } from '../types/Cheminfo';
 
@@ -18,8 +16,8 @@ export function getConvertedVariable(
     units: newUnits,
     label: variable.label.replace(`[${variable.units || ''}]`, `[${newUnits}]`),
     data: data || [],
-    min: data ? min(data) : undefined,
-    max: data ? max(data) : undefined,
+    min: data ? xMinValue(data) : undefined,
+    max: data ? xMaxValue(data) : undefined,
     isMonotone: xIsMonotone(data),
   };
 }
