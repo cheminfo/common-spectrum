@@ -18,8 +18,7 @@ export * from './types/AutoPeakPickingOptions';
 export * from './types/NormalizedSpectrumOptions';
 export { SpectrumVariable, Spectrum } from './types/Cheminfo';
 export * from './types/PlotObject';
-export * from './types/SGOptions';
-export * from './types/ShapeOptions';
+export { Shape1D } from 'ml-peak-shape-generator';
 export * from './types/SpectrumSelector';
 
 export { getReactPlotJSON } from './reactPlot/getReactPlotJSON';

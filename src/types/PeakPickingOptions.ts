@@ -1,5 +1,6 @@
+import { Shape1D } from 'ml-peak-shape-generator';
+
 import { OneLowerCase } from './Cheminfo';
-import { ShapeOptions } from './ShapeOptions';
 
 export interface PeakPickingOptions {
   /** x variable label, by default 'x' */
@@ -9,9 +10,7 @@ export interface PeakPickingOptions {
   /** should we look for the closest min / max, default true */
   optimize?: boolean;
   /** options of the peak shape fit */
-  shapeOptions?: ShapeOptions;
+  shape?: Shape1D;
   /** are we looking for maxima or minima, default true */
   max?: boolean;
-  /** expected fwhm (full width half maximum) of the peaks */
-  expectedFWHM?: number;
 }
