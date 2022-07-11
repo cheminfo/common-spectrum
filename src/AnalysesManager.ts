@@ -81,9 +81,36 @@ export class AnalysesManager {
     for (let spectrum of this.getSpectra()) {
       if (spectrum.variables) {
         for (let [, variable] of Object.entries(spectrum.variables)) {
-          const units = variable.units?.replace(/\s+\[.*/, '');
+          if (variable.units) {
+            appendDistinctValue(values, variable.units);
+          }
+        }
+      }
+    }
+    return Object.keys(values).map((key) => values[key]);
+  }
+
+  /**
+   * Get an array of objects (key + unit + label + count) of all the units
+   */
+  public getDistinctLabelUnits() {
+    let values: Record<
+      string,
+      { key: string; units: string; label: string; count: number }
+    > = {};
+    for (let spectrum of this.getSpectra()) {
+      if (spectrum.variables) {
+        for (let [, variable] of Object.entries(spectrum.variables)) {
+          const { label, units } = normalizeLabelUnits(
+            variable.label,
+            variable.units,
+          );
+          const key = label + units ? `${label} (${units})` : '';
           if (units) {
-            appendDistinctValue(values, units);
+            if (!values[key]) {
+              values[key] = { key, units, label, count: 0 };
+            }
+            values[key].count++;
           }
         }
       }
@@ -99,7 +126,7 @@ export class AnalysesManager {
     for (let spectrum of this.getSpectra()) {
       if (spectrum.variables) {
         for (let [, variable] of Object.entries(spectrum.variables)) {
-          appendDistinctValue(values, variable.label.replace(/\s+\[.*/, ''));
+          appendDistinctValue(values, variable.label.replace(/\s+[[(].*$/, ''));
         }
       }
     }
@@ -166,4 +193,18 @@ export class AnalysesManager {
     const index = this.getAnalysisIndex(id);
     return index === undefined ? false : !isNaN(index);
   }
+}
+
+function normalizeLabelUnits(
+  originalLabel: string,
+  originalUnits: string,
+): { units: string; label: string } {
+  if (!originalLabel) {
+    return { units: '', label: '' };
+  }
+  if (originalLabel.search(/[[(]]/) >= 0) {
+    const [units, label] = originalLabel.split(/\s*[[(]/);
+    return { units: originalUnits || units, label };
+  }
+  return { label: originalLabel, units: originalUnits };
 }

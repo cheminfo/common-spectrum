@@ -121,11 +121,23 @@ describe('AnalysesManager test', () => {
 
   it('getDistinctUnits', () => {
     let units = analysesManager.getDistinctUnits();
+    console.log(units);
     expect(units).toHaveLength(5);
   });
 
   it('getDistinctLabels', () => {
     let labels = analysesManager.getDistinctLabels();
     expect(labels).toHaveLength(4);
+  });
+
+  it('getDistinctLabelUnits', () => {
+    let labels = analysesManager.getDistinctLabelUnits();
+    expect(labels).toHaveLength(5);
+    expect(labels[2]).toStrictEqual({
+      key: 'T axis (tUnits)',
+      units: 'tUnits',
+      label: 'T axis',
+      count: 2,
+    });
   });
 });
