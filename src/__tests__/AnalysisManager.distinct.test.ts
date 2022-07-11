@@ -121,7 +121,6 @@ describe('AnalysesManager test', () => {
 
   it('getDistinctUnits', () => {
     let units = analysesManager.getDistinctUnits();
-    console.log(units);
     expect(units).toHaveLength(5);
   });
 
