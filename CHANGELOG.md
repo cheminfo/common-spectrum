@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.2.1](https://www.github.com/cheminfo/common-spectrum/compare/v2.2.0...v2.2.1) (2022-07-11)
+
+
+### Bug Fixes
+
+* deal correctly with getDistinctLabelUnits and empty units ([e1faad7](https://www.github.com/cheminfo/common-spectrum/commit/e1faad7ab2a58bc89fcb1233b2a3b9db3f0b3845))
+
 ## [2.2.0](https://www.github.com/cheminfo/common-spectrum/compare/v2.1.0...v2.2.0) (2022-07-11)
 
 
