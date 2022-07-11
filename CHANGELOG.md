@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://www.github.com/cheminfo/common-spectrum/compare/v2.1.0...v2.2.0) (2022-07-11)
+
+
+### Features
+
+* add getDistinctLabelUnits ([2de5099](https://www.github.com/cheminfo/common-spectrum/commit/2de5099969145691e6e05784d9583a205dcf1cce))
+
 ## [2.1.0](https://www.github.com/cheminfo/common-spectrum/compare/v2.0.0...v2.1.0) (2022-06-22)
 
 
