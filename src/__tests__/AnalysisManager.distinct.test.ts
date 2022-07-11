@@ -1,4 +1,7 @@
-import { Analysis, AnalysesManager } from '..';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+
+import { Analysis, AnalysesManager, fromJcamp } from '..';
 
 describe('AnalysesManager test', () => {
   let analysis1 = new Analysis();
@@ -138,5 +141,18 @@ describe('AnalysesManager test', () => {
       label: 'T axis',
       count: 2,
     });
+  });
+});
+
+describe('AnalysesManager isotherm', () => {
+  const jcamp = readFileSync(
+    join(__dirname, '../from/__tests__/data/isotherm.jdx'),
+  );
+  let analysis = fromJcamp(jcamp);
+  let analysesManager = new AnalysesManager();
+  analysesManager.addAnalysis(analysis);
+  it('distinctLabelUnits', () => {
+    const distinctLabelUnits = analysesManager.getDistinctLabelUnits();
+    expect(distinctLabelUnits).toHaveLength(3);
   });
 });

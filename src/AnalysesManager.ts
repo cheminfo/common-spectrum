@@ -105,8 +105,8 @@ export class AnalysesManager {
             variable.label,
             variable.units,
           );
-          const key = label + units ? `${label} (${units})` : '';
-          if (units) {
+          const key = label + (units ? ` (${units})` : '');
+          if (key) {
             if (!values[key]) {
               values[key] = { key, units, label, count: 0 };
             }
