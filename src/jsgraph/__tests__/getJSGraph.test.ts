@@ -1,4 +1,7 @@
-import { Analysis, JSGraph } from '../..';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+
+import { Analysis, JSGraph, fromJcamp, AnalysesManager } from '../..';
 
 test('getJSGraph', () => {
   let analysis = new Analysis();
@@ -40,4 +43,18 @@ test('getJSGraph', () => {
   delete jsgraph.series[0].id;
 
   expect(jsgraph).toMatchSnapshot();
+});
+
+describe('getJSGraph isotherm', () => {
+  const jcamp = readFileSync(
+    join(__dirname, '../../from/__tests__/data/isotherm.jdx'),
+  );
+  let analysis = fromJcamp(jcamp);
+  it('distinctLabelUnits', () => {
+    const jsgraph = JSGraph.getJSGraph([analysis], {
+      selector: { xLabel: '', yLabel: '' },
+    });
+    //@ts-expect-error Would be fixed if typed was correctly defined
+    expect(jsgraph.series[0].data.x).toHaveLength(68);
+  });
 });

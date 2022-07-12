@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
-import { Analysis, AnalysesManager, fromJcamp } from '..';
+import { Analysis, AnalysesManager, fromJcamp, JSGraph } from '..';
 
 describe('AnalysesManager test', () => {
   let analysis1 = new Analysis();
