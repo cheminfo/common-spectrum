@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
-import { Analysis, JSGraph, fromJcamp, AnalysesManager } from '../..';
+import { Analysis, JSGraph, fromJcamp } from '../..';
 
 test('getJSGraph', () => {
   let analysis = new Analysis();
