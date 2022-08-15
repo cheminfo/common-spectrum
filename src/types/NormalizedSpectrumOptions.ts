@@ -5,7 +5,6 @@ export interface NormalizedSpectrumOptions {
   from?: number;
   to?: number;
   numberOfPoints?: number;
-  processing?: boolean;
   filters?: FilterXYType[];
   zones?: FromTo[];
   exclusions?: FromTo[];
