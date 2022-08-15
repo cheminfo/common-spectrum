@@ -55,7 +55,6 @@ export function getReactPlotJSON(
           selector: query,
           normalization: {
             filters: [{ name: 'ensureGrowing' }],
-            keepYUnits: true,
           },
         })
       : analysis.getXYSpectrum(query);

@@ -8,5 +8,4 @@ export interface NormalizedSpectrumOptions {
   filters?: FilterXYType[];
   zones?: FromTo[];
   exclusions?: FromTo[];
-  keepYUnits?: boolean;
 }
