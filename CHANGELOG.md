@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.3.0](https://github.com/cheminfo/common-spectrum/compare/v2.2.1...v2.3.0) (2023-08-22)
+
+
+### Features
+
+* update dependencies ([b37e95c](https://github.com/cheminfo/common-spectrum/commit/b37e95c85a5fc173d1c7419aa9de98dc36a47dc1))
+
+
+### Bug Fixes
+
+* update baselines to solve node16 module resolution problem ([cddc37f](https://github.com/cheminfo/common-spectrum/commit/cddc37fb2d64116671232101c209437796566f68))
+
 ### [2.2.1](https://www.github.com/cheminfo/common-spectrum/compare/v2.2.0...v2.2.1) (2022-07-11)
 
 
