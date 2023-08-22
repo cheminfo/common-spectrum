@@ -60,7 +60,7 @@
   },
   "dependencies": {
     "@types/react": "^18.2.20",
-    "baselines": "^1.1.5",
+    "baselines": "^1.1.6",
     "cheminfo-types": "^1.7.2",
     "convert-to-jcamp": "^5.4.7",
     "is-any-array": "^2.0.1",
