@@ -5,7 +5,7 @@ import { getNormalizedSpectrum } from '../getNormalizedSpectrum';
 expect.extend({ toBeDeepCloseTo, toMatchCloseTo });
 
 describe('getNormalizedSpectrum baseline', () => {
-  let spectrum = {
+  const spectrum = {
     variables: {
       x: {
         data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -21,7 +21,7 @@ describe('getNormalizedSpectrum baseline', () => {
   };
 
   it('airPLSBaseline', () => {
-    let normalized = getNormalizedSpectrum(spectrum, {
+    const normalized = getNormalizedSpectrum(spectrum, {
       filters: [{ name: 'airPLSBaseline' }],
     });
     expect(normalized.variables.y.data).toMatchCloseTo([
@@ -33,7 +33,7 @@ describe('getNormalizedSpectrum baseline', () => {
   });
 
   it('rollingaveragebaseline', () => {
-    let normalized = getNormalizedSpectrum(spectrum, {
+    const normalized = getNormalizedSpectrum(spectrum, {
       filters: [{ name: 'rollingAverageBaseline' }],
     });
     expect(Array.from(normalized.variables.y.data)).toMatchCloseTo([
@@ -42,7 +42,7 @@ describe('getNormalizedSpectrum baseline', () => {
   });
 
   it('iterativepolynomialbaseline', () => {
-    let normalized = getNormalizedSpectrum(spectrum, {
+    const normalized = getNormalizedSpectrum(spectrum, {
       filters: [{ name: 'iterativePolynomialBaseline' }],
     });
     expect(normalized.variables.y.data).toMatchCloseTo([
@@ -53,7 +53,7 @@ describe('getNormalizedSpectrum baseline', () => {
   });
 
   it('rollingAverageBaseline', () => {
-    let normalized = getNormalizedSpectrum(spectrum, {
+    const normalized = getNormalizedSpectrum(spectrum, {
       filters: [{ name: 'rollingAverageBaseline' }],
     });
     expect(Array.from(normalized.variables.y.data)).toMatchCloseTo([
@@ -62,7 +62,7 @@ describe('getNormalizedSpectrum baseline', () => {
   });
 
   it('rollingMedianBaseline', () => {
-    let normalized = getNormalizedSpectrum(spectrum, {
+    const normalized = getNormalizedSpectrum(spectrum, {
       filters: [{ name: 'rollingMedianBaseline' }],
     });
     expect(Array.from(normalized.variables.y.data)).toMatchCloseTo([

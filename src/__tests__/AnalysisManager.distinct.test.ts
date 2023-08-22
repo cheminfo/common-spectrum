@@ -4,7 +4,7 @@ import { join } from 'path';
 import { Analysis, AnalysesManager, fromJcamp } from '..';
 
 describe('AnalysesManager test', () => {
-  let analysis1 = new Analysis();
+  const analysis1 = new Analysis();
   analysis1.pushSpectrum(
     {
       x: {
@@ -39,7 +39,7 @@ describe('AnalysesManager test', () => {
     },
   );
 
-  let analysis2 = new Analysis();
+  const analysis2 = new Analysis();
   analysis2.pushSpectrum(
     {
       x: {
@@ -74,7 +74,7 @@ describe('AnalysesManager test', () => {
     },
   );
 
-  let analysis3 = new Analysis();
+  const analysis3 = new Analysis();
   analysis3.pushSpectrum(
     {
       x: {
@@ -108,32 +108,32 @@ describe('AnalysesManager test', () => {
   analysesManager.addAnalysis(analysis3);
 
   it('getDistinctTitles', () => {
-    let titles = analysesManager.getDistinctTitles();
+    const titles = analysesManager.getDistinctTitles();
     expect(titles).toHaveLength(2);
   });
 
   it('getDistinctDataTypes', () => {
-    let dataTypes = analysesManager.getDistinctDataTypes();
+    const dataTypes = analysesManager.getDistinctDataTypes();
     expect(dataTypes).toHaveLength(1);
   });
 
   it('getDistinctMeta', () => {
-    let meta = analysesManager.getDistinctMeta();
+    const meta = analysesManager.getDistinctMeta();
     expect(meta).toHaveLength(3);
   });
 
   it('getDistinctUnits', () => {
-    let units = analysesManager.getDistinctUnits();
+    const units = analysesManager.getDistinctUnits();
     expect(units).toHaveLength(5);
   });
 
   it('getDistinctLabels', () => {
-    let labels = analysesManager.getDistinctLabels();
+    const labels = analysesManager.getDistinctLabels();
     expect(labels).toHaveLength(4);
   });
 
   it('getDistinctLabelUnits', () => {
-    let labels = analysesManager.getDistinctLabelUnits();
+    const labels = analysesManager.getDistinctLabelUnits();
     expect(labels).toHaveLength(5);
     expect(labels[2]).toStrictEqual({
       key: 'T axis (tUnits)',
@@ -148,8 +148,8 @@ describe('AnalysesManager isotherm', () => {
   const jcamp = readFileSync(
     join(__dirname, '../from/__tests__/data/isotherm.jdx'),
   );
-  let analysis = fromJcamp(jcamp);
-  let analysesManager = new AnalysesManager();
+  const analysis = fromJcamp(jcamp);
+  const analysesManager = new AnalysesManager();
   analysesManager.addAnalysis(analysis);
   it('distinctLabelUnits', () => {
     const distinctLabelUnits = analysesManager.getDistinctLabelUnits();

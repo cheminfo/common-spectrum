@@ -68,12 +68,12 @@ const spectra: Spectrum[] = [
 
 describe('getXYSpectra', () => {
   it('No filter', () => {
-    let xy = getXYSpectra(spectra, {});
+    const xy = getXYSpectra(spectra, {});
     expect(xy).toHaveLength(3);
   });
 
   it('Many spectry with specific units', () => {
-    let xy = getXYSpectra(spectra, { xUnits: 'ug', yUnits: '°C' });
+    const xy = getXYSpectra(spectra, { xUnits: 'ug', yUnits: '°C' });
     expect(xy).toHaveLength(2);
     expect(xy[1].variables).toStrictEqual({
       x: {
@@ -96,7 +96,7 @@ describe('getXYSpectra', () => {
   });
 
   it('Spectrum by labels', () => {
-    let xy = getXYSpectra(spectra, {
+    const xy = getXYSpectra(spectra, {
       xLabel: 'Weight [mg]',
       yLabel: 'Temperature [°C]',
     })[0].variables;

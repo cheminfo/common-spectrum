@@ -13,19 +13,19 @@ import { SpectrumVariable } from '../types/Cheminfo';
  * @return {Analysis} - New class element with the given data
  */
 export function fromJcamp(jcamp: string | ArrayBuffer, options = {}): Analysis {
-  let analysis = new Analysis(options);
+  const analysis = new Analysis(options);
   addJcamp(analysis, jcamp);
   return analysis;
 }
 
 function addJcamp(analysis: Analysis, jcamp: string | ArrayBuffer) {
-  let converted = convert(jcamp, {
+  const converted = convert(jcamp, {
     keepRecordsRegExp: /.*/,
   });
 
-  for (let entry of converted.flatten) {
-    if (!entry.spectra || !entry.spectra[0]) continue;
-    let currentSpectrum = entry.spectra[0];
+  for (const entry of converted.flatten) {
+    if (!entry.spectra?.[0]) continue;
+    const currentSpectrum = entry.spectra[0];
 
     // we ensure variables
     if (!currentSpectrum.variables) {
@@ -42,7 +42,7 @@ function addJcamp(analysis: Analysis, jcamp: string | ArrayBuffer) {
         data: currentSpectrum.data.y || currentSpectrum.data.Y,
       };
     } else {
-      for (let key in currentSpectrum.variables) {
+      for (const key in currentSpectrum.variables) {
         const variable = currentSpectrum.variables[key];
         if (variable.label) continue;
         variable.label = variable.name || variable.symbol || key;

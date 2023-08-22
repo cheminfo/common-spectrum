@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
-    "moduleResolution": "node",
+    "moduleResolution": "node16",
     "inlineSourceMap": true,
     "strict": true,
     "target": "es2019"

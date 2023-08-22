@@ -28,11 +28,11 @@ describe('peakPicking', () => {
   };
 
   it('No options', () => {
-    let peak = peakPicking(spectrum, 2);
+    const peak = peakPicking(spectrum, 2);
     expect(peak).toStrictEqual({ x: 2, y: 2, z: 0.2, t: 20 });
   });
   it('optimize=true', () => {
-    let peak = peakPicking(spectrum, 2, {
+    const peak = peakPicking(spectrum, 2, {
       optimize: true,
       shape: { kind: 'gaussian', fwhm: 1 },
     });
@@ -49,7 +49,7 @@ describe('peakPicking', () => {
     });
   });
   it('max=false, optimize=true', () => {
-    let peak = peakPicking(spectrum, 6, {
+    const peak = peakPicking(spectrum, 6, {
       optimize: true,
       max: false,
     });

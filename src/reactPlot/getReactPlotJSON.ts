@@ -20,7 +20,7 @@ interface DataXY {
 }
 type ListNumber = number[] | Float64Array;
 function getData(x: ListNumber, y: ListNumber) {
-  let data: DataXY[] = new Array(x.length);
+  const data: DataXY[] = new Array(x.length);
   for (let i = 0; i < x.length; i++) {
     data[i] = { x: x[i], y: y[i] };
   }
@@ -34,7 +34,7 @@ export function getReactPlotJSON(
   analyses: Analysis[],
   query: SpectrumSelector,
   options: ReactPlotOptions = {},
-): PlotObjectType & { meta: Record<string, string>[] } {
+): PlotObjectType & { meta: Array<Record<string, string>> } {
   const {
     enforceGrowing = false,
     xAxis: xAxisOptions = {},
@@ -43,14 +43,14 @@ export function getReactPlotJSON(
     dimensions = { width: 550, height: 500 },
     ...otherOptions
   } = options;
-  let content: PlotObjectType['content'] = [];
-  let meta: Record<string, string>[] = [];
+  const content: PlotObjectType['content'] = [];
+  const meta: Array<Record<string, string>> = [];
   type Axes = { type: 'main' } & AxisProps;
   let xAxis: Axes | null = null;
   let yAxis: Axes | null = null;
 
   for (const analysis of analyses) {
-    let spectra = enforceGrowing
+    const spectra = enforceGrowing
       ? analysis.getNormalizedSpectrum({
           selector: query,
           normalization: {

@@ -38,7 +38,7 @@ export function autoPeakPicking(
   }
 
   if (!x || !y) return;
-  let { from, to } = options;
+  const { from, to } = options;
 
   let peaks: Array<{ x: number; y: number; width: number; index: number }> =
     gsd({ x, y }, options);
@@ -49,7 +49,7 @@ export function autoPeakPicking(
       options.maxCriteria === undefined || options.maxCriteria
         ? xyMaxClosestYPoint
         : xyMinClosestYPoint;
-    for (let peak of peaks) {
+    for (const peak of peaks) {
       const closest = xyClosestYPoint(
         { x: spectrum.variables.x.data, y: spectrum.variables.y.data },
         { target: peak.x },
@@ -60,10 +60,10 @@ export function autoPeakPicking(
   }
 
   if (from !== undefined) {
-    peaks = peaks.filter((peak) => peak.x >= (from as number));
+    peaks = peaks.filter((peak) => peak.x >= from);
   }
   if (to !== undefined) {
-    peaks = peaks.filter((peak) => peak.x <= (to as number));
+    peaks = peaks.filter((peak) => peak.x <= to);
   }
   if (minPeakWidth) {
     peaks = peaks.filter((peak) => peak.width >= minPeakWidth);

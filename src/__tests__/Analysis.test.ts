@@ -10,9 +10,9 @@ describe('Analysis', () => {
       'utf-8',
     );
 
-    let analysis = fromJcamp(text);
+    const analysis = fromJcamp(text);
 
-    let xy = analysis.getXY() || { x: [], y: [] };
+    const xy = analysis.getXY() || { x: [], y: [] };
     expect(xy.x).toHaveLength(91);
     expect(xy.y).toHaveLength(91);
   });

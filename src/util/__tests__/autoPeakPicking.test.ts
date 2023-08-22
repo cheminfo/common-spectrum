@@ -22,19 +22,19 @@ describe('autoPeakPicking positive', () => {
   };
 
   it('No options', () => {
-    let peaks = autoPeakPicking(spectrum, {});
+    const peaks = autoPeakPicking(spectrum, {});
     expect(peaks).toStrictEqual([]);
   });
 
   it('noiseLevel: 0', () => {
-    let peaks = autoPeakPicking(spectrum, { noiseLevel: 0 });
+    const peaks = autoPeakPicking(spectrum, { noiseLevel: 0 });
     expect(peaks).toStrictEqual([
       { x: 6, y: 6, z: 5, width: 6 },
       { x: 14, y: 6, z: 5, width: 6 },
     ]);
   });
   it('xVariable=x, yVariable=z', () => {
-    let peaks = autoPeakPicking(spectrum, {
+    const peaks = autoPeakPicking(spectrum, {
       xVariable: 'x',
       yVariable: 'z',
       noiseLevel: 0,
@@ -43,12 +43,12 @@ describe('autoPeakPicking positive', () => {
   });
 
   it('minPeakWidth: 5', () => {
-    let peaks = autoPeakPicking(spectrum, { noiseLevel: 0, minPeakWidth: 7 });
+    const peaks = autoPeakPicking(spectrum, { noiseLevel: 0, minPeakWidth: 7 });
     expect(peaks).toStrictEqual([]);
   });
 
   it('xVariable=x, yVariable=z, from:2, to:18', () => {
-    let peaks = autoPeakPicking(spectrum, {
+    const peaks = autoPeakPicking(spectrum, {
       xVariable: 'x',
       yVariable: 'z',
       from: 2,
@@ -83,7 +83,7 @@ describe('autoPeakPicking negative', () => {
   };
 
   it('maxCriteria=false', () => {
-    let peaks = autoPeakPicking(spectrum, {
+    const peaks = autoPeakPicking(spectrum, {
       maxCriteria: false,
       noiseLevel: 0,
     });
@@ -95,7 +95,7 @@ describe('autoPeakPicking negative', () => {
   });
 
   it('xVariable=x, yVariable=z, from:2, to:18', () => {
-    let peaks = autoPeakPicking(spectrum, {
+    const peaks = autoPeakPicking(spectrum, {
       xVariable: 'x',
       yVariable: 'z',
       from: 2,

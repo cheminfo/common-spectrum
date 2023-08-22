@@ -1,5 +1,5 @@
 import { filterXY } from 'ml-signal-processing';
-import { xIsMonotone, xMinValue, xMaxValue } from 'ml-spectra-processing';
+import { xIsMonotonic, xMinValue, xMaxValue } from 'ml-spectra-processing';
 
 import type { Spectrum } from '../types/Cheminfo';
 import { NormalizedSpectrumOptions } from '../types/NormalizedSpectrumOptions';
@@ -8,11 +8,11 @@ export function getNormalizedSpectrum(
   spectrum: Spectrum,
   options: NormalizedSpectrumOptions = {},
 ) {
-  let data = {
+  const data = {
     x: spectrum.variables.x.data,
     y: spectrum.variables.y.data,
   };
-  let newSpectrum: Spectrum = {
+  const newSpectrum: Spectrum = {
     variables: {
       x: {
         data: spectrum.variables.x.data,
@@ -31,14 +31,14 @@ export function getNormalizedSpectrum(
   if (spectrum.meta) newSpectrum.meta = spectrum.meta;
   if (spectrum.id) newSpectrum.id = spectrum.id;
 
-  let {
+  const {
     from = spectrum.variables.x.min,
     to = spectrum.variables.x.max,
     numberOfPoints,
-    filters = [],
     exclusions = [],
     zones = [],
   } = options;
+  let { filters = [] } = options;
 
   filters = JSON.parse(JSON.stringify(filters));
   if (numberOfPoints) {
@@ -53,7 +53,7 @@ export function getNormalizedSpectrum(
     });
   }
 
-  let { x, y } = filterXY(data, filters).data;
+  const { x, y } = filterXY(data, filters).data;
 
   // filters change the y axis, we get rid of the units
   // TODO we should deal correctly with this problem
@@ -68,11 +68,11 @@ export function getNormalizedSpectrum(
   newSpectrum.variables.x.data = x;
   newSpectrum.variables.x.min = xMinValue(x);
   newSpectrum.variables.x.max = xMaxValue(x);
-  newSpectrum.variables.x.isMonotone = xIsMonotone(x);
+  newSpectrum.variables.x.isMonotone = xIsMonotonic(x) !== 0;
   newSpectrum.variables.y.data = y;
   newSpectrum.variables.y.min = xMinValue(y);
   newSpectrum.variables.y.max = xMaxValue(y);
-  newSpectrum.variables.y.isMonotone = xIsMonotone(y);
+  newSpectrum.variables.y.isMonotone = xIsMonotonic(y) !== 0;
 
   return newSpectrum;
 }

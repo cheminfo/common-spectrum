@@ -4,9 +4,9 @@ import { join } from 'path';
 import { fromText } from '../fromText';
 
 test('fromText', () => {
-  let arrayBuffer = readFileSync(join(__dirname, 'data/uv.txt'));
+  const arrayBuffer = readFileSync(join(__dirname, 'data/uv.txt'));
 
-  let result = fromText(arrayBuffer, {
+  const result = fromText(arrayBuffer, {
     info: {
       xUnits: 'cm-1',
       yUnits: '',
@@ -17,7 +17,7 @@ test('fromText', () => {
 
   expect(result.spectra).toHaveLength(1);
 
-  let first = result.spectra[0];
+  const first = result.spectra[0];
 
   expect(first.variables.x.data).toHaveLength(551);
   expect(first.variables.y.data).toHaveLength(551);

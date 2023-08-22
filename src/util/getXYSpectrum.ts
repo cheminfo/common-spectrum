@@ -9,7 +9,7 @@ import { getXYSpectra } from './getXYSpectra';
  * taken
  */
 export function getXYSpectrum(
-  spectra: Array<Spectrum> = [],
+  spectra: Spectrum[] = [],
   selector: SpectrumSelector = {},
 ): Spectrum | undefined {
   const selectedSpectra = getXYSpectra(spectra, selector);

@@ -4,7 +4,7 @@ import { getNormalizedSpectrum } from '../getNormalizedSpectrum';
 
 expect.extend({ toBeDeepCloseTo, toMatchCloseTo });
 
-let spectrum = {
+const spectrum = {
   variables: {
     x: {
       data: [1, 2],
@@ -21,7 +21,7 @@ let spectrum = {
 
 describe('getNormalizedSpectrum', () => {
   it('no filter', () => {
-    let normalized = getNormalizedSpectrum(spectrum, {});
+    const normalized = getNormalizedSpectrum(spectrum, {});
     expect(normalized).toStrictEqual({
       variables: {
         x: {
@@ -44,7 +44,7 @@ describe('getNormalizedSpectrum', () => {
     });
   });
   it('normalize', () => {
-    let normalized = getNormalizedSpectrum(spectrum, {
+    const normalized = getNormalizedSpectrum(spectrum, {
       filters: [{ name: 'normed' }],
     });
     expect(normalized).toStrictEqual({
@@ -69,14 +69,14 @@ describe('getNormalizedSpectrum', () => {
     });
   });
   it('divideByMax', () => {
-    let normalized = getNormalizedSpectrum(spectrum, {
+    const normalized = getNormalizedSpectrum(spectrum, {
       filters: [{ name: 'normed', options: { algorithm: 'max', value: 1 } }],
     });
     expect(normalized.variables.y.data).toBeDeepCloseTo([0.66666, 1], 4);
   });
 
   it('dividebysd', () => {
-    let normalized = getNormalizedSpectrum(spectrum, {
+    const normalized = getNormalizedSpectrum(spectrum, {
       filters: [{ name: 'divideBySD' }],
     });
     expect(normalized.variables.y.data).toBeDeepCloseTo(
@@ -85,19 +85,19 @@ describe('getNormalizedSpectrum', () => {
     );
   });
   it('centermean', () => {
-    let normalized = getNormalizedSpectrum(spectrum, {
+    const normalized = getNormalizedSpectrum(spectrum, {
       filters: [{ name: 'centerMean' }],
     });
     expect(normalized.variables.y.data).toBeDeepCloseTo([-0.5, 0.5], 4);
   });
   it('rescale', () => {
-    let normalized = getNormalizedSpectrum(spectrum, {
+    const normalized = getNormalizedSpectrum(spectrum, {
       filters: [{ name: 'rescale', options: { min: 100, max: 200 } }],
     });
     expect(normalized.variables.y.data).toStrictEqual([100, 200]);
   });
   it('ensureGrowing', () => {
-    let spectrum = {
+    const spectrum = {
       variables: {
         x: {
           data: [100, 200, 1, 2, 300],
@@ -111,7 +111,7 @@ describe('getNormalizedSpectrum', () => {
         },
       },
     };
-    let normalized = getNormalizedSpectrum(spectrum, {
+    const normalized = getNormalizedSpectrum(spectrum, {
       filters: [{ name: 'ensureGrowing' }],
     });
     expect(normalized.variables.y.data).toStrictEqual([1, 2, 5]);

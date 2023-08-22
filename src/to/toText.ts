@@ -21,14 +21,14 @@ export function toText(analysis: Analysis, options: ToTextOptions = {}) {
 
 function exportText(spectrums: Spectrum[], options: ToTextOptions) {
   const { endOfLine = '\n', fieldSeparator = ',' } = options;
-  let result: string[] = new Array(spectrums.length);
+  const result: string[] = new Array(spectrums.length);
   for (let index = 0; index < spectrums.length; index++) {
     const variables = Object.values(spectrums[index].variables);
 
     const labels = variables.map((v) => v.label);
     const maxNumberData = Math.max(...variables.map((v) => v.data.length));
 
-    let lines = [labels.join(fieldSeparator)];
+    const lines = [labels.join(fieldSeparator)];
     for (let lineIndex = 0; lineIndex < maxNumberData; lineIndex++) {
       lines.push(
         variables

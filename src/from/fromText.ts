@@ -41,11 +41,11 @@ export function fromText(
   data: string | ArrayBuffer,
   options: FromTextOptions = {},
 ): Analysis {
-  let analysis = new Analysis();
+  const analysis = new Analysis();
 
   const { info = {}, parser = {} } = options;
 
-  let parsed = parseXYAndKeepInfo(data, parser);
+  const parsed = parseXYAndKeepInfo(data, parser);
   const variables: MeasurementXYVariables = {
     x: {
       data: parsed.data.x,

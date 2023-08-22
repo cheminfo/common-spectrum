@@ -1,4 +1,4 @@
-import { xIsMonotone, xMinValue, xMaxValue } from 'ml-spectra-processing';
+import { xIsMonotonic, xMinValue, xMaxValue } from 'ml-spectra-processing';
 
 import { SpectrumVariable } from '../types/Cheminfo';
 
@@ -18,6 +18,6 @@ export function getConvertedVariable(
     data: data || [],
     min: data ? xMinValue(data) : undefined,
     max: data ? xMaxValue(data) : undefined,
-    isMonotone: xIsMonotone(data),
+    isMonotone: xIsMonotonic(data) !== 0,
   };
 }

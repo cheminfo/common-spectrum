@@ -68,12 +68,11 @@ const spectra: Spectrum[] = [
 
 describe('getXYSpectrum', () => {
   it('Spectrum by labels', () => {
-    let xy = getXYSpectrum(spectra, {
+    const xy: any = getXYSpectrum(spectra, {
       xLabel: 'Weight [mg]',
       yLabel: 'Temperature [°C]',
     })?.variables;
 
-    // @ts-expect-error
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toStrictEqual({
       x: {
@@ -90,13 +89,12 @@ describe('getXYSpectrum', () => {
   });
 
   it('Spectrum by partial labels', () => {
-    let xy =
+    const xy: any =
       getXYSpectrum(spectra, {
         xLabel: 'weight',
         yLabel: 'temp',
       })?.variables || {};
 
-    // @ts-expect-error
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toStrictEqual({
       x: {
@@ -114,9 +112,8 @@ describe('getXYSpectrum', () => {
 
   it('Spectrum by units s vs g', () => {
     const query = { xUnits: 's', yUnits: 'g' };
-    let xy = getXYSpectrum(spectra, query)?.variables || {};
+    const xy: any = getXYSpectrum(spectra, query)?.variables || {};
 
-    // @ts-expect-error
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toStrictEqual({
       x: {
@@ -139,9 +136,8 @@ describe('getXYSpectrum', () => {
   });
 
   it('Spectrum by units "" vs °C', () => {
-    let xy = getXYSpectrum(spectra, { units: 'vs °C' })?.variables || {};
+    const xy: any = getXYSpectrum(spectra, { units: 'vs °C' })?.variables || {};
 
-    // @ts-expect-error
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toStrictEqual({
       x: {
@@ -164,10 +160,9 @@ describe('getXYSpectrum', () => {
   });
 
   it('Spectrum by units °C vs g', () => {
-    let xy =
+    const xy: any =
       getXYSpectrum(spectra, { xUnits: '°C', yUnits: 'g' })?.variables || {};
 
-    // @ts-expect-error
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toStrictEqual({
       x: {
@@ -190,9 +185,9 @@ describe('getXYSpectrum', () => {
   });
 
   it('Spectrum by dataType TGA', () => {
-    let xy = getXYSpectrum(spectra, { dataType: 'TGA' })?.variables || {};
+    const xy: any =
+      getXYSpectrum(spectra, { dataType: 'TGA' })?.variables || {};
 
-    // @ts-expect-error
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toStrictEqual({
       x: {
@@ -209,9 +204,8 @@ describe('getXYSpectrum', () => {
   });
 
   it('Spectrum by title My', () => {
-    let xy = getXYSpectrum(spectra, { title: 'My' })?.variables || {};
+    const xy: any = getXYSpectrum(spectra, { title: 'My' })?.variables || {};
 
-    // @ts-expect-error
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toStrictEqual({
       x: {
@@ -228,10 +222,9 @@ describe('getXYSpectrum', () => {
   });
 
   it('Spectrum by meta meta2="Meta"', () => {
-    let xy =
+    const xy: any =
       getXYSpectrum(spectra, { meta: { meta2: 'meta' } })?.variables || {};
 
-    // @ts-expect-error
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toStrictEqual({
       x: {
@@ -248,7 +241,7 @@ describe('getXYSpectrum', () => {
   });
 
   it('Spectrum by units L vs °F', () => {
-    let xy = getXYSpectrum(spectra, { xUnits: 'L', yUnits: '°F' });
+    const xy = getXYSpectrum(spectra, { xUnits: 'L', yUnits: '°F' });
     expect(xy).toMatchCloseTo({
       title: 'My spectrum',
       dataType: 'TGA',
@@ -275,9 +268,9 @@ describe('getXYSpectrum', () => {
   });
 
   it('Spectrum by units s vs g as units', () => {
-    let xy = getXYSpectrum(spectra, { units: 'g vs s' })?.variables || {};
+    const xy: any =
+      getXYSpectrum(spectra, { units: 'g vs s' })?.variables || {};
 
-    // @ts-expect-error
     xy.x.data = Array.from(xy.x.data);
     expect(xy).toStrictEqual({
       x: {
@@ -301,7 +294,7 @@ describe('getXYSpectrum', () => {
 
   it('xVariable: t, yVariable: Z', () => {
     // @ts-expect-error we check that the variable is converted to lowercase
-    let xy = getXYSpectrum(spectra, { xVariable: 't', yVariable: 'Z' });
+    const xy = getXYSpectrum(spectra, { xVariable: 't', yVariable: 'Z' });
     expect(xy).toMatchObject({
       variables: {
         x: {
@@ -316,7 +309,7 @@ describe('getXYSpectrum', () => {
     });
   });
   it('variables: Z vs t', () => {
-    let xy = getXYSpectrum(spectra, { variables: 'Z vs t' });
+    const xy = getXYSpectrum(spectra, { variables: 'Z vs t' });
     expect(xy).toMatchObject({
       variables: {
         x: {

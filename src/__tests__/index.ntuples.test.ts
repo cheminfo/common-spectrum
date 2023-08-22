@@ -1,7 +1,7 @@
 import { Analysis, fromJcamp, toJcamp, toJcamps, JSGraph } from '..';
 
 describe('case for ntuples', () => {
-  let analysis = new Analysis();
+  const analysis = new Analysis();
 
   analysis.pushSpectrum(
     {
@@ -42,12 +42,12 @@ describe('case for ntuples', () => {
   });
 
   it('First spectrum', () => {
-    let firstSpectrum = analysis.getXYSpectrum();
+    const firstSpectrum = analysis.getXYSpectrum();
 
     expect(firstSpectrum?.variables.x.data).toStrictEqual([1, 2]);
     expect(firstSpectrum?.variables.y.data).toStrictEqual([3, 4]);
 
-    let normalized = analysis.getNormalizedSpectrum({
+    const normalized = analysis.getNormalizedSpectrum({
       normalization: {
         filters: [{ name: 'normed' }],
       },
@@ -62,14 +62,14 @@ describe('case for ntuples', () => {
       xUnits: 'tUnits',
       yUnits: 'xUnits',
     };
-    let spectrum = analysis.getXYSpectrum(selector);
+    const spectrum = analysis.getXYSpectrum(selector);
     expect(spectrum?.variables.x.data).toStrictEqual([5, 6]);
     expect(spectrum?.variables.y.data).toStrictEqual([1, 2]);
 
-    let jsgraph = JSGraph.getJSGraph([analysis], { selector });
+    const jsgraph = JSGraph.getJSGraph([analysis], { selector });
     expect(jsgraph.series[0].data).toStrictEqual({ x: [5, 6], y: [1, 2] });
 
-    let jcamps = toJcamps(analysis, {
+    const jcamps = toJcamps(analysis, {
       info: {
         owner: 'cheminfo',
         origin: 'Common Spectrum',
@@ -78,14 +78,14 @@ describe('case for ntuples', () => {
 
     expect(jcamps).toHaveLength(1);
 
-    let jcamp = toJcamp(analysis, {
+    const jcamp = toJcamp(analysis, {
       info: {
         owner: 'cheminfo',
         origin: 'Common Spectrum',
       },
     });
 
-    let analysis2 = fromJcamp(jcamp);
+    const analysis2 = fromJcamp(jcamp);
 
     delete analysis2.spectra[0].id;
 
@@ -96,7 +96,6 @@ describe('case for ntuples', () => {
           symbol: 'x',
           type: 'INDEPENDENT',
           dim: 2,
-          factor: 1,
           first: 1,
           last: 2,
           units: 'xUnits',
@@ -111,7 +110,6 @@ describe('case for ntuples', () => {
           symbol: 'y',
           type: 'DEPENDENT',
           dim: 2,
-          factor: 1,
           first: 3,
           last: 4,
           units: 'yUnits',
@@ -126,7 +124,6 @@ describe('case for ntuples', () => {
           symbol: 't',
           type: 'DEPENDENT',
           dim: 2,
-          factor: 1,
           first: 5,
           last: 6,
           units: 'tUnits',

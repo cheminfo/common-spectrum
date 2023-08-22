@@ -17,27 +17,24 @@ import { getConvertedVariable } from './getConvertedVariable';
  * taken
  */
 export function getXYSpectra(
-  spectra: Array<Spectrum> = [],
+  spectra: Spectrum[] = [],
   selector: SpectrumSelector = {},
 ): Spectrum[] {
   const selectedSpectra: Spectrum[] = [];
 
   if (spectra.length < 1) return selectedSpectra;
 
+  const { variables, units, labels, meta, index } = selector;
+
   let {
     dataType,
     title,
     xUnits,
     yUnits,
-    variables,
     xVariable = 'x',
     yVariable = 'y',
-    units,
-    labels,
     xLabel,
     yLabel,
-    meta,
-    index,
   } = selector;
 
   if (index !== undefined) {
@@ -67,8 +64,8 @@ export function getXYSpectra(
   if (xLabel) xLabel = ensureRegexp(xLabel);
   if (yLabel) yLabel = ensureRegexp(yLabel);
 
-  for (let spectrum of spectra) {
-    let variableNames = Object.keys(spectrum.variables);
+  for (const spectrum of spectra) {
+    const variableNames = Object.keys(spectrum.variables);
     if (!(variableNames.length > 1)) continue;
 
     // we filter on general spectrum information
@@ -86,19 +83,19 @@ export function getXYSpectra(
 
     if (meta && typeof meta === 'object') {
       if (!spectrum.meta) continue;
-      for (let key in spectrum.meta) {
+      for (const key in spectrum.meta) {
         if (!spectrum.meta[key]) continue;
-        let value = ensureRegexp(spectrum.meta[key]);
+        const value = ensureRegexp(spectrum.meta[key]);
         if (!value.exec(spectrum.meta[key])) continue;
       }
     }
 
-    let x = getPossibleVariable(spectrum.variables, {
+    const x = getPossibleVariable(spectrum.variables, {
       units: xUnits,
       label: xLabel,
       variableName: xVariable,
     });
-    let y = getPossibleVariable(spectrum.variables, {
+    const y = getPossibleVariable(spectrum.variables, {
       units: yUnits,
       label: yLabel,
       variableName: yVariable,
@@ -127,7 +124,7 @@ function getPossibleVariable(
   selector: Selector = {},
 ) {
   const { units, label, variableName } = selector;
-  let possible: SpectrumVariables = { ...variables };
+  const possible: SpectrumVariables = { ...variables };
   let key: keyof typeof possible;
   if (units !== undefined) {
     for (key in possible) {

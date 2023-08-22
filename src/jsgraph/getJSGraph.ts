@@ -41,7 +41,7 @@ export function getJSGraph(analyses: Analysis[], options: JSGraphOptions = {}) {
     xAxis = {},
     yAxis = {},
   } = options;
-  let series = [];
+  const series = [];
 
   let xLabel = xAxis.label;
   let yLabel = yAxis.label;
@@ -51,7 +51,7 @@ export function getJSGraph(analyses: Analysis[], options: JSGraphOptions = {}) {
   for (let i = 0; i < analyses.length; i++) {
     const analysis = analyses[i];
 
-    let spectra = analysis.getNormalizedSpectra({
+    const spectra = analysis.getNormalizedSpectra({
       selector,
       normalization,
     });
@@ -66,7 +66,7 @@ export function getJSGraph(analyses: Analysis[], options: JSGraphOptions = {}) {
     if (!yUnits) yUnits = firstSpectrum.variables.y.units;
 
     for (const spectrum of spectra) {
-      let serie: Record<string, unknown> = {};
+      const serie: Record<string, unknown> = {};
       addStyle(serie, analysis, {
         color: colors[i % colors.length],
         opacity: opacities[i % opacities.length],

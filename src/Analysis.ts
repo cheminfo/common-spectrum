@@ -1,5 +1,5 @@
 import { isAnyArray } from 'is-any-array';
-import { xIsMonotone, xMinValue, xMaxValue } from 'ml-spectra-processing';
+import { xIsMonotonic, xMinValue, xMaxValue } from 'ml-spectra-processing';
 
 import type { SpectrumVariables, Spectrum } from './types/Cheminfo';
 import { NormalizedSpectrumOptions } from './types/NormalizedSpectrumOptions';
@@ -29,7 +29,7 @@ export class Analysis {
   public id: string;
   public label: string;
   public spectrumCallback: SpectrumCallback | undefined;
-  public spectra: Array<Spectrum>;
+  public spectra: Spectrum[];
   private cache: {
     spectrum: Record<string, Spectrum | undefined>;
     spectra: Record<string, Spectrum[]>;
@@ -62,7 +62,7 @@ export class Analysis {
    * Retrieve a Spectrum based on x/y units
    */
   public getXYSpectrum(selector: SpectrumSelector = {}) {
-    let id = JSON.stringify(selector);
+    const id = JSON.stringify(selector);
     if (!this.cache.spectrum[id]) {
       this.cache.spectrum[id] = getXYSpectrum(this.spectra, selector);
     }
@@ -73,7 +73,7 @@ export class Analysis {
    * Retrieve spectra matching selector
    */
   public getXYSpectra(selector: SpectrumSelector = {}) {
-    let id = JSON.stringify(selector);
+    const id = JSON.stringify(selector);
     if (!this.cache.spectra[id]) {
       this.cache.spectra[id] = getXYSpectra(this.spectra, selector);
     }
@@ -87,7 +87,7 @@ export class Analysis {
    * @param selector.yUnits if undefined takes the second variable
    */
   public getXY(selector: SpectrumSelector = {}) {
-    let spectrum = this.getXYSpectrum(selector);
+    const spectrum = this.getXYSpectrum(selector);
     if (!spectrum) return undefined;
     return {
       x: spectrum.variables.x.data,
@@ -156,15 +156,15 @@ function standardizeData(
   options: Omit<Spectrum, 'variables'>,
   analysisOptions: Pick<AnalysisOptions, 'spectrumCallback'>,
 ) {
-  let { meta = {}, dataType = '', title = '' } = options;
+  const { meta = {}, dataType = '', title = '' } = options;
   const { spectrumCallback } = analysisOptions;
 
   if (spectrumCallback) {
     spectrumCallback(variables);
   }
 
-  let xVariable = variables.x;
-  let yVariable = variables.y;
+  const xVariable = variables.x;
+  const yVariable = variables.y;
   if (!xVariable || !yVariable) {
     throw Error('A spectrum must contain at least x and y variables');
   }
@@ -172,10 +172,10 @@ function standardizeData(
     throw Error('x and y variables must contain an array data');
   }
 
-  let x = xVariable.data;
-  let reverse = x && x.length > 1 && x[0] > x[x.length - 1];
+  const x = xVariable.data;
+  const reverse = x && x.length > 1 && x[0] > x[x.length - 1];
 
-  for (let [key, variable] of Object.entries(variables)) {
+  for (const [key, variable] of Object.entries(variables)) {
     if (reverse) variable.data = variable.data.slice().reverse();
     variable.label = variable.label || key;
     if (variable.label.match(/^.*[([](?<units>.*)[)\]].*$/)) {
@@ -190,7 +190,7 @@ function standardizeData(
     }
     variable.min = xMinValue(variable.data);
     variable.max = xMaxValue(variable.data);
-    variable.isMonotone = xIsMonotone(variable.data);
+    variable.isMonotone = xIsMonotonic(variable.data) !== 0;
   }
 
   return {

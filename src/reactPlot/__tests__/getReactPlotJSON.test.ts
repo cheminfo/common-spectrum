@@ -28,7 +28,7 @@ const spectra = {
 
 test('simple test case', () => {
   const len = 3;
-  let analyses = new Array(len);
+  const analyses = new Array(len);
   for (let i = 0; i < len; i++) {
     analyses[i] = new Analysis();
     analyses[i].pushSpectrum(spectra.variables, { title: `Vg = ${i + 3}` });
@@ -58,7 +58,7 @@ test('simple test case', () => {
 
 test('enforce growing', () => {
   const len = 3;
-  let analyses = new Array(len);
+  const analyses = new Array(len);
   for (let i = 0; i < len; i++) {
     analyses[i] = new Analysis();
     analyses[i].pushSpectrum(spectra.variables, { title: `Vg = ${i + 3}` });
