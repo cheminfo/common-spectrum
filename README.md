@@ -75,7 +75,7 @@ let analysis2 = fromJcamp(jcamp);
 
 [npm-image]: https://img.shields.io/npm/v/common-spectrum.svg
 [npm-url]: https://www.npmjs.com/package/common-spectrum
-[ci-image]: https://github.com/cheminfo/common-spectrum/workflows/Node.js%20CI/badge.svg?branch=master
+[ci-image]: https://github.com/cheminfo/common-spectrum/workflows/Node.js%20CI/badge.svg?branch=main
 [ci-url]: https://github.com/cheminfo/common-spectrum/actions?query=workflow%3A%22Node.js+CI%22
 [codecov-image]: https://img.shields.io/codecov/c/github/cheminfo/common-spectrum.svg
 [codecov-url]: https://codecov.io/gh/cheminfo/common-spectrum
