@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.0](https://github.com/cheminfo/common-spectrum/compare/v2.3.0...v2.4.0) (2024-01-08)
+
+
+### Features
+
+* update dependencies and use new jcampconverter ([0e2c1b6](https://github.com/cheminfo/common-spectrum/commit/0e2c1b6d55e98c28537654d94b5f21074919ff0f))
+
 ## [2.3.0](https://github.com/cheminfo/common-spectrum/compare/v2.2.1...v2.3.0) (2023-08-22)
 
 
