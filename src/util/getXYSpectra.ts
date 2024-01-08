@@ -155,11 +155,11 @@ function getPossibleVariable(
   if (variableName !== undefined) {
     if (possible[variableName]) return possible[variableName];
     const upper = variableName.toUpperCase();
-    if (Object.prototype.hasOwnProperty.call(possible, upper)) {
+    if (Object.hasOwn(possible, upper)) {
       return possible[upper as keyof typeof possible];
     }
     const lower = variableName.toLowerCase();
-    if (Object.prototype.hasOwnProperty.call(possible, lower)) {
+    if (Object.hasOwn(possible, lower)) {
       return possible[lower as keyof typeof possible];
     }
   }
