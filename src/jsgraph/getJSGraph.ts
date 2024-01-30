@@ -2,32 +2,11 @@ import { DataXY } from 'cheminfo-types';
 import { xyFilterXPositive } from 'ml-spectra-processing';
 
 import { Analysis } from '../Analysis';
-import { NormalizedSpectrumOptions } from '../types/NormalizedSpectrumOptions';
 
+import { JSGraphOptions } from './JSGraphOptions';
 import { addStyle } from './addStyle';
 import { COLORS } from './colors';
 
-interface JSGraphAxisOptions {
-  /**
-   * Change the scale to logarihtmic
-   * @default false
-   */
-  logScale?: boolean;
-  flipped?: boolean;
-  display?: boolean;
-  label?: string;
-  units?: string;
-}
-
-interface JSGraphOptions {
-  colors?: string[];
-  opacities?: number[];
-  linesWidth?: number[];
-  selector?: Record<string, unknown>;
-  normalization?: NormalizedSpectrumOptions;
-  xAxis?: JSGraphAxisOptions;
-  yAxis?: JSGraphAxisOptions;
-}
 /**
  * Generate a jsgraph chart format from an array of Analysis
  */
@@ -58,7 +37,7 @@ export function getJSGraph(analyses: Analysis[], options: JSGraphOptions = {}) {
     if (spectra.length === 0) continue;
     const firstSpectrum = spectra[0];
 
-    // todo: if many spectra are available and not xUnits / yUnits are specified we should ensure that all the3 spectra are compatible
+    // todo: if many spectra are available and not xUnits / yUnits are specified we should ensure that all the spectra are compatible
 
     if (!xLabel) xLabel = firstSpectrum.variables.x.label;
     if (!yLabel) yLabel = firstSpectrum.variables.y.label;
