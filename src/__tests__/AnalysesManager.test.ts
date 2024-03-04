@@ -2,8 +2,8 @@ import { AnalysesManager } from '../AnalysesManager';
 import { Analysis } from '../Analysis';
 
 describe('AnalysisManager', () => {
-  const spectraManager = new AnalysesManager();
   it('check add / remove', () => {
+    const spectraManager = new AnalysesManager();
     const analysis = new Analysis({ id: 'abc' });
     spectraManager.addAnalysis(analysis);
     expect(spectraManager.analyses).toHaveLength(1);
@@ -21,5 +21,22 @@ describe('AnalysisManager', () => {
     expect(spectraManager.analyses).toHaveLength(2);
     spectraManager.removeAllAnalyses();
     expect(spectraManager.analyses).toHaveLength(0);
+  });
+
+  it('check toJSON / fromJSON', () => {
+    const spectraManager = new AnalysesManager();
+    const analysis = new Analysis({ id: 'abc' });
+    spectraManager.addAnalysis(analysis);
+    const analysis2 = new Analysis({ id: 'def' });
+    spectraManager.addAnalysis(analysis2);
+
+    const json = JSON.parse(JSON.stringify(spectraManager));
+
+    const spectraManager2 = AnalysesManager.fromJSON(json);
+
+    expect(spectraManager2.analyses).toHaveLength(2);
+    expect(typeof spectraManager2.analyses[0].getNormalizedSpectra).toBe(
+      'function',
+    );
   });
 });

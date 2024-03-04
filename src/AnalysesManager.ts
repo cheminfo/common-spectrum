@@ -14,6 +14,14 @@ export class AnalysesManager {
     this.analyses = [];
   }
 
+  static fromJSON(json: any) {
+    const analysesManager = new AnalysesManager();
+    for (const analysis of json.analyses) {
+      analysesManager.analyses.push(Analysis.fromJSON(analysis));
+    }
+    return analysesManager;
+  }
+
   public addAnalysis(analysis: Analysis) {
     const index = this.getAnalysisIndex(analysis.id);
     if (index === undefined) {

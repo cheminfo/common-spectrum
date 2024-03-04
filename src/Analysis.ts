@@ -43,6 +43,14 @@ export class Analysis {
     this.cache = { spectrum: {}, spectra: {} };
   }
 
+  public static fromJSON(json: any) {
+    const analysis = new Analysis();
+    analysis.id = json.id;
+    analysis.label = json.label;
+    analysis.spectra = json.spectra;
+    return analysis;
+  }
+
   /**
    * Add a spectrum in the internal spectra variable
    */

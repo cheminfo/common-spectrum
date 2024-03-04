@@ -1,4 +1,5 @@
 import { NormalizedSpectrumOptions } from '../types/NormalizedSpectrumOptions';
+
 import { JSGraphAxisOptions } from './JSGraphAxisOptions';
 
 export interface JSGraphOptions {
