@@ -3,35 +3,40 @@ import { Analysis } from '../Analysis';
 
 describe('AnalysisManager', () => {
   it('check add / remove', () => {
-    const spectraManager = new AnalysesManager();
+    const analysesManager = new AnalysesManager();
     const analysis = new Analysis({ id: 'abc' });
-    spectraManager.addAnalysis(analysis);
-    expect(spectraManager.analyses).toHaveLength(1);
-    expect(spectraManager.getAnalysisIndex('abc')).toBe(0);
-    spectraManager.addAnalysis(analysis);
-    expect(spectraManager.analyses).toHaveLength(1);
+    analysesManager.addAnalysis(analysis);
+    expect(analysesManager.analyses).toHaveLength(1);
+    expect(analysesManager.getAnalysisIndex('abc')).toBe(0);
+    analysesManager.addAnalysis(analysis);
+    expect(analysesManager.analyses).toHaveLength(1);
     const analysis2 = new Analysis({ id: 'def' });
-    spectraManager.addAnalysis(analysis2);
-    expect(spectraManager.analyses).toHaveLength(2);
-    expect(spectraManager.getAnalysisIndex('def')).toBe(1);
-    spectraManager.removeAnalysis('abc');
-    expect(spectraManager.analyses).toHaveLength(1);
-    expect(spectraManager.getAnalysisIndex('def')).toBe(0);
-    spectraManager.addAnalysis(analysis);
-    expect(spectraManager.analyses).toHaveLength(2);
-    spectraManager.removeAllAnalyses();
-    expect(spectraManager.analyses).toHaveLength(0);
+    analysesManager.addAnalysis(analysis2);
+    expect(analysesManager.analyses).toHaveLength(2);
+    expect(analysesManager.getAnalysisIndex('def')).toBe(1);
+    analysesManager.removeAnalysis('abc');
+    expect(analysesManager.analyses).toHaveLength(1);
+    expect(analysesManager.getAnalysisIndex('def')).toBe(0);
+    analysesManager.addAnalysis(analysis);
+    expect(analysesManager.analyses).toHaveLength(2);
+    analysesManager.removeAllAnalyses();
+    expect(analysesManager.analyses).toHaveLength(0);
   });
 
   it('check toJSON / fromJSON', () => {
-    const spectraManager = new AnalysesManager();
+    const analysesManager = new AnalysesManager();
     const analysis = new Analysis({ id: 'abc' });
-    spectraManager.addAnalysis(analysis);
+    analysis.pushSpectrum({
+      x: { data: Float64Array.from([1, 2, 3]), label: 'x' },
+      y: { data: [1, 2, 3], label: 'y' },
+    });
+    analysesManager.addAnalysis(analysis);
     const analysis2 = new Analysis({ id: 'def' });
-    spectraManager.addAnalysis(analysis2);
+    analysesManager.addAnalysis(analysis2);
 
-    const json = JSON.parse(JSON.stringify(spectraManager));
-
+    const json = JSON.parse(JSON.stringify(analysesManager));
+    const data = json.analyses[0].spectra[0].variables.x.data;
+    expect(Array.isArray(data)).toBe(true);
     const spectraManager2 = AnalysesManager.fromJSON(json);
 
     expect(spectraManager2.analyses).toHaveLength(2);

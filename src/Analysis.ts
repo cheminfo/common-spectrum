@@ -1,5 +1,10 @@
 import { isAnyArray } from 'is-any-array';
-import { xIsMonotonic, xMinValue, xMaxValue } from 'ml-spectra-processing';
+import {
+  xIsMonotonic,
+  xMinValue,
+  xMaxValue,
+  stringify,
+} from 'ml-spectra-processing';
 
 import type { SpectrumVariables, Spectrum } from './types/Cheminfo';
 import { NormalizedSpectrumOptions } from './types/NormalizedSpectrumOptions';
@@ -41,6 +46,16 @@ export class Analysis {
     this.spectrumCallback = options.spectrumCallback;
     this.spectra = [];
     this.cache = { spectrum: {}, spectra: {} };
+  }
+
+  public toJSON() {
+    // TODO this is likely not the most optimized way to remove typedArray
+    // if data are small seems still reasonable
+    return {
+      id: this.id,
+      label: this.label,
+      spectra: JSON.parse(stringify(this.spectra)),
+    };
   }
 
   public static fromJSON(json: any) {

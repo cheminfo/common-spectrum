@@ -75,7 +75,7 @@
     "ml-savitzky-golay": "^5.0.0",
     "ml-signal-processing": "^1.0.3",
     "ml-spectra-fitting": "^4.2.1",
-    "ml-spectra-processing": "^13.0.1",
+    "ml-spectra-processing": "^14.0.0",
     "react-plot": "^0.10.1",
     "xy-parser": "^5.0.4"
   }
