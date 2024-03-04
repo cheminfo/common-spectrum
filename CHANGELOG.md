@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.0](https://github.com/cheminfo/common-spectrum/compare/v2.4.0...v2.5.0) (2024-03-04)
+
+
+### Features
+
+* add method AnalysesManager.fromJSON ([b06ee05](https://github.com/cheminfo/common-spectrum/commit/b06ee057fa877483ed20cde60aaa478044ff1ed4))
+
 ## [2.4.0](https://github.com/cheminfo/common-spectrum/compare/v2.3.0...v2.4.0) (2024-01-08)
 
 
