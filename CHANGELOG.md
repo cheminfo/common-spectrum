@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.6.0](https://github.com/cheminfo/common-spectrum/compare/v2.5.0...v2.6.0) (2024-03-04)
+
+
+### Features
+
+* add toJSON of Analysis to deal correctly with typedArrays ([e55589f](https://github.com/cheminfo/common-spectrum/commit/e55589fee2f32c48159f318d1f3e04b1fcd2dc40))
+
 ## [2.5.0](https://github.com/cheminfo/common-spectrum/compare/v2.4.0...v2.5.0) (2024-03-04)
 
 
