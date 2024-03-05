@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.7.0](https://github.com/cheminfo/common-spectrum/compare/v2.6.0...v2.7.0) (2024-03-05)
+
+
+### Features
+
+* AnalyseManager.getAnalyses can also filter by spectra ids ([34e87dc](https://github.com/cheminfo/common-spectrum/commit/34e87dcec92f33220e76a308a19c306b2e7325dd))
+
 ## [2.6.0](https://github.com/cheminfo/common-spectrum/compare/v2.5.0...v2.6.0) (2024-03-04)
 
 
