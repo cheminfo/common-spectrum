@@ -48,6 +48,19 @@ export class Analysis {
     this.cache = { spectrum: {}, spectra: {} };
   }
 
+  public clone({ filter = {} }: { filter: { ids?: string[] } }) {
+    const { ids } = filter;
+    const analysis = new Analysis();
+    analysis.id = this.id;
+    analysis.label = this.label;
+    analysis.spectrumCallback = this.spectrumCallback;
+    analysis.spectra = this.spectra.filter((spectrum) => {
+      //@ts-expect-error spectrum.id is not expected to be undefined at this level
+      return !ids || ids.includes(spectrum.id);
+    });
+    return analysis;
+  }
+
   public toJSON() {
     // TODO this is likely not the most optimized way to remove typedArray
     // if data are small seems still reasonable
@@ -179,7 +192,12 @@ function standardizeData(
   options: Omit<Spectrum, 'variables'>,
   analysisOptions: Pick<AnalysisOptions, 'spectrumCallback'>,
 ) {
-  const { meta = {}, dataType = '', title = '' } = options;
+  const {
+    meta = {},
+    dataType = '',
+    title = '',
+    id = Math.random().toString(36).replace('0.', ''),
+  } = options;
   const { spectrumCallback } = analysisOptions;
 
   if (spectrumCallback) {
@@ -221,6 +239,6 @@ function standardizeData(
     title,
     dataType,
     meta,
-    id: Math.random().toString(36).replace('0.', ''),
+    id,
   };
 }

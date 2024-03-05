@@ -4,6 +4,11 @@ import { appendDistinctParameter } from './util/appendDistinctParameter';
 import { appendDistinctValue } from './util/appendDistinctValue';
 
 interface GetAnalysesOptions {
+  /**
+   * Array of ids to filter the analyses. The ids could be either the analysis id or the spectrum id
+   * If it mathces the analysis id, all the spectra of the analysis will be included
+   * If it matches the spectrum id, only the spectrum will be included
+   */
   ids?: string[];
 }
 
@@ -31,12 +36,30 @@ export class AnalysesManager {
     }
   }
 
+  /**
+   *
+   * @param options
+   * @returns
+   */
   public getAnalyses(options: GetAnalysesOptions = {}) {
     const { ids } = options;
     const analyses: Analysis[] = [];
+    const processedAnalysisIds = new Set<string>();
     for (const analysis of this.analyses) {
       if (!ids || ids.includes(analysis.id)) {
         analyses.push(analysis);
+        processedAnalysisIds.add(analysis.id);
+        continue;
+      }
+      for (const spectrum of analysis.spectra) {
+        if (
+          // @ts-expect-error spectrum id is not expected to be undefined at this level
+          ids.includes(spectrum.id) &&
+          !processedAnalysisIds.has(analysis.id)
+        ) {
+          analyses.push(analysis.clone({ filter: { ids } }));
+          processedAnalysisIds.add(analysis.id);
+        }
       }
     }
     return analyses;
