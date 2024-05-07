@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.8.0](https://github.com/cheminfo/common-spectrum/compare/v2.7.0...v2.8.0) (2024-05-07)
+
+
+### Features
+
+* toText deals correctly with normalization preferences ([97b26a2](https://github.com/cheminfo/common-spectrum/commit/97b26a2af3fbd718056c09b625facb762279ed2a))
+
 ## [2.7.0](https://github.com/cheminfo/common-spectrum/compare/v2.6.0...v2.7.0) (2024-03-05)
 
 
