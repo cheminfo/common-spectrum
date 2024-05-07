@@ -45,8 +45,9 @@ function addJcamp(analysis: Analysis, jcamp: string | ArrayBuffer) {
       for (const key in currentSpectrum.variables) {
         const variable = currentSpectrum.variables[key];
         if (variable.label) continue;
-        variable.label = variable.name || variable.symbol || key;
+        variable.label = variable.name || variable.symbol || key ;
         if (variable.units && !variable.label.includes(variable.units)) {
+          // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
           variable.label += ` [${variable.units}]`;
         }
       }
