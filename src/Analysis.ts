@@ -20,7 +20,7 @@ interface AnalysisOptions {
   label?: string;
   spectrumCallback?: SpectrumCallback;
 }
-interface NormalizedOptions {
+export interface NormalizedOptions {
   normalization?: NormalizedSpectrumOptions;
   selector?: SpectrumSelector;
 }

@@ -45,4 +45,13 @@ describe('toCvs', () => {
     const result = toText(new Analysis());
     expect(result).toHaveLength(0);
   });
+
+  it('select variables with normalizaiton', () => {
+    const result = toText(analysis, {
+      selector: { xLabel: 'seconds', yLabel: 'voltage' },
+      normalization: { from: 5, to: 6 },
+    });
+    expect(result).toHaveLength(1);
+    expect(result[0]).toBe('seconds,voltage\n5,1\n6,2');
+  });
 });

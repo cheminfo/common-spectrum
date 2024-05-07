@@ -1,22 +1,21 @@
-import { Analysis } from '../Analysis';
+import { Analysis, NormalizedOptions } from '../Analysis';
 import type { Spectrum } from '../types/Cheminfo';
-import { SpectrumSelector } from '../types/SpectrumSelector';
 
-interface ToTextOptions {
-  selector?: SpectrumSelector;
+interface ToTextOptions extends NormalizedOptions {
   endOfLine?: string;
   fieldSeparator?: string;
 }
 
 export function toText(analysis: Analysis, options: ToTextOptions = {}) {
   // Export all the data to Csv
-  if (!options.selector) {
+  if (!options.selector && !options.normalization) {
     return exportText(analysis.spectra, options);
   }
 
   // Export selected variables
-  const spectra = analysis.getXYSpectrum(options.selector);
-  return exportText(spectra ? [spectra] : [], options);
+  const spectra = analysis.getNormalizedSpectra(options);
+  // const spectra = analysis.getXYSpectrum(options.selector);
+  return exportText(spectra, options);
 }
 
 function exportText(spectrums: Spectrum[], options: ToTextOptions) {
