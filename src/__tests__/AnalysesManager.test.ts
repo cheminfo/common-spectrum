@@ -83,7 +83,8 @@ describe('AnalysisManager', () => {
     const analysis2 = new Analysis({ id: 'def' });
     analysesManager.addAnalysis(analysis2);
 
-    const json = structuredClone(analysesManager);
+    // eslint-disable-next-line unicorn/prefer-structured-clone
+    const json = JSON.parse(JSON.stringify(analysesManager));
     const data = json.analyses[0].spectra[0].variables.x.data;
     expect(Array.isArray(data)).toBe(true);
     const spectraManager2 = AnalysesManager.fromJSON(json);
