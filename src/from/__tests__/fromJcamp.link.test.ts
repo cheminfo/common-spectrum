@@ -1,6 +1,8 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
+import { test, expect } from 'vitest';
+
 import { fromJcamp } from '../fromJcamp';
 
 test('fromJcamp linked file', () => {

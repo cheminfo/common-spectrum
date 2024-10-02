@@ -1,6 +1,8 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
+import { test, expect, describe, it } from 'vitest';
+
 import { Analysis, JSGraph, fromJcamp } from '../..';
 
 test('getJSGraph', () => {

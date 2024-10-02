@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest';
+
 import { Analysis, fromJcamp, toJcamp, toJcamps, JSGraph } from '..';
 
 describe('case for ntuples', () => {

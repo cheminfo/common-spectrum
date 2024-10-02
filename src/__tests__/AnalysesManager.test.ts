@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest';
+
 import { AnalysesManager } from '../AnalysesManager';
 import { Analysis } from '../Analysis';
 

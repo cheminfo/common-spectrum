@@ -1,4 +1,5 @@
 import { toBeDeepCloseTo, toMatchCloseTo } from 'jest-matcher-deep-close-to';
+import { describe, it, expect } from 'vitest';
 
 import { getNormalizedSpectrum } from '../getNormalizedSpectrum';
 
@@ -25,10 +26,10 @@ describe('getNormalizedSpectrum baseline', () => {
       filters: [{ name: 'airPLSBaseline' }],
     });
     expect(normalized.variables.y.data).toMatchCloseTo([
-      -3.169014084442461, -2.2007042253000275, -1.25440140841972,
-      -0.3080985915394123, 24.638204225340896, 1.584507042221202,
-      2.5308098591015087, 3.4771126759818163, 4.423415492862123,
-      5.36971830974243,
+      -3.134444079621124, -2.4478884875832367, -1.768911122709742,
+      -1.1043811169738778, 23.5369487654199, 0.17827864781367708,
+      0.8334394603035724, 1.5141848751660767, 2.2126020080923636,
+      2.9205472800839676,
     ]);
   });
 

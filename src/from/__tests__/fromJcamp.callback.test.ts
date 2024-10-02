@@ -1,6 +1,8 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
+import { describe, it, expect } from 'vitest';
+
 import type { SpectrumVariable } from '../../types/Cheminfo';
 import { fromJcamp } from '../fromJcamp';
 

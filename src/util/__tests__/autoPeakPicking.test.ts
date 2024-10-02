@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest';
+
 import type { Spectrum } from '../../types/Cheminfo';
 import { autoPeakPicking } from '../autoPeakPicking';
 

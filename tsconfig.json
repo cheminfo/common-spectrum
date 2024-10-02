@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
+    "skipLibCheck": true,
     "moduleResolution": "node",
     "inlineSourceMap": true,
     "strict": true,

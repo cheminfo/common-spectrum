@@ -1,6 +1,8 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
+import { test, expect } from 'vitest';
+
 import { fromText } from '../fromText';
 
 test('fromText', () => {

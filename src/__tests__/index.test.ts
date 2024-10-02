@@ -1,3 +1,5 @@
+import { test, expect } from 'vitest';
+
 import { Analysis, fromJcamp, toJcamp, JSGraph } from '..';
 
 test('index', () => {

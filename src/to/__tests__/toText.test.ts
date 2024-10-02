@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest';
+
 import { Analysis } from '../../Analysis';
 import { toText } from '../toText';
 
