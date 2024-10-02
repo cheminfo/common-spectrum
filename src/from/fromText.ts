@@ -34,7 +34,8 @@ interface FromTextOptions {
 
 /**
  * Convert strings into JCAMP and add extra information
- * @param {string} data - values to add to the file, usually a csv or tsv values
+ * @param data - values to add to the file, usually a csv or tsv values
+ * @param options
  */
 
 export function fromText(

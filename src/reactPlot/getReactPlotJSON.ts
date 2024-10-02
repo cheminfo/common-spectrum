@@ -29,6 +29,9 @@ function getData(x: ListNumber, y: ListNumber) {
 
 /**
  * Generate a jsgraph chart format from an array of Analysis
+ * @param analyses
+ * @param query
+ * @param options
  */
 export function getReactPlotJSON(
   analyses: Analysis[],

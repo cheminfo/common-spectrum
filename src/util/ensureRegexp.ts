@@ -1,4 +1,4 @@
-const testRegExp = /^\/((?:\\\/|[^/])+)\/([migyu]{0,5})?$/;
+const testRegExp = /^\/((?:\\\/|[^/])+)\/([gimuy]{0,5})?$/;
 
 export function ensureRegexp(string: string | RegExp): RegExp {
   if (typeof string !== 'string') return string;
@@ -6,7 +6,7 @@ export function ensureRegexp(string: string | RegExp): RegExp {
   if (parts) {
     try {
       return new RegExp(parts[1], parts[2]);
-    } catch (err) {
+    } catch {
       return stringToRegexp(string);
     }
   } else {
@@ -16,7 +16,7 @@ export function ensureRegexp(string: string | RegExp): RegExp {
 
 function stringToRegexp(string: string, flags = 'i') {
   return new RegExp(
-    string.replace(/[[\]\\{}()+*?.$^|]/g, (match: string) => `\\${match}`),
+    string.replaceAll(/[$()*+.?[\\\]^{|}]/g, (match: string) => `\\${match}`),
     flags,
   );
 }

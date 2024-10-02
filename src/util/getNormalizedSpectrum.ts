@@ -40,7 +40,7 @@ export function getNormalizedSpectrum(
   } = options;
   let { filters = [] } = options;
 
-  filters = JSON.parse(JSON.stringify(filters));
+  filters = structuredClone(filters);
   if (numberOfPoints) {
     filters.push({
       name: 'equallySpaced',
@@ -60,7 +60,7 @@ export function getNormalizedSpectrum(
   if (filters.length > 1) {
     newSpectrum.variables.y.units = '';
     newSpectrum.variables.y.label = newSpectrum.variables.y.label?.replace(
-      /\s*\[.*\]/,
+      /\s*\[.*]/,
       '',
     );
   }

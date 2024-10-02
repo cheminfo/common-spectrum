@@ -29,8 +29,8 @@ export function convertUnit<T extends DoubleArray | number>(
 }
 
 function normalize(unit: string) {
-  unit = unit.replace(/°C/g, 'tempC');
-  unit = unit.replace(/°F/g, 'tempF');
-  unit = unit.replace(/(^|\W)K(\W|$)/g, '$1tempK$2');
+  unit = unit.replaceAll('°C', 'tempC');
+  unit = unit.replaceAll('°F', 'tempF');
+  unit = unit.replaceAll(/(^|\W)K(\W|$)/g, '$1tempK$2');
   return unit;
 }

@@ -15,6 +15,8 @@ import { getConvertedVariable } from './getConvertedVariable';
  * Retrieve the spectrum with only X/Y data that match all the selectors
  * If more than one variable match the selector the 'x' or 'y' variable will be
  * taken
+ * @param spectra
+ * @param selector
  */
 export function getXYSpectra(
   spectra: Spectrum[] = [],
@@ -22,7 +24,7 @@ export function getXYSpectra(
 ): Spectrum[] {
   const selectedSpectra: Spectrum[] = [];
 
-  if (spectra.length < 1) return selectedSpectra;
+  if (spectra.length === 0) return selectedSpectra;
 
   const { variables, units, labels, meta, index } = selector;
 
@@ -69,17 +71,13 @@ export function getXYSpectra(
     if (!(variableNames.length > 1)) continue;
 
     // we filter on general spectrum information
-    if (dataType) {
-      if (!spectrum.dataType || !(dataType as RegExp).exec(spectrum.dataType)) {
+    if (dataType && (!spectrum.dataType || !(dataType as RegExp).exec(spectrum.dataType))) {
         continue;
       }
-    }
 
-    if (title) {
-      if (!spectrum.title || !(title as RegExp).exec(spectrum.title)) {
+    if (title && (!spectrum.title || !(title as RegExp).exec(spectrum.title))) {
         continue;
       }
-    }
 
     if (meta && typeof meta === 'object') {
       if (!spectrum.meta) continue;
@@ -103,7 +101,7 @@ export function getXYSpectra(
 
     if (x && y) {
       // should we reverse the x axis?
-      if (x.data[0] > x.data[x.data.length - 1]) {
+      if (x.data[0] > x.data.at(-1)) {
         x.data = x.data.slice().reverse();
         y.data = y.data.slice().reverse();
       }
@@ -137,7 +135,7 @@ function getPossibleVariable(
       let convertibleUnits = true;
       try {
         convertUnit(1, variable?.units || '', units);
-      } catch (e) {
+      } catch {
         convertibleUnits = false;
       }
       if (convertibleUnits && variable) {

@@ -9,6 +9,8 @@ import { COLORS } from './colors';
 
 /**
  * Generate a jsgraph chart format from an array of Analysis
+ * @param analyses
+ * @param options
  */
 export function getJSGraph(analyses: Analysis[], options: JSGraphOptions = {}) {
   const {

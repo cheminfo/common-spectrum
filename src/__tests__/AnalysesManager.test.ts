@@ -57,7 +57,7 @@ describe('AnalysisManager', () => {
     const analyses = analysesManager.getAnalyses();
     expect(analyses).toHaveLength(3);
     // we expect to have a total of 3 spectra without filtereing
-    expect(analyses.map((analysis) => analysis.spectra).flat()).toHaveLength(3);
+    expect(analyses.flatMap((analysis) => analysis.spectra)).toHaveLength(3);
 
     // we select the first analysis, we expect to have 2 spectra
     const filteredAnalyses = analysesManager.getAnalyses({ ids: ['abc'] });
@@ -83,7 +83,7 @@ describe('AnalysisManager', () => {
     const analysis2 = new Analysis({ id: 'def' });
     analysesManager.addAnalysis(analysis2);
 
-    const json = JSON.parse(JSON.stringify(analysesManager));
+    const json = structuredClone(analysesManager);
     const data = json.analyses[0].spectra[0].variables.x.data;
     expect(Array.isArray(data)).toBe(true);
     const spectraManager2 = AnalysesManager.fromJSON(json);

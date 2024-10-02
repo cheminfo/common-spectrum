@@ -1,17 +1,20 @@
 /**
  * Returns a JSGraph annotation that represents the normalization
  * @param {object} [filter={}]
- * @param {object} [filter.exclusions=[]] Array of exclusions zones
- * @param {object} [boundary={y: {min:'0px', max:'2000px'}}] Height of the annotation
+ * @param {object} [filter.exclusions=[]] - Array of exclusions zones
+ * @param {object} [boundary={y: {min:'0px', max:'2000px'}}] - Height of the annotation
  */
 interface AnnotationsFilter {
   exclusions?: Array<{ ignore?: boolean; from: number; to: number }>;
   from?: number;
   to?: number;
 }
+
+interface Boundary { y: { min: string; max: string } }
+
 export function getNormalizationAnnotations(
   filter: AnnotationsFilter = {},
-  boundary = { y: { min: '0px', max: '2000px' } },
+  boundary: Boundary = { y: { min: '0px', max: '2000px' } },
 ) {
   let { exclusions = [] } = filter;
 

@@ -5,12 +5,12 @@ import { SpectrumVariable } from '../types/Cheminfo';
 
 /**
  * Creates a new Analysis from a JCAMP string
- * @param {string} jcamp - String containing the JCAMP data
- * @param {object} [options={}]
- * @param {object} [options.id=Math.random()]
- * @param {string} [options.label=options.id] human redeable label
- * @param {string} [options.spectrumCallback] a callback to apply on variables when creating spectrum
- * @return {Analysis} - New class element with the given data
+ * @param jcamp - String containing the JCAMP data
+ * @param [options={}]
+ * @param [options.id=Math.random()]
+ * @param [options.label=options.id] - human redeable label
+ * @param [options.spectrumCallback] - a callback to apply on variables when creating spectrum
+ * @returns - New class element with the given data
  */
 export function fromJcamp(jcamp: string | ArrayBuffer, options = {}): Analysis {
   const analysis = new Analysis(options);

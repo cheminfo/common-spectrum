@@ -41,7 +41,7 @@ export class Analysis {
   };
 
   public constructor(options: AnalysisOptions = {}) {
-    this.id = options.id || Math.random().toString(36).substring(2, 10);
+    this.id = options.id || Math.random().toString(36).slice(2, 10);
     this.label = options.label || this.id;
     this.spectrumCallback = options.spectrumCallback;
     this.spectra = [];
@@ -81,6 +81,8 @@ export class Analysis {
 
   /**
    * Add a spectrum in the internal spectra variable
+   * @param variables
+   * @param options
    */
   public pushSpectrum(
     variables: SpectrumVariables,
@@ -96,6 +98,7 @@ export class Analysis {
 
   /**
    * Retrieve a Spectrum based on x/y units
+   * @param selector
    */
   public getXYSpectrum(selector: SpectrumSelector = {}) {
     const id = JSON.stringify(selector);
@@ -107,6 +110,7 @@ export class Analysis {
 
   /**
    * Retrieve spectra matching selector
+   * @param selector
    */
   public getXYSpectra(selector: SpectrumSelector = {}) {
     const id = JSON.stringify(selector);
@@ -118,9 +122,10 @@ export class Analysis {
 
   /**
    * Retrieve a xy object
-   * @param selector.units Units separated by vs like for example "g vs °C"
-   * @param selector.xUnits if undefined takes the first variable
-   * @param selector.yUnits if undefined takes the second variable
+   * @param selector.units - Units separated by vs like for example "g vs °C"
+   * @param selector.xUnits - if undefined takes the first variable
+   * @param selector.yUnits - if undefined takes the second variable
+   * @param selector
    */
   public getXY(selector: SpectrumSelector = {}) {
     const spectrum = this.getXYSpectrum(selector);
@@ -134,8 +139,9 @@ export class Analysis {
   /**
    * Return the data object for specific x/y units with possibly some
    * normalization options
-   * @param options.selector.xUnits // if undefined takes the first variable
-   * @param options.selector.yUnits // if undefined takes the second variable
+   * @param options.selector.xUnits - // if undefined takes the first variable
+   * @param options.selector.yUnits - // if undefined takes the second variable
+   * @param options
    */
   public getNormalizedSpectrum(options: NormalizedOptions = {}) {
     const { normalization, selector } = options;
@@ -145,6 +151,7 @@ export class Analysis {
   }
 
   /**
+   * @param options
    */
   public getNormalizedSpectra(options: NormalizedOptions = {}): Spectrum[] {
     const { normalization, selector } = options;
@@ -167,8 +174,9 @@ export class Analysis {
 
   /**
    * Returns the xLabel
-   * @param selector.xUnits // if undefined takes the first variable
-   * @param selector.yUnits // if undefined takes the second variable
+   * @param selector.xUnits - // if undefined takes the first variable
+   * @param selector.yUnits - // if undefined takes the second variable
+   * @param selector
    */
   public getXLabel(selector: SpectrumSelector) {
     return this.getXYSpectrum(selector)?.variables.x.label;
@@ -176,8 +184,9 @@ export class Analysis {
 
   /**
    * Returns the yLabel
-   * @param selector.xUnits // if undefined takes the first variable
-   * @param selector.yUnits // if undefined takes the second variable
+   * @param selector.xUnits - // if undefined takes the first variable
+   * @param selector.yUnits - // if undefined takes the second variable
+   * @param selector
    */
   public getYLabel(selector: SpectrumSelector) {
     return this.getXYSpectrum(selector)?.variables.y.label;
@@ -186,6 +195,9 @@ export class Analysis {
 
 /**
  * Internal function that ensure the order of x / y array
+ * @param variables
+ * @param options
+ * @param analysisOptions
  */
 function standardizeData(
   variables: SpectrumVariables,
@@ -207,14 +219,14 @@ function standardizeData(
   const xVariable = variables.x;
   const yVariable = variables.y;
   if (!xVariable || !yVariable) {
-    throw Error('A spectrum must contain at least x and y variables');
+    throw new Error('A spectrum must contain at least x and y variables');
   }
   if (!isAnyArray(xVariable.data) || !isAnyArray(yVariable.data)) {
-    throw Error('x and y variables must contain an array data');
+    throw new Error('x and y variables must contain an array data');
   }
 
   const x = xVariable.data;
-  const reverse = x && x.length > 1 && x[0] > x[x.length - 1];
+  const reverse = x && x.length > 1 && x[0] > x.at(-1);
 
   for (const [key, variable] of Object.entries(variables)) {
     if (reverse) variable.data = variable.data.slice().reverse();

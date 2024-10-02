@@ -14,7 +14,7 @@
     "build": "npm run tsc && cheminfo-build -r CommonSpectrum",
     "check-types": "tsc --noEmit",
     "clean": "rimraf lib lib-esm",
-    "eslint": "eslint src --ext ts --cache",
+    "eslint": "eslint src",
     "eslint-fix": "npm run eslint -- --fix",
     "prepack": "npm run tsc",
     "prettier": "prettier --check src",
@@ -49,10 +49,10 @@
     "@types/js-quantities": "^1.6.6",
     "cheminfo-build": "^1.2.0",
     "eslint": "^8.57.0",
-    "eslint-config-cheminfo-typescript": "^12.4.0",
+    "eslint-config-cheminfo-typescript": "^15.0.1",
     "jest-matcher-deep-close-to": "^3.0.2",
     "prettier": "^3.3.3",
-    "rimraf": "^5.0.5",
+    "rimraf": "^6.0.1",
     "typescript": "^5.4.5"
   },
   "dependencies": {

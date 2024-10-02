@@ -6,7 +6,11 @@ import type { Spectrum } from '../types/Cheminfo';
 
 import { getNormalizedSpectrum } from './getNormalizedSpectrum';
 
-/** Based on a x value we will return a peak*/
+/**
+ * Based on a x value we will return a peak
+ * @param spectrum
+ * @param options
+ */
 export function autoPeakPicking(
   spectrum: Spectrum,
   options: AutoPeakPickingOptions = {},

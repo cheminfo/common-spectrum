@@ -4,10 +4,14 @@ import { xFindClosestIndex, xMaxValue } from 'ml-spectra-processing';
 import type { Spectrum } from '../types/Cheminfo';
 import { PeakPickingOptions } from '../types/PeakPickingOptions';
 
-/** Based on a x value we will return a peak
+/**
+ * Based on a x value we will return a peak
  * if you set optimize=True the returned positions will be
  * the closest actual datapoints to the fitted peak location.
  * the x/y of the fitted peak will be in xOptimized and yOptimized
+ * @param spectrum
+ * @param target
+ * @param options
  */
 export function peakPicking(
   spectrum: Spectrum,

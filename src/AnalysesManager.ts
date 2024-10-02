@@ -157,7 +157,7 @@ export class AnalysesManager {
     for (const spectrum of this.getSpectra()) {
       if (spectrum.variables) {
         for (const [, variable] of Object.entries(spectrum.variables)) {
-          appendDistinctValue(values, variable.label.replace(/\s+[[(].*$/, ''));
+          appendDistinctValue(values, variable.label.replace(/\s+[([].*$/, ''));
         }
       }
     }
@@ -198,6 +198,7 @@ export class AnalysesManager {
 
   /**
    * Remove the analysis from the AnalysesManager for the specified id
+   * @param id
    */
   public removeAnalysis(id: string) {
     const index = this.getAnalysisIndex(id);
@@ -207,6 +208,7 @@ export class AnalysesManager {
 
   /**
    * Returns the index of the analysis in the analyses array
+   * @param id
    */
   public getAnalysisIndex(id: string) {
     if (!id) return undefined;
@@ -219,10 +221,11 @@ export class AnalysesManager {
 
   /**
    * Checks if the ID of an analysis exists in the AnalysesManager
+   * @param id
    */
   public includes(id: string) {
     const index = this.getAnalysisIndex(id);
-    return index === undefined ? false : !isNaN(index);
+    return index === undefined ? false : !Number.isNaN(index);
   }
 }
 
@@ -233,8 +236,8 @@ function normalizeLabelUnits(
   if (!originalLabel) {
     return { units: '', label: '' };
   }
-  if (originalLabel.search(/[[(]]/) >= 0) {
-    const [units, label] = originalLabel.split(/\s*[[(]/);
+  if (originalLabel.search(/[([]]/) >= 0) {
+    const [units, label] = originalLabel.split(/\s*[([]/);
     return { units: originalUnits || units, label };
   }
   return { label: originalLabel, units: originalUnits };
