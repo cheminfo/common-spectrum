@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.9.0](https://github.com/cheminfo/common-spectrum/compare/v2.8.0...v2.9.0) (2024-10-02)
+
+
+### Features
+
+* getXYSpectrum always return ordered x ([2f6fc10](https://github.com/cheminfo/common-spectrum/commit/2f6fc10d339a6234e0c13148f5eb50b60448e7c9))
+
 ## [2.8.0](https://github.com/cheminfo/common-spectrum/compare/v2.7.0...v2.8.0) (2024-05-07)
 
 
