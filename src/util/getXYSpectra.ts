@@ -102,6 +102,11 @@ export function getXYSpectra(
     });
 
     if (x && y) {
+      // should we reverse the x axis?
+      if (x.data[0] > x.data[x.data.length - 1]) {
+        x.data = x.data.slice().reverse();
+        y.data = y.data.slice().reverse();
+      }
       selectedSpectra.push({
         title: spectrum.title,
         dataType: spectrum.dataType,

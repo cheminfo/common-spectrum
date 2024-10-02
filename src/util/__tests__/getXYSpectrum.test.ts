@@ -29,6 +29,11 @@ const spectra: Spectrum[] = [
         units: 's',
         label: 'Time [s]',
       },
+      e: {
+        data: Float64Array.from([2, 1]),
+        units: 'J',
+        label: 'Energy',
+      },
     },
   },
   {
@@ -237,6 +242,31 @@ describe('getXYSpectrum', () => {
         data: [3, 4],
         units: '°C',
         label: 'Temperature [°C]',
+      },
+    });
+  });
+
+  it('Spectrum by units g vs J as units', () => {
+    const xy: any =
+      getXYSpectrum(spectra, { units: 'g vs J' })?.variables || {};
+
+    xy.x.data = Array.from(xy.x.data);
+    expect(xy).toStrictEqual({
+      x: {
+        units: 'J',
+        label: 'Energy',
+        data: [1, 2],
+        min: 1,
+        max: 2,
+        isMonotone: true,
+      },
+      y: {
+        units: 'g',
+        label: 'Weight [g]',
+        data: [0.002, 0.001],
+        min: 0.001,
+        max: 0.002,
+        isMonotone: true,
       },
     });
   });
