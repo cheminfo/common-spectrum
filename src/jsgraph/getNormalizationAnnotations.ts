@@ -10,7 +10,9 @@ interface AnnotationsFilter {
   to?: number;
 }
 
-interface Boundary { y: { min: string; max: string } }
+interface Boundary {
+  y: { min: string; max: string };
+}
 
 export function getNormalizationAnnotations(
   filter: AnnotationsFilter = {},

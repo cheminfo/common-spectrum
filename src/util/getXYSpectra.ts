@@ -71,13 +71,16 @@ export function getXYSpectra(
     if (!(variableNames.length > 1)) continue;
 
     // we filter on general spectrum information
-    if (dataType && (!spectrum.dataType || !(dataType as RegExp).exec(spectrum.dataType))) {
-        continue;
-      }
+    if (
+      dataType &&
+      (!spectrum.dataType || !(dataType as RegExp).exec(spectrum.dataType))
+    ) {
+      continue;
+    }
 
     if (title && (!spectrum.title || !(title as RegExp).exec(spectrum.title))) {
-        continue;
-      }
+      continue;
+    }
 
     if (meta && typeof meta === 'object') {
       if (!spectrum.meta) continue;
