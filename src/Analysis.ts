@@ -226,7 +226,7 @@ function standardizeData(
   }
 
   const x = xVariable.data;
-  const reverse = x && x.length > 1 && x[0] > x.at(-1);
+  const reverse = x && x.length > 1 && x[0] > (x.at(-1) as number);
 
   for (const [key, variable] of Object.entries(variables)) {
     if (reverse) variable.data = variable.data.slice().reverse();
