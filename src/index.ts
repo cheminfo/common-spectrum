@@ -8,6 +8,7 @@ export * from './from/fromText';
 export * from './to/toJcamp';
 export * from './to/toJcamps';
 export * from './to/toText';
+export * from './to/toMatrix';
 export * from './util/getNormalizedSpectrum';
 
 export * from './util/peakPicking';
