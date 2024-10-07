@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.10.0](https://github.com/cheminfo/common-spectrum/compare/v2.9.0...v2.10.0) (2024-10-07)
+
+
+### Features
+
+* add toMatrix ([fd070ed](https://github.com/cheminfo/common-spectrum/commit/fd070ed34d5533e75bfb7702e31eec46c24ebb94))
+
 ## [2.9.0](https://github.com/cheminfo/common-spectrum/compare/v2.8.0...v2.9.0) (2024-10-02)
 
 
