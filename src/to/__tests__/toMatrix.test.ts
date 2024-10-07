@@ -10,7 +10,8 @@ test('toMatrix', () => {
       filters: [{ name: 'normed', options: { algorithm: 'max', value: 100 } }],
     },
   });
-  expect(text).toBe(`x	My spectrum	My spectrum
+  expect(text).toBe(`x	first	second
+x	My spectrum	My spectrum
 -1	50	50
 1	75	75
 2	100	0
@@ -18,7 +19,7 @@ test('toMatrix', () => {
 });
 
 function getTestAnalyses(): Analysis[] {
-  const analysis1 = new Analysis();
+  const analysis1 = new Analysis({ label: 'first' });
 
   analysis1.pushSpectrum(
     {
@@ -47,8 +48,7 @@ function getTestAnalyses(): Analysis[] {
       },
     },
   );
-
-  const analysis2 = new Analysis();
+  const analysis2 = new Analysis({ label: 'second' });
 
   analysis2.pushSpectrum(
     {

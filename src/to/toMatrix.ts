@@ -35,18 +35,20 @@ export function toMatrix(analyses: Analysis[], options: ToMatrixOptions = {}) {
   } = options;
   const data: DataXY[] = [];
   const labels: string[] = [xLabel];
+  const titles: string[] = ['x'];
   for (const analysis of analyses) {
     const spectra = analysis.getNormalizedSpectra({
       selector,
       normalization,
     });
     for (const spectrum of spectra) {
-      labels.push(spectrum.title || '');
+      titles.push(spectrum.title || '');
+      labels.push(analysis.label || '');
       data.push({ x: spectrum.variables.x.data, y: spectrum.variables.y.data });
     }
   }
   const aligned = xyArrayAlign(data, { delta });
-  const lines: string[] = [labels.join('\t')];
+  const lines: string[] = [labels.join('\t'), titles.join('\t')];
   for (let row = 0; row < aligned.x.length; row++) {
     const line = [aligned.x[row]];
     for (const column of aligned.ys) {
