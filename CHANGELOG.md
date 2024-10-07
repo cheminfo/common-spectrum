@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.10.1](https://github.com/cheminfo/common-spectrum/compare/v2.10.0...v2.10.1) (2024-10-07)
+
+
+### Bug Fixes
+
+* add title and labels in toMatrix ([025ea89](https://github.com/cheminfo/common-spectrum/commit/025ea8902a3c74a1d077c069ae8fe40483abba4b))
+
 ## [2.10.0](https://github.com/cheminfo/common-spectrum/compare/v2.9.0...v2.10.0) (2024-10-07)
 
 
