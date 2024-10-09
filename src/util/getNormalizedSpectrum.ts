@@ -64,11 +64,12 @@ export function getNormalizedSpectrum(
       '',
     );
   }
-
+  //@ts-expect-error We should update type definitions to accept any number array
   newSpectrum.variables.x.data = x;
   newSpectrum.variables.x.min = xMinValue(x);
   newSpectrum.variables.x.max = xMaxValue(x);
   newSpectrum.variables.x.isMonotone = xIsMonotonic(x) !== 0;
+  //@ts-expect-error We should update type definitions to accept any number array
   newSpectrum.variables.y.data = y;
   newSpectrum.variables.y.min = xMinValue(y);
   newSpectrum.variables.y.max = xMaxValue(y);
