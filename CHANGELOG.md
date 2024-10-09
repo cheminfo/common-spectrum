@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.12.0](https://github.com/cheminfo/common-spectrum/compare/v2.11.0...v2.12.0) (2024-10-09)
+
+
+### Features
+
+* add new reverseIfNeeded filter and update dependencies ([4044e4f](https://github.com/cheminfo/common-spectrum/commit/4044e4f88f307546b07b7053461ff928554df3b3))
+
 ## [2.11.0](https://github.com/cheminfo/common-spectrum/compare/v2.10.1...v2.11.0) (2024-10-09)
 
 
