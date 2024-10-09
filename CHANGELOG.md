@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.11.0](https://github.com/cheminfo/common-spectrum/compare/v2.10.1...v2.11.0) (2024-10-09)
+
+
+### Features
+
+* if filtered data as reversed x Axis we reverse it. ([1339a3f](https://github.com/cheminfo/common-spectrum/commit/1339a3f1bc7e85be5b15a089155e3d214e243529))
+
 ## [2.10.1](https://github.com/cheminfo/common-spectrum/compare/v2.10.0...v2.10.1) (2024-10-07)
 
 
