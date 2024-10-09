@@ -65,12 +65,6 @@ export function getNormalizedSpectrum(
     );
   }
 
-  // @ts-expect-error we know it is not undefined
-  if (x.length > 1 && x[0] > x.at(-1)) {
-    x.reverse();
-    y.reverse();
-  }
-
   newSpectrum.variables.x.data = x;
   newSpectrum.variables.x.min = xMinValue(x);
   newSpectrum.variables.x.max = xMaxValue(x);
