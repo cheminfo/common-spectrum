@@ -1,5 +1,21 @@
 # Changelog
 
+## [3.0.0](https://github.com/cheminfo/common-spectrum/compare/v2.12.0...v3.0.0) (2025-08-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* replace isMonotone by isMonotonic to use MeasurementXY definitions and finalize package updates
+
+### Features
+
+* migrate to type=module ([e690869](https://github.com/cheminfo/common-spectrum/commit/e69086937891a4cddb77567055d518402734638e))
+
+
+### Miscellaneous Chores
+
+* replace isMonotone by isMonotonic to use MeasurementXY definitions and finalize package updates ([2f0d9d5](https://github.com/cheminfo/common-spectrum/commit/2f0d9d51e33819456b14c1f1d71bf97b912a339a))
+
 ## [2.12.0](https://github.com/cheminfo/common-spectrum/compare/v2.11.0...v2.12.0) (2024-10-09)
 
 ### Features
