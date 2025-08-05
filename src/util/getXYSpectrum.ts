@@ -1,5 +1,6 @@
-import type { SpectrumSelector } from '../types/SpectrumSelector';
 import type { MeasurementXY } from 'cheminfo-types';
+
+import type { SpectrumSelector } from '../types/SpectrumSelector';
 
 import { getXYSpectra } from './getXYSpectra';
 

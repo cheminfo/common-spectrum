@@ -1,9 +1,9 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
+import type { MeasurementVariable } from 'cheminfo-types';
 import { describe, expect, it } from 'vitest';
 
-import type { MeasurementVariable } from 'cheminfo-types';
 import { fromJcamp } from '../fromJcamp';
 
 function irCallback(variables: Record<string, MeasurementVariable>) {

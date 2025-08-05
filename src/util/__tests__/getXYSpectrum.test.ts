@@ -131,7 +131,7 @@ describe('getXYSpectrum', () => {
         data: [7, 8],
         min: 7,
         max: 8,
-        isMonotonic: true,
+        isMonotonic: 1,
       },
       y: {
         units: 'g',
@@ -139,7 +139,7 @@ describe('getXYSpectrum', () => {
         data: [0.001, 0.002],
         min: 0.001,
         max: 0.002,
-        isMonotonic: true,
+        isMonotonic: 1,
       },
     });
   });
@@ -156,7 +156,7 @@ describe('getXYSpectrum', () => {
         data: [30, 40],
         min: 30,
         max: 40,
-        isMonotonic: true,
+        isMonotonic: 1,
       },
       y: {
         units: '',
@@ -164,7 +164,7 @@ describe('getXYSpectrum', () => {
         data: [10, 20],
         min: 10,
         max: 20,
-        isMonotonic: true,
+        isMonotonic: 1,
       },
     });
   });
@@ -182,7 +182,7 @@ describe('getXYSpectrum', () => {
         data: [3, 4],
         min: 3,
         max: 4,
-        isMonotonic: true,
+        isMonotonic: 1,
       },
       y: {
         units: 'g',
@@ -190,7 +190,7 @@ describe('getXYSpectrum', () => {
         data: [0.001, 0.002],
         min: 0.001,
         max: 0.002,
-        isMonotonic: true,
+        isMonotonic: 1,
       },
     });
   });
@@ -267,7 +267,7 @@ describe('getXYSpectrum', () => {
         data: [1, 2],
         min: 1,
         max: 2,
-        isMonotonic: true,
+        isMonotonic: 1,
       },
       y: {
         units: 'g',
@@ -275,7 +275,7 @@ describe('getXYSpectrum', () => {
         data: [0.002, 0.001],
         min: 0.001,
         max: 0.002,
-        isMonotonic: true,
+        isMonotonic: 1,
       },
     });
   });
@@ -294,7 +294,7 @@ describe('getXYSpectrum', () => {
           data: [0.001, 0.002],
           min: 0.001,
           max: 0.002,
-          isMonotonic: true,
+          isMonotonic: 1,
         },
         y: {
           units: '°F',
@@ -302,7 +302,7 @@ describe('getXYSpectrum', () => {
           data: [37.4, 39.2],
           min: 37.4,
           max: 39.2,
-          isMonotonic: true,
+          isMonotonic: 1,
         },
       },
     });
@@ -321,7 +321,7 @@ describe('getXYSpectrum', () => {
         data: [7, 8],
         min: 7,
         max: 8,
-        isMonotonic: true,
+        isMonotonic: 1,
       },
       y: {
         units: 'g',
@@ -329,7 +329,7 @@ describe('getXYSpectrum', () => {
         data: [0.001, 0.002],
         min: 0.001,
         max: 0.002,
-        isMonotonic: true,
+        isMonotonic: 1,
       },
     });
   });

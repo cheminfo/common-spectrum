@@ -53,6 +53,7 @@ export class AnalysesManager {
       }
       for (const spectrum of analysis.spectra) {
         if (
+          spectrum.id &&
           ids.includes(spectrum.id) &&
           !processedAnalysisIds.has(analysis.id)
         ) {

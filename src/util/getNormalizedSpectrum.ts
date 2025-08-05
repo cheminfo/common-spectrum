@@ -1,4 +1,4 @@
-import type { MeasurementXY } from 'cheminfo-types';
+import type { DoubleArray, MeasurementXY } from 'cheminfo-types';
 import { filterXY } from 'ml-signal-processing';
 import { xIsMonotonic, xMaxValue, xMinValue } from 'ml-spectra-processing';
 
@@ -53,7 +53,10 @@ export function getNormalizedSpectrum(
     });
   }
 
-  const { x, y } = filterXY(data, filters).data;
+  const { x, y } = filterXY(data, filters).data as {
+    x: DoubleArray;
+    y: DoubleArray;
+  };
 
   // filters change the y axis, we get rid of the units
   // TODO we should deal correctly with this problem

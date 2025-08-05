@@ -1,6 +1,5 @@
-import { xIsMonotonic, xMaxValue, xMinValue } from 'ml-spectra-processing';
-
 import type { MeasurementVariable } from 'cheminfo-types';
+import { xIsMonotonic, xMaxValue, xMinValue } from 'ml-spectra-processing';
 
 import { convertUnit } from './convertUnit';
 
@@ -18,6 +17,6 @@ export function getConvertedVariable(
     data: data || [],
     min: data ? xMinValue(data) : undefined,
     max: data ? xMaxValue(data) : undefined,
-    isMonotonic: xIsMonotonic(data) !== 0,
+    isMonotonic: xIsMonotonic(data),
   };
 }

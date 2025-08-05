@@ -85,7 +85,7 @@ describe('getXYSpectra', () => {
         data: [10000000, 20000000],
         min: 10000000,
         max: 20000000,
-        isMonotonic: true,
+        isMonotonic: 1,
       },
       y: {
         units: '°C',
@@ -93,7 +93,7 @@ describe('getXYSpectra', () => {
         data: [30, 40],
         min: 30,
         max: 40,
-        isMonotonic: true,
+        isMonotonic: 1,
       },
     });
   });

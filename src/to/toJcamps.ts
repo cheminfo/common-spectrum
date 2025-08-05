@@ -1,7 +1,7 @@
+import type { MeasurementXY } from 'cheminfo-types';
 import { fromVariables } from 'convert-to-jcamp';
 
 import type { Analysis } from '../Analysis';
-import type { MeasurementXY } from 'cheminfo-types';
 
 interface GetJcampOptions {
   info?: Record<string, string>;

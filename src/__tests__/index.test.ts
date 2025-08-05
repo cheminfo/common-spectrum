@@ -11,7 +11,7 @@ test('index', () => {
     {
       x: {
         data: [1, 2],
-        isMonotonic: true,
+        isMonotonic: 1,
         min: 1,
         max: 2,
         units: 'xUnits',
@@ -81,7 +81,7 @@ test('index', () => {
     variables: {
       x: {
         data: [1, 2],
-        isMonotonic: true,
+        isMonotonic: 1,
         min: 1,
         max: 2,
         units: 'xUnits',
@@ -90,7 +90,7 @@ test('index', () => {
       },
       y: {
         data: [3, 4],
-        isMonotonic: true,
+        isMonotonic: 1,
         min: 3,
         max: 4,
         units: 'yUnits',

@@ -1,4 +1,4 @@
-import type { MeasurementVariable, MeasurementXY } from 'cheminfo-types';
+import type { MeasurementXY, MeasurementXYVariables } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 import {
   stringify,
@@ -13,7 +13,9 @@ import { getNormalizedSpectrum } from './util/getNormalizedSpectrum';
 import { getXYSpectra } from './util/getXYSpectra';
 import { getXYSpectrum } from './util/getXYSpectrum';
 
-type SpectrumCallback = (variables: MeasurementVariable) => MeasurementVariable;
+type SpectrumCallback = (
+  variables: MeasurementXYVariables,
+) => MeasurementXYVariables;
 
 interface AnalysisOptions {
   id?: string;
@@ -85,7 +87,7 @@ export class Analysis {
    * @param options
    */
   public pushSpectrum(
-    variables: MeasurementVariable,
+    variables: MeasurementXYVariables,
     options: Omit<MeasurementXY, 'variables'> = {},
   ) {
     this.spectra.push(
@@ -202,7 +204,7 @@ export class Analysis {
  * @param analysisOptions
  */
 function standardizeData(
-  variables: MeasurementVariable,
+  variables: MeasurementXYVariables,
   options: Omit<MeasurementXY, 'variables'>,
   analysisOptions: Pick<AnalysisOptions, 'spectrumCallback'>,
 ) {
@@ -245,7 +247,7 @@ function standardizeData(
     }
     variable.min = xMinValue(variable.data);
     variable.max = xMaxValue(variable.data);
-    variable.isMonotonic = xIsMonotonic(variable.data) !== 0;
+    variable.isMonotonic = xIsMonotonic(variable.data);
   }
 
   return {
