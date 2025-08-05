@@ -3,7 +3,7 @@ import { join } from 'node:path';
 
 import { expect, test } from 'vitest';
 
-import { fromJcamp } from '../fromJcamp';
+import { fromJcamp } from '../fromJcamp.js';
 
 test('fromJcamp linked file', () => {
   const jcamp = readFileSync(join(__dirname, './data/uv-link.jdx'), 'utf8');

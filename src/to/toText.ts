@@ -1,6 +1,6 @@
 import type { MeasurementXY } from 'cheminfo-types';
 
-import type { Analysis, NormalizedOptions } from '../Analysis';
+import type { Analysis, NormalizedOptions } from '../Analysis.js';
 
 interface ToTextOptions extends NormalizedOptions {
   endOfLine?: string;

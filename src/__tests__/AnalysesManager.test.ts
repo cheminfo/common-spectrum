@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
-import { AnalysesManager } from '../AnalysesManager';
-import { Analysis } from '../Analysis';
+import { AnalysesManager } from '../AnalysesManager.js';
+import { Analysis } from '../Analysis.js';
 
 describe('AnalysisManager', () => {
   it('check add / remove', () => {

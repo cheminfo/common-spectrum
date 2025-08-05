@@ -1,4 +1,4 @@
-import type { DifferentType } from '../types/types';
+import type { DifferentType } from '../types/types.js';
 
 export function appendDistinctParameter(
   values: Record<string, DifferentType>,

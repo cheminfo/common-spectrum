@@ -3,7 +3,7 @@ import { join } from 'node:path';
 
 import { expect, test } from 'vitest';
 
-import { fromText } from '../fromText';
+import { fromText } from '../fromText.js';
 
 test('fromText', () => {
   const arrayBuffer = readFileSync(join(__dirname, 'data/uv.txt'));

@@ -1,6 +1,6 @@
-import type { Analysis } from '../Analysis';
+import type { Analysis } from '../Analysis.js';
 
-import { toJcamps } from './toJcamps';
+import { toJcamps } from './toJcamps.js';
 
 interface GetJcampOptions {
   info?: Record<string, string>;

@@ -1,8 +1,8 @@
 import type { MeasurementXY } from 'cheminfo-types';
 
-import type { SpectrumSelector } from '../types/SpectrumSelector';
+import type { SpectrumSelector } from '../types/SpectrumSelector.js';
 
-import { getXYSpectra } from './getXYSpectra';
+import { getXYSpectra } from './getXYSpectra.js';
 
 /**
  * Retrieve the spectrum with only X/Y data that match all the selectors

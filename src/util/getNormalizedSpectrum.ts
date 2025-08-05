@@ -2,7 +2,7 @@ import type { DoubleArray, MeasurementXY } from 'cheminfo-types';
 import { filterXY } from 'ml-signal-processing';
 import { xIsMonotonic, xMaxValue, xMinValue } from 'ml-spectra-processing';
 
-import type { NormalizedSpectrumOptions } from '../types/NormalizedSpectrumOptions';
+import type { NormalizedSpectrumOptions } from '../types/NormalizedSpectrumOptions.js';
 
 export function getNormalizedSpectrum(
   spectrum: MeasurementXY,

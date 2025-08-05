@@ -3,7 +3,7 @@ import { join } from 'node:path';
 
 import { describe, expect, it, test } from 'vitest';
 
-import { Analysis, JSGraph, fromJcamp } from '../..';
+import { Analysis, JSGraph, fromJcamp } from '../../index.js';
 
 test('getJSGraph', () => {
   const analysis = new Analysis();

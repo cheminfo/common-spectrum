@@ -1,7 +1,7 @@
 import type { MeasurementVariable, TextData } from 'cheminfo-types';
 import { convert } from 'jcampconverter';
 
-import { Analysis } from '../Analysis';
+import { Analysis } from '../Analysis.js';
 
 /**
  * Creates a new Analysis from a JCAMP string

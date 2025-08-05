@@ -1,8 +1,8 @@
 import type { GSDOptions } from 'ml-gsd';
 import type { Shape1D } from 'ml-peak-shape-generator';
 
-import type { OneLowerCase } from './Cheminfo';
-import type { NormalizedSpectrumOptions } from './NormalizedSpectrumOptions';
+import type { OneLowerCase } from './Cheminfo.js';
+import type { NormalizedSpectrumOptions } from './NormalizedSpectrumOptions.js';
 
 export interface AutoPeakPickingOptions extends GSDOptions {
   /** x variable label, by default 'x' */

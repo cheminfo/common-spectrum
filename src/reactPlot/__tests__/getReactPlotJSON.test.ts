@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest';
 
-import { Analysis } from '../..';
-import { getReactPlotJSON } from '../getReactPlotJSON';
+import { Analysis } from '../../Analysis.js';
+import { getReactPlotJSON } from '../getReactPlotJSON.js';
 
 const spectra = {
   variables: {

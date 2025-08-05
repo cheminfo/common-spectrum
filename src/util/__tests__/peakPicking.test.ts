@@ -2,7 +2,7 @@ import type { MeasurementXY } from 'cheminfo-types';
 import { toBeDeepCloseTo, toMatchCloseTo } from 'jest-matcher-deep-close-to';
 import { describe, expect, it } from 'vitest';
 
-import { peakPicking } from '../peakPicking';
+import { peakPicking } from '../peakPicking.js';
 
 expect.extend({ toBeDeepCloseTo, toMatchCloseTo });
 

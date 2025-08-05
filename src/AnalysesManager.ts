@@ -1,7 +1,7 @@
-import { Analysis } from './Analysis';
-import type { CounterType, DifferentType } from './types/types';
-import { appendDistinctParameter } from './util/appendDistinctParameter';
-import { appendDistinctValue } from './util/appendDistinctValue';
+import { Analysis } from './Analysis.js';
+import type { CounterType, DifferentType } from './types/types.js';
+import { appendDistinctParameter } from './util/appendDistinctParameter.js';
+import { appendDistinctValue } from './util/appendDistinctValue.js';
 
 interface GetAnalysesOptions {
   /**

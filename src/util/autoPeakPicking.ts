@@ -2,9 +2,9 @@ import type { MeasurementXY } from 'cheminfo-types';
 import { gsd } from 'ml-gsd';
 import { xyMaxClosestYPoint, xyMinClosestYPoint } from 'ml-spectra-processing';
 
-import type { AutoPeakPickingOptions } from '../types/AutoPeakPickingOptions';
+import type { AutoPeakPickingOptions } from '../types/AutoPeakPickingOptions.js';
 
-import { getNormalizedSpectrum } from './getNormalizedSpectrum';
+import { getNormalizedSpectrum } from './getNormalizedSpectrum.js';
 
 /**
  * Based on a x value we will return a peak

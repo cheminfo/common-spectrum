@@ -6,11 +6,11 @@ import type {
   OneLowerCase,
 } from 'cheminfo-types';
 
-import type { SpectrumSelector } from '../types/SpectrumSelector';
+import type { SpectrumSelector } from '../types/SpectrumSelector.js';
 
-import { convertUnit } from './convertUnit';
-import { ensureRegexp } from './ensureRegexp';
-import { getConvertedVariable } from './getConvertedVariable';
+import { convertUnit } from './convertUnit.js';
+import { ensureRegexp } from './ensureRegexp.js';
+import { getConvertedVariable } from './getConvertedVariable.js';
 
 /**
  * Retrieve the spectrum with only X/Y data that match all the selectors

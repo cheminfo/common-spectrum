@@ -1,8 +1,8 @@
-import type { MeasurementXY } from 'cheminfo-types';
+import type { DoubleArray, MeasurementXY } from 'cheminfo-types';
 import { optimize as optimizePeak } from 'ml-spectra-fitting';
 import { xFindClosestIndex, xMaxValue } from 'ml-spectra-processing';
 
-import type { PeakPickingOptions } from '../types/PeakPickingOptions';
+import type { PeakPickingOptions } from '../types/PeakPickingOptions.js';
 
 /**
  * Based on a x value we will return a peak
@@ -27,7 +27,7 @@ export function peakPicking(
     shape = { kind: 'gaussian', fwhm: 1 },
   } = options;
 
-  const x = spectrum.variables[xVariable]?.data;
+  const x = spectrum.variables[xVariable]?.data as DoubleArray;
   let y;
   if (!isMax) {
     y = spectrum.variables[yVariable]?.data.slice(); // do deep copy as we maybe need to flip sign

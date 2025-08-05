@@ -1,11 +1,11 @@
 import type { DataXY } from 'cheminfo-types';
 import { xyFilterXPositive } from 'ml-spectra-processing';
 
-import type { Analysis } from '../Analysis';
+import type { Analysis } from '../Analysis.js';
 
-import type { JSGraphOptions } from './JSGraphOptions';
-import { addStyle } from './addStyle';
-import { COLORS } from './colors';
+import type { JSGraphOptions } from './JSGraphOptions.js';
+import { addStyle } from './addStyle.js';
+import { COLORS } from './colors.js';
 
 /**
  * Generate a jsgraph chart format from an array of Analysis

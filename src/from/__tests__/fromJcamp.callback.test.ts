@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import type { MeasurementVariable } from 'cheminfo-types';
 import { describe, expect, it } from 'vitest';
 
-import { fromJcamp } from '../fromJcamp';
+import { fromJcamp } from '../fromJcamp.js';
 
 function irCallback(variables: Record<string, MeasurementVariable>) {
   if (variables.y.label === 'ABSORBANCE') {

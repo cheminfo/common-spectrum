@@ -3,7 +3,7 @@ import { join } from 'node:path';
 
 import { beforeEach, describe, expect, it } from 'vitest';
 
-import { AnalysesManager, Analysis, fromJcamp } from '..';
+import { AnalysesManager, Analysis, fromJcamp } from '../index.js';
 
 describe('AnalysesManager test', () => {
   let analysis1: Analysis;

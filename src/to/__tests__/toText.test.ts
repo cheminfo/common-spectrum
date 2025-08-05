@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 
-import { Analysis } from '../../Analysis';
-import { toText } from '../toText';
+import { Analysis } from '../../Analysis.js';
+import { toText } from '../toText.js';
 
 describe('toCvs', () => {
   let analysis: Analysis;

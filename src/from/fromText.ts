@@ -2,7 +2,7 @@ import type { MeasurementXYVariables, TextData } from 'cheminfo-types';
 import type { ParseXYOptions } from 'xy-parser';
 import { parseXYAndKeepInfo } from 'xy-parser';
 
-import { Analysis } from '../Analysis';
+import { Analysis } from '../Analysis.js';
 
 interface FromTextOptions {
   /**

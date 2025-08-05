@@ -1,7 +1,7 @@
 import type { AxisProps, LineSeriesProps, PlotObjectType } from 'react-plot';
 
-import type { Analysis } from '../Analysis';
-import type { SpectrumSelector } from '../types/SpectrumSelector';
+import type { Analysis } from '../Analysis.js';
+import type { SpectrumSelector } from '../types/SpectrumSelector.js';
 
 type LineSeriesType = { type: 'line' } & LineSeriesProps;
 export type ReactPlotOptions = Omit<PlotObjectType, 'axes' | 'content'> & {

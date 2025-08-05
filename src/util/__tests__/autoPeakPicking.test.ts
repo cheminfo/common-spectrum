@@ -1,7 +1,7 @@
 import type { MeasurementXY } from 'cheminfo-types';
 import { describe, expect, it } from 'vitest';
 
-import { autoPeakPicking } from '../autoPeakPicking';
+import { autoPeakPicking } from '../autoPeakPicking.js';
 
 describe('autoPeakPicking positive', () => {
   const spectrum: MeasurementXY = {

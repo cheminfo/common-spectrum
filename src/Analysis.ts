@@ -7,11 +7,11 @@ import {
   xMinValue,
 } from 'ml-spectra-processing';
 
-import type { NormalizedSpectrumOptions } from './types/NormalizedSpectrumOptions';
-import type { SpectrumSelector } from './types/SpectrumSelector';
-import { getNormalizedSpectrum } from './util/getNormalizedSpectrum';
-import { getXYSpectra } from './util/getXYSpectra';
-import { getXYSpectrum } from './util/getXYSpectrum';
+import type { NormalizedSpectrumOptions } from './types/NormalizedSpectrumOptions.js';
+import type { SpectrumSelector } from './types/SpectrumSelector.js';
+import { getNormalizedSpectrum } from './util/getNormalizedSpectrum.js';
+import { getXYSpectra } from './util/getXYSpectra.js';
+import { getXYSpectrum } from './util/getXYSpectrum.js';
 
 type SpectrumCallback = (
   variables: MeasurementXYVariables,

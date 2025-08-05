@@ -1,4 +1,4 @@
-import type { Analysis } from '../Analysis';
+import type { Analysis } from '../Analysis.js';
 
 interface StyleOptions {
   color?: string;

@@ -2,16 +2,14 @@
   "name": "common-spectrum",
   "version": "2.12.0",
   "description": "Common package to deal with spectra",
-  "main": "./lib/index.js",
-  "module": "./lib-esm/index.js",
-  "types": "./lib/index.d.ts",
+  "type": "module",
+  "exports": "./lib/index.js",
   "files": [
     "lib",
-    "lib-esm",
     "src"
   ],
   "scripts": {
-    "build": "npm run tsc && cheminfo-build -r CommonSpectrum",
+    "build": "npm run tsc && cheminfo-build --entry lib/index.js -r CommonSpectrum",
     "check-types": "tsc --noEmit",
     "clean": "rimraf lib lib-esm",
     "eslint": "eslint src",
@@ -21,10 +19,9 @@
     "prettier-write": "prettier --write src",
     "test": "npm run test-coverage && npm run eslint && npm run prettier && npm run check-types",
     "test-coverage": "vitest run --coverage",
-    "test-only": "vitest",
-    "tsc": "npm run clean && npm run tsc-cjs && npm run tsc-esm",
-    "tsc-cjs": "tsc --project tsconfig.cjs.json",
-    "tsc-esm": "tsc --project tsconfig.esm.json"
+    "test-only": "vitest --run --coverage",
+    "tsc": "npm run clean && npm run tsc-build",
+    "tsc-build": "tsc --project tsconfig.build.json"
   },
   "repository": {
     "type": "git",
@@ -41,6 +38,7 @@
     "@types/d3-scale": "^4.0.9",
     "@types/js-quantities": "^1.6.6",
     "@types/node": "^24.2.0",
+    "@zakodium/tsconfig": "^1.0.2",
     "cheminfo-build": "^1.2.1",
     "cheminfo-types": "^1.8.1",
     "eslint": "^9.32.0",

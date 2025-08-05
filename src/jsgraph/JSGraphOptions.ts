@@ -1,6 +1,6 @@
-import type { NormalizedSpectrumOptions } from '../types/NormalizedSpectrumOptions';
+import type { NormalizedSpectrumOptions } from '../types/NormalizedSpectrumOptions.js';
 
-import type { JSGraphAxisOptions } from './JSGraphAxisOptions';
+import type { JSGraphAxisOptions } from './JSGraphAxisOptions.js';
 
 export interface JSGraphOptions {
   colors?: string[];

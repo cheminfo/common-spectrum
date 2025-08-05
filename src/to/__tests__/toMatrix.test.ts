@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest';
 
-import { Analysis } from '../..';
-import { toMatrix } from '../toMatrix';
+import { Analysis } from '../../Analysis.js';
+import { toMatrix } from '../toMatrix.js';
 
 test('toMatrix', () => {
   const analyses = getTestAnalyses();

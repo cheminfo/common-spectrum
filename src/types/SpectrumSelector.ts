@@ -1,4 +1,4 @@
-import type { OneLowerCase } from './Cheminfo';
+import type { OneLowerCase } from './Cheminfo.js';
 
 export interface SpectrumSelector {
   /** Allows to specify 2 units using a string like 'nm vs °C' */

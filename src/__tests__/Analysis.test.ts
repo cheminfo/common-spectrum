@@ -3,7 +3,7 @@ import { join } from 'node:path';
 
 import { describe, expect, it } from 'vitest';
 
-import { fromJcamp } from '..';
+import { fromJcamp } from '../index.js';
 
 describe('Analysis', () => {
   it('getXY', () => {

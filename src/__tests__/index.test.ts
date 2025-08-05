@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import { Analysis, JSGraph, fromJcamp, toJcamp } from '..';
+import { Analysis, JSGraph, fromJcamp, toJcamp } from '../index.js';
 
 test('index', () => {
   const analysis = new Analysis();

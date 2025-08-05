@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 
-import { Analysis, JSGraph, fromJcamp, toJcamp, toJcamps } from '..';
+import { Analysis, JSGraph, fromJcamp, toJcamp, toJcamps } from '../index.js';
 
 describe('case for ntuples', () => {
   let analysis: Analysis;
@@ -60,7 +60,8 @@ describe('case for ntuples', () => {
     })?.variables;
 
     expect(
-      (normalized?.y?.data?.[0] || 0) + (normalized?.y?.data?.[1] || 0),
+      (normalized?.y?.data?.[0] || 0) +
+        ((normalized?.y?.data?.[1] as number) || 0),
     ).toBeCloseTo(1, 10);
   });
 
