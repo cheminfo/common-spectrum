@@ -1,19 +1,19 @@
+import type { MeasurementVariable, MeasurementXY } from 'cheminfo-types';
 import { isAnyArray } from 'is-any-array';
 import {
-  xIsMonotonic,
-  xMinValue,
-  xMaxValue,
   stringify,
+  xIsMonotonic,
+  xMaxValue,
+  xMinValue,
 } from 'ml-spectra-processing';
 
-import type { SpectrumVariables, Spectrum } from './types/Cheminfo';
-import { NormalizedSpectrumOptions } from './types/NormalizedSpectrumOptions';
-import { SpectrumSelector } from './types/SpectrumSelector';
+import type { NormalizedSpectrumOptions } from './types/NormalizedSpectrumOptions';
+import type { SpectrumSelector } from './types/SpectrumSelector';
 import { getNormalizedSpectrum } from './util/getNormalizedSpectrum';
 import { getXYSpectra } from './util/getXYSpectra';
 import { getXYSpectrum } from './util/getXYSpectrum';
 
-type SpectrumCallback = (variables: SpectrumVariables) => SpectrumVariables;
+type SpectrumCallback = (variables: MeasurementVariable) => MeasurementVariable;
 
 interface AnalysisOptions {
   id?: string;
@@ -34,10 +34,10 @@ export class Analysis {
   public id: string;
   public label: string;
   public spectrumCallback: SpectrumCallback | undefined;
-  public spectra: Spectrum[];
+  public spectra: MeasurementXY[];
   private cache: {
-    spectrum: Record<string, Spectrum | undefined>;
-    spectra: Record<string, Spectrum[]>;
+    spectrum: Record<string, MeasurementXY | undefined>;
+    spectra: Record<string, MeasurementXY[]>;
   };
 
   public constructor(options: AnalysisOptions = {}) {
@@ -85,8 +85,8 @@ export class Analysis {
    * @param options
    */
   public pushSpectrum(
-    variables: SpectrumVariables,
-    options: Omit<Spectrum, 'variables'> = {},
+    variables: MeasurementVariable,
+    options: Omit<MeasurementXY, 'variables'> = {},
   ) {
     this.spectra.push(
       standardizeData(variables, options, {
@@ -97,7 +97,7 @@ export class Analysis {
   }
 
   /**
-   * Retrieve a Spectrum based on x/y units
+   * Retrieve a MeasurementXY based on x/y units
    * @param selector
    */
   public getXYSpectrum(selector: SpectrumSelector = {}) {
@@ -153,7 +153,9 @@ export class Analysis {
   /**
    * @param options
    */
-  public getNormalizedSpectra(options: NormalizedOptions = {}): Spectrum[] {
+  public getNormalizedSpectra(
+    options: NormalizedOptions = {},
+  ): MeasurementXY[] {
     const { normalization, selector } = options;
     const spectra = this.getXYSpectra(selector);
     if (spectra.length === 0) return [];
@@ -200,8 +202,8 @@ export class Analysis {
  * @param analysisOptions
  */
 function standardizeData(
-  variables: SpectrumVariables,
-  options: Omit<Spectrum, 'variables'>,
+  variables: MeasurementVariable,
+  options: Omit<MeasurementXY, 'variables'>,
   analysisOptions: Pick<AnalysisOptions, 'spectrumCallback'>,
 ) {
   const {
@@ -243,7 +245,7 @@ function standardizeData(
     }
     variable.min = xMinValue(variable.data);
     variable.max = xMaxValue(variable.data);
-    variable.isMonotone = xIsMonotonic(variable.data) !== 0;
+    variable.isMonotonic = xIsMonotonic(variable.data) !== 0;
   }
 
   return {

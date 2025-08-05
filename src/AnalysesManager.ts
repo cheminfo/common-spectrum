@@ -1,5 +1,5 @@
 import { Analysis } from './Analysis';
-import { CounterType, DifferentType } from './types/types';
+import type { CounterType, DifferentType } from './types/types';
 import { appendDistinctParameter } from './util/appendDistinctParameter';
 import { appendDistinctValue } from './util/appendDistinctValue';
 
@@ -53,7 +53,6 @@ export class AnalysesManager {
       }
       for (const spectrum of analysis.spectra) {
         if (
-          // @ts-expect-error spectrum id is not expected to be undefined at this level
           ids.includes(spectrum.id) &&
           !processedAnalysisIds.has(analysis.id)
         ) {

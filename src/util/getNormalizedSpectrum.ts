@@ -1,18 +1,18 @@
+import type { MeasurementXY } from 'cheminfo-types';
 import { filterXY } from 'ml-signal-processing';
-import { xIsMonotonic, xMinValue, xMaxValue } from 'ml-spectra-processing';
+import { xIsMonotonic, xMaxValue, xMinValue } from 'ml-spectra-processing';
 
-import type { Spectrum } from '../types/Cheminfo';
-import { NormalizedSpectrumOptions } from '../types/NormalizedSpectrumOptions';
+import type { NormalizedSpectrumOptions } from '../types/NormalizedSpectrumOptions';
 
 export function getNormalizedSpectrum(
-  spectrum: Spectrum,
+  spectrum: MeasurementXY,
   options: NormalizedSpectrumOptions = {},
 ) {
   const data = {
     x: spectrum.variables.x.data,
     y: spectrum.variables.y.data,
   };
-  const newSpectrum: Spectrum = {
+  const newSpectrum: MeasurementXY = {
     variables: {
       x: {
         data: spectrum.variables.x.data,
@@ -64,16 +64,14 @@ export function getNormalizedSpectrum(
       '',
     );
   }
-  //@ts-expect-error We should update type definitions to accept any number array
   newSpectrum.variables.x.data = x;
   newSpectrum.variables.x.min = xMinValue(x);
   newSpectrum.variables.x.max = xMaxValue(x);
-  newSpectrum.variables.x.isMonotone = xIsMonotonic(x) !== 0;
-  //@ts-expect-error We should update type definitions to accept any number array
+  newSpectrum.variables.x.isMonotonic = xIsMonotonic(x);
   newSpectrum.variables.y.data = y;
   newSpectrum.variables.y.min = xMinValue(y);
   newSpectrum.variables.y.max = xMaxValue(y);
-  newSpectrum.variables.y.isMonotone = xIsMonotonic(y) !== 0;
+  newSpectrum.variables.y.isMonotonic = xIsMonotonic(y);
 
   return newSpectrum;
 }

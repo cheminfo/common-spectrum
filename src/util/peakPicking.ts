@@ -1,8 +1,8 @@
+import type { MeasurementXY } from 'cheminfo-types';
 import { optimize as optimizePeak } from 'ml-spectra-fitting';
 import { xFindClosestIndex, xMaxValue } from 'ml-spectra-processing';
 
-import type { Spectrum } from '../types/Cheminfo';
-import { PeakPickingOptions } from '../types/PeakPickingOptions';
+import type { PeakPickingOptions } from '../types/PeakPickingOptions';
 
 /**
  * Based on a x value we will return a peak
@@ -14,7 +14,7 @@ import { PeakPickingOptions } from '../types/PeakPickingOptions';
  * @param options
  */
 export function peakPicking(
-  spectrum: Spectrum,
+  spectrum: MeasurementXY,
   /** value to search (on x axis) */
   target: number,
   options: PeakPickingOptions = {},

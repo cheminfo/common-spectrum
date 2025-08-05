@@ -1,8 +1,8 @@
-import { DataXY } from 'cheminfo-types';
+import type { DataXY } from 'cheminfo-types';
 import { xyArrayAlign } from 'ml-spectra-processing';
 
-import { Analysis } from '../Analysis';
-import { NormalizedSpectrumOptions } from '../types/NormalizedSpectrumOptions';
+import type { Analysis } from '../Analysis';
+import type { NormalizedSpectrumOptions } from '../types/NormalizedSpectrumOptions';
 
 interface ToMatrixOptions {
   selector?: Record<string, unknown>;

@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
 import { fromJcamp } from '..';
 
@@ -15,6 +15,7 @@ describe('Analysis', () => {
     const analysis = fromJcamp(text);
 
     const xy = analysis.getXY() || { x: [], y: [] };
+
     expect(xy.x).toHaveLength(91);
     expect(xy.y).toHaveLength(91);
   });

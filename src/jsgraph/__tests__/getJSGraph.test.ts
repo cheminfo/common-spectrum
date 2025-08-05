@@ -1,12 +1,13 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-import { test, expect, describe, it } from 'vitest';
+import { describe, expect, it, test } from 'vitest';
 
 import { Analysis, JSGraph, fromJcamp } from '../..';
 
 test('getJSGraph', () => {
   const analysis = new Analysis();
+
   expect(analysis.id).toHaveLength(8);
 
   analysis.pushSpectrum(
@@ -52,10 +53,12 @@ describe('getJSGraph isotherm', () => {
     join(__dirname, '../../from/__tests__/data/isotherm.jdx'),
   );
   const analysis = fromJcamp(jcamp);
+
   it('distinctLabelUnits', () => {
     const jsgraph = JSGraph.getJSGraph([analysis], {
       selector: { xLabel: '', yLabel: '' },
     });
+
     //@ts-expect-error Would be fixed if typed was correctly defined
     expect(jsgraph.series[0].data.x).toHaveLength(68);
   });

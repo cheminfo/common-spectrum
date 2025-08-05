@@ -1,8 +1,8 @@
+import type { MeasurementXY } from 'cheminfo-types';
 import { gsd } from 'ml-gsd';
 import { xyMaxClosestYPoint, xyMinClosestYPoint } from 'ml-spectra-processing';
 
-import { AutoPeakPickingOptions } from '../types/AutoPeakPickingOptions';
-import type { Spectrum } from '../types/Cheminfo';
+import type { AutoPeakPickingOptions } from '../types/AutoPeakPickingOptions';
 
 import { getNormalizedSpectrum } from './getNormalizedSpectrum';
 
@@ -12,7 +12,7 @@ import { getNormalizedSpectrum } from './getNormalizedSpectrum';
  * @param options
  */
 export function autoPeakPicking(
-  spectrum: Spectrum,
+  spectrum: MeasurementXY,
   options: AutoPeakPickingOptions = {},
 ) {
   const {
@@ -27,7 +27,7 @@ export function autoPeakPicking(
   if (!x || !y) return [];
 
   if (normalizationOptions) {
-    const tempSpectrum: Spectrum = {
+    const tempSpectrum: MeasurementXY = {
       variables: {
         x: { data: x, label: '' },
         y: { data: y, label: '' },

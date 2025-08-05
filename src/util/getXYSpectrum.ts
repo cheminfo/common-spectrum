@@ -1,5 +1,5 @@
-import type { Spectrum } from '../types/Cheminfo';
-import { SpectrumSelector } from '../types/SpectrumSelector';
+import type { SpectrumSelector } from '../types/SpectrumSelector';
+import type { MeasurementXY } from 'cheminfo-types';
 
 import { getXYSpectra } from './getXYSpectra';
 
@@ -11,9 +11,9 @@ import { getXYSpectra } from './getXYSpectra';
  * @param selector
  */
 export function getXYSpectrum(
-  spectra: Spectrum[] = [],
+  spectra: MeasurementXY[] = [],
   selector: SpectrumSelector = {},
-): Spectrum | undefined {
+): MeasurementXY | undefined {
   const selectedSpectra = getXYSpectra(spectra, selector);
   if (selectedSpectra.length === 0) return undefined;
   return selectedSpectra[0];

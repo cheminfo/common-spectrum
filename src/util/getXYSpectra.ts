@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-dynamic-delete */
 
+import type { SpectrumSelector } from '../types/SpectrumSelector';
 import type {
+  MeasurementVariable,
+  MeasurementXY,
   OneLowerCase,
-  Spectrum,
-  SpectrumVariables,
-} from '../types/Cheminfo';
-import { SpectrumSelector } from '../types/SpectrumSelector';
+} from 'cheminfo-types';
 
 import { convertUnit } from './convertUnit';
 import { ensureRegexp } from './ensureRegexp';
@@ -19,10 +19,10 @@ import { getConvertedVariable } from './getConvertedVariable';
  * @param selector
  */
 export function getXYSpectra(
-  spectra: Spectrum[] = [],
+  spectra: MeasurementXY[] = [],
   selector: SpectrumSelector = {},
-): Spectrum[] {
-  const selectedSpectra: Spectrum[] = [];
+): MeasurementXY[] {
+  const selectedSpectra: MeasurementXY[] = [];
 
   if (spectra.length === 0) return selectedSpectra;
 
@@ -126,11 +126,11 @@ interface Selector {
   variableName?: OneLowerCase;
 }
 function getPossibleVariable(
-  variables: SpectrumVariables,
+  variables: MeasurementVariable,
   selector: Selector = {},
 ) {
   const { units, label, variableName } = selector;
-  const possible: SpectrumVariables = { ...variables };
+  const possible: MeasurementVariable = { ...variables };
   let key: keyof typeof possible;
   if (units !== undefined) {
     for (key in possible) {

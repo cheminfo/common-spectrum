@@ -17,7 +17,7 @@ export * from './util/autoPeakPicking';
 export * from './types/types';
 export * from './types/AutoPeakPickingOptions';
 export * from './types/NormalizedSpectrumOptions';
-export { SpectrumVariable, Spectrum } from './types/Cheminfo';
+export { MeasurementVariable, MeasurementXY } from 'cheminfo-types';
 export * from './types/PlotObject';
 export { Shape1D } from 'ml-peak-shape-generator';
 export * from './types/SpectrumSelector';

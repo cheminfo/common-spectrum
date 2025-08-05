@@ -1,16 +1,17 @@
-import { test, expect } from 'vitest';
+import { expect, test } from 'vitest';
 
-import { Analysis, fromJcamp, toJcamp, JSGraph } from '..';
+import { Analysis, JSGraph, fromJcamp, toJcamp } from '..';
 
 test('index', () => {
   const analysis = new Analysis();
+
   expect(analysis.id).toHaveLength(8);
 
   analysis.pushSpectrum(
     {
       x: {
         data: [1, 2],
-        isMonotone: true,
+        isMonotonic: true,
         min: 1,
         max: 2,
         units: 'xUnits',
@@ -44,28 +45,32 @@ test('index', () => {
       filters: [{ name: 'normed' }],
     },
   });
+
   expect(
     (normalizedSpectrum?.variables?.y?.data?.[0] || 0) +
       (normalizedSpectrum?.variables?.y?.data?.[1] || 0),
   ).toBeCloseTo(1, 10);
 
   const undefinedSpectrum = analysis.getXYSpectrum({ xUnits: 'J' });
+
   expect(undefinedSpectrum).toBeUndefined();
 
   const inverted = analysis.getXYSpectrum({
     xUnits: 'yUnits',
     yUnits: 'xUnits',
   });
+
   expect(inverted?.variables.x.data).toStrictEqual([3, 4]);
   expect(inverted?.variables.y.data).toStrictEqual([1, 2]);
 
   const jsgraph = JSGraph.getJSGraph([analysis]);
+
   expect(jsgraph.series[0].data).toStrictEqual({ x: [1, 2], y: [3, 4] });
 
   const jcamp = toJcamp(analysis, {
     info: {
       owner: 'cheminfo',
-      origin: 'Common Spectrum',
+      origin: 'Common MeasurementXY',
     },
   });
 
@@ -76,7 +81,7 @@ test('index', () => {
     variables: {
       x: {
         data: [1, 2],
-        isMonotone: true,
+        isMonotonic: true,
         min: 1,
         max: 2,
         units: 'xUnits',
@@ -85,7 +90,7 @@ test('index', () => {
       },
       y: {
         data: [3, 4],
-        isMonotone: true,
+        isMonotonic: true,
         min: 3,
         max: 4,
         units: 'yUnits',

@@ -1,12 +1,12 @@
+import type { MeasurementXY } from 'cheminfo-types';
 import { toBeDeepCloseTo, toMatchCloseTo } from 'jest-matcher-deep-close-to';
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
-import type { Spectrum } from '../../types/Cheminfo';
 import { getXYSpectrum } from '../getXYSpectrum';
 
 expect.extend({ toBeDeepCloseTo, toMatchCloseTo });
 
-const spectra: Spectrum[] = [
+const spectra: MeasurementXY[] = [
   {
     variables: {
       x: {
@@ -73,13 +73,14 @@ const spectra: Spectrum[] = [
 ];
 
 describe('getXYSpectrum', () => {
-  it('Spectrum by labels', () => {
+  it('MeasurementXY by labels', () => {
     const xy: any = getXYSpectrum(spectra, {
       xLabel: 'Weight [mg]',
       yLabel: 'Temperature [°C]',
     })?.variables;
 
     xy.x.data = Array.from(xy.x.data);
+
     expect(xy).toStrictEqual({
       x: {
         units: 'mg',
@@ -94,7 +95,7 @@ describe('getXYSpectrum', () => {
     });
   });
 
-  it('Spectrum by partial labels', () => {
+  it('MeasurementXY by partial labels', () => {
     const xy: any =
       getXYSpectrum(spectra, {
         xLabel: 'weight',
@@ -102,6 +103,7 @@ describe('getXYSpectrum', () => {
       })?.variables || {};
 
     xy.x.data = Array.from(xy.x.data);
+
     expect(xy).toStrictEqual({
       x: {
         units: 'mg',
@@ -116,11 +118,12 @@ describe('getXYSpectrum', () => {
     });
   });
 
-  it('Spectrum by units s vs g', () => {
+  it('MeasurementXY by units s vs g', () => {
     const query = { xUnits: 's', yUnits: 'g' };
     const xy: any = getXYSpectrum(spectra, query)?.variables || {};
 
     xy.x.data = Array.from(xy.x.data);
+
     expect(xy).toStrictEqual({
       x: {
         units: 's',
@@ -128,7 +131,7 @@ describe('getXYSpectrum', () => {
         data: [7, 8],
         min: 7,
         max: 8,
-        isMonotone: true,
+        isMonotonic: true,
       },
       y: {
         units: 'g',
@@ -136,15 +139,16 @@ describe('getXYSpectrum', () => {
         data: [0.001, 0.002],
         min: 0.001,
         max: 0.002,
-        isMonotone: true,
+        isMonotonic: true,
       },
     });
   });
 
-  it('Spectrum by units "" vs °C', () => {
+  it('MeasurementXY by units "" vs °C', () => {
     const xy: any = getXYSpectrum(spectra, { units: 'vs °C' })?.variables || {};
 
     xy.x.data = Array.from(xy.x.data);
+
     expect(xy).toStrictEqual({
       x: {
         units: '°C',
@@ -152,7 +156,7 @@ describe('getXYSpectrum', () => {
         data: [30, 40],
         min: 30,
         max: 40,
-        isMonotone: true,
+        isMonotonic: true,
       },
       y: {
         units: '',
@@ -160,16 +164,17 @@ describe('getXYSpectrum', () => {
         data: [10, 20],
         min: 10,
         max: 20,
-        isMonotone: true,
+        isMonotonic: true,
       },
     });
   });
 
-  it('Spectrum by units °C vs g', () => {
+  it('MeasurementXY by units °C vs g', () => {
     const xy: any =
       getXYSpectrum(spectra, { xUnits: '°C', yUnits: 'g' })?.variables || {};
 
     xy.x.data = Array.from(xy.x.data);
+
     expect(xy).toStrictEqual({
       x: {
         units: '°C',
@@ -177,7 +182,7 @@ describe('getXYSpectrum', () => {
         data: [3, 4],
         min: 3,
         max: 4,
-        isMonotone: true,
+        isMonotonic: true,
       },
       y: {
         units: 'g',
@@ -185,16 +190,17 @@ describe('getXYSpectrum', () => {
         data: [0.001, 0.002],
         min: 0.001,
         max: 0.002,
-        isMonotone: true,
+        isMonotonic: true,
       },
     });
   });
 
-  it('Spectrum by dataType TGA', () => {
+  it('MeasurementXY by dataType TGA', () => {
     const xy: any =
       getXYSpectrum(spectra, { dataType: 'TGA' })?.variables || {};
 
     xy.x.data = Array.from(xy.x.data);
+
     expect(xy).toStrictEqual({
       x: {
         data: [1, 2],
@@ -209,10 +215,11 @@ describe('getXYSpectrum', () => {
     });
   });
 
-  it('Spectrum by title My', () => {
+  it('MeasurementXY by title My', () => {
     const xy: any = getXYSpectrum(spectra, { title: 'My' })?.variables || {};
 
     xy.x.data = Array.from(xy.x.data);
+
     expect(xy).toStrictEqual({
       x: {
         data: [1, 2],
@@ -227,11 +234,12 @@ describe('getXYSpectrum', () => {
     });
   });
 
-  it('Spectrum by meta meta2="Meta"', () => {
+  it('MeasurementXY by meta meta2="Meta"', () => {
     const xy: any =
       getXYSpectrum(spectra, { meta: { meta2: 'meta' } })?.variables || {};
 
     xy.x.data = Array.from(xy.x.data);
+
     expect(xy).toStrictEqual({
       x: {
         data: [1, 2],
@@ -246,11 +254,12 @@ describe('getXYSpectrum', () => {
     });
   });
 
-  it('Spectrum by units g vs J as units', () => {
+  it('MeasurementXY by units g vs J as units', () => {
     const xy: any =
       getXYSpectrum(spectra, { units: 'g vs J' })?.variables || {};
 
     xy.x.data = Array.from(xy.x.data);
+
     expect(xy).toStrictEqual({
       x: {
         units: 'J',
@@ -258,7 +267,7 @@ describe('getXYSpectrum', () => {
         data: [1, 2],
         min: 1,
         max: 2,
-        isMonotone: true,
+        isMonotonic: true,
       },
       y: {
         units: 'g',
@@ -266,13 +275,14 @@ describe('getXYSpectrum', () => {
         data: [0.002, 0.001],
         min: 0.001,
         max: 0.002,
-        isMonotone: true,
+        isMonotonic: true,
       },
     });
   });
 
-  it('Spectrum by units L vs °F', () => {
+  it('MeasurementXY by units L vs °F', () => {
     const xy = getXYSpectrum(spectra, { xUnits: 'L', yUnits: '°F' });
+
     expect(xy).toMatchCloseTo({
       title: 'My spectrum',
       dataType: 'TGA',
@@ -284,7 +294,7 @@ describe('getXYSpectrum', () => {
           data: [0.001, 0.002],
           min: 0.001,
           max: 0.002,
-          isMonotone: true,
+          isMonotonic: true,
         },
         y: {
           units: '°F',
@@ -292,17 +302,18 @@ describe('getXYSpectrum', () => {
           data: [37.4, 39.2],
           min: 37.4,
           max: 39.2,
-          isMonotone: true,
+          isMonotonic: true,
         },
       },
     });
   });
 
-  it('Spectrum by units s vs g as units', () => {
+  it('MeasurementXY by units s vs g as units', () => {
     const xy: any =
       getXYSpectrum(spectra, { units: 'g vs s' })?.variables || {};
 
     xy.x.data = Array.from(xy.x.data);
+
     expect(xy).toStrictEqual({
       x: {
         units: 's',
@@ -310,7 +321,7 @@ describe('getXYSpectrum', () => {
         data: [7, 8],
         min: 7,
         max: 8,
-        isMonotone: true,
+        isMonotonic: true,
       },
       y: {
         units: 'g',
@@ -318,7 +329,7 @@ describe('getXYSpectrum', () => {
         data: [0.001, 0.002],
         min: 0.001,
         max: 0.002,
-        isMonotone: true,
+        isMonotonic: true,
       },
     });
   });
@@ -326,6 +337,7 @@ describe('getXYSpectrum', () => {
   it('xVariable: t, yVariable: Z', () => {
     // @ts-expect-error we check that the variable is converted to lowercase
     const xy = getXYSpectrum(spectra, { xVariable: 't', yVariable: 'Z' });
+
     expect(xy).toMatchObject({
       variables: {
         x: {
@@ -339,8 +351,10 @@ describe('getXYSpectrum', () => {
       },
     });
   });
+
   it('variables: Z vs t', () => {
     const xy = getXYSpectrum(spectra, { variables: 'Z vs t' });
+
     expect(xy).toMatchObject({
       variables: {
         x: {

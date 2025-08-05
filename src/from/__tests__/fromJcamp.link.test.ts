@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-import { test, expect } from 'vitest';
+import { expect, test } from 'vitest';
 
 import { fromJcamp } from '../fromJcamp';
 

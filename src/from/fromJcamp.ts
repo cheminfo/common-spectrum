@@ -1,7 +1,7 @@
+import type { MeasurementVariable, TextData } from 'cheminfo-types';
 import { convert } from 'jcampconverter';
 
 import { Analysis } from '../Analysis';
-import { SpectrumVariable } from '../types/Cheminfo';
 
 /**
  * Creates a new Analysis from a JCAMP string
@@ -12,13 +12,13 @@ import { SpectrumVariable } from '../types/Cheminfo';
  * @param [options.spectrumCallback] - a callback to apply on variables when creating spectrum
  * @returns - New class element with the given data
  */
-export function fromJcamp(jcamp: string | ArrayBuffer, options = {}): Analysis {
+export function fromJcamp(jcamp: TextData, options = {}): Analysis {
   const analysis = new Analysis(options);
   addJcamp(analysis, jcamp);
   return analysis;
 }
 
-function addJcamp(analysis: Analysis, jcamp: string | ArrayBuffer) {
+function addJcamp(analysis: Analysis, jcamp: TextData) {
   const converted = convert(jcamp, {
     keepRecordsRegExp: /.*/,
   });
@@ -29,7 +29,7 @@ function addJcamp(analysis: Analysis, jcamp: string | ArrayBuffer) {
 
     // we ensure variables
     if (!currentSpectrum.variables) {
-      const variables: Record<string, SpectrumVariable> = {};
+      const variables: Record<string, MeasurementVariable> = {};
       currentSpectrum.variables = variables;
       variables.x = {
         label: currentSpectrum.xUnits,

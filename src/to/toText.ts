@@ -1,5 +1,5 @@
-import { Analysis, NormalizedOptions } from '../Analysis';
-import type { Spectrum } from '../types/Cheminfo';
+import type { Analysis, NormalizedOptions } from '../Analysis';
+import type { MeasurementXY } from 'cheminfo-types';
 
 interface ToTextOptions extends NormalizedOptions {
   endOfLine?: string;
@@ -18,7 +18,7 @@ export function toText(analysis: Analysis, options: ToTextOptions = {}) {
   return exportText(spectra, options);
 }
 
-function exportText(spectrums: Spectrum[], options: ToTextOptions) {
+function exportText(spectrums: MeasurementXY[], options: ToTextOptions) {
   const { endOfLine = '\n', fieldSeparator = ',' } = options;
   const result: string[] = new Array(spectrums.length);
   for (let index = 0; index < spectrums.length; index++) {

@@ -1,4 +1,4 @@
-import { Analysis } from '../Analysis';
+import type { Analysis } from '../Analysis';
 
 import { toJcamps } from './toJcamps';
 

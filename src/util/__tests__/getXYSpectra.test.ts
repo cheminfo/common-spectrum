@@ -1,12 +1,12 @@
+import type { MeasurementXY } from 'cheminfo-types';
 import { toBeDeepCloseTo, toMatchCloseTo } from 'jest-matcher-deep-close-to';
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
-import type { Spectrum } from '../../types/Cheminfo';
 import { getXYSpectra } from '../getXYSpectra';
 
 expect.extend({ toBeDeepCloseTo, toMatchCloseTo });
 
-const spectra: Spectrum[] = [
+const spectra: MeasurementXY[] = [
   {
     variables: {
       x: {
@@ -70,11 +70,13 @@ const spectra: Spectrum[] = [
 describe('getXYSpectra', () => {
   it('No filter', () => {
     const xy = getXYSpectra(spectra, {});
+
     expect(xy).toHaveLength(3);
   });
 
   it('Many spectry with specific units', () => {
     const xy = getXYSpectra(spectra, { xUnits: 'ug', yUnits: '°C' });
+
     expect(xy).toHaveLength(2);
     expect(xy[1].variables).toStrictEqual({
       x: {
@@ -83,7 +85,7 @@ describe('getXYSpectra', () => {
         data: [10000000, 20000000],
         min: 10000000,
         max: 20000000,
-        isMonotone: true,
+        isMonotonic: true,
       },
       y: {
         units: '°C',
@@ -91,18 +93,19 @@ describe('getXYSpectra', () => {
         data: [30, 40],
         min: 30,
         max: 40,
-        isMonotone: true,
+        isMonotonic: true,
       },
     });
   });
 
-  it('Spectrum by labels', () => {
+  it('MeasurementXY by labels', () => {
     const xy = getXYSpectra(spectra, {
       xLabel: 'Weight [mg]',
       yLabel: 'Temperature [°C]',
     })[0].variables;
 
     xy.x.data = Array.from(xy.x.data);
+
     expect(xy).toStrictEqual({
       x: {
         units: 'mg',

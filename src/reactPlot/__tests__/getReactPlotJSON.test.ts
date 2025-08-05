@@ -1,4 +1,4 @@
-import { test, expect } from 'vitest';
+import { expect, test } from 'vitest';
 
 import { Analysis } from '../..';
 import { getReactPlotJSON } from '../getReactPlotJSON';
@@ -45,6 +45,7 @@ test('simple test case', () => {
     yLabel: 'Current',
     yUnits: 'A',
   });
+
   expect(result.content).toHaveLength(len);
   expect(result.axes).toStrictEqual([
     { id: 'x', label: 'Voltage [V]', position: 'bottom', type: 'main' },
@@ -79,6 +80,7 @@ test('enforce growing', () => {
     },
     { enforceGrowing: true },
   );
+
   expect(result.content).toHaveLength(len);
   expect(result.axes).toStrictEqual([
     { id: 'x', label: 'Voltage [kV]', position: 'bottom', type: 'main' },

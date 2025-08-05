@@ -1,12 +1,12 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
-import type { SpectrumVariable } from '../../types/Cheminfo';
+import type { MeasurementVariable } from 'cheminfo-types';
 import { fromJcamp } from '../fromJcamp';
 
-function irCallback(variables: Record<string, SpectrumVariable>) {
+function irCallback(variables: Record<string, MeasurementVariable>) {
   if (variables.y.label === 'ABSORBANCE') {
     variables.t = {
       data: variables.y.data.map(
@@ -27,6 +27,7 @@ describe('fromJcamp with callback', () => {
 
     const result = fromJcamp(jcamp, { spectrumCallback: irCallback });
     const spectrum: any = result.spectra[0];
+
     expect(spectrum.variables.x.label).toBe('1/CM');
     expect(spectrum.variables.y.label).toBe('ABSORBANCE');
     expect(spectrum.variables.t.label).toBe('Transmittance');

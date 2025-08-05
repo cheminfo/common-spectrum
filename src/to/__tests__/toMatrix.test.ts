@@ -1,4 +1,4 @@
-import { test, expect } from 'vitest';
+import { expect, test } from 'vitest';
 
 import { Analysis } from '../..';
 import { toMatrix } from '../toMatrix';
@@ -10,6 +10,7 @@ test('toMatrix', () => {
       filters: [{ name: 'normed', options: { algorithm: 'max', value: 100 } }],
     },
   });
+
   expect(text).toBe(`x	first	second
 x	My spectrum	My spectrum
 -1	50	50

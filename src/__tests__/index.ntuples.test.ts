@@ -1,43 +1,47 @@
-import { describe, it, expect } from 'vitest';
+import { beforeEach, describe, expect, it } from 'vitest';
 
-import { Analysis, fromJcamp, toJcamp, toJcamps, JSGraph } from '..';
+import { Analysis, JSGraph, fromJcamp, toJcamp, toJcamps } from '..';
 
 describe('case for ntuples', () => {
-  const analysis = new Analysis();
+  let analysis: Analysis;
 
-  analysis.pushSpectrum(
-    {
-      x: {
-        data: [1, 2],
-        min: 1,
-        max: 2,
-        units: 'xUnits',
-        label: 'X axis',
+  beforeEach(() => {
+    analysis = new Analysis();
+
+    analysis.pushSpectrum(
+      {
+        x: {
+          data: [1, 2],
+          min: 1,
+          max: 2,
+          units: 'xUnits',
+          label: 'X axis',
+        },
+        y: {
+          data: [3, 4],
+          min: 3,
+          max: 4,
+          units: 'yUnits',
+          label: 'Y axis',
+        },
+        t: {
+          data: [5, 6],
+          min: 5,
+          max: 6,
+          units: 'tUnits',
+          label: 'T axis',
+        },
       },
-      y: {
-        data: [3, 4],
-        min: 3,
-        max: 4,
-        units: 'yUnits',
-        label: 'Y axis',
+      {
+        title: 'My spectrum',
+        dataType: 'TGA',
+        meta: {
+          meta1: 'Meta 1',
+          meta2: 'Meta 2',
+        },
       },
-      t: {
-        data: [5, 6],
-        min: 5,
-        max: 6,
-        units: 'tUnits',
-        label: 'T axis',
-      },
-    },
-    {
-      title: 'My spectrum',
-      dataType: 'TGA',
-      meta: {
-        meta1: 'Meta 1',
-        meta2: 'Meta 2',
-      },
-    },
-  );
+    );
+  });
 
   it('Check analysis ID', () => {
     expect(analysis.id).toHaveLength(8);
@@ -54,27 +58,30 @@ describe('case for ntuples', () => {
         filters: [{ name: 'normed' }],
       },
     })?.variables;
+
     expect(
       (normalized?.y?.data?.[0] || 0) + (normalized?.y?.data?.[1] || 0),
     ).toBeCloseTo(1, 10);
   });
 
-  it('Spectrum by units', () => {
+  it('MeasurementXY by units', () => {
     const selector = {
       xUnits: 'tUnits',
       yUnits: 'xUnits',
     };
     const spectrum = analysis.getXYSpectrum(selector);
+
     expect(spectrum?.variables.x.data).toStrictEqual([5, 6]);
     expect(spectrum?.variables.y.data).toStrictEqual([1, 2]);
 
     const jsgraph = JSGraph.getJSGraph([analysis], { selector });
+
     expect(jsgraph.series[0].data).toStrictEqual({ x: [5, 6], y: [1, 2] });
 
     const jcamps = toJcamps(analysis, {
       info: {
         owner: 'cheminfo',
-        origin: 'Common Spectrum',
+        origin: 'Common MeasurementXY',
       },
     });
 
@@ -83,7 +90,7 @@ describe('case for ntuples', () => {
     const jcamp = toJcamp(analysis, {
       info: {
         owner: 'cheminfo',
-        origin: 'Common Spectrum',
+        origin: 'Common MeasurementXY',
       },
     });
 
@@ -102,7 +109,7 @@ describe('case for ntuples', () => {
           last: 2,
           units: 'xUnits',
           data: [1, 2],
-          isMonotone: true,
+          isMonotonic: true,
           min: 1,
           max: 2,
           label: 'X axis',
@@ -115,7 +122,7 @@ describe('case for ntuples', () => {
           first: 3,
           last: 4,
           units: 'yUnits',
-          isMonotone: true,
+          isMonotonic: true,
           min: 3,
           max: 4,
           data: [3, 4],
@@ -129,7 +136,7 @@ describe('case for ntuples', () => {
           first: 5,
           last: 6,
           units: 'tUnits',
-          isMonotone: true,
+          isMonotonic: true,
           min: 5,
           max: 6,
           data: [5, 6],

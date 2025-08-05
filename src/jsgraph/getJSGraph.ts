@@ -1,9 +1,9 @@
-import { DataXY } from 'cheminfo-types';
+import type { DataXY } from 'cheminfo-types';
 import { xyFilterXPositive } from 'ml-spectra-processing';
 
-import { Analysis } from '../Analysis';
+import type { Analysis } from '../Analysis';
 
-import { JSGraphOptions } from './JSGraphOptions';
+import type { JSGraphOptions } from './JSGraphOptions';
 import { addStyle } from './addStyle';
 import { COLORS } from './colors';
 

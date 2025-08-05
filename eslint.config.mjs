@@ -10,6 +10,7 @@ export default [
     },
     rules: {
       'unicorn/no-object-as-default-parameter': 'off',
+      'unicorn/no-array-reverse': 'off',
     },
   },
 ];

@@ -1,13 +1,13 @@
-import { xIsMonotonic, xMinValue, xMaxValue } from 'ml-spectra-processing';
+import { xIsMonotonic, xMaxValue, xMinValue } from 'ml-spectra-processing';
 
-import { SpectrumVariable } from '../types/Cheminfo';
+import type { MeasurementVariable } from 'cheminfo-types';
 
 import { convertUnit } from './convertUnit';
 
 export function getConvertedVariable(
-  variable: SpectrumVariable,
+  variable: MeasurementVariable,
   newUnits: string,
-): SpectrumVariable {
+): MeasurementVariable {
   const data =
     variable.units !== undefined && variable.units !== newUnits // would be nice if convertUnit would allow typedArray
       ? convertUnit(Array.from(variable.data), variable.units, newUnits)
@@ -18,6 +18,6 @@ export function getConvertedVariable(
     data: data || [],
     min: data ? xMinValue(data) : undefined,
     max: data ? xMaxValue(data) : undefined,
-    isMonotone: xIsMonotonic(data) !== 0,
+    isMonotonic: xIsMonotonic(data) !== 0,
   };
 }

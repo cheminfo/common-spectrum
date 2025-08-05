@@ -7,7 +7,7 @@
 
 Common package to deal with spectral analysis.
 
-An `Analysis` may be composed of many `Spectrum` of different flavors.
+An `Analysis` may be composed of many `MeasurementXY` of different flavors.
 
 By default the flavor is an empty string and if your analysis only generates
 one spectrum you may forget this level of complexity.
@@ -60,7 +60,7 @@ let jsgraph = getJSGraph([analysis]);
 let jcamp = toJcamp(analysis, {
   info: {
     owner: 'cheminfo',
-    origin: 'Common Spectrum',
+    origin: 'Common MeasurementXY',
   },
 });
 

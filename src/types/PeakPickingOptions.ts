@@ -1,6 +1,6 @@
-import { Shape1D } from 'ml-peak-shape-generator';
+import type { Shape1D } from 'ml-peak-shape-generator';
 
-import { OneLowerCase } from './Cheminfo';
+import type { OneLowerCase } from './Cheminfo';
 
 export interface PeakPickingOptions {
   /** x variable label, by default 'x' */

@@ -1,5 +1,6 @@
-import { MeasurementXYVariables } from 'cheminfo-types';
-import { parseXYAndKeepInfo, ParseXYOptions } from 'xy-parser';
+import type { MeasurementXYVariables, TextData } from 'cheminfo-types';
+import type { ParseXYOptions } from 'xy-parser';
+import { parseXYAndKeepInfo } from 'xy-parser';
 
 import { Analysis } from '../Analysis';
 
@@ -39,7 +40,7 @@ interface FromTextOptions {
  */
 
 export function fromText(
-  data: string | ArrayBuffer,
+  data: TextData,
   options: FromTextOptions = {},
 ): Analysis {
   const analysis = new Analysis();

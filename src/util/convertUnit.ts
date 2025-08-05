@@ -1,4 +1,4 @@
-import { DoubleArray } from 'cheminfo-types';
+import type { DoubleArray } from 'cheminfo-types';
 import Qty from 'js-quantities';
 
 // overloads for typing correct values

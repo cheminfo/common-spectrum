@@ -1,5 +1,5 @@
-import { FromTo } from 'cheminfo-types';
-import { FilterXYType } from 'ml-signal-processing/src/FilterXYType';
+import type { FromTo } from 'cheminfo-types';
+import type { FilterXYType } from 'ml-signal-processing';
 
 export interface NormalizedSpectrumOptions {
   from?: number;
