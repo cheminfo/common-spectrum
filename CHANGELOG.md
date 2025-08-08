@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.1](https://github.com/cheminfo/common-spectrum/compare/v3.0.0...v3.0.1) (2025-08-08)
+
+
+### Bug Fixes
+
+* expose PeakPickingOptions type ([b13edb3](https://github.com/cheminfo/common-spectrum/commit/b13edb3bf4e1cf1ada92ea89c553058586daed7f))
+
 ## [3.0.0](https://github.com/cheminfo/common-spectrum/compare/v2.12.0...v3.0.0) (2025-08-05)
 
 
