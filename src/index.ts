@@ -16,6 +16,7 @@ export * from './util/autoPeakPicking.js';
 
 export * from './types/types.js';
 export * from './types/AutoPeakPickingOptions.js';
+export * from './types/PeakPickingOptions.js';
 export * from './types/NormalizedSpectrumOptions.js';
 export type { MeasurementVariable, MeasurementXY } from 'cheminfo-types';
 export * from './types/PlotObject.js';
