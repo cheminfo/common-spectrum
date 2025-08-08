@@ -1,6 +1,6 @@
 {
   "name": "common-spectrum",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Common package to deal with spectra",
   "type": "module",
   "exports": "./lib/index.js",
