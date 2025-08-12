@@ -130,4 +130,37 @@ describe('getNormalizedSpectrum', () => {
     expect(normalized.variables.y.data).toStrictEqual([1, 2, 5]);
     expect(normalized.variables.x.data).toStrictEqual([100, 200, 300]);
   });
+
+  it('applyRangeSelectionFirst', () => {
+    const spectrum = {
+      variables: {
+        x: {
+          data: [1, 2, 3, 4, 5],
+          units: 's',
+          label: 'X axis [s]',
+        },
+        y: {
+          data: [1, 2, 3, 4, 5],
+          units: '°C',
+          label: 'Y axis [°C]',
+        },
+      },
+    };
+    const normalized = getNormalizedSpectrum(spectrum, {
+      filters: [{ name: 'rescale' }],
+      from: 2,
+      to: 4,
+    });
+
+    expect(normalized.variables.y.data).toStrictEqual([0.25, 0.5, 0.75]);
+
+    const normalized2 = getNormalizedSpectrum(spectrum, {
+      filters: [{ name: 'rescale' }],
+      from: 2,
+      to: 4,
+      applyRangeSelectionFirst: true,
+    });
+
+    expect(normalized2.variables.y.data).toStrictEqual([0, 0.5, 1]);
+  });
 });

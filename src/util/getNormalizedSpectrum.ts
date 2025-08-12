@@ -35,6 +35,7 @@ export function getNormalizedSpectrum(
     from = spectrum.variables.x.min,
     to = spectrum.variables.x.max,
     numberOfPoints,
+    applyRangeSelectionFirst = false,
     exclusions = [],
     zones = [],
   } = options;
@@ -42,9 +43,21 @@ export function getNormalizedSpectrum(
 
   filters = structuredClone(filters);
   if (numberOfPoints) {
-    filters.push({
-      name: 'equallySpaced',
-      options: { from, to, exclusions, zones, numberOfPoints },
+    if (applyRangeSelectionFirst) {
+      filters.unshift({
+        name: 'equallySpaced',
+        options: { from, to, exclusions, zones, numberOfPoints },
+      });
+    } else {
+      filters.push({
+        name: 'equallySpaced',
+        options: { from, to, exclusions, zones, numberOfPoints },
+      });
+    }
+  } else if (applyRangeSelectionFirst) {
+    filters.unshift({
+      name: 'filterX',
+      options: { from, to, exclusions, zones },
     });
   } else {
     filters.push({
