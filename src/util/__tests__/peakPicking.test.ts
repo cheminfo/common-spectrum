@@ -71,4 +71,28 @@ describe('peakPicking', () => {
       },
     });
   });
+
+  it('max=false, optimize=true, narrow peaks', () => {
+    const narrowSpectrum = structuredClone(spectrum);
+    narrowSpectrum.variables.x.data = narrowSpectrum.variables.x.data.map(
+      (value) => value * 0.01,
+    );
+    const peak = peakPicking(narrowSpectrum, 0.06, {
+      optimize: true,
+      max: false,
+      shape: { kind: 'gaussian', fwhm: 0.01 },
+    });
+
+    expect(peak).toBeDeepCloseTo({
+      x: 0.06,
+      y: 0,
+      z: 0,
+      t: 0,
+      optimized: {
+        x: 0.0599663089533847,
+        y: 2.80563493205562,
+        shape: { kind: 'gaussian', fwhm: 0.03199263679459118 },
+      },
+    });
+  });
 });
