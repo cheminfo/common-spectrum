@@ -50,7 +50,7 @@ test('getJSGraph', () => {
 
 describe('getJSGraph isotherm', () => {
   const jcamp = readFileSync(
-    join(__dirname, '../../from/__tests__/data/isotherm.jdx'),
+    join(import.meta.dirname, '../../from/__tests__/data/isotherm.jdx'),
   );
   const analysis = fromJcamp(jcamp);
 

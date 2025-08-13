@@ -14,9 +14,11 @@ interface Boundary {
   y: { min: string; max: string };
 }
 
+const defaultBoundary: Boundary = { y: { min: '0px', max: '2000px' } };
+
 export function getNormalizationAnnotations(
   filter: AnnotationsFilter = {},
-  boundary: Boundary = { y: { min: '0px', max: '2000px' } },
+  boundary: Boundary = defaultBoundary,
 ) {
   let { exclusions = [] } = filter;
 

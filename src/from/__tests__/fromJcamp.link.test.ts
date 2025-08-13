@@ -6,7 +6,10 @@ import { expect, test } from 'vitest';
 import { fromJcamp } from '../fromJcamp.js';
 
 test('fromJcamp linked file', () => {
-  const jcamp = readFileSync(join(__dirname, './data/uv-link.jdx'), 'utf8');
+  const jcamp = readFileSync(
+    join(import.meta.dirname, './data/uv-link.jdx'),
+    'utf8',
+  );
 
   const result = fromJcamp(jcamp);
 
