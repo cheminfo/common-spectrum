@@ -1,10 +1,14 @@
-import type { AxisProps, LineSeriesProps, PlotObjectType } from 'react-plot';
+import type { AxisProps, LineSeriesProps, PlotObjectPlot } from 'react-plot';
 
 import type { Analysis } from '../Analysis.js';
 import type { SpectrumSelector } from '../types/SpectrumSelector.js';
 
 type LineSeriesType = { type: 'line' } & LineSeriesProps;
-export type ReactPlotOptions = Omit<PlotObjectType, 'axes' | 'content'> & {
+export type ReactPlotOptions = Omit<
+  PlotObjectPlot,
+  'dimensions' | 'axes' | 'content'
+> & {
+  dimensions?: PlotObjectPlot['dimensions'];
   enforceGrowing?: boolean;
   xAxis?: Partial<AxisProps>;
   yAxis?: Partial<AxisProps>;
@@ -37,7 +41,7 @@ export function getReactPlotJSON(
   analyses: Analysis[],
   query: SpectrumSelector,
   options: ReactPlotOptions = {},
-): PlotObjectType & { meta: Array<Record<string, string>> } {
+): PlotObjectPlot & { meta: Array<Record<string, string>> } {
   const {
     enforceGrowing = false,
     xAxis: xAxisOptions = {},
@@ -46,7 +50,7 @@ export function getReactPlotJSON(
     dimensions = { width: 550, height: 500 },
     ...otherOptions
   } = options;
-  const content: PlotObjectType['content'] = [];
+  const content: PlotObjectPlot['content'] = [];
   const meta: Array<Record<string, string>> = [];
   type Axes = { type: 'main' } & AxisProps;
   let xAxis: Axes | null = null;

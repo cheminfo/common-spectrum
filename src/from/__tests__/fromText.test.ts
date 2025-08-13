@@ -6,7 +6,7 @@ import { expect, test } from 'vitest';
 import { fromText } from '../fromText.js';
 
 test('fromText', () => {
-  const arrayBuffer = readFileSync(join(__dirname, 'data/uv.txt'));
+  const arrayBuffer = readFileSync(join(import.meta.dirname, 'data/uv.txt'));
 
   const result = fromText(arrayBuffer, {
     info: {

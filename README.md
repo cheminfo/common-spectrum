@@ -7,21 +7,23 @@
 
 Common package to deal with spectral analysis.
 
-An `Analysis` may be composed of many `MeasurementXY` of different flavors.
+An `Analysis` may be composed of many `MeasurementXY` of different flavours.
 
-By default the flavor is an empty string and if your analysis only generates
-one spectrum you may forget this level of complexity.
+By default, the flavour is an empty string, and if your analysis only generates
+one spectrum, you may forget this level of complexity.
 
-In the case of Thermogravitaional Analysis (TGA) we may have 2 flavor for the data:
+In the case of Thermogravitational Analysis (TGA), we may have two flavours for the data:
 
 - Weight versus Temperature
 - Weight versus Time
 
-This package allow to load / save an Analysis as a JCAMP-DX text file.
+This package allows loading and saving an Analysis as a JCAMP-DX text file.
 
 ## Installation
 
-`$ npm i common-spectrum`
+```console
+npm install common-spectrum
+```
 
 ## Usage
 

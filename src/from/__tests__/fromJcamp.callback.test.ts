@@ -21,7 +21,7 @@ function irCallback(variables: Record<string, MeasurementVariable>) {
 describe('fromJcamp with callback', () => {
   it('absorbance', () => {
     const jcamp = readFileSync(
-      join(__dirname, '../../../testFiles/ir.jdx'),
+      join(import.meta.dirname, '../../../testFiles/ir.jdx'),
       'utf8',
     );
 

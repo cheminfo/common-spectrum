@@ -8,7 +8,7 @@ import { fromJcamp } from '../index.js';
 describe('Analysis', () => {
   it('getXY', () => {
     const text = readFileSync(
-      join(__dirname, '../../testFiles/xps.jdx'),
+      join(import.meta.dirname, '../../testFiles/xps.jdx'),
       'utf8',
     );
 

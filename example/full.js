@@ -1,15 +1,11 @@
+/* eslint-disable no-console */
 import { CommonSpectrum } from 'common-spectrum';
 
-const {
-  Analysis,
-  fromJcamp,
-  toJcamp,
-  getNormalized,
-  getJSGraph,
-} = new CommonSpectrum({
-  dataType: 'TGA', // type of analysis like TGA for 'Thermal Gravitational Analysis'
-  defaultFlavor: 'myFlavor', // default flavor when adding a spectrum
-});
+const { Analysis, fromJcamp, toJcamp, getNormalized, getJSGraph } =
+  new CommonSpectrum({
+    dataType: 'TGA', // type of analysis like TGA for 'Thermal Gravitational Analysis'
+    defaultFlavor: 'myFlavor', // default flavor when adding a spectrum
+  });
 
 // we create an analysis that has no spectrum
 let analysis = new Analysis();

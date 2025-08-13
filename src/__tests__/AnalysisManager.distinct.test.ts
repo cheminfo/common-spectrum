@@ -165,7 +165,7 @@ describe('AnalysesManager isotherm', () => {
 
   beforeEach(() => {
     const jcamp = readFileSync(
-      join(__dirname, '../from/__tests__/data/isotherm.jdx'),
+      join(import.meta.dirname, '../from/__tests__/data/isotherm.jdx'),
     );
     analysis = fromJcamp(jcamp);
     analysesManager = new AnalysesManager();

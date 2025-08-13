@@ -8,7 +8,7 @@ import { fromJcamp } from '../fromJcamp.js';
 describe('fromJcamp', () => {
   it('normal', () => {
     const jcamp = readFileSync(
-      join(__dirname, '../../../testFiles/jcamp.jdx'),
+      join(import.meta.dirname, '../../../testFiles/jcamp.jdx'),
       'utf8',
     );
 
@@ -37,7 +37,7 @@ describe('fromJcamp', () => {
 
   it('ntuples', () => {
     const jcamp = readFileSync(
-      join(__dirname, '../../../testFiles/ntuples.jdx'),
+      join(import.meta.dirname, '../../../testFiles/ntuples.jdx'),
       'utf8',
     );
 
