@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.1.0](https://github.com/cheminfo/common-spectrum/compare/v3.0.1...v3.1.0) (2025-08-13)
+
+
+### Features
+
+* add applyRangeSelectionFirst option for getNormalizedSpectrum ([fe430d1](https://github.com/cheminfo/common-spectrum/commit/fe430d17205816b432c39291a36a2f0caa3b68bc))
+
+
+### Bug Fixes
+
+* exports and dependencies ([#102](https://github.com/cheminfo/common-spectrum/issues/102)) ([1be8dcb](https://github.com/cheminfo/common-spectrum/commit/1be8dcb53c24c67638ffe9c933516f16f499ad89))
+
 ## [3.0.1](https://github.com/cheminfo/common-spectrum/compare/v3.0.0...v3.0.1) (2025-08-08)
 
 
