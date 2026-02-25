@@ -3,8 +3,10 @@ import { fromVariables } from 'convert-to-jcamp';
 
 import type { Analysis } from '../Analysis.js';
 
-interface GetJcampOptions {
+export interface GetJcampOptions {
+  /** Additional info fields to include in the JCAMP header. */
   info?: Record<string, string>;
+  /** Additional meta fields to include in the JCAMP. */
   meta?: Record<string, string>;
 }
 export function toJcamps(analysis: Analysis, options: GetJcampOptions = {}) {

@@ -13,13 +13,16 @@ import { getNormalizedSpectrum } from './util/getNormalizedSpectrum.js';
 import { getXYSpectra } from './util/getXYSpectra.js';
 import { getXYSpectrum } from './util/getXYSpectrum.js';
 
-type SpectrumCallback = (
+export type SpectrumCallback = (
   variables: MeasurementXYVariables,
-) => MeasurementXYVariables;
+) => void;
 
-interface AnalysisOptions {
+export interface AnalysisOptions {
+  /** Unique identifier for the analysis. If not provided, a random id is generated. */
   id?: string;
+  /** Human-readable label. Defaults to the id. */
   label?: string;
+  /** A callback to apply on variables when creating a spectrum. */
   spectrumCallback?: SpectrumCallback;
 }
 export interface NormalizedOptions {

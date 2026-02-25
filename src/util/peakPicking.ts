@@ -1,8 +1,20 @@
-import type { DoubleArray, MeasurementXY } from 'cheminfo-types';
+import type { DoubleArray, MeasurementXY, OneLowerCase } from 'cheminfo-types';
+import type { Shape1D } from 'ml-peak-shape-generator';
 import { optimize as optimizePeak } from 'ml-spectra-fitting';
 import { xFindClosestIndex, xMaxValue } from 'ml-spectra-processing';
 
-import type { PeakPickingOptions } from '../types/PeakPickingOptions.js';
+export interface PeakPickingOptions {
+  /** x variable label, by default 'x' */
+  xVariable?: OneLowerCase;
+  /** y variable label, by default 'y' */
+  yVariable?: OneLowerCase;
+  /** should we look for the closest min / max, default true */
+  optimize?: boolean;
+  /** options of the peak shape fit */
+  shape?: Shape1D;
+  /** are we looking for maxima or minima, default true */
+  max?: boolean;
+}
 
 /**
  * Based on a x value we will return a peak

@@ -1,12 +1,12 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-import type { MeasurementVariable } from 'cheminfo-types';
+import type { MeasurementXYVariables } from 'cheminfo-types';
 import { describe, expect, it } from 'vitest';
 
 import { fromJcamp } from '../fromJcamp.js';
 
-function irCallback(variables: Record<string, MeasurementVariable>) {
+function irCallback(variables: MeasurementXYVariables) {
   if (variables.y.label === 'ABSORBANCE') {
     variables.t = {
       data: variables.y.data.map(

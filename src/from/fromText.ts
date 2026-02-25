@@ -4,7 +4,7 @@ import { parseXYAndKeepInfo } from 'xy-parser';
 
 import { Analysis } from '../Analysis.js';
 
-interface FromTextOptions {
+export interface FromTextOptions {
   /**
    * @default {}
    */

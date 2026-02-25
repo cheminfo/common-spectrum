@@ -1,18 +1,19 @@
 import type { MeasurementVariable, TextData } from 'cheminfo-types';
 import { convert } from 'jcampconverter';
 
+import type { AnalysisOptions } from '../Analysis.js';
 import { Analysis } from '../Analysis.js';
 
 /**
- * Creates a new Analysis from a JCAMP string
+ * Creates a new Analysis from a JCAMP string.
  * @param jcamp - String containing the JCAMP data
- * @param [options={}]
- * @param [options.id=Math.random()]
- * @param [options.label=options.id] - human redeable label
- * @param [options.spectrumCallback] - a callback to apply on variables when creating spectrum
- * @returns - New class element with the given data
+ * @param options - Options for the analysis
+ * @returns New Analysis instance with the parsed data
  */
-export function fromJcamp(jcamp: TextData, options = {}): Analysis {
+export function fromJcamp(
+  jcamp: TextData,
+  options: AnalysisOptions = {},
+): Analysis {
   const analysis = new Analysis(options);
   addJcamp(analysis, jcamp);
   return analysis;
