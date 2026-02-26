@@ -13,9 +13,7 @@ import { getNormalizedSpectrum } from './util/getNormalizedSpectrum.js';
 import { getXYSpectra } from './util/getXYSpectra.js';
 import { getXYSpectrum } from './util/getXYSpectrum.js';
 
-export type SpectrumCallback = (
-  variables: MeasurementXYVariables,
-) => void;
+export type SpectrumCallback = (variables: MeasurementXYVariables) => void;
 
 export interface AnalysisOptions {
   /** Unique identifier for the analysis. If not provided, a random id is generated. */
@@ -53,7 +51,7 @@ export class Analysis {
     this.cache = { spectrum: {}, spectra: {} };
   }
 
-  public clone({ filter = {} }: { filter: { ids?: string[] } }) {
+  public clone({ filter }: { filter: { ids?: string[] } }) {
     const { ids } = filter;
     const analysis = new Analysis();
     analysis.id = this.id;
