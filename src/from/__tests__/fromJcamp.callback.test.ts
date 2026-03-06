@@ -19,10 +19,7 @@ function irCallback(variables: MeasurementXYVariables) {
 }
 
 test('fromJcamp with callback absorbance', () => {
-  const jcamp = readFileSync(
-    join(import.meta.dirname, '../../../testFiles/ir.jdx'),
-    'utf8',
-  );
+  const jcamp = readFileSync(join(import.meta.dirname, 'data/ir.jdx'), 'utf8');
 
   const result = fromJcamp(jcamp, { spectrumCallback: irCallback });
   const spectrum: any = result.spectra[0];

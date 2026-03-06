@@ -8,7 +8,7 @@ import { fromJcamp } from '../fromJcamp.js';
 
 test('fromJcamp normal', () => {
   const jcamp = readFileSync(
-    join(import.meta.dirname, '../../../testFiles/jcamp.jdx'),
+    join(import.meta.dirname, 'data/jcamp.jdx'),
     'utf8',
   );
 
@@ -37,7 +37,7 @@ test('fromJcamp normal', () => {
 
 test('fromJcamp ntuples', () => {
   const jcamp = readFileSync(
-    join(import.meta.dirname, '../../../testFiles/ntuples.jdx'),
+    join(import.meta.dirname, 'data/ntuples.jdx'),
     'utf8',
   );
 
@@ -55,7 +55,7 @@ test('fromJcamp ntuples', () => {
 
 test('fromJcamp dataType roundtrip', () => {
   const jcamp = readFileSync(
-    join(import.meta.dirname, '../../../testFiles/jcamp.jdx'),
+    join(import.meta.dirname, 'data/jcamp.jdx'),
     'utf8',
   );
 

@@ -46,3 +46,5 @@ jspm_packages
 lib
 lib-esm
 .eslintcache
+.claude
+.claude
