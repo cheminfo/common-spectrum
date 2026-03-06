@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.2.0](https://github.com/cheminfo/common-spectrum/compare/v3.1.0...v3.2.0) (2026-03-06)
+
+
+### Features
+
+* allow to specify title and dataType in fromText ([f6f687a](https://github.com/cheminfo/common-spectrum/commit/f6f687aa601e153940bde68e0f1228d15f3c4398))
+
 ## [3.1.0](https://github.com/cheminfo/common-spectrum/compare/v3.0.1...v3.1.0) (2025-08-13)
 
 
