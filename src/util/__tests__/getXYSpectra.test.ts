@@ -1,6 +1,6 @@
 import type { MeasurementXY } from 'cheminfo-types';
 import { toBeDeepCloseTo, toMatchCloseTo } from 'jest-matcher-deep-close-to';
-import { describe, expect, it } from 'vitest';
+import { expect, test } from 'vitest';
 
 import { getXYSpectra } from '../getXYSpectra.js';
 
@@ -67,56 +67,54 @@ const spectra: MeasurementXY[] = [
   },
 ];
 
-describe('getXYSpectra', () => {
-  it('No filter', () => {
-    const xy = getXYSpectra(spectra, {});
+test('getXYSpectra no filter', () => {
+  const xy = getXYSpectra(spectra, {});
 
-    expect(xy).toHaveLength(3);
+  expect(xy).toHaveLength(3);
+});
+
+test('getXYSpectra many spectra with specific units', () => {
+  const xy = getXYSpectra(spectra, { xUnits: 'ug', yUnits: '°C' });
+
+  expect(xy).toHaveLength(2);
+  expect(xy[1].variables).toStrictEqual({
+    x: {
+      units: 'ug',
+      label: 'Weight',
+      data: [10000000, 20000000],
+      min: 10000000,
+      max: 20000000,
+      isMonotonic: 1,
+    },
+    y: {
+      units: '°C',
+      label: 'Temperature',
+      data: [30, 40],
+      min: 30,
+      max: 40,
+      isMonotonic: 1,
+    },
   });
+});
 
-  it('Many spectry with specific units', () => {
-    const xy = getXYSpectra(spectra, { xUnits: 'ug', yUnits: '°C' });
+test('getXYSpectra by labels', () => {
+  const xy = getXYSpectra(spectra, {
+    xLabel: 'Weight [mg]',
+    yLabel: 'Temperature [°C]',
+  })[0].variables;
 
-    expect(xy).toHaveLength(2);
-    expect(xy[1].variables).toStrictEqual({
-      x: {
-        units: 'ug',
-        label: 'Weight',
-        data: [10000000, 20000000],
-        min: 10000000,
-        max: 20000000,
-        isMonotonic: 1,
-      },
-      y: {
-        units: '°C',
-        label: 'Temperature',
-        data: [30, 40],
-        min: 30,
-        max: 40,
-        isMonotonic: 1,
-      },
-    });
-  });
+  xy.x.data = Array.from(xy.x.data);
 
-  it('MeasurementXY by labels', () => {
-    const xy = getXYSpectra(spectra, {
-      xLabel: 'Weight [mg]',
-      yLabel: 'Temperature [°C]',
-    })[0].variables;
-
-    xy.x.data = Array.from(xy.x.data);
-
-    expect(xy).toStrictEqual({
-      x: {
-        units: 'mg',
-        label: 'Weight [mg]',
-        data: [1, 2],
-      },
-      y: {
-        units: '°C',
-        label: 'Expected temperature [°C]',
-        data: [5, 6],
-      },
-    });
+  expect(xy).toStrictEqual({
+    x: {
+      units: 'mg',
+      label: 'Weight [mg]',
+      data: [1, 2],
+    },
+    y: {
+      units: '°C',
+      label: 'Expected temperature [°C]',
+      data: [5, 6],
+    },
   });
 });

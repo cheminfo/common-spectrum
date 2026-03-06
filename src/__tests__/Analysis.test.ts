@@ -1,22 +1,20 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-import { describe, expect, it } from 'vitest';
+import { expect, test } from 'vitest';
 
 import { fromJcamp } from '../index.js';
 
-describe('Analysis', () => {
-  it('getXY', () => {
-    const text = readFileSync(
-      join(import.meta.dirname, '../../testFiles/xps.jdx'),
-      'utf8',
-    );
+test('Analysis getXY', () => {
+  const text = readFileSync(
+    join(import.meta.dirname, '../../testFiles/xps.jdx'),
+    'utf8',
+  );
 
-    const analysis = fromJcamp(text);
+  const analysis = fromJcamp(text);
 
-    const xy = analysis.getXY() || { x: [], y: [] };
+  const xy = analysis.getXY() || { x: [], y: [] };
 
-    expect(xy.x).toHaveLength(91);
-    expect(xy.y).toHaveLength(91);
-  });
+  expect(xy.x).toHaveLength(91);
+  expect(xy.y).toHaveLength(91);
 });

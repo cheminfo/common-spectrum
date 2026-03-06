@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import type { MeasurementXYVariables } from 'cheminfo-types';
-import { describe, expect, it } from 'vitest';
+import { expect, test } from 'vitest';
 
 import { fromJcamp } from '../fromJcamp.js';
 
@@ -18,22 +18,20 @@ function irCallback(variables: MeasurementXYVariables) {
   }
 }
 
-describe('fromJcamp with callback', () => {
-  it('absorbance', () => {
-    const jcamp = readFileSync(
-      join(import.meta.dirname, '../../../testFiles/ir.jdx'),
-      'utf8',
-    );
+test('fromJcamp with callback absorbance', () => {
+  const jcamp = readFileSync(
+    join(import.meta.dirname, '../../../testFiles/ir.jdx'),
+    'utf8',
+  );
 
-    const result = fromJcamp(jcamp, { spectrumCallback: irCallback });
-    const spectrum: any = result.spectra[0];
+  const result = fromJcamp(jcamp, { spectrumCallback: irCallback });
+  const spectrum: any = result.spectra[0];
 
-    expect(spectrum.variables.x.label).toBe('1/CM');
-    expect(spectrum.variables.y.label).toBe('ABSORBANCE');
-    expect(spectrum.variables.t.label).toBe('Transmittance');
-    expect(spectrum.variables.t.units).toBe('%');
-    expect(spectrum.variables.x.data).toHaveLength(1738);
-    expect(spectrum.variables.y.data).toHaveLength(1738);
-    expect(spectrum.variables.t.data).toHaveLength(1738);
-  });
+  expect(spectrum.variables.x.label).toBe('1/CM');
+  expect(spectrum.variables.y.label).toBe('ABSORBANCE');
+  expect(spectrum.variables.t.label).toBe('Transmittance');
+  expect(spectrum.variables.t.units).toBe('%');
+  expect(spectrum.variables.x.data).toHaveLength(1738);
+  expect(spectrum.variables.y.data).toHaveLength(1738);
+  expect(spectrum.variables.t.data).toHaveLength(1738);
 });
