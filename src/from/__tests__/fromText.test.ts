@@ -3,6 +3,8 @@ import { join } from 'node:path';
 
 import { expect, test } from 'vitest';
 
+import { toJcamp } from '../../to/toJcamp.js';
+import { fromJcamp } from '../fromJcamp.js';
 import { fromText } from '../fromText.js';
 
 test('fromText', () => {
@@ -27,4 +29,27 @@ test('fromText', () => {
   expect(first.variables.x.units).toBe('cm-1');
   expect(first.variables.y.label).toBe('Intensity');
   expect(first.variables.y.units).toBe('');
+});
+
+test('fromText with dataType', () => {
+  const arrayBuffer = readFileSync(join(import.meta.dirname, 'data/uv.txt'));
+
+  const result = fromText(arrayBuffer, {
+    info: {
+      xUnits: 'cm-1',
+      xLabel: 'Wavenumber',
+      yLabel: 'Intensity',
+    },
+    dataType: 'UV spectrum',
+  });
+
+  expect(result.spectra[0].dataType).toBe('UV spectrum');
+
+  const jcamp = toJcamp(result);
+
+  expect(jcamp).toContain('##DATA TYPE=UV spectrum');
+
+  const roundtrip = fromJcamp(jcamp);
+
+  expect(roundtrip.spectra[0].dataType).toBe('UV spectrum');
 });

@@ -1,32 +1,39 @@
-import type { MeasurementXYVariables, TextData } from 'cheminfo-types';
+import type {
+  MeasurementXY,
+  MeasurementXYVariables,
+  TextData,
+} from 'cheminfo-types';
 import type { ParseXYOptions } from 'xy-parser';
 import { parseXYAndKeepInfo } from 'xy-parser';
 
 import { Analysis } from '../Analysis.js';
 
-export interface FromTextOptions {
+export interface FromTextOptions extends Pick<
+  MeasurementXY,
+  'dataType' | 'title'
+> {
   /**
    * @default {}
    */
   info?: {
     /**
      * Units for the x axis
-     * @default '''
+     * @default ''
      */
     xUnits?: string;
     /**
      * Label for the x axis
-     * @default '''
+     * @default ''
      */
     xLabel?: string;
     /**
      * Units for the y axis
-     * @default '''
+     * @default ''
      */
     yUnits?: string;
     /**
      * Label for the y axis
-     * @default '''
+     * @default ''
      */
     yLabel?: string;
   };
@@ -45,7 +52,7 @@ export function fromText(
 ): Analysis {
   const analysis = new Analysis();
 
-  const { info = {}, parser = {} } = options;
+  const { info = {}, parser = {}, ...measurementOptions } = options;
 
   const parsed = parseXYAndKeepInfo(data, parser);
   const variables: MeasurementXYVariables = {
@@ -61,7 +68,7 @@ export function fromText(
     },
   };
 
-  analysis.pushSpectrum(variables);
+  analysis.pushSpectrum(variables, measurementOptions);
 
   return analysis;
 }

@@ -3,6 +3,7 @@ import { join } from 'node:path';
 
 import { describe, expect, it } from 'vitest';
 
+import { toJcamp } from '../../to/toJcamp.js';
 import { fromJcamp } from '../fromJcamp.js';
 
 describe('fromJcamp', () => {
@@ -51,5 +52,24 @@ describe('fromJcamp', () => {
     expect(result.variables.x.units).toBe('µg');
     expect(result.variables.y.label).toBe('Temperature');
     expect(result.variables.y.units).toBe('°C');
+  });
+
+  it('dataType roundtrip', () => {
+    const jcamp = readFileSync(
+      join(import.meta.dirname, '../../../testFiles/jcamp.jdx'),
+      'utf8',
+    );
+
+    const result = fromJcamp(jcamp);
+
+    expect(result.spectra[0].dataType).toBe('TGA');
+
+    const exported = toJcamp(result);
+
+    expect(exported).toContain('##DATA TYPE=TGA');
+
+    const roundtrip = fromJcamp(exported);
+
+    expect(roundtrip.spectra[0].dataType).toBe('TGA');
   });
 });
