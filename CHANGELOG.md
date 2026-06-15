@@ -1,5 +1,16 @@
 # Changelog
 
+## [4.0.0](https://github.com/cheminfo/common-spectrum/compare/v3.2.0...v4.0.0) (2026-06-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* Breaking changes in dependencies affect some options types. The `airPLSBaseline` filter for `getNormalizedSpectrum` will give different results.
+
+### Features
+
+* update dependencies ([c8d5e63](https://github.com/cheminfo/common-spectrum/commit/c8d5e632a503bc13af050290c3fb71d032ae2967))
+
 ## [3.2.0](https://github.com/cheminfo/common-spectrum/compare/v3.1.0...v3.2.0) (2026-03-06)
 
 
