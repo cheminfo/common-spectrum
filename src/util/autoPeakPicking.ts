@@ -38,6 +38,7 @@ export function autoPeakPicking(
     yVariable = 'y',
     normalizationOptions,
     minPeakWidth,
+    maxCriteria,
   } = options;
 
   let x = spectrum.variables[xVariable]?.data;
@@ -68,7 +69,7 @@ export function autoPeakPicking(
   if (normalizationOptions) {
     // we need to recalculate the real count
     const xyClosestYPoint =
-      options.maxCriteria === undefined || options.maxCriteria
+      maxCriteria === undefined || maxCriteria
         ? xyMaxClosestYPoint
         : xyMinClosestYPoint;
     for (const peak of peaks) {
