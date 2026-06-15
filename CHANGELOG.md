@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.1](https://github.com/cheminfo/common-spectrum/compare/v4.0.0...v4.0.1) (2026-06-15)
+
+
+### Bug Fixes
+
+* force new release ([72e923b](https://github.com/cheminfo/common-spectrum/commit/72e923b4bdc537bf5d619194c96b6abc910607c3))
+
 ## [4.0.0](https://github.com/cheminfo/common-spectrum/compare/v3.2.0...v4.0.0) (2026-06-15)
 
 
